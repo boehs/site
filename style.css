@@ -46,10 +46,15 @@ body {
           animation: pulse 20s infinite;
 }
 
-.dark-mode {
+body.dark {
   -webkit-animation: darkpulse 20s infinite;
           animation: darkpulse 20s infinite;
   color: white;
+}
+
+body.light {
+  -webkit-animation: pulse 20s infinite;
+          animation: pulse 20s infinite;
 }
 
 * {

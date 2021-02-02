@@ -37,9 +37,13 @@ body {
     animation: pulse 20s infinite;
 }
 
-.dark-mode {
+body.dark {
     animation: darkpulse 20s infinite;
     color: white;
+}
+
+body.light {
+    animation: pulse 20s infinite;
 }
 
 * {

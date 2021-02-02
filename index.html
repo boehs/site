@@ -16,6 +16,7 @@
     <meta content="https://avatars.githubusercontent.com/u/51836263?s=460&u=a7a4e671c9f4db3d06d1f4a7ebd7591c75832d95&v=4" property="og:image">
     <meta content="#f0f0f0" data-react-helmet="true" name="theme-color">
     <meta name="google-site-verification" content="PVy_2tNlzSQgba-kSb-IG1Jw7ZPzsi1N04iCq2Xj7_M" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <link rel="apple-touch-icon" sizes="180x180" href="Assets/Images/Favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="Assets/Images/Favicons/favicon-32x32.png">
@@ -30,8 +31,8 @@
 <body>
     <script src="script.js"></script>
     <div class="container">
-        <div style="padding: 10px; position=fixed;"><i onclick="darkmode()" class="gg-moon" style="position: fixed;" ></i></div>
-
+        <div style="padding: 10px; position=fixed;" id="night-mode"><i onclick="darkmode()" class="gg-moon" style="position: fixed;" ></i></div>
+        <button id="night-mode">hi</button>
         <div class="col-1">
             <div class="Header">The Name's Evan</div>
             <div class="Content">I am a programmer, artist and student. my
