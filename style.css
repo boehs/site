@@ -23,9 +23,33 @@
   }
 }
 
+@-webkit-keyframes darkpulse {
+  0%, 100% {
+    background-color: black;
+  }
+  50% {
+    background-color: #1a1918;
+  }
+}
+
+@keyframes darkpulse {
+  0%, 100% {
+    background-color: black;
+  }
+  50% {
+    background-color: #1a1918;
+  }
+}
+
 body {
   -webkit-animation: pulse 20s infinite;
           animation: pulse 20s infinite;
+}
+
+.dark-mode {
+  -webkit-animation: darkpulse 20s infinite;
+          animation: darkpulse 20s infinite;
+  color: white;
 }
 
 * {

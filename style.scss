@@ -24,8 +24,22 @@
     }
 }
 
+@keyframes darkpulse {
+    0%, 100% {
+      background-color: black;
+    }
+    50% {
+      background-color: #1a1918;
+    }
+}
+
 body {
     animation: pulse 20s infinite;
+}
+
+.dark-mode {
+    animation: darkpulse 20s infinite;
+    color: white;
 }
 
 * {
