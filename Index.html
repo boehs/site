@@ -1,0 +1,60 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <title>Evan Boehs</title>
+    <meta name="description" content="Evan Boeh's Profile">
+    <meta name="author" content="Evan Boehs">
+
+    <link href="style.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+    <script src="script.js"></script>
+    <div class="container">
+        <div class="col-1">
+            <div class="Header">The Name's Evan</div>
+            <div class="Content">I am a programmer, artist and student. my
+                hobbies outside of the coding world mostly consist of skiing, biking, and cooing over adorable dog
+                photos. I am also really into video games, music, digital art, and photography. currently my skills
+                are mostly in python, but I am always learning. feel free to check out the links below to get
+                to know me better.</div>
+            <div class="Links"><a href="/resume.pdf">Resume</a> • <a href="/projects/index.html">Projects</a> • <a
+                    href="/socials/index.html">Contact & Socials</a> • <a href="/Blog/Home">Blog</a></div>
+        </div>
+        <div class="col-2">
+            <div class="imagecontainer">
+                <img class="imageslide" src="Assets/Images/HomeSlide/Galapagoscactus.jpg"></img>
+                <img class="imageslide" src="Assets/Images/HomeSlide/Galapagosboat.jpg"></img>
+                <img class="imageslide" src="Assets/Images/HomeSlide/Galapagossign.jpg"></img>
+                <img class="imageslide" src="Assets/Images/HomeSlide/Galapagostsunami.jpg"></img>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var myIndex = 0;
+    carousel();
+
+    function carousel() {
+        var i;
+        var x = document.getElementsByClassName("imageslide");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        myIndex++;
+        if (myIndex > x.length) {
+            console.log(x.length)
+            myIndex = 1
+        }
+        x[myIndex - 1].style.display = "block";
+        setTimeout(carousel, 5000);
+    }
+</script>
+
+</html>

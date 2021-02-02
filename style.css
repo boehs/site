@@ -1,0 +1,113 @@
+@font-face {
+  font-family: 'dillanregular';
+  src: url("Assets/Fonts/Webfonts/dillan-webfont.woff2") format("woff2"), url("Assets/Fonts/Webfonts/dillan-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  -webkit-animation: pulse 20s infinite;
+          animation: pulse 20s infinite;
+}
+
+@-webkit-keyframes pulse {
+  0%, 100% {
+    background-color: #f5f5f5;
+  }
+  50% {
+    background-color: #f0f0f0;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    background-color: #f5f5f5;
+  }
+  50% {
+    background-color: #f0f0f0;
+  }
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+[class*="col-"] {
+  float: left;
+  padding: 10px;
+}
+
+.container {
+  height: 100vh;
+}
+
+.Header {
+  font-family: 'dillanregular';
+  margin-bottom:0;
+  margin-top:0;
+  font-size: calc(0.75em + 9vmin);
+  line-height: calc(0.75em+2vmin);
+}
+
+.Content {
+  font-size: calc(0.75em + 1.5vmin);
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.Links {
+  text-align: center;
+  font-family: 'dillanregular';
+  font-size: calc(0.75em + 1vmin);
+  padding-top: calc(0.75em + 1vmin);
+}
+
+.imagecontainer {
+  padding-left: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: auto;
+}
+
+.imageslide {
+  width: 400px;
+  /* you can use % */
+  height: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+/* For mobile phones: */
+[class*="col-"] {
+  width: 100%;
+}
+
+@media only screen and (min-width: 1000px) {
+  .col-1 {
+    width: 50%;
+    text-align: center;
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    padding-left: 30px;
+  }
+  .col-2 {
+    width: 50%;
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+}
+/*# sourceMappingURL=style.css.map */

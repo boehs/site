@@ -1,0 +1,61 @@
+@font-face {
+  font-family: 'dillanregular';
+  src: url("../Assets/Fonts/Webfonts/dillan-webfont.woff2") format("woff2"), url("../Assets/Fonts/Webfonts/dillan-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  -webkit-animation: pulse 20s infinite;
+          animation: pulse 20s infinite;
+}
+
+@-webkit-keyframes pulse {
+  0%, 100% {
+    background-color: #f5f5f5;
+  }
+  50% {
+    background-color: #f0f0f0;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    background-color: #f5f5f5;
+  }
+  50% {
+    background-color: #f0f0f0;
+  }
+}
+
+h1 {
+  font-family: 'dillanregular';
+  font-size: calc(0.75em + 9vmin);
+  text-align: center;
+}
+
+h2 {
+  font-family: 'dillanregular';
+  font-size: calc(0.75em + 5vmin);
+  text-align: center;
+}
+
+h3 {
+  font-family: 'dillanregular';
+  font-size: calc(0.75em + 3vmin);
+  text-align: center;
+}
+
+p {
+  font-size: calc(0.75em + 2vmin);
+  font-family: 'Noto Sans', sans-serif;
+  text-align: center;
+}
+
+li {
+  font-size: calc(0.75em + 2vmin);
+  font-family: 'Noto Sans', sans-serif;
+  text-align: center;
+  list-style-position: inside;
+}
+/*# sourceMappingURL=mdcss.css.map */
