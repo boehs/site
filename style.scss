@@ -15,10 +15,6 @@
     transform: translateY(-50%);
 }
 
-body {
-animation: pulse 20s infinite;
-}
-
 @keyframes pulse {
     0%, 100% {
       background-color: #f5f5f5;
@@ -26,7 +22,11 @@ animation: pulse 20s infinite;
     50% {
       background-color: #f0f0f0;
     }
-  }
+}
+
+body {
+    animation: pulse 20s infinite;
+}
 
 * {
     box-sizing: border-box;
@@ -39,11 +39,6 @@ animation: pulse 20s infinite;
     clear: both;
     display: table;
 
-}
-
-[class*="col-"] {
-    float: left;
-    padding: 10px;
 }
 
 .container {
@@ -62,43 +57,60 @@ animation: pulse 20s infinite;
 }
 
 .Links {
-    text-align: center;
     font-family: 'dillanregular';
-    font-size: calc(0.75em + 1vmin);
-    padding-top: calc(0.75em + 1vmin);
+    font-size: 40px;
 }
 
 .imagecontainer {
-    padding-left: 10px;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
     height: auto;
+    
 }
 
 .imageslide {
-    width: 400px; /* you can use % */
+    width: 90vw; /* you can use % */
     height: auto;
     object-fit: contain;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90vw;
 }
 
 /* For mobile phones: */
 [class*="col-"] {
     width: 100%;
+    float: left;
+    padding: 10px;
+    text-align: center;
 }
 
+/* desktop */
 @media only screen and (min-width: 1000px) {
 
     .col-1 {
         width: 50%;
-        text-align: center;
         @include vertical-align();
-        padding-left: 30px
+        padding-left: 30px;
+        text-align: center;
     }
 
     .col-2 {
         width: 50%;
         @include vertical-align();
+    }
+    .imageslide {
+        width: 400px; /* you can use % */
+    }
+    .imagecontainer {
+        padding-left: 10px;
+        width: 50%;
+    }
+
+    .Links {
+        padding-top: calc(0.75em + 1vmin);
+        font-size: calc(0.75em + 1vmin);
     }
 }

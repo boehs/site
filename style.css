@@ -5,11 +5,6 @@
   font-style: normal;
 }
 
-body {
-  -webkit-animation: pulse 20s infinite;
-          animation: pulse 20s infinite;
-}
-
 @-webkit-keyframes pulse {
   0%, 100% {
     background-color: #f5f5f5;
@@ -28,6 +23,11 @@ body {
   }
 }
 
+body {
+  -webkit-animation: pulse 20s infinite;
+          animation: pulse 20s infinite;
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -39,11 +39,6 @@ body {
   content: "";
   clear: both;
   display: table;
-}
-
-[class*="col-"] {
-  float: left;
-  padding: 10px;
 }
 
 .container {
@@ -62,43 +57,47 @@ body {
 }
 
 .Links {
-  text-align: center;
   font-family: 'dillanregular';
-  font-size: calc(0.75em + 1vmin);
-  padding-top: calc(0.75em + 1vmin);
+  font-size: 40px;
 }
 
 .imagecontainer {
-  padding-left: 10px;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
   height: auto;
 }
 
 .imageslide {
-  width: 400px;
+  width: 90vw;
   /* you can use % */
   height: auto;
   -o-object-fit: contain;
      object-fit: contain;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90vw;
 }
 
 /* For mobile phones: */
 [class*="col-"] {
   width: 100%;
+  float: left;
+  padding: 10px;
+  text-align: center;
 }
 
+/* desktop */
 @media only screen and (min-width: 1000px) {
   .col-1 {
     width: 50%;
-    text-align: center;
     position: relative;
     top: 50%;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
     padding-left: 30px;
+    text-align: center;
   }
   .col-2 {
     width: 50%;
@@ -106,6 +105,18 @@ body {
     top: 50%;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
+  }
+  .imageslide {
+    width: 400px;
+    /* you can use % */
+  }
+  .imagecontainer {
+    padding-left: 10px;
+    width: 50%;
+  }
+  .Links {
+    padding-top: calc(0.75em + 1vmin);
+    font-size: calc(0.75em + 1vmin);
   }
 }
 /*# sourceMappingURL=style.css.map */
