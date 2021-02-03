@@ -1,14 +1,11 @@
 if (Cookies.get("_cookienotice") == "Disabled") {
-    window.addEventListener('load', function () {
         document.getElementById("hideablecookiebanner").style.display = "none";
         console.log("Cookie notice is hidden. use cookieshow() to enable");
-      })
+
 }
 else {
-    window.addEventListener('load', function () {
         document.getElementById("hideablecookiebanner").style.display = "block";
         console.log("Cookie notice is not. use cookiehide() to disable");
-      })
 }
 
 function cookiehide() {
