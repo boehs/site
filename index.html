@@ -17,6 +17,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="Javascript/cookies.js"></script>
+    <script src="Javascript/cookienotice.js"></script>
     <script src="Javascript/darktoggle.js"></script>
     
     <link rel="apple-touch-icon" sizes="180x180" href="Assets/Images/Favicons/apple-touch-icon.png">
@@ -33,7 +34,8 @@
 
 <body>
     <div class="container">
-        <div style="padding: 10px; position=fixed;" id="night-mode"><i onclick="darkmode()" class="gg-moon" style="position: fixed;" ></i></div>
+        <div id="hideablecookiebanner" class="heysoweusecookieslol" style="display: none;">by using this site you agree to the cookies outlined in the <a href="/cookies">cookie policy</a>. click <a onclick="cookiehide()">HERE</a> to dismiss</div>
+        <div style="padding: 10px; position=fixed;"><i onclick="darkmode()" class="gg-moon" style="position: fixed;" ></i></div>
         <div class="col-1">
             <div class="Header">The Name's Evan</div>
             <div class="Content">I am a programmer, artist and student. my

@@ -1,11 +1,14 @@
-if (Cookies.get("_darkmode") == "Enabled") {
-    $("body").addClass('dark');
-    console.log("Cookie light is set on load");
-}
-if (Cookies.get("_lightmode") == "Enabled") {
-    $("body").addClass('light');
-    console.log("Cookie dark is set on load");
-}
+window.addEventListener('load', function () {
+    if (Cookies.get("_darkmode") == "Enabled") {
+        $('body').addClass('dark');
+        console.log("Cookie dark is set on load");
+    }
+    else if (Cookies.get("_lightmode") == "Enabled") {
+        $('body').removeClass('dark').addClass('light');
+        console.log("Cookie light is set on load");
+    }
+  })
+
 
 // On initial page load, there is not yet a cookie
 // When the user clicks the button for the fist time, do this:

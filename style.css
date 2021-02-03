@@ -57,6 +57,13 @@ body.light {
           animation: pulse 20s infinite;
 }
 
+.heysoweusecookieslol {
+  padding: 10px;
+  position: fixed;
+  right: 0;
+  font-family: 'Noto Sans', sans-serif;
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
