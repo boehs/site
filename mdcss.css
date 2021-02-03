@@ -8,6 +8,7 @@
 body {
   -webkit-animation: pulse 20s infinite;
           animation: pulse 20s infinite;
+  text-align: center;
 }
 
 @-webkit-keyframes pulse {
@@ -31,16 +32,19 @@ body {
 h1 {
   font-family: 'dillanregular';
   font-size: calc(0.75em + 9vmin);
+  margin: 0px;
 }
 
 h2 {
   font-family: 'dillanregular';
   font-size: calc(0.75em + 5vmin);
+  margin: 0px;
 }
 
 h3 {
   font-family: 'dillanregular';
   font-size: calc(0.75em + 3vmin);
+  margin: 0px;
 }
 
 p {
