@@ -38,6 +38,8 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d 
 RewriteRule ^([^\.]+)$ $1.html [NC,L]
 
+ErrorDocument 404 /error/404.html
+
 #index redirect 
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/ 
 RewriteRule ^index\.html$ http://domain.com/ [R=301,L]
