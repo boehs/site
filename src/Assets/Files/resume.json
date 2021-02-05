@@ -1,0 +1,93 @@
+{
+    "basics": {
+        "name": "Evan Boehs",
+        "label": "",
+        "picture": "",
+        "email": "evan@boehs.io",
+        "phone": "A phone number, with any formatting you like. E.g. (555) 555-5555.",
+        "degree": "",
+        "website": "https://boehs.io",
+        "summary": "A one-sentence to one-paragraph overview text. Do not include any line-breaks.",
+        "location": {
+            "address": "179 Aspinwall Ave",
+            "postalCode": "02446",
+            "city": "Brookline",
+            "countryCode": "US",
+            "region": "MA"
+        },
+        "profiles": [{
+                "network": "Github",
+                "username": "Boehs",
+                "url": "https://github.com/boehs"
+            },
+            {
+                "network": "Dev.to",
+                "username": "evn",
+                "url": "https://dev.to/evn"
+            }
+        ]
+    },
+    "work": [{
+        "company": "Your employer name",
+        "position": "Your job title",
+        "website": "The URL for the employer's website",
+        "startDate": "Your start date, in YYYY-MM-DD format",
+        "endDate": "Your end date, in YYY-MM-DD format (leave blank for a current position)",
+        "summary": "A one-sentence to one-paragraph summary of this employer or position",
+        "highlights": [
+            "Bullet-point list items that you would like to include along with (or instead of) a summary paragraph."
+        ]
+    }],
+    "volunteer": [{
+        "organization": "Your volunteer organization name",
+        "position": "Your job title",
+        "website": "The URL for the employer's website",
+        "startDate": "Your start date, in YYYY-MM-DD format",
+        "endDate": "Your end date, in YYY-MM-DD format (leave blank for a current position)",
+        "summary": "A one-sentence to one-paragraph summary of this employer or position",
+        "highlights": [
+            "Bullet-point list items that you would like to include along with (or instead of) a summary paragraph."
+        ]
+    }],
+    "education": [{
+        "institution": "Your school name",
+        "area": "Your area of study or degree earned",
+        "studyType": "",
+        "startDate": "Your start date, in YYYY-MM-DD format",
+        "endDate": "Your completion date, in YYYY-MM-DD format",
+        "gpa": "",
+        "courses": [
+            ""
+        ]
+    }],
+    "awards": [{
+        "title": "Your award title",
+        "date": "Your date, in YYYY-MM-DD format you received the award",
+        "awarder": "Your award given by",
+        "summary": "A one-sentence to one-paragraph overview of this award"
+    }],
+    "publications": [{
+        "name": "Your publication title",
+        "publisher": "Publisher name",
+        "releaseDate": "Publication date, in YYYY-MM-DD format",
+        "website": "The website URL for this publisher or book",
+        "summary": "A one-sentence to one-paragraph overview of this publication"
+    }],
+    "skills": [{
+        "name": "Python",
+        "level": "3",
+        "keywords": [
+            "Python", "Mashine Learning", "API", "Data Science"
+        ]
+    }],
+    "languages": [{
+        "language": "English",
+        "fluency": "Your language fluency"
+    }],
+    "interests": [{
+        "name": "A category of interests (e.g. 'Sports')",
+        "keywords": [
+            "Keywords under this category (e.g. 'Cricket', 'Football', 'Golf')"
+        ]
+    }]
+}
