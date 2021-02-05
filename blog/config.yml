@@ -1,4 +1,4 @@
-baseURL: "/blog"
+baseURL: "https://boehs.ml/blog"
 title: Evan Boehs
 paginate: 5
 theme: PaperMod
