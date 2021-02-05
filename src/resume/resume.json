@@ -5,9 +5,9 @@
         "picture": "",
         "email": "evan@boehs.io",
         "phone": "A phone number, with any formatting you like. E.g. (555) 555-5555.",
-        "degree": "",
+        "degree": "None",
         "website": "https://boehs.io",
-        "summary": "A one-sentence to one-paragraph overview text. Do not include any line-breaks.",
+        "summary": "Oy! name's Evan! this is a resume you are looking at",
         "location": {
             "address": "179 Aspinwall Ave",
             "postalCode": "02446",
@@ -21,9 +21,9 @@
                 "url": "https://github.com/boehs"
             },
             {
-                "network": "Dev.to",
-                "username": "evn",
-                "url": "https://dev.to/evn"
+                "network": "website",
+                "username": "Website",
+                "url": "../"
             }
         ]
     },
@@ -75,19 +75,52 @@
     }],
     "skills": [{
         "name": "Python",
-        "level": "3",
+        "level": "Advanced",
         "keywords": [
-            "Python", "Mashine Learning", "API", "Data Science"
+            "Mashine Learning", "API", "Data Science"
+        ]
+    },
+    {
+        "name": "Front End Webdev",
+        "level": "Intermediate",
+        "keywords": [
+            "HTML", "CSS", "JavaScript"
+        ]
+    },
+    {
+        "name": "Git and project management",
+        "level": "Master",
+        "keywords": [
+            "Git", "PM"
+        ]
+    },
+    {
+        "name": "Teamwork, Liveliness and Colaboration",
+        "level": "Master",
+        "keywords": [
+            "love yall"
         ]
     }],
     "languages": [{
         "language": "English",
-        "fluency": "Your language fluency"
+        "fluency": "Master"
     }],
     "interests": [{
-        "name": "A category of interests (e.g. 'Sports')",
+        "name": "Programming",
         "keywords": [
-            "Keywords under this category (e.g. 'Cricket', 'Football', 'Golf')"
+            "Duh"
+        ]
+    },
+    {
+        "name": "Sports",
+        "keywords": [
+            "Downhill Skiing", "Biking", "Hiking", "Camping?", "Water Sports", "General Outdoors"
+        ]
+    },
+    {
+        "name": "Cute stuff",
+        "keywords": [
+            "Puppys"
         ]
     }]
 }
