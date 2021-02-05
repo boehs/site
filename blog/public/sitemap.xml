@@ -3,15 +3,34 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://boehs.ml/blog/categories/</loc>
+    <loc>/</loc>
+    <lastmod>2021-02-05T14:42:50-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://boehs.ml/blog/</loc>
+    <loc>/posts/hello-world/</loc>
+    <lastmod>2021-02-05T14:42:50-05:00</lastmod>
   </url>
   
   <url>
-    <loc>https://boehs.ml/blog/tags/</loc>
+    <loc>/posts/</loc>
+    <lastmod>2021-02-05T14:42:50-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/archives/</loc>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>/search/</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
   </url>
   
 </urlset>

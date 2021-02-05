@@ -1,5 +1,5 @@
-baseURL: "https://boehs.ml/blog"
-title: Evan Boehs's Blog
+baseURL: "/"
+title: Evan Boehs
 paginate: 5
 theme: PaperMod
 
@@ -42,7 +42,7 @@ params:
         safari_pinned_tab: "<link / abs url>"
 
     label:
-        text: "Home"
+        text: "Evan Boehs's Blog"
         icon: https://avatars.githubusercontent.com/u/51836263?s=460&u=a7a4e671c9f4db3d06d1f4a7ebd7591c75832d95&v=4
         iconHeight: 35
 
@@ -108,13 +108,13 @@ menu:
           name: search
           url: /search/
           weight: 30
-        - identifier: archive
-          name: archive
-          url: /archive/
+        - identifier: archives
+          name: archives
+          url: /archives/
           weight: 40
         - identifier: homepage
           name: homepage
-          url: https://boehs.ml
+          url: ../
           weight: 50
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 # pygmentsUseClasses: true
@@ -125,3 +125,9 @@ menu:
 #         guessSyntax: true
 #         lineNos: true
 #         style: monokai
+
+outputs:
+    home:
+        - HTML
+        - RSS
+        - JSON # is necessary
