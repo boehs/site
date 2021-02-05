@@ -1,4 +1,4 @@
-baseURL: "https://evnblog.netlify.app/"
+baseURL: "/"
 title: Evan Boehs
 paginate: 5
 theme: PaperMod
