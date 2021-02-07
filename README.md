@@ -8,7 +8,7 @@
 * jquery
 * google fonts
 * hugo
-** papermod
+  * papermod
 * github
 * improvmx
 * netlify
