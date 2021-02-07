@@ -34,7 +34,7 @@ params:
 
     assets:
         # disableHLJS: true # to disable highlight.js
-        # disableFingerprinting: true
+        disableFingerprinting: true
         favicon: "https://avatars.githubusercontent.com/u/51836263?s=460&u=a7a4e671c9f4db3d06d1f4a7ebd7591c75832d95&v=4"
         favicon16x16: "<link / abs url>"
         favicon32x32: "<link / abs url>"
