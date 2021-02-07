@@ -1,4 +1,4 @@
-baseURL: "/blog/public/"
+baseURL: "/blog/"
 title: Evan Boehs
 paginate: 5
 theme: PaperMod
