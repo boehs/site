@@ -3,34 +3,34 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/blog/</loc>
+    <loc>/blog/public/</loc>
     <lastmod>2021-02-05T14:42:50-05:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/posts/hello-world/</loc>
+    <loc>/blog/public/posts/hello-world/</loc>
     <lastmod>2021-02-05T14:42:50-05:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/posts/</loc>
+    <loc>/blog/public/posts/</loc>
     <lastmod>2021-02-05T14:42:50-05:00</lastmod>
   </url>
   
   <url>
-    <loc>/blog/archives/</loc>
+    <loc>/blog/public/archives/</loc>
   </url>
   
   <url>
-    <loc>/blog/categories/</loc>
+    <loc>/blog/public/categories/</loc>
   </url>
   
   <url>
-    <loc>/blog/search/</loc>
+    <loc>/blog/public/search/</loc>
   </url>
   
   <url>
-    <loc>/blog/tags/</loc>
+    <loc>/blog/public/tags/</loc>
   </url>
   
 </urlset>

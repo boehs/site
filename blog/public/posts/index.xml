@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Evan Boehs</title>
-    <link>/blog/posts/</link>
+    <link>/blog/public/posts/</link>
     <description>Recent content in Posts on Evan Boehs</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 05 Feb 2021 14:42:50 -0500</lastBuildDate><atom:link href="/blog/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 05 Feb 2021 14:42:50 -0500</lastBuildDate><atom:link href="/blog/public/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hello World</title>
-      <link>/blog/posts/hello-world/</link>
+      <link>/blog/public/posts/hello-world/</link>
       <pubDate>Fri, 05 Feb 2021 14:42:50 -0500</pubDate>
       
-      <guid>/blog/posts/hello-world/</guid>
+      <guid>/blog/public/posts/hello-world/</guid>
       <description>Hello World. its the one output every programmer has seen. hello world is the mark of a new personal era. you might not think about it, but achiving the sentence in question requires work and dedication. those two tiny words often seperate the winner from the quitter, the programmer from the programmers mom. if you are here today, reading this post, it means I am not a quitter. I succeeded in what I set out to do, and I can&amp;rsquo;t wait for what comes next.</description>
     </item>
     
