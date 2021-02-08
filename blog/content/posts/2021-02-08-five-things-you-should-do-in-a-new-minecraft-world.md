@@ -2,6 +2,9 @@
 title: five things you should do in a new minecraft world
 date: 2021-02-08T18:17:38.258Z
 description: some tips to make your block game experience much more fun
+tags:
+  - Minecraft
+  - Gaming
 draft: false
 ---
 # Set a world border
