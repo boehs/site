@@ -3,7 +3,12 @@ This is just a placeholder blank stylesheet so as to support adding custom style
 
 Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-css-with-themes-assets for more info
 */
-
+@font-face {
+    font-family: 'dillanregular';
+    src: url("Assets/Fonts/Webfonts/dillan-webfont.woff2") format("woff2"), url("Assets/Fonts/Webfonts/dillan-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
 
 header {
     font-family: 'dillanregular';
