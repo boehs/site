@@ -10,6 +10,15 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
     font-style: normal;
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'dillanregular';
+  }
+
 header {
     font-family: 'dillanregular';
 }
