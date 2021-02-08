@@ -5,7 +5,7 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
 */
 @font-face {
     font-family: 'dillanregular';
-    src: url("../../../../../../src/Assets/Fonts/Webfonts/dillan-webfont.woff") format("woff2"), url("../../../../../../src/Assets/Fonts/Webfonts/dillan-webfont.woff") format("woff");
+    src: url("../../../../../src/Assets/Fonts/Webfonts/dillan-webfont.woff") format("woff2"), url("../../../../../src/Assets/Fonts/Webfonts/dillan-webfont.woff") format("woff");
     font-weight: normal;
     font-style: normal;
   }
