@@ -12,3 +12,4 @@
 * github
 * improvmx
 * netlify
+* netlifycms
