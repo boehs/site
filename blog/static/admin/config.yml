@@ -16,6 +16,6 @@ collections:
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Post Tags', name: 'tags', widget: 'list' }
-      - { label: 'Cover Image', name: 'cover.image', widget: 'string' }
+      - { label: 'Cover Image', name: 'cover.image', widget: 'image' }
       - { label: 'Draft', name: 'draft', widget: 'boolean' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
