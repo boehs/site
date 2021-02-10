@@ -1,6 +1,6 @@
 ---
 title: The arguments against open source (and why they are wrong)
-date: 2021-02-10T03:00:59.462Z
+date: 2021-02-09T06:06:00.000Z
 description: "Open source has existed for as long as code has existed, but until
   now it has remained in the shadows. This is now changing. Here is why you
   should switch to open source 🙌 "
@@ -8,7 +8,7 @@ tags:
   - Code
   - Development
   - FOSS
-draft: true
+draft: false
 ---
 A few weeks ago, I was taking to a developer on discord. He had mentioned he was working on a bot for his server, and when I expressed interest he invited me to his server so that I could see it in action. I was impressed - it was a rather unique idea, and I was interested to see how it worked. Naturally, I asked him for the source code, and I was met with a instant no. He had no intention of selling it, nor distributing it beyond his server, but was rather worried about exploitation as well as reuse without attribution. This is a fairly common concern, among others, that prevents so many developers from publishing their code. As a major advocate for FOSS software, I thought I should clear up some misconceptions about making your code open, and share some reasons why you should.
 
@@ -29,7 +29,7 @@ Some examples of open source products using this model
 
 ### Selling precompiled code.
 
-Your product not web based? No problem. This option is not unlike the sass route, but for desktop products. Essentially, this follows the same principle of appealing to the normal consumer while also making a profit, and getting the benefits that come with open source. **who said you needed to make getting the code together easy**? Open source does not mean you host the file in the GitHub releases and offer extensive build scripts and guides, it just means it’s... open (although if your interested in getting outside support, a compilation guide for developers is needed). This means that most people looking to use your software will pay to use it, but the people interested in learning how it works and improving it do not get turned away. A win win.
+Your product not web based? No problem. This option is not unlike the sass route, but for desktop products. Essentially, this follows the same principle of appealing to the normal consumer while also making a profit, and getting the benefits that come with open source. **who said you needed to make getting the code together easy**? Open source does not mean you host the file in the GitHub releases and offer extensive build scripts and guides, it just means it’s... open (although if your interested in getting outside support, a compilation guide for developers is needed). This means that most people looking to use your software will pay to use it, but the people interested in learning how it works and improving it do not get turned away. A win win. 🥇 
 
 Some examples of open source products using this model
 
@@ -53,7 +53,7 @@ You knew it was coming at some point. Asking for donations.... the horror, but t
 
 There are a few ways to pull this off, if you really want to
 
-**make the code open source** - well no shit Sherlock... but what if I told you you could exclude the assets? That leaves out images, 3D models, etc. it means that the code is open to be viewed and modified, but not used. This works great for video games especially, like [space engineers](https://github.com/KeenSoftwareHouse/SpaceEngineers).
+**make the code open source** - well no shit Sherlock... but what if I told you you could exclude the assets? That leaves out images, 3D models, etc. it means that the code is open to be viewed and modified, but not used. This works great for video games especially, like [space engineers 🚀 ](https://github.com/KeenSoftwareHouse/SpaceEngineers).
 
 **it’s only partially open**. Fine dude, you win. Keep some stuff for the people who pay, but keep the basics open. Please.
 
@@ -71,4 +71,20 @@ This is the hardest reason to point out the flaw in, but honestly, if people wan
 
 If you are really worried about exploitation, try implementing a permission system that locks your programs theroreticly destructive functions for use only by you.
 
-If they do manage to find a issue, just roll back the server if needed, patch the exploit, and boom. No more issue. If they find a exploit in your code, good for them, enjoy the ban hammer 🔨
+If they do manage to find a issue, just roll back the server if needed, patch the exploit, and boom. No more issue. If they find a exploit in your code, good for them, enjoy the ban hammer 🔨.
+
+# So why make your code open?
+
+We went over why the nots are nots (uhh), but why SHOULD you really do it?
+
+## Be recognized for not just WHAT you made, but HOW you made it
+
+In rare cases do I look at a product and think: “Hey! Whoever made this is super smart!”. It’s not that I think your not smart, but it’s the code where the talent really shows. It’s so common where I get blown away by the smart coding and methods of achieving things people use. This appreciation can only be reached by going open. Also, employers love it 😍 !
+
+## It’s free labor 
+
+No seriously. By going open harness the power of the internet... for free. Everyone contributes, everyone brings new ideas to the table - some you might not have even thought about! 
+
+# Ok bye 👋 
+
+It’s late and I am tired of writing. If you have any thoughts on this post, let me know, it’s my first real post. If this convinced you, stay tuned for “The basics of going open”... coming soon 🔜
