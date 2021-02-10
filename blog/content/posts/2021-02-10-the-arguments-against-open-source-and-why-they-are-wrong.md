@@ -8,6 +8,7 @@ tags:
   - Code
   - Development
   - FOSS
+cover: https://source.unsplash.com/4kCGEB7Kt4k/1600x900
 draft: false
 ---
 A few weeks ago, I was taking to a developer on discord. He had mentioned he was working on a bot for his server, and when I expressed interest he invited me to his server so that I could see it in action. I was impressed - it was a rather unique idea, and I was interested to see how it worked. Naturally, I asked him for the source code, and I was met with a instant no. He had no intention of selling it, nor distributing it beyond his server, but was rather worried about exploitation as well as reuse without attribution. This is a fairly common concern, among others, that prevents so many developers from publishing their code. As a major advocate for FOSS software, I thought I should clear up some misconceptions about making your code open, and share some reasons why you should.
