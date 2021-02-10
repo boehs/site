@@ -5,7 +5,7 @@ description: Some music videos that stood out to me
 tags:
   - Music
   - Media
-draft: false
+draft: true
 ---
 I am always blown away by the sheer level of creativity some artists not only put into their music but also into their music videos. in this post, I appreciate some specific music videos that stood out as special to me.
 
