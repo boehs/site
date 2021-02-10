@@ -83,7 +83,11 @@ In rare cases do I look at a product and think: “Hey! Whoever made this is sup
 
 ## It’s free labor 
 
-No seriously. By going open harness the power of the internet... for free. Everyone contributes, everyone brings new ideas to the table - some you might not have even thought about! 
+No seriously. By going open harness the power of the internet... for free. Everyone contributes, everyone brings new ideas to the table - some you might not have even thought about! Plus, most people don't bite!
+
+## See your baby grow
+
+You also get this experience from any product grouth, but its awesome seeing people apreciate, break, and build upon your code.
 
 # Ok bye 👋 
 
