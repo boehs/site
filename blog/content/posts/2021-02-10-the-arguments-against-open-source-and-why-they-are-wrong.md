@@ -63,7 +63,7 @@ You need to stop thinking this way. You made the code, you get ALL the respect f
 
 No but for real, this is a real issue but not a big one, open source generally means free to distribute, so people might pass it off as theirs. Here is the thing. **it NEVER works out**. Chances are whatever they are doing won’t pick up steam. There are better options, so no one will use the second one, when the first one was around for longer and is probably better in some way. Even if it does pickup steam, it will come out it was copied, and people forget about it. They then go to you. Free publicity. People generally are nice, so it rarely happens.
 
-If you are really worried, check out the [apache 2.0 license](https://infra.apache.org/licensing-howto.html]. It has a caviot that if someone is using your code in a different product they must include a NOTICE file containing whatever you want in a readable place, copycats be gone, unless they are illegal copy cats! 🐱.
+If you are really worried, check out the [apache 2.0 license](https://infra.apache.org/licensing-howto.html). It has a caviot that if someone is using your code in a different product they must include a NOTICE file containing whatever you want in a readable place, copycats be gone, unless they are illegal copy cats! 🐱.
 
 ## Myth 3: If my code is open, it will be exploited.
 
