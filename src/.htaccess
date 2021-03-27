@@ -58,9 +58,3 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)[^/]{1}$ %{REQUEST_URI}/ [L,R=301]
 
 </IfModule>
-
-Options +FollowSymLinks 
-RewriteEngine on
-RewriteCond %{HTTP_HOST} !^(www)\. [NC]
-RewriteCond %{HTTP_HOST} ^(.*)\.boehs\.ml [NC]
-RewriteRule (.*) http://www.boehs.ml/%1 [R=301,L]
