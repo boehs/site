@@ -38,8 +38,8 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d 
 RewriteRule ^([^\.]+)$ $1.html [NC,L]
 
-RewriteCond %{HTTP_HOST} ^DomainA.com
-RewriteRule ^(.*) https://DomainB.com/$1 [P]
+RewriteCond %{HTTP_HOST} ^boehs.ml
+RewriteRule ^(.*) https://boehs.github.io/$1 [P]
 
 ErrorDocument 404 /error/404.html
 
