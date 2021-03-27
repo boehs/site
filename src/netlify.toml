@@ -4,7 +4,7 @@
   status = 404
 [[redirects]]
   from = "/*"
-  to = "https://boehs.github.io/:spat"
+  to = "https://boehs.github.io/:splat"
   status = 200
   force = true
   headers = {X-From = "Netlify"}
