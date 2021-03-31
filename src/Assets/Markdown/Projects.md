@@ -22,4 +22,4 @@ A [newspaper archiver](https://github.com/boehs/redditarchive) for reddit
 
 ### Other
 
-[Random.py](https://github.com/boehs/random.py)
+[Random micro projects](https://github.com/boehs/random)
