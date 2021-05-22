@@ -2,3 +2,9 @@
   from = "/*"
   to = "/error/404"
   status = 404
+[[redirects]]
+  from = "/*"
+  to = "https://boehs.github.io/:splat"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
