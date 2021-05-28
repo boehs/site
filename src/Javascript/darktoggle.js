@@ -18,7 +18,7 @@ function darkmode() {
         document.body.classlist.remove("dark");
         document.body.classlist.add("light");
         console.log("Setted Cookie dark");
-    } else if document.body.classList.contains('light')) {
+    } else if (document.body.classList.contains('light')) {
         // remove set darkmode cookie, add lightmode cookie
         Cookies.remove('_lightmode');
         Cookies.set('_darkmode', 'Enabled');
