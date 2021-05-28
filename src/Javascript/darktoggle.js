@@ -1,9 +1,9 @@
 if (Cookies.get("_darkmode") == "Enabled") {
-    document.body.classlist.add("dark");
+    document.body.classList.add("dark");
     console.log("Cookie dark is set on load");
 } else if (Cookies.get("_lightmode") == "Enabled") {
-    document.body.classlist.remove("dark");
-    document.body.classlist.add("light");
+    document.body.classList.remove("dark");
+    document.body.classList.add("light");
     console.log("Cookie light is set on load");
 }
 
@@ -15,22 +15,22 @@ function darkmode() {
         Cookies.remove('_darkmode');
         Cookies.set('_lightmode', 'Enabled');
         // remove darkmode class and add lightmode class to body
-        document.body.classlist.remove("dark");
-        document.body.classlist.add("light");
+        document.body.classList.remove("dark");
+        document.body.classList.add("light");
         console.log("Setted Cookie dark");
     } else if (document.body.classList.contains('light')) {
         // remove set darkmode cookie, add lightmode cookie
         Cookies.remove('_lightmode');
         Cookies.set('_darkmode', 'Enabled');
         // remove lightmode class and add darkmode class to body
-        document.body.classlist.remove("light");
-        document.body.classlist.add("dark");
+        document.body.classList.remove("light");
+        document.body.classList.add("dark");
         console.log("Setted Cookie light");
     } else {
         // create a cookie for darkmode state
         Cookies.set('_darkmode', 'Enabled');
         // add class to body
-        document.body.classlist.add("dark");
+        document.body.classList.add("dark");
         console.log("Setted Cookie dark for the first time");
     }
 };
