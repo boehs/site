@@ -8,11 +8,11 @@ tags:
   - Democracy
 draft: true
 ---
-In wake of a - in my mind - unjust ban from a community I poured hundreds of hours into, I began thinking about how democracy can - and why it has not - transferred to the internet.
+In wake of an (in my mind) unjust ban from a community I poured hundreds of hours into, I began thinking about how democracy can be properly implemented for the internet.
 
 # Establishing a case study
 
-Wikipedia
+Wikipedia is the
 
 # How online democracy exists currently
 
