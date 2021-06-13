@@ -11,8 +11,8 @@ draft: false
 This seems like a crazy thing to do, why limit yourself in a procedural world? but there is some logic to it. not only does it reduce file size and help regulate yourself from exploring too far outwards, but it will also be really useful when an update comes around. when Minecraft is updated, only chunks you have not loaded are updated. this means that if you explore too far outwards you will need to go super far away from home. if you add a world border, this issue is resolved. I recommend starting with a 3000x3000 border and increasing it by 1000 blocks every update. this depends on what you need, of course, but for a long-term survival World, you will be thanking yourself.
 you can do this by
 1. going to where you want to place the world border
-2. entering /worldborder set 3000
-3. for future increases do /worldborder add 1000
+2. entering `/worldborder set 3000`
+3. for future increases do `/worldborder add 1000`
 # Configure your world to back up automatically
 The worst feeling is when you go to open a Minecraft world and it just went poof. chances are it's your fault, but who cares. That's not fun. luckily, there is a way to easily backup your worlds daily.
 1. create a `.bat` file and open it with a text editor
