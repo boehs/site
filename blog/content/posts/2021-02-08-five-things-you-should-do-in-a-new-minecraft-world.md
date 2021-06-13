@@ -24,15 +24,15 @@ This is a bit later game, but you should still be able to achieve it early in yo
 ## Villager farm
 This farm is needed if you plan to make an iron farm, and it sure as hell is funny. villager breeders are zero maintenance, the only issue you will face is trafficking the villagers to their new home using minecarts. once you do, however, this video is amazing at showing you what you need to do at that point
 
-{{< youtube https://www.youtube.com/watch?v=oeesCRfaabg >}}
+{{< youtube oeesCRfaabg >}}
 ## Iron farm
 Did you make a villager farm? great, now use what you made to mass-produce iron. this takes 3 villagers but after that, it's nearly free
 
-{{< youtube https://www.youtube.com/watch?v=MMsYeKntoEI >}}
+{{< youtube MMsYeKntoEI >}}
 ## Porkchop farm
 This one is next to free once you acquire an ender pearl - and nets you unlimited food.
 
-{{< youtube https://www.youtube.com/watch?v=GlgCZbHSk6c >}}
+{{< youtube GlgCZbHSk6c >}}
 # Create a storage area
 It seems silly, but this is major. it's so often I end up with a full inventory and end up ditching items I need later to be able to collect more of the items I need *now*. the inventory problem is a big issue, and cutting out an area to fill to the brim with LABLED double chests will help you in the long run when you need something.
 # Make camp somewhere exotic
