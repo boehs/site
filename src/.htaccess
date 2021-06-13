@@ -1,5 +1,3 @@
-RewriteCond %{HTTP_HOST} ^boehs.ml
-RewriteRule ^(.*) https://boehs.github.io/$1 [P]
 
 <IfModule mod_rewrite.c> 
 Options +FollowSymLinks -MultiViews
