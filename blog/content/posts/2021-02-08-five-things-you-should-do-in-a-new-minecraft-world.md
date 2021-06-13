@@ -24,7 +24,7 @@ This is a bit later game, but you should still be able to achieve it early in yo
 ## Villager farm
 This farm is needed if you plan to make an iron farm, and it sure as hell is funny. villager breeders are zero maintenance, the only issue you will face is trafficking the villagers to their new home using minecarts. once you do, however, this video is amazing at showing you what you need to do at that point
 
-{{< youtube https://www.youtube.com/watch?v=oeesCRfaabg> }}
+{{< youtube https://www.youtube.com/watch?v=oeesCRfaabg >}}
 ## Iron farm
 Did you make a villager farm? great, now use what you made to mass-produce iron. this takes 3 villagers but after that, it's nearly free
 
