@@ -1,158 +1,116 @@
 @font-face {
-  font-family: 'dillanregular';
-  src: url("Assets/Fonts/Webfonts/dillan-webfont.woff2") format("woff2"), url("Assets/Fonts/Webfonts/dillan-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@-webkit-keyframes pulse {
-  0%, 100% {
-    background-color: #f5f5f5;
-  }
-  50% {
-    background-color: #f0f0f0;
-  }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    background-color: #f5f5f5;
-  }
-  50% {
-    background-color: #f0f0f0;
-  }
-}
-
-@-webkit-keyframes darkpulse {
-  0%, 100% {
-    background-color: black;
-  }
-  50% {
-    background-color: #1a1918;
-  }
-}
-
-@keyframes darkpulse {
-  0%, 100% {
-    background-color: black;
-  }
-  50% {
-    background-color: #1a1918;
-  }
+	font-family: "dillanregular";
+	src: url("Assets/Fonts/Webfonts/dillan-webfont.woff2") format("woff2"),
+		url("Assets/Fonts/Webfonts/dillan-webfont.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
 }
 
 body {
-  -webkit-animation: pulse 20s infinite;
-          animation: pulse 20s infinite;
-}
-
-body.dark {
-  -webkit-animation: darkpulse 20s infinite;
-          animation: darkpulse 20s infinite;
-  color: white;
-}
-
-body.light {
-  -webkit-animation: pulse 20s infinite;
-          animation: pulse 20s infinite;
+	background: rgb(197, 213, 233);
+	background: linear-gradient(
+		197deg,
+		rgba(197, 213, 233, 1) 32%,
+		rgba(233, 219, 197, 1) 100%
+	);
 }
 
 .heysoweusecookieslol {
-  padding: 10px;
-  position: fixed;
-  right: 0;
-  font-family: 'Noto Sans', sans-serif;
+	padding: 10px;
+	position: fixed;
+	right: 0;
+	font-family: "Noto Sans", sans-serif;
 }
 
 * {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
 }
 
 .row::after {
-  content: "";
-  clear: both;
-  display: table;
+	content: "";
+	clear: both;
+	display: table;
 }
 
 .container {
-  height: 100vh;
+	height: 100vh;
 }
 
 .Header {
-  font-family: 'dillanregular';
-  font-size: calc(0.75em + 9vmin);
-  line-height: calc(0.75em+2vmin);
+	font-family: "dillanregular";
+	font-size: calc(0.75em + 9vmin);
+	line-height: calc(0.75em+2vmin);
 }
 
 .Content {
-  font-size: calc(0.75em + 1.5vmin);
-  font-family: 'Noto Sans', sans-serif;
+	font-size: calc(0.75em + 1.5vmin);
+	font-family: "Noto Sans", sans-serif;
 }
 
 .Links {
-  font-family: 'dillanregular';
-  font-size: 40px;
+	font-family: "dillanregular";
+	font-size: 40px;
 }
 
 .imagecontainer {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  height: auto;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	height: auto;
 }
 
 .imageslide {
-  width: 90vw;
-  /* you can use % */
-  height: auto;
-  -o-object-fit: contain;
-     object-fit: contain;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 90vw;
+	width: 90vw;
+	/* you can use % */
+	height: auto;
+	-o-object-fit: contain;
+	object-fit: contain;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 90vw;
 }
 
 /* For mobile phones: */
 [class*="col-"] {
-  width: 100%;
-  float: left;
-  padding: 10px;
-  text-align: center;
+	width: 100%;
+	float: left;
+	padding: 10px;
+	text-align: center;
 }
 
 /* desktop */
 @media only screen and (min-width: 1000px) {
-  .col-1 {
-    width: 50%;
-    position: relative;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-    padding-left: 30px;
-    text-align: center;
-  }
-  .col-2 {
-    width: 50%;
-    position: relative;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-  }
-  .imageslide {
-    width: 400px;
-    /* you can use % */
-  }
-  .imagecontainer {
-    padding-left: 10px;
-    width: 50%;
-  }
-  .Links {
-    padding-top: calc(0.75em + 1vmin);
-    font-size: calc(0.75em + 1vmin);
-  }
+	.col-1 {
+		width: 50%;
+		position: relative;
+		top: 50%;
+		-webkit-transform: translateY(-50%);
+		transform: translateY(-50%);
+		padding-left: 30px;
+		text-align: center;
+	}
+	.col-2 {
+		width: 50%;
+		position: relative;
+		top: 50%;
+		-webkit-transform: translateY(-50%);
+		transform: translateY(-50%);
+	}
+	.imageslide {
+		width: 400px;
+		/* you can use % */
+	}
+	.imagecontainer {
+		padding-left: 10px;
+		width: 50%;
+	}
+	.Links {
+		padding-top: calc(0.75em + 1vmin);
+		font-size: calc(0.75em + 1vmin);
+	}
 }
 /*# sourceMappingURL=style.css.map */
