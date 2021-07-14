@@ -1,5 +1,5 @@
 :root {
-	--deg: 197deg;
+  --deg: 197deg;
 }
 
 @font-face {
@@ -31,6 +31,9 @@
 }
 
 .container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	height: 100vh;
 	background-color: rgb(212, 222, 235);
 	background: linear-gradient(
@@ -86,16 +89,14 @@
 }
 
 /* desktop */
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1000px) {
 	.col-1 {
 		width: 50%;
-		position: relative;
 		padding-left: 30px;
 		text-align: center;
 	}
 	.col-2 {
 		width: 50%;
-		position: relative;
 	}
 	.imageslide {
 		width: 400px;
@@ -109,11 +110,5 @@
 		padding-top: calc(0.75em + 1vmin);
 		font-size: calc(0.75em + 1vmin);
 	}
-	.Container {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-
 }
 /*# sourceMappingURL=style.css.map */
