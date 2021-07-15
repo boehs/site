@@ -24,6 +24,13 @@
 
 .container {
 	height: 100vh;
+	position:absolute;
+}
+
+.bg {
+	position: absolute;
+	height: 100%;
+	width: 100%;
 	background-color: rgb(212, 222, 235);
 	background: linear-gradient(
 	var(--deg),
