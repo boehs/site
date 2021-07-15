@@ -1,5 +1,6 @@
 :root {
 	--deg: 197deg;
+	font-size: 62.5%; /* For my sake */
 }
 
 @font-face {
@@ -41,18 +42,18 @@
 
 .Header {
 	font-family: "dillanregular";
-	font-size: calc(0.75em + 9vmin);
+	font-size: 7.5rem;
 	line-height: calc(0.75em+2vmin);
 }
 
 .Content {
-	font-size: calc(0.75em + 1.5vmin);
+	font-size: 1.9rem;
 	font-family: "Noto Sans", sans-serif;
 }
 
 .Links {
 	font-family: "dillanregular";
-	font-size: 40px;
+	font-size: 1.6rem;
 }
 
 .imagecontainer {
