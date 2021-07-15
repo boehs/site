@@ -13,9 +13,10 @@
 
 .heysoweusecookieslol {
 	padding: 10px;
-	position: fixed;
 	right: 0;
+	top: 0;
 	font-family: "Noto Sans", sans-serif;
+	font-size: 1.6rem;
 }
 
 * {
@@ -24,21 +25,9 @@
 }
 
 .container {
-	height: 100vh;
-	position:absolute;
+	height: 100%;
 }
 
-.bg {
-	position: absolute;
-	height: 100%;
-	width: 100%;
-	background-color: rgb(212, 222, 235);
-	background: linear-gradient(
-	var(--deg),
-	rgba(213, 222, 235, 1) 32%,
-	rgba(238, 231, 220, 1) 100%
-	);
-}
 
 .Header {
 	font-family: "dillanregular";
@@ -57,13 +46,8 @@
 }
 
 .imagecontainer {
-	display: block;
 	margin-left: auto;
 	margin-right: auto;
-}
-
-.imageslide {
-	width: 90%;
 }
 
 /* For mobile phones: */
@@ -86,18 +70,42 @@
 	}
 	.col-1 {
 		padding-left: 30px;
-		text-align: center;
 	}
 	.imageslide {
 		width: 400px;
 	}
 	.imagecontainer {
-		padding-left: 10px;
-		width: 50%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 	.Links {
 		padding-top: calc(0.75em + 1vmin);
 		font-size: calc(0.75em + 1vmin);
+	}
+
+	.bg {
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		background-color: rgb(212, 222, 235);
+		background: linear-gradient(
+		var(--deg),
+		rgba(207, 221, 242, 1) 32%,
+		rgba(251, 235, 208, 1) 100%
+		);
+	}
+	.heysoweusecookieslol {
+		position: fixed;
+	}
+	.container {
+		position: absolute;
+	}
+}
+
+@media only screen and (max-width: 999px) {
+	.imageslide {
+		width: 90vw;
 	}
 }
 /*# sourceMappingURL=style.css.map */
