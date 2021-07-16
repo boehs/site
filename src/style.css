@@ -20,42 +20,42 @@
 }
 
 * {
-	padding: 0;
 	margin: 0;
 }
-
-.container {
-	height: 100%;
-}
-
 
 .Header {
 	font-family: "dillanregular";
 	font-size: 7.5rem;
-	line-height: calc(0.75em+2vmin);
+	line-height: 5.5rem;
 }
 
 .Content {
 	font-size: 1.9rem;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
 	font-family: "Noto Sans", sans-serif;
 }
 
 .Links {
 	font-family: "dillanregular";
 	font-size: 1.6rem;
+	line-height: 1.6rem;
 }
 
-.imagecontainer {
-	margin-left: auto;
-	margin-right: auto;
-}
 
-/* For mobile phones: */
 [class*="col-"] {
 	width: 100%;
-	float: left;
-	padding: 10px;
 	text-align: center;
+}
+
+.contents {
+	padding: 3rem;
+}
+
+.flexcontainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 /* desktop */
@@ -64,24 +64,16 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		height: 100%;
+		position: absolute;
 	}
+
 	[class*="col-]"] {
 		width: 50%;
 	}
-	.col-1 {
-		padding-left: 30px;
-	}
+
 	.imageslide {
-		width: 400px;
-	}
-	.imagecontainer {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-	.Links {
-		padding-top: calc(0.75em + 1vmin);
-		font-size: calc(0.75em + 1vmin);
+		width: 40rem;
 	}
 
 	.bg {
@@ -98,14 +90,18 @@
 	.heysoweusecookieslol {
 		position: fixed;
 	}
-	.container {
-		position: absolute;
-	}
 }
 
 @media only screen and (max-width: 999px) {
 	.imageslide {
 		width: 90vw;
 	}
+
+	body {
+		pading: 1rem;
+	}
+
+	.bg {
+		background-color: #F0F0F0;
 }
 /*# sourceMappingURL=style.css.map */
