@@ -23,20 +23,20 @@
 	margin: 0;
 }
 
-.Header {
+.header {
 	font-family: "dillanregular";
 	font-size: 7.5rem;
 	line-height: 5.5rem;
 }
 
-.Content {
+.content {
 	font-size: 1.9rem;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	font-family: "Noto Sans", sans-serif;
 }
 
-.Links {
+.links {
 	font-family: "dillanregular";
 	font-size: 1.6rem;
 	line-height: 1.6rem;
