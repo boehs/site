@@ -14,7 +14,9 @@ function shuffle(array) {
 
 var index = 0;
 var x = shuffle(Array.from(document.getElementsByClassName("imageslide")));
-carousel();
+if (x.length > 0) {
+	carousel();
+};
 
 function carousel() {
 	for (i = 0; i < x.length; i++) {

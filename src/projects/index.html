@@ -7,17 +7,31 @@
     <script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@2/dist/zero-md.min.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../mdcss.css" />
+    <link rel="stylesheet" href="../style.css" />
     <title>Projects</title>
 </head>
 
 <body>
-    <zero-md src="../Assets/Markdown/Projects.md">
-        <template>
-            <link rel="stylesheet" href="../mdcss.css">
-        </template>
-    </zero-md>
-    <script src="Index.js"></script>
+    <div class="bg"></div>
+    <div class="container">
+        <div id="hideablecookiebanner" class="heysoweusecookieslol">No cookies, trackers, or any of that nonsense. Love
+            you! 💖. <a onclick="cookiehide()" href="#">DISMISS</a> &bull; <a href="/data">LEARN MORE</a></div>
+        <script src="Javascript/cookienotice.js"></script>
+        <div class="col-1 flexcontainer">
+            <div class="contents">
+                <zero-md src="../Assets/Markdown/Projects.md">
+                    <template>
+                        <link rel="stylesheet" href="../style.css">
+                    </template>
+                </zero-md>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="flexcontainer">
+            </div>
+        </div>
+    </div>
+    <script src="../script.js"></script>
 </body>
 
 </html>

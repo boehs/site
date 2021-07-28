@@ -29,7 +29,7 @@
 	line-height: 5.5rem;
 }
 
-.content {
+.content,p,ul {
 	font-size: 1.9rem;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
@@ -78,7 +78,7 @@
 	}
 
 	.bg {
-		position: absolute;
+		position: fixed;
 		height: 100%;
 		width: 100%;
 		background-color: rgb(212, 222, 235);
@@ -105,4 +105,3 @@
 	.bg {
 		background-color: #F0F0F0;
 }
-/*# sourceMappingURL=style.css.map */
