@@ -3,65 +3,52 @@
 <html lang="en">
 
 <head>
-    <title>Evan Boehs</title>
-
+    <title>40404040404</title>
     <meta charset="utf-8">
-    <meta name="description" content="Evan Boehs's Profile">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="40404040404">
     <meta name="author" content="Evan Boehs">
-    <meta content="Evan Boehs's profile" property="og:title">
+    <meta content="Error Error Error!!!!" property="og:title">
     <meta content="40404040404" property="og:description">
-    <meta content="https://avatars.githubusercontent.com/u/51836263?s=460&u=a7a4e671c9f4db3d06d1f4a7ebd7591c75832d95&v=4" property="og:image">
+    <meta content="https://boehs.github.io" property="og:url">
+    <meta
+        content="https://avatars.githubusercontent.com/u/51836263?s=460&u=a7a4e671c9f4db3d06d1f4a7ebd7591c75832d95&v=4"
+        property="og:image">
     <meta content="#f0f0f0" data-react-helmet="true" name="theme-color">
-    
-    <link rel="apple-touch-icon" sizes="180x180" href="../Assets/Images/Favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../Assets/Images/Favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../Assets/Images/Favicons/favicon-16x16.png">
-    <link rel="manifest" href="../Assets/Images/Favicons/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="Assets/Images/Favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="Assets/Images/Favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="Assets/Images/Favicons/favicon-16x16.png">
+    <link rel="manifest" href="Assets/Images/Favicons/site.webmanifest">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href='https://css.gg/css' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
     <link href="../style.css" rel="stylesheet" type="text/css" />
-
-
 </head>
 
 <body>
-    <script src="Javascript/darktoggle.js"></script>
+    <div class="bg"></div>
     <div class="container">
-        <div class="col-1">
-            <div class="Header">404</div>
-            <div class="Content">Every new beginning comes from some other beginning's end.</div>
-            <div class="Links"><a href="../">Take me home</a></div>
+        <div class="col-1 flexcontainer">
+            <div class="contents">
+                <div class="header">404</div>
+                <div class="content">Every new beginning comes from some other beginning's end.</div>
+                <div class="links"><a href="../">Take me home</a></div>
+            </div>
         </div>
         <div class="col-2">
-            <div class="imagecontainer">
-                <img class="imageslide" src="https://thumbs.dreamstime.com/b/furious-man-computer-monitor-isolated-white-business-problem-macho-shout-laptop-digital-marketing-online-conference-141229583.jpg" alt="rage"></img>
-                <img class="imageslide" src="https://media.istockphoto.com/photos/nooo-grimacing-man-with-laptop-problems-picture-id482223087" alt="also rage"></img>
-                <img class="imageslide" src="https://ak7.picdn.net/shutterstock/videos/1018411387/thumb/1.jpg?ip=x480" alt="ha servers go brr... oh bye servers"></img>
+            <div class="flexcontainer">
+                <img class="imageslide"
+                    src="https://thumbs.dreamstime.com/b/furious-man-computer-monitor-isolated-white-business-problem-macho-shout-laptop-digital-marketing-online-conference-141229583.jpg"
+                    alt="rage"></img>
+                <img class="imageslide"
+                    src="https://media.istockphoto.com/photos/nooo-grimacing-man-with-laptop-problems-picture-id482223087"
+                    alt="also rage"></img>
+                <img class="imageslide" src="https://ak7.picdn.net/shutterstock/videos/1018411387/thumb/1.jpg?ip=x480"
+                    alt="ha servers go brr... oh bye servers"></img>
                 <img class="imageslide" src="https://media2.giphy.com/media/ySpxjJmsq9gsw/200.gif" alt="monkey"></img>
             </div>
         </div>
     </div>
+    <script src="../script.js"></script>
 </body>
-<script>
-    var myIndex = 0;
-    carousel();
-
-    function carousel() {
-        var i;
-        var x = document.getElementsByClassName("imageslide");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-        }
-        myIndex++;
-        if (myIndex > x.length) {
-            console.log(x.length)
-            myIndex = 1
-        }
-        x[myIndex - 1].style.display = "block";
-        setTimeout(carousel, 5000);
-    }
-    
-</script>
 
 </html>
