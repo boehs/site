@@ -99,9 +99,41 @@
 	}
 
 	body {
-		pading: 1rem;
+		padding: 1rem;
 	}
 
 	.bg {
 		background-color: #F0F0F0;
+	}
+}
+
+@keyframes reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px)
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0)
+  }
+}
+
+@keyframes vanish {
+  0% {
+    opacity: 1;
+    transform: translateY(0)
+  }
+  to {
+    opacity: 0;
+    transform: translateY(30px)
+  }
+}
+
+.hide {
+	animation: 1s ease vanish;
+}
+
+.show {
+	animation: 1s ease reveal;
 }
