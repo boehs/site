@@ -25,22 +25,21 @@ function sleep(ms) {
 /////////////////
 
 var index = 0;
-var x;
-if (document.getElementsByClassName("imageslide").length > 0) {
-  carousel();
-};
+var ex = 0, s;
+carousel();
 
 function carousel() {
-  x = shuffle(Array.from(document.getElementsByClassName("imageslide")))
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  index++;
-  if (index > x.length) {
-    index = 1;
-  }
-  x[index - 1].style.display = "block";
+  s = document.getElementsByClassName('imageslide');
   setTimeout(carousel, 5000);
+
+  if (!s.length > 0) return;
+  if (ex > s.length) ex = 0;
+
+  if (ex - 1 == -1) s[s.length - 1].style.display = 'none';
+  else s[ex - 1].style.display = 'none';
+  if (ex == s.length) s[0].style.display = 'block';
+  else s[ex].style.display = 'block'; // lol
+  ex++;
 }
 
 ////////////////////
@@ -89,7 +88,7 @@ function changePage() {
 function animate(oldContent, newContent) {
 
   oldContent[0].classList.add('hide');
-  oldContent[1].classList.add('hide');
+  oldContent[1].classList.add('hide1');
 
   setTimeout(function() {
     oldContent[0].parentNode.removeChild(oldContent[0]);
@@ -99,10 +98,18 @@ function animate(oldContent, newContent) {
   setTimeout(function() {
     main[0].appendChild(newContent[0]);
     main[0].appendChild(newContent[1]);
+    
+
     carousel();
     newContent[0].classList.add('show');
-    newContent[1].classList.add('show');
+    newContent[1].classList.add('show1');
+
+    setTimeout(function() {
+      newContent[0].classList.remove('show');
+      newContent[1].classList.remove('show1');
+    }, 1000);
   }, 1000);
+
 }
 
 window.addEventListener('popstate', changePage);
