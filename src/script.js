@@ -25,11 +25,11 @@ function sleep(ms) {
 /////////////////
 
 var index = 0;
-var ex = 0, s;
+var ex = 0;
 carousel(shuffle(Array.from(document.getElementsByClassName("imageslide"))));
 
 function carousel(s) {
-  setTimeout(carousel, 5000);
+  setTimeout(carousel, 5000, s);
 
   if (!s.length > 0) return;
   if (ex > s.length) ex = 0;
@@ -76,9 +76,6 @@ function changePage() {
 
     var oldContent = document.querySelectorAll('[class*="col-"]');
     var newContent = wrapper.querySelectorAll('[class*="col-"]');
-
-    console.log(main);
-    console.log(newContent);
 
     animate(oldContent, newContent);
   });
