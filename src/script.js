@@ -29,7 +29,7 @@ var ex = 0, s;
 carousel();
 
 function carousel() {
-  s = document.getElementsByClassName('imageslide');
+  s = shuffle(Array.from(document.getElementsByClassName("imageslide")))
   setTimeout(carousel, 5000);
 
   if (!s.length > 0) return;
