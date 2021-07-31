@@ -26,10 +26,9 @@ function sleep(ms) {
 
 var index = 0;
 var ex = 0, s;
-carousel();
+carousel(shuffle(Array.from(document.getElementsByClassName("imageslide"))));
 
-function carousel() {
-  s = shuffle(Array.from(document.getElementsByClassName("imageslide")))
+function carousel(s) {
   setTimeout(carousel, 5000);
 
   if (!s.length > 0) return;
@@ -100,7 +99,7 @@ function animate(oldContent, newContent) {
     main[0].appendChild(newContent[1]);
     
 
-    carousel();
+    carousel(shuffle(Array.from(document.getElementsByClassName("imageslide"))));
     newContent[0].classList.add('show');
     newContent[1].classList.add('show1');
 
