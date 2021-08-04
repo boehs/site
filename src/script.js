@@ -24,18 +24,22 @@ function sleep(ms) {
 ///   Images   ///
 /////////////////
 
-var index = 0;
-var ex = 0;
-carousel(shuffle(Array.from(document.getElementsByClassName("imageslide"))));
+var index = ex = 0, timeout;
+initcarousel(shuffle(Array.from(document.getElementsByClassName("imageslide"))));
+
+
+function initcarousel(s) {
+  clearInterval(timeout)
+  carousel(s)
+  timeout = setInterval(carousel, 5000, s);
+}
 
 function carousel(s) {
-  setTimeout(carousel, 5000, s);
-
   if (!s.length > 0) return;
   if (ex > s.length) ex = 0;
 
   if (ex - 1 == -1) s[s.length - 1].style.display = 'none';
-  else s[ex - 1].style.display = 'none';
+  else s[ex - 1].style.display = 'none'; // lol
   if (ex == s.length) s[0].style.display = 'block';
   else s[ex].style.display = 'block'; // lol
   ex++;
@@ -96,7 +100,7 @@ function animate(oldContent, newContent) {
     main[0].appendChild(newContent[1]);
     
 
-    carousel(shuffle(Array.from(document.getElementsByClassName("imageslide"))));
+    initcarousel(shuffle(Array.from(document.getElementsByClassName("imageslide"))));
     newContent[0].classList.add('show');
     newContent[1].classList.add('show1');
 
