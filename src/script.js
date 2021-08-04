@@ -29,6 +29,7 @@ var ex = 0;
 carousel(shuffle(Array.from(document.getElementsByClassName("imageslide"))));
 
 function carousel(s) {
+  let s = s;
   setTimeout(carousel, 5000, s);
 
   if (!s.length > 0) return;
@@ -94,7 +95,6 @@ function animate(oldContent, newContent) {
   setTimeout(function() {
     main[0].appendChild(newContent[0]);
     main[0].appendChild(newContent[1]);
-    
 
     carousel(shuffle(Array.from(document.getElementsByClassName("imageslide"))));
     newContent[0].classList.add('show');
