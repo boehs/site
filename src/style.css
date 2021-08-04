@@ -23,9 +23,12 @@
 	margin: 0;
 }
 
-.header {
+.header,h1,h2,h3,h4,h5,h6 {
 	font-family: "dillanregular";
 	font-size: 7.5rem;
+}
+
+.header {
 	line-height: 5.5rem;
 }
 
@@ -171,4 +174,22 @@
 
 .show1 {
 	animation: 1s ease reveal1;
+}
+
+/* element styling */
+
+h2 {
+	font-size: 5rem;
+}
+h3 {
+	font-size: 4rem;
+}
+h4 {
+	font-size: 3rem;
+}
+h5 {
+	font-size: 2rem;
+}
+h6 {
+	font-size: 1rem;
 }
