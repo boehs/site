@@ -1,3 +1,4 @@
 [submodule "content/notes"]
 	path = content/notes
 	url = https://github.com/boehs/blog
+	branch = master
