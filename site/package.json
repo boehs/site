@@ -1,0 +1,22 @@
+{
+  "name": "@example/minimal",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "devDependencies": {
+    "astro": "^0.22.1"
+  },
+  "dependencies": {
+    "@astrojs/renderer-react": "^0.4.0",
+    "@astrojs/renderer-svelte": "^0.3.0",
+    "@babel/core": ">=7.10.2 <8.0.0",
+    "postcss-load-config": "^3.1.0",
+    "sass": "^1.45.1",
+    "vite-plugin-plain-text": "^1.1.4"
+  }
+}

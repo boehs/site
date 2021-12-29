@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "asset:*": ["src/assets/*?url"],
+        "component:*": ["src/components/*.svelte"],
+        "layout:*": ["src/layouts/*.astro"],
+      }
+    }
+  }
