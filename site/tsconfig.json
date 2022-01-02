@@ -3,7 +3,7 @@
       "baseUrl": ".",
       "paths": {
         "asset:*": ["src/assets/*?url"],
-        "component:*": ["src/components/*.svelte"],
+        "component:*": ["src/components/*.astro"],
         "layout:*": ["src/layouts/*.astro"],
       }
     }

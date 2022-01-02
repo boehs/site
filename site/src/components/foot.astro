@@ -1,0 +1,123 @@
+---
+    import flowerpower from './deets/flowerpower.txt?raw'
+    let flowers: Array<Array<(String|Number)>> = Object.values(flowerpower.split('---'))
+        .reverse()
+        .map(x => [Number(x.substring(0, 1)),x.substring(1)]);
+---
+<script define:vars={{ flowers }}>
+let isanimating = false
+let timeleft = flowers.length;
+let ishover;
+let state = false;
+
+function doanimation(should_reverse = false) {
+    isanimating = true;
+    let arr_temp;
+    if (should_reverse) {
+        arr_temp = flowers.reverse()
+        state = true
+    }
+    else {
+        arr_temp = flowers
+        state = false
+    }
+    let int = setInterval(function () {
+        console.log(flowers[0][0])
+        let res = arr_temp[timeleft - 1];
+        document.getElementById("flower").innerHTML = res[1]
+        if (res[0] == 0) timeleft -= 1
+        else res[0] -= 1
+        if (timeleft == 0) {
+            clearInterval(int)
+            timeleft = arr_temp.length
+            isanimating = false;
+            shit()
+        }
+    }, 200);
+}
+
+function shit() {
+    if (isanimating == true) return
+    if (ishover == false && state == true) doanimation(true)
+    else if (ishover == false && state == false) return
+    else if (ishover == true && state == false) doanimation()
+    else if (ishover == true && state == true) return
+    else return
+}
+
+</script>
+
+<footer>
+<pre id="flower">
+{flowers[0][1]}
+</pre>
+
+<div class="e" style="margin-top: 25px;">
+    <h4>Main</h4>
+    <ul>
+        <li><a href="/home">Home</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/about">Resume</a></li>
+    </ul>
+</div>
+<div class="e">
+    <h4>Feeds</h4>
+    <ul>
+        <li><a href="/stream">Stream</a></li>
+        <li><a href="/river">Blog</a></li>
+        <li><a href="/garden">Garden</a></li>
+        <li><a href="/photos">Photos</a></li>
+    </ul>
+</div>
+<div class="e">
+    <h4>Links?!</h4>
+    <ul>
+        <li><a href="https://sr.ht/~boehs">SourceHut</a>|<a href="https://github.com/boehs">GitHub</a></li>
+        <li><a href="https://linkedin.com/in/boehs">LinkedIn</a></li>
+    </ul>
+</div>
+</footer>
+
+<style>
+    pre {
+        color: rgb(10 160 110);
+    }
+        footer > * {
+            width: 100%;
+        }
+
+    ul {
+        list-style: georgian;
+        list-style-position: inside;
+        display: flex;
+    }
+
+    li {
+        padding-right: 15px;
+    }
+
+    .e {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    h4,ul {
+        margin-block-end: 0;
+        margin-block-start: 0;
+    }
+</style>
+
+<script>
+document.getElementById("flower").onmouseover = function() {mouseOver()};
+document.getElementById("flower").onmouseout = function() {mouseOut()};
+
+function mouseOver() {
+    ishover = true;
+    shit()
+}
+
+function mouseOut() {
+    ishover = false
+    shit()
+}
+</script>
