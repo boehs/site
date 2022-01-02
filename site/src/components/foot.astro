@@ -1,55 +1,63 @@
 ---
     import flowerpower from './deets/flowerpower.txt?raw'
-    let flowers: Array<Array<(String|Number)>> = Object.values(flowerpower.split('---'))
+    let flowers = [[],[]]
+    Object.values(flowerpower.split('---'))
         .reverse()
-        .map(x => [Number(x.substring(0, 1)),x.substring(1)]);
+        .map(x => {
+            flowers[0].push(Number(x.substring(0, 1)))
+            flowers[1].push(x.substring(1));
+        })
+    console.log(flowers)
 ---
 <script define:vars={{ flowers }}>
+console.dir(flowers)
 let isanimating = false
 let timeleft = flowers.length;
-let ishover;
+let ishover = false;
 let state = false;
 
-function doanimation(should_reverse = false) {
+function doanimation(should_reverse = false,flower_time,flower) {
     isanimating = true;
-    let arr_temp;
     if (should_reverse) {
-        arr_temp = flowers.reverse()
-        state = true
-    }
-    else {
-        arr_temp = flowers
+        flower_time = flower_time.reverse()
+        flower = flower.reverse()
         state = false
     }
+    else {
+        flower_time = flower_time
+        state = true
+    }
     let int = setInterval(function () {
-        console.log(flowers[0][0])
-        let res = arr_temp[timeleft - 1];
-        document.getElementById("flower").innerHTML = res[1]
-        if (res[0] == 0) timeleft -= 1
-        else res[0] -= 1
+        document.getElementById("flower").innerHTML = flower[timeleft - 1]
+        console.log(flower_time[timeleft - 1])
+        if (flower_time[timeleft - 1] == 0) timeleft -= 1
+        else flower_time[timeleft - 1] -= 1
         if (timeleft == 0) {
             clearInterval(int)
-            timeleft = arr_temp.length
+            console.log('val cleared')
+            console.log()
+            timeleft = flower_time.length
             isanimating = false;
-            shit()
+            shit([...flowers[0]],[...flowers[1]])
         }
     }, 200);
 }
 
-function shit() {
+function shit(flower_time,flower) {
+    console.log('oh shit')
     if (isanimating == true) return
-    if (ishover == false && state == true) doanimation(true)
+    if (ishover == false && state == true) doanimation(true,flower_time,flower)
     else if (ishover == false && state == false) return
-    else if (ishover == true && state == false) doanimation()
+    else if (ishover == true && state == false) doanimation(false,flower_time,flower)
     else if (ishover == true && state == true) return
-    else return
+    else console.log('f')
 }
 
 </script>
 
 <footer>
 <pre id="flower">
-{flowers[0][1]}
+{flowers[1][flowers.length - 1]}
 </pre>
 
 <div class="e" style="margin-top: 25px;">
@@ -82,9 +90,10 @@ function shit() {
     pre {
         color: rgb(10 160 110);
     }
-        footer > * {
-            width: 100%;
-        }
+
+    footer > * {
+        width: 100%;
+    }
 
     ul {
         list-style: georgian;
@@ -113,11 +122,11 @@ document.getElementById("flower").onmouseout = function() {mouseOut()};
 
 function mouseOver() {
     ishover = true;
-    shit()
+    shit([...flowers[0]],[...flowers[1]])
 }
 
 function mouseOut() {
     ishover = false
-    shit()
+    shit([...flowers[0]],[...flowers[1]])
 }
 </script>
