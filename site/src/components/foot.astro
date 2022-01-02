@@ -7,10 +7,8 @@
             flowers[0].push(Number(x.substring(0, 1)))
             flowers[1].push(x.substring(1));
         })
-    console.log(flowers)
 ---
 <script define:vars={{ flowers }}>
-console.dir(flowers)
 let isanimating = false
 let timeleft = flowers.length;
 let ishover = false;
@@ -29,13 +27,10 @@ function doanimation(should_reverse = false,flower_time,flower) {
     }
     let int = setInterval(function () {
         document.getElementById("flower").innerHTML = flower[timeleft - 1]
-        console.log(flower_time[timeleft - 1])
         if (flower_time[timeleft - 1] == 0) timeleft -= 1
         else flower_time[timeleft - 1] -= 1
         if (timeleft == 0) {
             clearInterval(int)
-            console.log('val cleared')
-            console.log()
             timeleft = flower_time.length
             isanimating = false;
             shit([...flowers[0]],[...flowers[1]])
@@ -44,7 +39,6 @@ function doanimation(should_reverse = false,flower_time,flower) {
 }
 
 function shit(flower_time,flower) {
-    console.log('oh shit')
     if (isanimating == true) return
     if (ishover == false && state == true) doanimation(true,flower_time,flower)
     else if (ishover == false && state == false) return
