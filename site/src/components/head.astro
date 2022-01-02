@@ -1,0 +1,29 @@
+---
+    // This code is only fired once in a while, AKA when the site is built
+    // This is intentional
+    import stuff from './deets/isdoingstuffagain.txt?raw'
+    let stuffs: Array<String> = Object.values(stuff.split('\n'))
+    const doing = stuffs[Math.floor(Math.random() * stuffs.length)];
+---
+
+<header>
+    <div>
+        <div>
+            <span class="jp lighter">木</span>
+            <span class="lighter"> Evan Boehs </span>
+        </div>
+        <i>is {doing}</i>
+    </div>
+</header>
+
+<style>
+    header {
+        padding-top: 50px;
+        width: 100%;
+    }
+
+    header > * {
+        text-align: center;
+        width: 100%;
+    }
+</style>
