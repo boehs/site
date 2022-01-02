@@ -11,6 +11,9 @@
 export default /** @type {import('astro').AstroUserConfig} */ ({
 	// Comment out "renderers: []" to enable Astro's default component support.
 	renderers: ['@astrojs/renderer-react', '@astrojs/renderer-svelte'],
+	buildOptions: {
+		site: "https://boehs.org",
+	},
 	vite: {
 		assetsInclude: ['**/*.txt'],
 	}
