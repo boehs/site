@@ -9,9 +9,9 @@ for f in $(find * -name '*.html' -or -name ''); do
     # File contents
     declare contents=$(cat $f)
     # css file name
-    declare matchedcss=$(echo $contents | pcregrep -o1 -e '<link rel="stylesheet" href="(.*\/(.*)\.css)')
+    declare matchedcss=$(sed -nE 's/  <link rel="stylesheet" href="(.*?\/(.*?)\.css)">/\1/p' $f)
     # standard astro prefix
-    declare matchedtag=$(echo $contents | pcregrep -o1 -e 'header class="(astro-.*?)"')
+    declare matchedtag=$(sed -nE 's/<header class="(astro-.*?)">/\1/p' $f)
     echo "for what it's worth, the matched tag was $matchedtag"
     # Remove new lines
     if ! grep -q "script" "$f"; then
