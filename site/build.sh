@@ -16,11 +16,11 @@ for f in $(find * -name '*.html' -or -name ''); do
     # Remove new lines
     # echo -n $(tr -d "\n" < $f) > $f
     # Remove all astro prefixes
-    sed -Ei "s/( class=\"$matchedtag\"| $matchedtag)//g;s/astro-//g" $f
+    sed -Ei "s/( class=\"$matchedtag\"| $matchedtag)//g;s/astro-/e/g" $f
     ### Time for CSS ###
     # Remove all astro prefixes
     echo "parsing css for file $i"
-    sed -Ei "s/>\.$matchedtag/>\*/g;s/.$matchedtag//g;s/astro-//g" $matchedcss
+    sed -Ei "s/>\.$matchedtag/>\*/g;s/.$matchedtag//g;s/astro-/e/g" $matchedcss
     i=$(($i + 1))
 done
 # Move to site root
