@@ -1,7 +1,7 @@
 #!/bin/bash
 #npm install -G pnpm
 #pnpm install
-astro build
+npx astro build
 cd dist
 declare i=1
 for f in $(find * -name '*.html' -or -name ''); do
