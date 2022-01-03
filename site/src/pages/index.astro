@@ -1,12 +1,14 @@
 ---
 import Main from 'layout:Main'
-import greet from '../components/deets/greatings.txt?raw'
-const greetings: Array<String> = Object.values(greet.split('\n'))
+import greet from '../components/deets/greatings.json'
+const greetings: Array<string> = Object.values(greet).map(x => [x.hello,x.language])
+console.log(greetings)
 const yo = greetings[Math.floor(Math.random() * greetings.length)];
 ---
 
 <Main title="Home">
-    <h1 slot="title">{yo} 👋</h1>
+    <h1 style="margin-block-end: 0;"slot="title">{yo[0]}! 👋</h1>
+    <sup>{yo[1]}</sup>
     <p>I'm Evan, your run of the mill programmer, ski bum, photographer, and believer.</p>
     <p>I believe in details, that the little things make us whole.
     I believe that with hard work and love, anything is possible.
