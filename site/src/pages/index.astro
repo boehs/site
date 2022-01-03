@@ -6,11 +6,9 @@ const yo = greetings[Math.floor(Math.random() * greetings.length)];
 ---
 
 <Main title="Home">
-    <span class="subnode-content">
-        <h1>{yo} 👋</h1>
-        <p>I'm Evan, your run of the mill programmer, ski bum, photographer, and believer.</p>
-        <p>I believe in details, that the little things make us whole.
-        I believe that with hard work and love, anything is possible.
-        For what it's worth, although we just met, I believe in you.</p>
-    </span>
+    <h1 slot="title">{yo} 👋</h1>
+    <p>I'm Evan, your run of the mill programmer, ski bum, photographer, and believer.</p>
+    <p>I believe in details, that the little things make us whole.
+    I believe that with hard work and love, anything is possible.
+    For what it's worth, although we just met, I believe in you.</p>
 </Main>

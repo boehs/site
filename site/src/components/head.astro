@@ -3,7 +3,7 @@
     // This is intentional
     import stuff from './deets/isdoingstuffagain.txt?raw'
     const stuffs: Array<String> = Object.values(stuff.split('\n'))
-    const doing = stuffs[Math.floor(Math.random() * stuffs.length)];
+    const doing = Astro.props.is ? Astro.props.is : stuffs[Math.floor(Math.random() * stuffs.length)];
 ---
 
 <script>
@@ -14,9 +14,9 @@ console.log('does anyone even read this?')
     <div>
         <div>
             <span class="jp lighter">木</span>
-            <span class="lighter"> Evan Boehs </span>
+            <span class="lighter">Evan Boehs</span>
         </div>
-        <i>is {doing}</i>
+        <i>is <slot>{doing}</slot></i>
     </div>
 </header>
 
