@@ -10,7 +10,7 @@
 ---
 <script define:vars={{ flowers }}>
 let isanimating = false
-let timeleft = flowers.length;
+let timeleft = flowers[0].length;
 let ishover = true;
 let state = false;
 
@@ -49,7 +49,7 @@ function shit() {
 
 <footer>
 <pre id="flower">
-{flowers[1][flowers[0].length - 1]}
+{('\n' + flowers[1][flowers[0].length - 1])}
 </pre>
 
 <div class="e">
@@ -85,9 +85,11 @@ function shit() {
 <style>
     pre {
         color: rgb(10 160 110);
+        overflow: hidden;
+        min-height: 220px;
     }
 
-    footer > * {
+    footer > *, footer {
         width: 100%;
     }
 
@@ -95,10 +97,7 @@ function shit() {
         list-style: georgian;
         list-style-position: inside;
         display: flex;
-    }
-
-    li {
-        padding-right: 15px;
+        gap: 15px;
     }
 
     .e {
@@ -110,6 +109,12 @@ function shit() {
     h4,ul {
         margin-block-end: 0;
         margin-block-start: 0;
+    }
+
+    @media screen and (max-width: 800px) {
+        pre {
+            font-size: 2.32vw;
+        }
     }
 </style>
 
