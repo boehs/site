@@ -1,0 +1,3 @@
+[submodule "site"]
+	path = site
+	url = https://git.sr.ht/~boehs/site
