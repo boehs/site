@@ -49,7 +49,7 @@ function shit() {
 
 <footer>
 <pre id="flower">
-{('\n\n' + flowers[1][flowers[0].length - 1])}
+{('\n' + flowers[1][flowers[0].length - 1])}
 </pre>
 
 <div class="e">
@@ -119,6 +119,8 @@ function shit() {
 </style>
 
 <script>
+// I give up
+document.getElementById("flower").innerHTML = flowers[1][flowers[0].length - 1]
 document.getElementById("flower").onmouseover = function() {
     ishover = true
     shit()
