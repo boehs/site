@@ -5,6 +5,7 @@
         "asset:*": ["src/assets/*?url"],
         "component:*": ["src/components/*.astro"],
         "layout:*": ["src/layouts/*.astro"],
+        "$*": ["src/*"]
       }
     }
   }

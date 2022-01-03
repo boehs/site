@@ -1,7 +1,7 @@
 ---
 import Header from 'component:head'
 import Footer from 'component:foot'
-const {title} = Astro.props;
+const {title,is} = Astro.props;
 ---
 <html>
   <head>
@@ -9,30 +9,32 @@ const {title} = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-  <content>
-    <Header/>
-    <main>
-      <slot/>
-    </main>
-    <div class="footcontain">
+    <div>
+      <Header is={is}/>
+      <article>
+        <slot name="title">
+          <h1>{title}</h1>
+        </slot>
+        <slot/>
+      </article>
       <Footer/>
     </div>
-  </content>
   </body>
 </html>
 
 <style global>
 body {
-  padding-top: 3%;
+  padding: 3% 0;
   font-family:monospace;
   font-size: 18px;
   min-width: 100%;
   display: flex;
   justify-content: center;
   margin: 0;
+  overflow-y:overlay
 }
 
-content {
+body > div {
   max-width: 64ch;
 }
 
@@ -54,9 +56,16 @@ p {
   justify-content: center;
 }
 
+ul {
+  list-style: georgian;
+  list-style-position: outside;
+}
+
 code {
-  background-color: whitesmoke;
-  padding: 15px;
+    background-color: #eee;
+    border-radius: 3px;
+    font-family: courier, monospace;
+    padding: 0 3px;
 }
 
 @media screen and (max-width: 800px) {
