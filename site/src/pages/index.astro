@@ -2,7 +2,6 @@
 import Main from 'layout:Main'
 import greet from '../components/deets/greatings.json'
 const greetings: Array<string> = Object.values(greet).map(x => [x.hello,x.language])
-console.log(greetings)
 const yo = greetings[Math.floor(Math.random() * greetings.length)];
 ---
 
