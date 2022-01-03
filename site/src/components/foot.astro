@@ -1,7 +1,7 @@
 ---
     import flowerpower from './deets/flowerpower.txt?raw'
     let flowers = [[],[]]
-    Object.values(flowerpower.split('---'))
+    Object.values(flowerpower.split('\n---'))
         .reverse()
         .map(x => {
             flowers[0].push(Number(x.substring(0, 1)))
@@ -11,7 +11,7 @@
 <script define:vars={{ flowers }}>
 let isanimating = false
 let timeleft = flowers.length;
-let ishover = false;
+let ishover = true;
 let state = false;
 
 function doanimation(should_reverse = false,flower_time,flower) {
@@ -52,7 +52,7 @@ function shit() {
 {flowers[1][flowers[0].length - 1]}
 </pre>
 
-<div class="e" style="margin-top: 25px;">
+<div class="e">
     <h4>Main</h4>
     <ul>
         <li><a href="/home">Home</a></li>
@@ -104,6 +104,7 @@ function shit() {
     .e {
         display: flex;
         justify-content: space-between;
+        margin-top: 25px;
     }
 
     h4,ul {
@@ -113,16 +114,12 @@ function shit() {
 </style>
 
 <script>
-document.getElementById("flower").onmouseover = mouseOver();
-document.getElementById("flower").onmouseout = mouseOut();
-
-function mouseOver() {
-    ishover = true;
+document.getElementById("flower").onmouseover = function() {
+    ishover = true
     shit()
-}
-
-function mouseOut() {
+};
+document.getElementById("flower").onmouseout = function() {
     ishover = false
     shit()
-}
+};
 </script>
