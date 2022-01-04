@@ -1,48 +1,72 @@
 ---
 import Header from 'component:head'
 import Footer from 'component:foot'
-const {title,is} = Astro.props;
+import Banner from 'component:banner'
+import config from '$config'
+const {title,is,adult,adultReason} = Astro.props;
 ---
 <html lang="en">
   <head>
+    {adult ? <meta name="rating" content="adult"> : null}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-    <meta name="description" content={Astro.props.is ? `Evan Boehs is ${Astro.props.is}.` : `Some ramblings about ${Astro.props.title}!`}>
+    <meta name="theme-color" content="#0aa06e"/>
+    <meta name="author" content={config.author}>
+    <meta name="description" content={Astro.props.is ? `${config.author} is ${Astro.props.is}.` : `Some ramblings about ${Astro.props.title}!`}>
     <title>{title}</title>
   </head>
   <body>
+    {adult ?
+    <Banner full>
+      <h1>Adult content warning</h1>
+      <p>If you are not adult, or do not wish to see adult content, turn back now.</p>
+      {adultReason ?
+      <h2>The following page may contain</h2>
+      <ul>
+          {adultReason.map((item) => (
+            <li>{item}</li>
+          ))}
+      </ul> : null}
+    </Banner> : null
+    }
+
     <div>
-      <Header is={is} title={title}/>
-      <article>
-        <slot name="title">
-          <h1>{title}</h1>
-        </slot>
-        <slot/>
-      </article>
-      <Footer/>
+      <div>
+        <Header is={is} title={title}/>
+        <article>
+          <slot name="title">
+            <h1>{title}</h1>
+          </slot>
+          <slot/>
+        </article>
+        <Footer/>
+      </div>
     </div>
   </body>
 </html>
 
 <style global>
 body {
-  padding: 3% 0;
   font-family: monospace;
   font-size: 18px;
   min-width: 100%;
-  display: flex;
-  justify-content: center;
   margin: 0;
   overflow-y: overlay;
   background: whitesmoke;
 }
 
 body > div {
+  display: flex;
+  justify-content: center;
+}
+
+body > div > div {
+  padding: 3% 0;
   max-width: 64ch;
 }
 
 .lighter {
-  color: rgb(10 160 110)
+  color: #0aa06e
 }
 
 ul {

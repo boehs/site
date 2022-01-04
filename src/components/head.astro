@@ -2,6 +2,7 @@
     // This code is only fired once in a while, AKA when the site is built
     // This is intentional
     import stuff from './deets/isdoingstuffagain.txt?raw'
+    import config from '$config'
     const stuffs: Array<String> = Object.values(stuff.split('\n'))
     const doing = Astro.props.is ? Astro.props.is : stuffs[Math.floor(Math.random() * stuffs.length)];
 ---
@@ -13,7 +14,7 @@ console.log('does anyone even read this?')
     <div>
         <div>
             <span class="jp lighter">木</span>
-            <span class="lighter">Evan Boehs</span>
+            <span class="lighter">{config.author}</span>
         </div>
         <i>is <slot>{doing}</slot></i>
     </div>
