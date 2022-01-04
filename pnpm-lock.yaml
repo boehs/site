@@ -3,10 +3,11 @@ lockfileVersion: 5.3
 specifiers:
   '@astrojs/renderer-react': ^0.4.0
   '@astrojs/renderer-svelte': ^0.3.0
-  '@babel/core': '>=7.10.2 <8.0.0'
-  astro: ^0.22.1
+  '@babel/core': ^7.16.5
+  astro: ^0.22.5
   postcss-load-config: ^3.1.0
   sass: ^1.45.1
+  vite: ^2.6.0
   vite-plugin-plain-text: ^1.1.4
 
 dependencies:
@@ -15,21 +16,22 @@ dependencies:
   '@babel/core': 7.16.5
   postcss-load-config: 3.1.0
   sass: 1.45.1
+  vite: 2.6.14_sass@1.45.1
   vite-plugin-plain-text: 1.1.4
 
 devDependencies:
-  astro: 0.22.1_postcss-load-config@3.1.0
+  astro: 0.22.5_postcss-load-config@3.1.0
 
 packages:
 
-  /@astrojs/compiler/0.6.2:
-    resolution: {integrity: sha512-okzco1cwAPC1Fs1EovCckQpZFLAkuysTM+0qVXQ41fE6mLxmq/4i7fFR7l0Wy/0JapgcRQbK5xN4Y08ku4EPQg==}
+  /@astrojs/compiler/0.7.1:
+    resolution: {integrity: sha512-BzQrF5KV60pmwzKFII+KNqIDg+iNYScJozlDUriRMPrdb1sEb/23JrF3JLjkXBu9fmDDOzHqLJI5klDdXm2SDg==}
     dependencies:
       typescript: 4.5.4
     dev: true
 
-  /@astrojs/language-server/0.8.5:
-    resolution: {integrity: sha512-3Ra2HjnJnfKjSsLrZeWuXIvpW/LBtoUOcnSYAR/pqfOcSZDZXHOXLsySLTkS46zQoMJK0F+V+IRUmZ+vTGUQwA==}
+  /@astrojs/language-server/0.8.6:
+    resolution: {integrity: sha512-Ta9v/19bczh9LXOYsRFQU8Rk8K/y6oSo510Jzp5xqJ+miWLQDLvLEL4BsyKpPBVBg2kyMBrpZ7LNSzGhQL4XVQ==}
     hasBin: true
     dependencies:
       lodash: 4.17.21
@@ -122,8 +124,8 @@ packages:
       - vite
     dev: false
 
-  /@astrojs/renderer-svelte/0.3.0_8c7cdec0e80a9a4cc8f69d2338b4664f:
-    resolution: {integrity: sha512-9acY+v9yty/N/IABegCWkIfgkAIWj50x+MvfmGMypoAvFreBrJhkHqYMqZ6KLr/CTP/9NuvQwikSDyErIeYhyQ==}
+  /@astrojs/renderer-svelte/0.3.1_8c7cdec0e80a9a4cc8f69d2338b4664f:
+    resolution: {integrity: sha512-upK/Mm00wI8xWqxiSjBV4SuDCSh3hsafLzORvy5vjpd2Czw8LM4c2SdlegBD1vtzbFUc1CnwZqNGdhCSbSHJYA==}
     engines: {node: ^14.15.0 || >=16.0.0}
     dependencies:
       '@sveltejs/vite-plugin-svelte': 1.0.0-next.30_svelte@3.44.3+vite@2.6.14
@@ -707,18 +709,18 @@ packages:
     hasBin: true
     dev: true
 
-  /astro/0.22.1_postcss-load-config@3.1.0:
-    resolution: {integrity: sha512-h8IMB34YS365E9/Wdw+W2zaP/HHzLkmCc0v+5pIjsrX5nhCN897obq4rJHkOyQ1xgpFYVoFllgdnOGIAk6H0/w==}
+  /astro/0.22.5_postcss-load-config@3.1.0:
+    resolution: {integrity: sha512-ea/eW20lOkpUWTN1LjgWYXAXvsbH7Xz+6hSAlIyODxIAO19pXfrNEfdenST/ygI5A1Qu3eDbbiqMk38FsAvksA==}
     engines: {node: ^14.15.0 || >=16.0.0, npm: '>=6.14.0'}
     hasBin: true
     dependencies:
-      '@astrojs/compiler': 0.6.2
-      '@astrojs/language-server': 0.8.5
+      '@astrojs/compiler': 0.7.1
+      '@astrojs/language-server': 0.8.6
       '@astrojs/markdown-remark': 0.6.0
       '@astrojs/prism': 0.4.0
       '@astrojs/renderer-preact': 0.4.0_@babel+core@7.16.5
       '@astrojs/renderer-react': 0.4.0_@babel+core@7.16.5
-      '@astrojs/renderer-svelte': 0.3.0_8c7cdec0e80a9a4cc8f69d2338b4664f
+      '@astrojs/renderer-svelte': 0.3.1_8c7cdec0e80a9a4cc8f69d2338b4664f
       '@astrojs/renderer-vue': 0.3.0_vite@2.6.14
       '@astropub/webapi': 0.7.4
       '@babel/core': 7.16.5
@@ -3647,11 +3649,3 @@ packages:
   /zwitch/2.0.2:
     resolution: {integrity: sha512-JZxotl7SxAJH0j7dN4pxsTV6ZLXoLdGME+PsjkL/DaBrVryK9kTGq06GfKrwcSOqypP+fdXGoCHE36b99fWVoA==}
     dev: true
-
-  github.com/vitejs/vite/d856c4bd6798707e0cbdfc127a2e8b6c00c65dae:
-    resolution: {tarball: https://codeload.github.com/vitejs/vite/tar.gz/d856c4bd6798707e0cbdfc127a2e8b6c00c65dae}
-    name: vite-monorepo
-    version: 0.0.0
-    engines: {node: '>=12.2.0'}
-    requiresBuild: true
-    dev: false
