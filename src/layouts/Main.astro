@@ -51,8 +51,11 @@ if (warnReason) warnReason.forEach(item => Stf.add(item))
 </html>
 
 <style global>
-body {
+body, code {
   font-family: monospace;
+}
+
+body {
   font-size: 18px;
   min-width: 100%;
   margin: 0;
@@ -60,7 +63,7 @@ body {
   background: whitesmoke;
 }
 
-body > div {
+body > div, footer {
   display: flex;
   justify-content: center;
 }
@@ -70,12 +73,16 @@ body > div > div {
   max-width: 64ch;
 }
 
+footer > nav, nav > *, hr, header, header > * {
+  width: 100%;
+}
+
 hr {
   border-style: none;
   border-width: 0;
-  width: 100%;
   text-align: center;
 }
+
 hr::after {
   content: '---';
 }
@@ -92,7 +99,6 @@ ul {
 code {
   background-color: #eee;
   border-radius: 3px;
-  font-family: monospace;
   padding: 0 3px;
 }
 
