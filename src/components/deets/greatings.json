@@ -51,10 +51,6 @@
     "hello": "Hola"
   },
   {
-    "language": "Cebuano",
-    "hello": "Hello"
-  },
-  {
     "language": "Chichewa",
     "hello": "Moni"
   },
@@ -87,10 +83,6 @@
     "hello": "Hallo"
   },
   {
-    "language": "English",
-    "hello": "Hello"
-  },
-  {
     "language": "Esperanto",
     "hello": "Saluton"
   },
@@ -99,20 +91,12 @@
     "hello": "Tere"
   },
   {
-    "language": "Filipino",
-    "hello": "Hello"
-  },
-  {
     "language": "Finnish",
     "hello": "Hei"
   },
   {
     "language": "French",
     "hello": "Bonjour"
-  },
-  {
-    "language": "Frisian",
-    "hello": "Hello"
   },
   {
     "language": "Galician",
@@ -187,10 +171,6 @@
     "hello": "こんにちは"
   },
   {
-    "language": "Javanese",
-    "hello": "Hello"
-  },
-  {
     "language": "Kannada",
     "hello": "ಹಲೋ"
   },
@@ -205,10 +185,6 @@
   {
     "language": "Korean",
     "hello": "안녕하세요."
-  },
-  {
-    "language": "Kurdish (Kurmanji)",
-    "hello": "Hello"
   },
   {
     "language": "Kyrgyz",
@@ -239,20 +215,8 @@
     "hello": "Здраво"
   },
   {
-    "language": "Malagasy",
-    "hello": "Hello"
-  },
-  {
-    "language": "Malay",
-    "hello": "Hello"
-  },
-  {
     "language": "Malayalam",
     "hello": "ഹലോ"
-  },
-  {
-    "language": "Maltese",
-    "hello": "Hello"
   },
   {
     "language": "Maori",
@@ -311,20 +275,8 @@
     "hello": "Talofa"
   },
   {
-    "language": "Scots Gaelic",
-    "hello": "Hello"
-  },
-  {
     "language": "Serbian",
     "hello": "Здраво"
-  },
-  {
-    "language": "Sesotho",
-    "hello": "Hello"
-  },
-  {
-    "language": "Shona",
-    "hello": "Hello"
   },
   {
     "language": "Sindhi",
@@ -341,10 +293,6 @@
   {
     "language": "Slovenian",
     "hello": "Pozdravljeni"
-  },
-  {
-    "language": "Somali",
-    "hello": "Hello"
   },
   {
     "language": "Spanish",
