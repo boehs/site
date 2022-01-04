@@ -4,11 +4,12 @@ import Footer from 'component:foot'
 import Banner from 'component:banner'
 import config from '$config'
 import Stf from '$scripts/warnReasons'
-const {title,is,warn,warnReason} = Astro.props;
+const {title,is,warn,warnReason,noindex} = Astro.props;
 if (warnReason) warnReason.forEach(item => Stf.add(item))
 ---
 <html lang="en">
   <head>
+    {noindex ? <meta name="robots" content="noindex"> : null}
     {warn ? <meta name="rating" content="adult"> : null}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
