@@ -3,11 +3,13 @@ import Header from 'component:head'
 import Footer from 'component:foot'
 import Banner from 'component:banner'
 import config from '$config'
-const {title,is,adult,adultReason} = Astro.props;
+import Stf from '$scripts/warnReasons'
+const {title,is,warn,warnReason} = Astro.props;
+if (warnReason) warnReason.forEach(item => Stf.add(item))
 ---
 <html lang="en">
   <head>
-    {adult ? <meta name="rating" content="adult"> : null}
+    {warn ? <meta name="rating" content="adult"> : null}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="theme-color" content="#0aa06e"/>
@@ -16,17 +18,20 @@ const {title,is,adult,adultReason} = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    {adult ?
+    {warn ?
     <Banner full>
-      <h2>Adult content warning</h2>
-      <p>If you are not adult, or do not wish to see adult content, turn back now.</p>
-      {adultReason ?
+      <h1>Content warning! 🛑</h1>
+      {warnReason ?
       <h2>The following page may contain</h2>
       <ul>
-        {adultReason.map((item) => (
+        {warnReason.map((item) => (
           <li>{item}</li>
         ))}
       </ul> : null}
+      <p>If you are not an adult, or simply do not wish to see this content, turn back now.</p>
+      <hr/>
+      <p>As always, it's a good time to remind you that the opinions voiced
+      are MY OWN and do not reflect that of my employer.</p>
     </Banner> : null
     }
     <div>
@@ -64,6 +69,16 @@ body > div > div {
   max-width: 64ch;
 }
 
+hr {
+  border-style: none;
+  border-width: 0;
+  width: 100%;
+  text-align: center;
+}
+hr::after {
+  content: '---';
+}
+
 .lighter {
   color: #0aa06e
 }
@@ -81,7 +96,7 @@ code {
 }
 
 @media screen and (max-width: 800px) {
-  article {
+  article, footer {
     padding: 0 20px;
   }
 }

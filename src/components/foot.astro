@@ -101,8 +101,14 @@ function shit() {
         overflow: hidden;
     }
 
-    footer > *, nav > *, footer {
+    footer > nav, nav > * {
         width: 100%;
+    }
+
+    footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     div.e > div {
@@ -125,6 +131,10 @@ function shit() {
     @media screen and (max-width: 800px) {
         pre {
             font-size: 2.32vw;
+        }
+
+        .e {
+            display: block;
         }
     }
 </style>
