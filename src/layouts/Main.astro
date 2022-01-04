@@ -3,14 +3,16 @@ import Header from 'component:head'
 import Footer from 'component:foot'
 const {title,is} = Astro.props;
 ---
-<html>
+<html lang="en">
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
+    <meta name="description" content={Astro.props.is ? `Evan Boehs is ${Astro.props.is}.` : `Some ramblings about ${Astro.props.title}!`}>
     <title>{title}</title>
   </head>
   <body>
     <div>
-      <Header is={is}/>
+      <Header is={is} title={title}/>
       <article>
         <slot name="title">
           <h1>{title}</h1>
