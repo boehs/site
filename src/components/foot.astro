@@ -91,7 +91,7 @@ function shit() {
         <li>
             <a href="/privacy">privacy</a>
         </li>
-        | © Evan Boehs
+        | <span class="copyleft">&copy;</span> Evan Boehs
     </ul>
 </div>
 </nav>
@@ -118,6 +118,10 @@ function shit() {
         display: flex;
         justify-content: space-between;
         margin-top: 25px;
+    }
+
+    .copyleft {
+        transform: rotate(180deg);
     }
 
     h4,ul {
