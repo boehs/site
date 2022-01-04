@@ -29,13 +29,12 @@ const {title,is,adult,adultReason} = Astro.props;
       </ul> : null}
     </Banner> : null
     }
-
     <div>
       <div>
         <Header is={is} title={title}/>
         <article>
           <slot name="title">
-            <h1>{title}</h1>
+            <h2>{title}</h2>
           </slot>
           <slot/>
         </article>
@@ -82,9 +81,8 @@ code {
 }
 
 @media screen and (max-width: 800px) {
-  content {
-    padding-left: 20px;
-    padding-right: 20px;
+  article {
+    padding: 0 20px;
   }
 }
 
@@ -109,5 +107,11 @@ code {
   a:visited {
     color: #D0ADF0
   }
+}
+
+/* reuse */
+div,ul,h1 {
+  margin-block-end: 0;
+  margin-block-start: 0;
 }
 </style>

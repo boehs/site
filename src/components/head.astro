@@ -12,9 +12,9 @@ console.log('does anyone even read this?')
 
 <header>
     <div>
-        <div>
-            <span class="jp lighter">木</span>
-            <span class="lighter">{config.author}</span>
+        <div class="lighter">
+            <span class="jp">木</span>
+            <h1>{config.author}</h1>
         </div>
         <i>is <slot>{doing}</slot></i>
     </div>
@@ -24,6 +24,12 @@ console.log('does anyone even read this?')
 header {
     padding-top: 50px;
     width: 100%;
+}
+
+h1 {
+    font-size: inherit;
+    font-weight: inherit;
+    display: inline;
 }
 
 header > * {
