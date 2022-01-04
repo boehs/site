@@ -1,0 +1,61 @@
+---
+import Main from 'layout:Main'
+import Head from 'component:head'
+---
+
+<Main title="Details" is="happy you read these blurbs!">
+    <p>I believe in details. I packed these details into <a href="/template">2 kB of HTML + JS
+    and 1.2 kB of CSS</a>:</p>
+    <ul>
+        <li><strong>The footer grass animation.</strong> Have you tried it?
+        It animates in and out smoothly based on cursor events.</li>
+        <li><strong>Proper use of tags.</strong> I use <code>html</code>
+        and <code>meta</code> tags effectively based on extensive research.</li>
+        <li><strong>CSS based theme switching.</strong> As you would expect.</li>
+        <li><strong>Javascript only when impossible without,</strong> and
+        even then good <code>noscript</code> fallbacks, users without javascript would
+        never notice!</li>
+        <li><strong>Near perfect lighthouse scores.</strong> The only non-100
+        score is because of the <span class="lighter">green</span> color's contrast</li>
+        <li>A <a href="https://git.sr.ht/~boehs/site/tree/master/item/build.sh">build script</a>
+        that <strong>removes useless junk</strong></li>
+        <li>
+            <strong>compile time features:</strong>
+            <ul>
+                <li><strong>RNG <code>is</code> if not provided
+                by the page like above.</strong> An example: <br/>
+                <Head/>
+                <p style="padding-top: 50px">check back in a few days and see if it changed!</p>
+                </li>
+                <li>On the <a href="/">home</a> page, there is a
+                <strong>randomized greeting.</strong>
+                Again, check back later for changes!</li>
+                <li>No framework crap being sent to your browser</li>
+            </ul>
+        </li>
+    </ul>
+    <h3>Some other details:</h3>
+    <ul>
+        <li>
+            I use <strong><a href="https://uberspace.de">uberspace</a>
+            for hosting.</strong> This is a choice not based on speed nor price
+            but on ethics.
+            <ul>
+                <li>Green energy powered</li>
+                <li>Small company</li>
+                <li>Treats everyone equally regardless of financials</li>
+                <li>Friendly to people of all skill levels</li>
+            </ul>
+        </li>
+        <li>
+            My website is <strong>built with <a href="https://astro.build">astro</a></strong>.
+            This is because it allows me to:
+            <ul>
+                <li>use templating</li>
+                <li>run scripts at build time</li>
+                <li>use TypeScript and SCSS</li>
+                <li>and add nothing extra to the visitor's page</li>
+            </ul>
+        </li>
+    </ul>
+</Main>

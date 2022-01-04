@@ -23,9 +23,9 @@ const {title,is,adult,adultReason} = Astro.props;
       {adultReason ?
       <h2>The following page may contain</h2>
       <ul>
-          {adultReason.map((item) => (
-            <li>{item}</li>
-          ))}
+        {adultReason.map((item) => (
+          <li>{item}</li>
+        ))}
       </ul> : null}
     </Banner> : null
     }
