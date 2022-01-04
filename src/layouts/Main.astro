@@ -25,35 +25,22 @@ const {title,is} = Astro.props;
 <style global>
 body {
   padding: 3% 0;
-  font-family:monospace;
+  font-family: monospace;
   font-size: 18px;
   min-width: 100%;
   display: flex;
   justify-content: center;
   margin: 0;
-  overflow-y:overlay
+  overflow-y: overlay;
+  background: whitesmoke;
 }
 
 body > div {
   max-width: 64ch;
 }
 
-p {
-  color: rgb(20, 20, 20);
-}
-
 .lighter {
   color: rgb(10 160 110)
-}
-
-.jp {
-  font-size: 14px;
-}
-
-.footcontain {
-  width: 100%;
-  display: flex;
-  justify-content: center;
 }
 
 ul {
@@ -62,16 +49,27 @@ ul {
 }
 
 code {
-    background-color: #eee;
-    border-radius: 3px;
-    font-family: courier, monospace;
-    padding: 0 3px;
+  background-color: #eee;
+  border-radius: 3px;
+  font-family: monospace;
+  padding: 0 3px;
 }
 
 @media screen and (max-width: 800px) {
   content {
     padding-left: 20px;
     padding-right: 20px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #282828;
+    color: whitesmoke;
+  }
+
+  code {
+    background-color: darkslategray;
   }
 }
 </style>
