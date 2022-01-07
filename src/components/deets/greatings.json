@@ -1,4 +1,5 @@
-[{
+[
+  {
     "language": "English",
     "hello": "Hey"
   },
@@ -200,7 +201,7 @@
   },
   {
     "language": "Latvian",
-    "hello": "Labdien!"
+    "hello": "Labdien"
   },
   {
     "language": "Lithuanian",

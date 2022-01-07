@@ -13,8 +13,10 @@ console.log('does anyone even read this?')
 <header>
     <div>
         <div class="lighter">
-            <span class="jp">木</span>
-            <h1>{config.author}</h1>
+            <a href="/">
+                <span class="jp">木</span>
+                <h1>{config.author}</h1>
+            </a>
         </div>
         <i>is <slot>{doing}</slot></i>
     </div>
@@ -37,5 +39,10 @@ header > * {
 
 .jp {
   font-size: 14px;
+}
+
+a {
+    text-decoration: inherit;
+    color: inherit;
 }
 </style>

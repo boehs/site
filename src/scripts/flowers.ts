@@ -1,7 +1,17 @@
+import flowerpower from '../components/deets/flowerpower.txt?raw'
+let flowers = [[], []]
+Object.values(flowerpower.split('\n---'))
+    .reverse()
+    .map(x => {
+        flowers[0].push(Number(x.substring(0, 1)))
+        flowers[1].push(x.substring(1));
+    })
+
 let isanimating = false
 let timeleft;
 let ishover = true;
 let state = false;
+let flowerElm = document.getElementById('flower')
 
 function doanimation(should_reverse = false, flower_time, flower) {
     isanimating = true;
@@ -15,8 +25,7 @@ function doanimation(should_reverse = false, flower_time, flower) {
         state = true
     }
     let int = setInterval(function () {
-        //if (flower_time[timeleft - 1] == -1 && !should_reverse) timeleft -= 1
-        document.getElementById("flower").innerHTML = flower[timeleft - 1]
+        flowerElm.innerHTML = flower[timeleft - 1]
         if (flower_time[timeleft - 1] == 0) timeleft -= 1
         else flower_time[timeleft - 1] -= 1
         if (timeleft == 0) {
@@ -35,16 +44,15 @@ function shit() {
     else console.log('f')
 }
 
-function cfg(thing) {
-    timeleft = flowers[0].length
-    // I give up
-    document.getElementById("flower").innerHTML = flowers[1][flowers[0].length - 1]
-    document.getElementById("flower").onmouseover = function () {
-        ishover = true
-        shit()
-    };
-    document.getElementById("flower").onmouseout = function () {
-        ishover = false
-        shit()
-    };
-}
+timeleft = flowers[0].length
+
+// I give up
+flowerElm.innerHTML = flowers[1][flowers[0].length - 1]
+flowerElm.onmouseover = function () {
+    ishover = true
+    shit()
+};
+flowerElm.onmouseout = function () {
+    ishover = false
+    shit()
+};

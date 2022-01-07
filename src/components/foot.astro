@@ -1,12 +1,10 @@
 ---
-    import flowerpower from './deets/flowerpower.txt?raw'
     import config from '$config'
-    let flowers = [[],[]]
+    import flowerpower from '../components/deets/flowerpower.txt?raw'
+    let flowers = [[], []]
     Object.values(flowerpower.split('\n---'))
         .reverse()
         .map(x => {
-            //x.substring(0, 1) == '-' ? flowers[0].push(Number(x.substring(0, 2))) : flowers[0].push(Number(x.substring(0, 1)))
-            //x.substring(0, 1) == '-' ? flowers[1].push(x.substring(2)) : flowers[1].push(x.substring(1));
             flowers[0].push(Number(x.substring(0, 1)))
             flowers[1].push(x.substring(1));
         })
@@ -94,8 +92,4 @@
     }
 </style>
 
-<script src="/flowers.js"></script>
-<script define:vars={{ flowers }}>
-console.log(flowers)
-cfg(flowers)
-</script>
+<script src={Astro.resolve('../scripts/flowers.ts')}></script>
