@@ -10,7 +10,7 @@
 
 export default /** @type {import('astro').AstroUserConfig} */ ({
 	// Comment out "renderers: []" to enable Astro's default component support.
-	renderers: ['@astrojs/renderer-react', '@astrojs/renderer-svelte'],
+	renderers: [],
 	buildOptions: {
 		site: "https://boehs.org",
 	},
