@@ -1,0 +1,123 @@
+<% let dateCfg = {
+    weekday: "long", year: "numeric", month: "short",
+    day: "numeric", hour: "2-digit", minute: "2-digit"
+} %>
+<!DOCTYPE html><html lang="en"><head>
+    
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#0aa06e">
+    <meta name="author" content="Evan Boehs">
+    <meta name="description" content="Some ramblings about Home!">
+    <title>Home</title>
+  <link rel="stylesheet" href="/assets/template.cc6a1725.css">
+
+</head>
+  <body>
+    
+    <div>
+      <div>
+        <script>
+console.log('does anyone even read this?')
+</script>
+
+<header class="astro-D53DR3ZF">
+    <div class="astro-D53DR3ZF">
+        <div class="lighter astro-D53DR3ZF">
+            <span class="jp astro-D53DR3ZF">木</span>
+            <h1 class="astro-D53DR3ZF">Evan Boehs</h1>
+        </div>
+        <i class="astro-D53DR3ZF">is breaking things</i>
+    </div>
+</header>
+
+
+
+        <article>
+            <% it.posts.forEach(element => { %>
+                <div style="background-color: white; margin: 10px; padding: 10px; border-radius: 3px;">
+                    <h3><%= element.name %></h3>
+                    <ul>
+                        <li><strong>Updated At</strong>: &LeftAngleBracket;<%= element.updated_at %>&RightAngleBracket;</li>
+                    </ul>
+                    <p><%~ element.description %></p>
+                </div>
+            <% }) %>
+            <hr/>
+        </article>
+        <footer class="astro-ILFN757A">
+<pre id="flower" class="lighter astro-ILFN757A">
+
+
+
+
+
+
+
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+</pre>
+
+<nav class="astro-ILFN757A">
+<div class="e astro-ILFN757A">
+    <div class="astro-ILFN757A">Main</div>
+    <ul class="astro-ILFN757A">
+        <li class="astro-ILFN757A"><a href="/" class="astro-ILFN757A">Home</a></li>
+        <li class="astro-ILFN757A"><a href="/contact" class="astro-ILFN757A">Contact</a></li>
+        <li class="astro-ILFN757A"><a href="/resume" class="astro-ILFN757A"><s class="astro-ILFN757A">Resume</s></a></li>
+    </ul>
+</div>
+<div class="e astro-ILFN757A">
+    <div class="astro-ILFN757A">Feeds</div>
+    <ul class="astro-ILFN757A">
+        <li class="astro-ILFN757A"><a href="/stream" class="astro-ILFN757A">Stream</a></li>
+        <li class="astro-ILFN757A"><a href="/river" class="astro-ILFN757A">Blog</a></li>
+        <li class="astro-ILFN757A"><a href="/garden" class="astro-ILFN757A">Garden</a></li>
+        <li class="astro-ILFN757A"><a href="/photos" class="astro-ILFN757A">Photos</a></li>
+    </ul>
+</div>
+<div class="e astro-ILFN757A">
+    <div class="astro-ILFN757A">Links?!</div>
+    <ul class="astro-ILFN757A">
+        <li class="astro-ILFN757A">
+            <a href="https://sr.ht/~boehs" class="astro-ILFN757A">SourceHut</a>
+            |
+            <a href="https://github.com/boehs" class="astro-ILFN757A">GitHub</a>
+        </li>
+        <li class="astro-ILFN757A"><a href="https://linkedin.com/in/boehs" class="astro-ILFN757A">LinkedIn</a></li>
+    </ul>
+</div>
+<div class="e astro-ILFN757A" style="padding-bottom: 50px;">
+    <div class="astro-ILFN757A">Boring</div>
+    <ul class="astro-ILFN757A">
+        <li class="astro-ILFN757A">
+            <a href="/privacy" class="astro-ILFN757A">privacy</a> | 🄯 Evan Boehs
+        </li>
+    </ul>
+</div>
+</nav>
+</footer>
+
+
+
+<script>
+cfg =  Astro.resolve('../scripts/flowers.ts')
+cfg()
+</script>
+<script>
+// I give up
+document.getElementById("flower").innerHTML = flowers[1][flowers[0].length - 1]
+document.getElementById("flower").onmouseover = function() {
+    ishover = true
+    shit()
+};
+document.getElementById("flower").onmouseout = function() {
+    ishover = false
+    shit()
+};
+</script>
+      </div>
+    </div>
+  
+</body></html>
