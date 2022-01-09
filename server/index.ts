@@ -23,8 +23,6 @@ async function run() {
 
 run()
 console.log(`Server started in ${Math.floor(performance.now() - t1)}ms. Setting Up DB.`)
-t1 = performance.now()
-
-db(t1)
+db(performance.now())
 
 export { app };
