@@ -3,7 +3,7 @@ import errorMiddleware from "./middleware/error.ts";
 import renderMiddleware from "./middleware/render.ts";
 import staticMiddleware from "./middleware/serveStatic.ts";
 import router from "./routes.ts";
-import db from './cfgDB.ts'
+import db from './db.ts'
 
 const app = new Application();
 

@@ -36,7 +36,7 @@ export class Tag extends DBModel {
       primaryKey: true,
       auautoIncrement: true
     },
-    tag: DataTypes.string(32)
+    name: DataTypes.string(32)
   }
 
   static nodes() {
@@ -88,7 +88,7 @@ export default async function setup(t1: number) {
 
   let tagObj: [{ tag: string }] | [] = []
   tags.forEach(tag => {
-    tagObj.push({ tag: tag })
+    tagObj.push({ name: tag })
   })
   Tag.create(tagObj)
 
@@ -98,7 +98,7 @@ export default async function setup(t1: number) {
     for (const file of filesWithTags) {
       const FileId = await Node.where('name', file[0]).first()
       for (const tag of file[1]) {
-        const TagId = await Tag.where('tag', tag).first()
+        const TagId = await Tag.where('name', tag).first()
         tagQuery.push({ nodeId: FileId.id, tagId: TagId.id })
       }
     }
