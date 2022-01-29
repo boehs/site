@@ -24,6 +24,9 @@ for f in $(find * -name '*.html' -or -name ''); do
     fi
     # Remove all astro prefixes
     sed -Ei "s/( class=\"$matchedtag\"| $matchedtag)//g;s/astro-/e/g;/^[[:space:]]*$/d;s/(e[A-Z0-9]{3})[A-Z0-9]{5}/\1/g" $f
+
+    # fix =>
+    sed -Ei "s/fix=&gt;/=>/g" $f
     ### Time for CSS ###
     # Remove all astro prefixes
     echo "parsing css for file $i"

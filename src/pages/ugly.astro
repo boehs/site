@@ -1,0 +1,11 @@
+---
+import Main from 'layout:Main'
+import SSR from 'component:SSR'
+---
+<Main>
+    <ul style="list-style-type: none; display: flex; flex-wrap: wrap; gap: 1ch;">
+        <SSR content=' it.posts.forEach(element fix=> {'/>
+            <li><a href="/garden/nodes/![= element]!"><SSR content='= element'/></a></li>
+        <SSR content=' })'/>
+    </ul>
+</Main>
