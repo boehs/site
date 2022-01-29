@@ -13,8 +13,9 @@ export default /** @type {import('astro').AstroUserConfig} */ ({
 	renderers: [],
 	buildOptions: {
 		site: "https://boehs.org",
+		pageUrlFormat: 'file'
 	},
 	vite: {
 		assetsInclude: ['**/*.txt'],
-	}
+	},
 });
