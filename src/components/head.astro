@@ -3,6 +3,7 @@
     // This is intentional
     import stuff from './deets/isdoingstuffagain.txt?raw'
     import config from '$config'
+    import SSR from 'component:SSR'
     const stuffs: Array<String> = Object.values(stuff.split('\n'))
     const doing = Astro.props.is ? Astro.props.is : stuffs[Math.floor(Math.random() * stuffs.length)];
 ---
@@ -18,7 +19,7 @@ console.log('does anyone even read this?')
                 <h1>{config.author}</h1>
             </a>
         </div>
-        <i>is <slot>{doing}</slot></i>
+        <i>is <SSR content="=doing"><slot>{doing}</slot></SSR></i>
     </div>
 </header>
 

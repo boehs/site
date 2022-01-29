@@ -1,4 +1,5 @@
 export default {
     "isJobHunting": false,
-    "author": 'Evan Boehs'
+    "author": 'Evan Boehs',
+    "isServer": false
 }

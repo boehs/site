@@ -1,6 +1,11 @@
 #!/bin/bash
 #npm install -G pnpm
 #pnpm install
+
+## prehook ##
+
+sed -Ei 's/"isServer": false/"isServer": true/g' src/config.ts
+
 npx astro build
 cd dist
 declare i=1
@@ -32,3 +37,6 @@ then
     echo 'is in prod, moving files to root'
     rm -r ../../assets/ && cp -r ./* ../../ && rm -r ./*
 fi
+
+cd ../
+sed -Ei 's/"isServer": true/"isServer": false/g' src/config.ts
