@@ -6,7 +6,7 @@ export async function render(filename: string) {
 }
 
 export default async function renderAndInfo(path: string) {
-    let md = await render(path)
-    let stats = await Deno.stat(path)
+    const md = await render(path)
+    const stats = await Deno.stat(path)
     return { ...md, ...stats }
 }

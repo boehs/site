@@ -4,13 +4,13 @@ import { Node, Tag } from './db.ts'
 
 async function renderPretty(ctx: RouterContext, NorT: typeof Node | typeof Tag) {
     const posts = await NorT.all()
-    ctx.render("pretty.html",{posts: posts})
+    ctx.render("garden/pretty.html",{posts: posts})
 }
 
 async function renderUgly(ctx: RouterContext, NorT: typeof Node | typeof Tag) {
     let posts = await NorT.select("name").all()
     posts = posts.map(x => x.name)
-    ctx.render("ugly.html",{posts: posts})
+    ctx.render("garden/ugly.html",{posts: posts})
 }
 
 async function renderMd(ctx: RouterContext,localpath: string) {
@@ -21,7 +21,7 @@ async function renderMd(ctx: RouterContext,localpath: string) {
 const router = new Router();
 
 // Post
-router.get('/garden/nodes/:id', ctx => renderMd(ctx,"postview.html"))
+router.get('/garden/nodes/:id', ctx => renderMd(ctx,"garden/postview.html"))
 
 // === Feeds ===
 // == "Ugly" ==
@@ -38,5 +38,23 @@ router.get('/garden/feed', ctx => renderPretty(ctx,Node))
 // router.get('/garden/tags/:id', ctx => renderPretty(ctx,Tag))
 // TODO == "Ugly" ==
 router.get('/garden/tags', ctx => renderUgly(ctx,Tag))
+
+router.get('/:id',async (ctx) => {
+    let id = ctx.request.url.pathname
+    let path = `${Deno.cwd()}/../dist/`
+    if (id == '') id == 'index'
+    for(let elm of [id,id + '.html',id += 'index.html']) {
+        try {
+            await Deno.open(path + elm)
+        } catch (_e) {
+            continue
+        }
+
+        if (elm?.endsWith('.html')) ctx.render(elm)
+        else await ctx.send({
+            root: path,
+        });
+    }
+})
 
 export default router

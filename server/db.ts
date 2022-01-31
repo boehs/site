@@ -86,7 +86,7 @@ export default async function setup(t1: number) {
   }
   Node.create(files)
 
-  let tagObj: [{ tag: string }] | [] = []
+  let tagObj: [{ name: string }] | [] = []
   tags.forEach(tag => {
     tagObj.push({ name: tag })
   })

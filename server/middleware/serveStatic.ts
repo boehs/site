@@ -2,10 +2,10 @@ import { send, Middleware } from "../dep.ts";
 
 const serveStatic: Middleware = async (context, next) => {
   if (context.request.url.pathname.startsWith("/assets")) {
-    const path = context.request.url.pathname.substring(7);
-
+    const path = context.request.url.pathname.replace('/assets/','');
+    console.log(path)
     await send(context, path, {
-      root: `${Deno.cwd()}/assets`,
+      root: `${Deno.cwd()}/../dist/assets`,
     });
   } else {
     await next();
