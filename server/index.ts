@@ -1,5 +1,5 @@
-import { Application } from "./dep.ts";
-import errorMiddleware from "./middleware/error.ts";
+import { Application, config } from "./dep.ts";
+import catchAllMiddleware from "./middleware/catchAll.ts";
 import renderMiddleware from "./middleware/render.ts";
 import staticMiddleware from "./middleware/serveStatic.ts";
 import router from "./routes.ts";
@@ -15,9 +15,10 @@ app.use(staticMiddleware);
 app.use(renderMiddleware);
 //app.use(errorMiddleware);
 app.use(router.routes());
+app.use(catchAllMiddleware)
 
 async function run() {
-    await app.listen({ port: 6969 });
+    await app.listen({ port: config.port });
 }
 
 run()

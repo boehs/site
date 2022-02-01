@@ -1,4 +1,4 @@
-import { Router, RouterContext } from "./dep.ts";
+import { Router, RouterContext, config } from "./dep.ts";
 import render from './fetchMd.ts'
 import { Node, Tag } from './db.ts'
 
@@ -14,7 +14,7 @@ async function renderUgly(ctx: RouterContext, NorT: typeof Node | typeof Tag) {
 }
 
 async function renderMd(ctx: RouterContext,localpath: string) {
-    const data = await render(`${Deno.cwd()}/md/${ctx.params.id}.md`)
+    const data = await render(`${config.root}/md/${ctx.params.id}.md`)
     ctx.render(localpath,data)
 }
 
@@ -38,23 +38,5 @@ router.get('/garden/feed', ctx => renderPretty(ctx,Node))
 // router.get('/garden/tags/:id', ctx => renderPretty(ctx,Tag))
 // TODO == "Ugly" ==
 router.get('/garden/tags', ctx => renderUgly(ctx,Tag))
-
-router.get('/:id',async (ctx) => {
-    let id = ctx.request.url.pathname
-    let path = `${Deno.cwd()}/../dist/`
-    if (id == '') id == 'index'
-    for(let elm of [id,id + '.html',id += 'index.html']) {
-        try {
-            await Deno.open(path + elm)
-        } catch (_e) {
-            continue
-        }
-
-        if (elm?.endsWith('.html')) ctx.render(elm)
-        else await ctx.send({
-            root: path,
-        });
-    }
-})
 
 export default router

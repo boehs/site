@@ -1,4 +1,4 @@
-import { SQLite3Connector, Database, DBModel, DataTypes, Relationships } from './dep.ts'
+import { SQLite3Connector, Database, DBModel, DataTypes, Relationships, config} from './dep.ts'
 import render from './fetchMd.ts'
 
 const connector = new SQLite3Connector({
@@ -62,9 +62,9 @@ export default async function setup(t1: number) {
   const tags = new Set()
   const files: [{ name: string, updated_at: string, created_at: string, description: string }] | [] = []
   const filesWithTags: [[string, [string]]] | [] = []
-  for await (const file of Deno.readDir(`${Deno.cwd()}/md`)) {
+  for await (const file of Deno.readDir(`${config.root}/md`)) {
     if (file.name.split('.').last() == 'md') {
-      const fileinfo = await render(`${Deno.cwd()}/md/${file.name}`)
+      const fileinfo = await render(`${config.root}/md/${file.name}`)
       if (fileinfo.meta && fileinfo.meta.tags) {
         fileinfo.meta.tags.forEach((element: string) => {
           tags.add(element)

@@ -1,3 +1,5 @@
+import { config } from './dep.ts'
+
 // Shared
 
 function getRandomArbitrary(min: number, max: number) {
@@ -6,7 +8,7 @@ function getRandomArbitrary(min: number, max: number) {
 
 // RandIs
 
-const doings = Object.values(await Deno.readTextFile(`${Deno.cwd()}/resources/is.txt`).then(res => res.split('\n')))
+const doings = Object.values(await Deno.readTextFile(`${config.root}/resources/is.txt`).then(res => res.split('\n')))
 let isDoing = doings[Math.floor(Math.random() * doings.length)];
 let doingChance = 0
 
@@ -16,7 +18,6 @@ export function getDoing() {
         doingChance = 0
     }
     doingChance++;
-    console.log(doingChance)
     return isDoing
 }
 
