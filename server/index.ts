@@ -4,9 +4,6 @@ import renderMiddleware from "./middleware/render.ts";
 import staticMiddleware from "./middleware/serveStatic.ts";
 import router from "./routes.ts";
 import db from './db.ts'
-import {init} from './core.ts'
-
-init()
 
 const app = new Application();
 console.log('Starting server!!')

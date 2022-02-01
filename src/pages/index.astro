@@ -7,8 +7,11 @@ const greetings: Array<string> = Object.values(greet).map(x => [x.hello,x.langua
 const yo = greetings[Math.floor(Math.random() * greetings.length)];
 ---
 <Main title="Home">
-    <h2 style="margin-block-end: 0;"slot="title"><SSR content='= it.langGreeting.greeting]'>{yo[0]}! 👋</SSR></h2>
-    <sup><SSR content="= it.langGreeting.lang">{yo[1]}</SSR></sup>
+    <h2 style="margin-block-end: 0;"slot="title">
+        <SSR content="let lang = it.lang()"/>
+        <SSR content='= lang.hello'>{yo[0]}</SSR>! 👋
+    </h2>
+    <sup><SSR content="= lang.language">{yo[1]}</SSR></sup>
     <p>I'm Evan, your run of the mill programmer, ski bum, photographer, and believer.</p>
     <p>I believe in <Wikilink href="/details">details</Wikilink>, that the little things make us whole.
     I believe that with hard work and love, anything is possible.

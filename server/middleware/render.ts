@@ -1,5 +1,4 @@
-import { configure, renderFile, Middleware, config } from "../dep.ts";
-import { getDoing } from '../core.ts'
+import { configure, renderFile, Middleware, config, renderData } from "../dep.ts";
 
 const render: Middleware = async (context, next) => {
   configure({
@@ -9,7 +8,7 @@ const render: Middleware = async (context, next) => {
 
   context.render = async (file, data = {}) => {
     context.response.headers.set("Content-Type", "text/html; charset=utf-8");
-    context.response.body = await renderFile(file, {...data, doing: getDoing});
+    context.response.body = await renderFile(file, {...data, ...renderData});
   };
 
   await next();

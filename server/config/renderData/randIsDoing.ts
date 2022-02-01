@@ -1,4 +1,4 @@
-import { config } from './dep.ts'
+import { config } from '../../dep.ts'
 
 // Shared
 
@@ -19,11 +19,4 @@ export function getDoing() {
     }
     doingChance++;
     return isDoing
-}
-
-
-// init
-
-export function init() {
-    return
 }

@@ -8,4 +8,5 @@ export type { Middleware, RouterContext } from "https://deno.land/x/oak@v9.0.1/m
 export { Marked as Markdown } from 'https://deno.land/x/markdown@v2.0.0/mod.ts'
 export { Database, SQLite3Connector, Model as DBModel, DataTypes, Relationships } from 'https://raw.githubusercontent.com/boehs/denodb/patch-1/mod.ts'
 
-export { default as config } from './config.ts'
+export { default as config } from './config/config.ts'
+export { default as renderData} from './config/renderData.ts'
