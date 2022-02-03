@@ -1,21 +1,29 @@
-import { Router, RouterContext, config } from "./dep.ts";
+import { Router, RouterContext, config, secrets } from "./dep.ts";
 import render from './fetchMd.ts'
-import { Node, Tag } from './db.ts'
+import { Node, Tag, Persistent } from './db.ts'
+
+function isAuthenticated(auth: string | null) {
+    const matches = /Bearer\s*(.*)/.exec(auth ?? "")
+
+    if (matches && matches.length > 1) {
+        return matches[1] == secrets.admin;
+      }
+}
 
 async function renderPretty(ctx: RouterContext, NorT: typeof Node | typeof Tag) {
     const posts = await NorT.all()
-    ctx.render("garden/pretty.html",{posts: posts})
+    await ctx.render("garden/pretty.html",{posts: posts})
 }
 
 async function renderUgly(ctx: RouterContext, NorT: typeof Node | typeof Tag) {
     let posts = await NorT.select("name").all()
     posts = posts.map(x => x.name)
-    ctx.render("garden/ugly.html",{posts: posts})
+    await ctx.render("garden/ugly.html",{posts: posts})
 }
 
 async function renderMd(ctx: RouterContext,localpath: string) {
     const data = await render(`${config.root}/md/${ctx.params.id}.md`)
-    ctx.render(localpath,data)
+    await ctx.render(localpath,data)
 }
 
 const router = new Router();
@@ -38,5 +46,26 @@ router.get('/garden/feed', ctx => renderPretty(ctx,Node))
 // router.get('/garden/tags/:id', ctx => renderPretty(ctx,Tag))
 // TODO == "Ugly" ==
 router.get('/garden/tags', ctx => renderUgly(ctx,Tag))
+
+
+/// === post ===
+
+router.post('/is/set/:message',async ctx => {
+    if (!isAuthenticated(ctx.request.headers.get('Authorization')))
+        return ctx.response.status = 418
+        const dbLen = await Persistent.count()
+        if(dbLen == 0) await Persistent.create({id: 0, is: ctx.params.message})
+        else {
+            const firstValue = Persistent.first()
+            if (dbLen > 0) {
+                await Persistent.delete()
+                await Persistent.create({id: 0, is: ctx.params.message})
+            }
+            else await firstValue.then(async thing => {
+                thing.is = ctx.params.message
+                await thing.update()
+            })
+        }
+})
 
 export default router

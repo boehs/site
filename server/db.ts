@@ -44,20 +44,24 @@ export class Tag extends DBModel {
   }
 }
 
+// Persistent Store
+export class Persistent extends DBModel {
+  static table = 'persistent';
+  static fields = {
+    id: DataTypes.INTEGER,
+    is: DataTypes.STRING
+  }
+}
+
 export const NodeTags = Relationships.manyToMany(Node, Tag);
 
 Array.prototype.last = function () {
   return this[this.length - 1];
 };
 
-export default async function setup(t1: number) {
+async function setupFileStore() {
 
   db.link([Node, Tag, NodeTags]).sync({ drop: true })
-
-  console.log(`DB Set up in ${Math.floor(performance.now() - t1)}ms.\
- Propagating contents to DB, this might take a bit if you have lots of files.`)
-
-  t1 = performance.now()
 
   const tags = new Set()
   const files: [{ name: string, updated_at: string, created_at: string, description: string }] | [] = []
@@ -86,7 +90,7 @@ export default async function setup(t1: number) {
   }
   Node.create(files)
 
-  let tagObj: [{ name: string }] | [] = []
+  const tagObj: [{ name: string }] | [] = []
   tags.forEach(tag => {
     tagObj.push({ name: tag })
   })
@@ -94,7 +98,7 @@ export default async function setup(t1: number) {
 
   // This is very likely not a good way to do this.
   const tagQuery = await (async function () {
-    let tagQuery: [any?] = [];
+    const tagQuery: [any?] = [];
     for (const file of filesWithTags) {
       const FileId = await Node.where('name', file[0]).first()
       for (const tag of file[1]) {
@@ -107,7 +111,20 @@ export default async function setup(t1: number) {
 
   await NodeTags.create(tagQuery)
 
-  console.log(`DB is ready. Took ${Math.floor(performance.now() - t1)}ms.`)
 
   return { db, Node, Tag }
+}
+
+export default async function setup(t1:number) {
+  db.link([Persistent]).sync()
+
+  console.log(`DB Set up in ${Math.floor(performance.now() - t1)}ms.\
+ Propagating contents to DB, this might take a bit if you have lots of files.`)
+  t1 = performance.now()
+
+  const FileStoreReturn = await setupFileStore()
+
+  console.log(`DB is ready. Took ${Math.floor(performance.now() - t1)}ms.`)
+
+  return {...FileStoreReturn, Persistent}
 }

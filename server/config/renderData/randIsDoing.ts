@@ -1,4 +1,5 @@
 import { config } from '../../dep.ts'
+import { Persistent } from '../../db.ts'
 
 // Shared
 
@@ -12,11 +13,15 @@ const doings = Object.values(await Deno.readTextFile(`${config.root}/resources/i
 let isDoing = doings[Math.floor(Math.random() * doings.length)];
 let doingChance = 0
 
-export function getDoing() {
+function randDoing() {
     if(doingChance > getRandomArbitrary(0,1000)) {
         isDoing = doings[Math.floor(Math.random() * doings.length)];
         doingChance = 0
     }
     doingChance++;
     return isDoing
+}
+
+export function getDoing() {
+    return Persistent.select("is").first().then(thing => thing.is)
 }

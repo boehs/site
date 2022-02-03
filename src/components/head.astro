@@ -19,7 +19,7 @@ console.log('does anyone even read this?')
                 <h1>{config.author}</h1>
             </a>
         </div>
-        <i>is {Astro.props.is ? doing : <SSR content="= it.doing()"><slot>{doing}</slot></SSR>}</i>
+        <i>is {Astro.props.is ? doing : <SSR content="= await it.doing()"><slot>{doing}</slot></SSR>}</i>
     </div>
 </header>
 

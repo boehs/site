@@ -1,4 +1,4 @@
-export { configure, renderFile } from "https://deno.land/x/eta@v1.12.3/mod.ts";
+export { configure, renderFileAsync as renderFile } from "https://deno.land/x/eta@v1.12.3/mod.ts";
 export {
     Application,
     Router,
@@ -10,3 +10,5 @@ export { Database, SQLite3Connector, Model as DBModel, DataTypes, Relationships 
 
 export { default as config } from './config/config.ts'
 export { default as renderData} from './config/renderData.ts'
+
+export const secrets = JSON.parse(await Deno.readTextFile('./config/secrets.json'))

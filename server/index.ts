@@ -1,9 +1,11 @@
+import db from './db.ts'
 import { Application, config } from "./dep.ts";
 import catchAllMiddleware from "./middleware/catchAll.ts";
 import renderMiddleware from "./middleware/render.ts";
 import staticMiddleware from "./middleware/serveStatic.ts";
 import router from "./routes.ts";
-import db from './db.ts'
+
+await db(performance.now())
 
 const app = new Application();
 console.log('Starting server!!')
@@ -20,6 +22,5 @@ async function run() {
 
 run()
 console.log(`Server started in ${Math.floor(performance.now() - t1)}ms. Setting Up DB.`)
-db(performance.now())
 
 export { app };

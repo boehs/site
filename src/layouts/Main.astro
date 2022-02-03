@@ -51,6 +51,12 @@ if (warnReason) warnReason.forEach(item => Stf.add(item))
 </html>
 
 <style global>
+:root {
+  --light: #0aa06e;
+  --lighter: #b1c8c0;
+  --active: #0a61a0
+  --activer: #b1c1cc
+}
 body, code {
   font-family: monospace;
 }
@@ -88,7 +94,7 @@ hr::after {
 }
 
 .lighter {
-  color: #0aa06e
+  color: var(--light)
 }
 
 ul {

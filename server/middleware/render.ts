@@ -8,7 +8,9 @@ const render: Middleware = async (context, next) => {
 
   context.render = async (file, data = {}) => {
     context.response.headers.set("Content-Type", "text/html; charset=utf-8");
-    context.response.body = await renderFile(file, {...data, ...renderData});
+    console.dir(await {...data, ...renderData}.doing())
+    const body = await renderFile(file, {...data, ...renderData},{async: true})
+    context.response.body = body
   };
 
   await next();
