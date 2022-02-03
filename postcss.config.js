@@ -1,7 +1,8 @@
 module.exports = {
     plugins: [
-        require('cssnano')({
-            preset: 'default',
+        require('postcss-csso')({
+            restructure: true
         }),
+        require('postcss-variable-compress')([]),
     ],
 };

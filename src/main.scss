@@ -1,0 +1,212 @@
+:root {
+  --light: #0aa06e;
+  --lighter: #b1c8c0;
+  --darker: #086647;
+  --active: #0a61a0;
+  --activer: #b1c1cc;
+  --warn: #d6863a;
+  --warner: #ccbcb1;
+  --radius: 3px
+}
+
+body,
+code,
+button {
+  font-family: monospace;
+}
+
+body {
+  font-size: 18px;
+  min-width: 100%;
+  margin: 0;
+  overflow-y: overlay;
+  background: whitesmoke;
+
+  & > div {
+    display: flex;
+    justify-content: center;
+
+    & > div {
+      padding: 3% 0;
+      max-width: 64ch;
+    }
+  }
+}
+
+nav > *,
+img {
+  width: 100%;
+}
+
+img {
+  border-radius: var(--radius);
+}
+
+hr {
+  border-style: none;
+  border-width: 0;
+  text-align: center;
+  width: 100%;
+
+  &::after {
+    content: "---";
+  }
+}
+
+.lighter {
+  color: var(--light);
+}
+
+ul {
+  list-style: georgian;
+  list-style-position: outside;
+  margin-block-end: 0;
+  margin-block-start: 0;
+}
+
+code {
+  background-color: #eee;
+  border-radius: var(--radius);
+  padding: 0 3px;
+}
+
+footer {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+
+  pre {
+    overflow: hidden;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    list-style-position: inside;
+    padding-inline-start: 0px;
+  }
+
+  nav {
+    width: 100%;
+
+    & > div {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 25px;
+
+      & > div {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+header {
+  padding-top: 50px;
+  width: 100%;
+
+  h1 {
+    font-size: inherit;
+    font-weight: inherit;
+    display: inline;
+  }
+
+  > * {
+    width: 100%;
+    text-align: center;
+  }
+
+  .lighter > a {
+    text-decoration: inherit;
+    color: inherit;
+  }
+}
+
+address {
+  font-style: initial;
+}
+
+div.card,
+button {
+  background-color: var(--lighter);
+  padding: 10px;
+  margin: 10px;
+  border-radius: var(--radius);
+  transition: 0.3s;
+
+  &:hover {
+    background-color: var(--activer);
+  }
+}
+
+button {
+  cursor: pointer;
+  margin: 0;
+  border: none;
+}
+
+@media screen and (max-width: 800px) {
+  article {
+    padding: 0 20px;
+  }
+
+  footer {
+    padding: 0 20px;
+    pre {
+      font-size: 2.32vw;
+    }
+
+    .e {
+      display: block;
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #282828;
+    color: whitesmoke;
+  }
+
+  code {
+    background-color: darkslategray;
+  }
+
+  a {
+    color: #9e9eff;
+
+    &:active {
+      color: #ff9e9e;
+    }
+
+    &:visited {
+      color: #d0adf0;
+    }
+  }
+}
+
+/* reuse */
+div,
+h1 {
+  margin-block-end: 0;
+  margin-block-start: 0;
+}
+
+// extra classes
+
+.banner {
+  background-color: var(--warner);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner > div {
+  width: 64ch;
+}
+
+.jp {
+  font-size: 14px;
+}

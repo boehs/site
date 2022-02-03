@@ -9,8 +9,8 @@ if (warnReason) warnReason.forEach(item => Stf.add(item))
 ---
 <html lang="en">
   <head>
-    {noindex ? <meta name="robots" content="noindex"> : null}
-    {warn ? <meta name="rating" content="adult"> : null}
+    {noindex ? <meta name="robots" content="noindex"> : "\r"}
+    {warn ? <meta name="rating" content="adult"> : "\r"}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="theme-color" content="#0aa06e"/>
@@ -50,96 +50,6 @@ if (warnReason) warnReason.forEach(item => Stf.add(item))
   </body>
 </html>
 
-<style global>
-:root {
-  --light: #0aa06e;
-  --lighter: #b1c8c0;
-  --active: #0a61a0
-  --activer: #b1c1cc
-}
-body, code {
-  font-family: monospace;
-}
-
-body {
-  font-size: 18px;
-  min-width: 100%;
-  margin: 0;
-  overflow-y: overlay;
-  background: whitesmoke;
-}
-
-body > div, footer {
-  display: flex;
-  justify-content: center;
-}
-
-body > div > div {
-  padding: 3% 0;
-  max-width: 64ch;
-}
-
-footer > nav, nav > *, hr, header, header > * {
-  width: 100%;
-}
-
-hr {
-  border-style: none;
-  border-width: 0;
-  text-align: center;
-}
-
-hr::after {
-  content: '---';
-}
-
-.lighter {
-  color: var(--light)
-}
-
-ul {
-  list-style: georgian;
-  list-style-position: outside;
-}
-
-code {
-  background-color: #eee;
-  border-radius: 3px;
-  padding: 0 3px;
-}
-
-@media screen and (max-width: 800px) {
-  article, footer {
-    padding: 0 20px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background: #282828;
-    color: whitesmoke;
-  }
-
-  code {
-    background-color: darkslategray;
-  }
-
-  a {
-    color: #9E9EFF;
-  }
-
-  a:active {
-    color: #FF9E9E
-  }
-
-  a:visited {
-    color: #D0ADF0
-  }
-}
-
-/* reuse */
-div,ul,h1 {
-  margin-block-end: 0;
-  margin-block-start: 0;
-}
+<style global lang="sass">
+@import '../main.scss'
 </style>

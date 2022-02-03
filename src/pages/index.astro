@@ -8,7 +8,7 @@ const yo = greetings[Math.floor(Math.random() * greetings.length)];
 ---
 <Main title="Home">
     <h2 style="margin-block-end: 0;"slot="title">
-        <SSR content="let lang = it.lang()"/>
+        <SSR content="let lang = it.lang()">{}</SSR>
         <SSR content='= lang.hello'>{yo[0]}</SSR>! 👋
     </h2>
     <sup><SSR content="= lang.language">{yo[1]}</SSR></sup>

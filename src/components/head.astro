@@ -1,6 +1,4 @@
 ---
-    // This code is only fired once in a while, AKA when the site is built
-    // This is intentional
     import stuff from './deets/isdoingstuffagain.txt?raw'
     import config from '$config'
     import SSR from 'component:SSR'
@@ -22,28 +20,3 @@ console.log('does anyone even read this?')
         <i>is {Astro.props.is ? doing : <SSR content="= await it.doing()"><slot>{doing}</slot></SSR>}</i>
     </div>
 </header>
-
-<style>
-header {
-    padding-top: 50px;
-}
-
-h1 {
-    font-size: inherit;
-    font-weight: inherit;
-    display: inline;
-}
-
-header > * {
-    text-align: center;
-}
-
-.jp {
-  font-size: 14px;
-}
-
-.lighter>a {
-    text-decoration: inherit;
-    color: inherit;
-}
-</style>

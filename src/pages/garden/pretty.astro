@@ -4,21 +4,9 @@ import SSR from 'component:SSR'
 ---
 <Main>
     <SSR content='it.posts.forEach(element fix=> {'/>
-        <div>
+        <div class="card">
             <h3><SSR content='= element.name'/></h3>
             <p><SSR content='~ element.description'/></p>
         </div>
     <SSR content='})'/>
 </Main>
-<style>
-div {
-    background-color: var(--lighter);
-    margin: 10px;
-    padding: 10px;
-    border-radius: 3px;
-    transition: 0.3s;
-}
-div:hover {
-    background-color: var(--activer);
-}
-</style>
