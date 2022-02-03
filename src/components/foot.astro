@@ -26,14 +26,13 @@
 <div>
     <div>Feeds</div>
     <ul>
-        <li><a href="/stream">Stream</a></li>
         <li><a href="/river">Blog</a></li>
         <li><a href="/garden">Garden</a></li>
-        <li><a href="/photos">Photos</a></li>
+        <li><a href="/journal">Journal</a></li>
     </ul>
 </div>
 <div>
-    <div>Links?!</div>
+    <div>Links</div>
     <ul>
         <li>
             <a href="https://sr.ht/~boehs">SourceHut</a>
@@ -41,14 +40,17 @@
             <a href="https://github.com/boehs">GitHub</a>
         </li>
         <li><a href="https://linkedin.com/in/boehs">LinkedIn</a></li>
+        <li><a href="https://500px.com/taps">Photos</a></li>
     </ul>
 </div>
 <div style="padding-bottom: 50px;">
     <div>Boring</div>
     <ul>
         <li>
-            <a href="/privacy">privacy</a> | <abbr title="Sharing is caring!">copyleft</abbr> {config.author}
+            <a href="/privacy">Privacy</a> | <abbr title="Sharing is caring!" style="
+            display: inline-block;transform: rotateY(180deg);">&copy;</abbr> {config.author}
         </li>
+        {config.donate ? <li><a href={config.donate}>Donate</a></li> : null}
     </ul>
 </div>
 </nav>

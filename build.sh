@@ -15,9 +15,6 @@ for f in $(find * -name '*.html' -or -name ''); do
     declare contents=$(cat $f)
     # css file name
     declare matchedcss=$(sed -nE 's/  <link rel="stylesheet" href="(.*?\/(.*?)\.css)">/\1/p' $f)
-    # standard astro prefix
-    declare matchedtag=$(sed -nE 's/<header class="(astro-.*?)">/\1/p' $f)
-    echo "for what it's worth, the matched tag was $matchedtag"
     # Remove new lines
     if ! grep -q "script" "$f"; then
         echo -n $(tr -d "\n" < $f) > $f
@@ -27,10 +24,6 @@ for f in $(find * -name '*.html' -or -name ''); do
 
     # fix =>
     sed -Ei "s/fix=&gt;/=>/g" $f
-    ### Time for CSS ###
-    # Remove all astro prefixes
-    echo "parsing css for file $i"
-    sed -Ei "s/>\.$matchedtag/>\*/g;s/.$matchedtag//g;s/astro-/e/g;s/(e[A-Z0-9]{3})[A-Z0-9]{5}/\1/g" assets/$(basename $matchedcss)
     i=$(($i + 1))
 done
 # Move to site root
