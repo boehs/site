@@ -16,6 +16,7 @@ if (warnReason) warnReason.forEach(item => Stf.add(item))
     <meta name="theme-color" content="#0aa06e"/>
     <meta name="author" content={config.author}>
     <meta name="description" content={Astro.props.is ? `${config.author} is ${Astro.props.is}.` : `Some ramblings about ${Astro.props.title}!`}>
+    <meta name="referrer" content="no-referrer">
     <title>{title}</title>
   </head>
   <body>
@@ -35,7 +36,6 @@ if (warnReason) warnReason.forEach(item => Stf.add(item))
       are MY OWN and do not reflect that of my employer.</p>
     </Banner> : null
     }
-    <div>
       <div>
         <Header is={is} title={title}/>
         <article>
@@ -46,7 +46,6 @@ if (warnReason) warnReason.forEach(item => Stf.add(item))
         </article>
         <Footer/>
       </div>
-    </div>
   </body>
 </html>
 

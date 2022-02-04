@@ -8,6 +8,10 @@
 
 // @ts-check
 
+// import htmlPurge from 'vite-plugin-html-purgecss'
+import { createHtmlPlugin } from 'vite-plugin-html'
+import compileTime from "vite-plugin-compile-time"
+
 export default /** @type {import('astro').AstroUserConfig} */ ({
 	// Comment out "renderers: []" to enable Astro's default component support.
 	buildOptions: {
@@ -15,6 +19,9 @@ export default /** @type {import('astro').AstroUserConfig} */ ({
 		pageUrlFormat: 'file'
 	},
 	vite: {
-		assetsInclude: ['**/*.txt'],
+		plugins: [
+			createHtmlPlugin(),
+			compileTime()
+		]
 	},
 });

@@ -2,7 +2,7 @@
     import config from '$config'
     import flowerpower from '../components/deets/flowerpower.txt?raw'
     let flowers = [[], []]
-    Object.values(flowerpower.split('\n---'))
+    Object.values(flowerpower.split('\n?'))
         .reverse()
         .map(x => {
             flowers[0].push(Number(x.substring(0, 1)))
@@ -11,7 +11,7 @@
 ---
 <footer>
 <pre id="flower" class="lighter">
-{('\n' + flowers[1][flowers[0].length - 1])}
+{(flowers[1][flowers[0].length - 1].split('\n').reverse()[0])}
 </pre>
 
 <nav>
@@ -55,4 +55,4 @@
 </div>
 </nav>
 </footer>
-<script src={Astro.resolve('../scripts/flowers.ts')}></script>
+<script src={Astro.resolve('../scripts/main.ts')}></script>

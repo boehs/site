@@ -5,18 +5,11 @@
     const stuffs: Array<String> = Object.values(stuff.split('\n'))
     const doing = Astro.props.is ? Astro.props.is : stuffs[Math.floor(Math.random() * stuffs.length)];
 ---
-<script>
-console.log('does anyone even read this?')
-</script>
-
 <header>
-    <div>
-        <div class="lighter">
-            <a href="/">
-                <span class="jp">木</span>
-                <h1>{config.author}</h1>
-            </a>
-        </div>
+    <span>
+        <a href="/" class="lighter">
+            <span class="jp">木</span>&nbsp;<h1>{config.author}</h1>
+        </a>
         <i>is {Astro.props.is ? doing : <SSR content="= await it.doing()"><slot>{doing}</slot></SSR>}</i>
-    </div>
+    </span>
 </header>

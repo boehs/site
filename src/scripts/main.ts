@@ -1,11 +1,19 @@
+console.log('is anyone out there? 🔦')
+
 import flowerpower from '../components/deets/flowerpower.txt?raw'
-let flowers = [[], []]
-Object.values(flowerpower.split('\n---'))
-    .reverse()
-    .map(x => {
-        flowers[0].push(Number(x.substring(0, 1)))
-        flowers[1].push(x.substring(1));
+let flowers = [[], []], prev
+Object.values(flowerpower.split('\n?'))
+    .map((step: string,i) => {
+        if (i == 0) prev = step.split('\n')
+        flowers[0].push(Number(step.substring(0, 1)))
+        flowers[1].push((function(){
+            return step.substring(1).split('\n').map((x,i2) => {
+                if (x == '!') return prev[i2]
+                else return x
+            }).join('\n')
+        })());
     })
+flowers = flowers.map(x => x.reverse())
 
 let isanimating = false
 let timeleft;
@@ -41,7 +49,6 @@ function shit() {
     if (isanimating == true) return
     if (ishover == false && state == true) doanimation(true, [...flowers[0]], [...flowers[1]])
     else if (ishover == true && state == false) doanimation(false, [...flowers[0]], [...flowers[1]])
-    else console.log('f')
 }
 
 timeleft = flowers[0].length

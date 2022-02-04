@@ -6,7 +6,7 @@
   --activer: #b1c1cc;
   --warn: #d6863a;
   --warner: #ccbcb1;
-  --radius: 3px
+  --radius: 3px;
 }
 
 body,
@@ -21,15 +21,12 @@ body {
   margin: 0;
   overflow-y: overlay;
   background: whitesmoke;
+  display: flex;
+  justify-content: center;
 
   & > div {
-    display: flex;
-    justify-content: center;
-
-    & > div {
-      padding: 3% 0;
-      max-width: 64ch;
-    }
+    padding: 3% 0;
+    max-width: 64ch;
   }
 }
 
@@ -112,14 +109,13 @@ header {
     display: inline;
   }
 
-  > * {
-    width: 100%;
+  > * > * {
+    display: block;
     text-align: center;
   }
 
-  .lighter > a {
+  a.lighter {
     text-decoration: inherit;
-    color: inherit;
   }
 }
 
