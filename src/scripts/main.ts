@@ -1,17 +1,18 @@
 console.log('is anyone out there? 🔦')
 
 import flowerpower from '../components/deets/flowerpower.txt?raw'
-let flowers = [[], []], prev
+let flowers: [[number],[string]] = [[], []], prev
 Object.values(flowerpower.split('\n?'))
     .map((step: string,i) => {
         if (i == 0) prev = step.split('\n')
         flowers[0].push(Number(step.substring(0, 1)))
-        flowers[1].push((function(){
+        flowers[1].push((() => {
             return step.substring(1).split('\n').map((x,i2) => {
                 if (x == '!') return prev[i2]
                 else return x
             }).join('\n')
         })());
+        prev = flowers[1][i].split('\n')
     })
 flowers = flowers.map(x => x.reverse())
 
@@ -21,18 +22,17 @@ let ishover = true;
 let state = false;
 let flowerElm = document.getElementById('flower')
 
-function doanimation(should_reverse = false, flower_time, flower) {
+function doanimation(should_reverse = false) {
+    let flower_time = flowers[0]
+    let flower = flowers[1]
     isanimating = true;
     if (should_reverse) {
         flower_time = flower_time.reverse()
         flower = flower.reverse()
         state = false
     }
-    else {
-        flower_time = flower_time
-        state = true
-    }
-    let int = setInterval(function () {
+    else state = true
+    let int = setInterval(() => {
         flowerElm.innerHTML = flower[timeleft - 1]
         if (flower_time[timeleft - 1] == 0) timeleft -= 1
         else flower_time[timeleft - 1] -= 1
@@ -47,19 +47,19 @@ function doanimation(should_reverse = false, flower_time, flower) {
 
 function shit() {
     if (isanimating == true) return
-    if (ishover == false && state == true) doanimation(true, [...flowers[0]], [...flowers[1]])
-    else if (ishover == true && state == false) doanimation(false, [...flowers[0]], [...flowers[1]])
+    if (ishover == false && state == true) doanimation(true)
+    else if (ishover == true && state == false) doanimation(false)
 }
 
 timeleft = flowers[0].length
 
 // I give up
 flowerElm.innerHTML = flowers[1][flowers[0].length - 1]
-flowerElm.onmouseover = function () {
+flowerElm.onmouseover = () => {
     ishover = true
     shit()
 };
-flowerElm.onmouseout = function () {
+flowerElm.onmouseout = () => {
     ishover = false
     shit()
 };
