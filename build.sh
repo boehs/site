@@ -4,7 +4,7 @@
 
 ## prehook ##
 
-sed -Ei 's/"isServer": false/"isServer": true/g' src/config.ts
+# sed -Ei 's/"isServer": false/"isServer": true/g' src/config.ts
 
 npx astro build
 cd dist
@@ -34,4 +34,4 @@ then
 fi
 
 cd ../
-sed -Ei 's/"isServer": true/"isServer": false/g' src/config.ts
+#sed -Ei 's/"isServer": true/"isServer": false/g' src/config.ts

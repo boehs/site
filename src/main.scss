@@ -149,11 +149,12 @@ button {
 
   footer {
     padding: 0 20px;
+
     pre {
-      font-size: 2.32vw;
+      display: none;
     }
 
-    .e {
+    nav > div {
       display: block;
     }
   }
@@ -182,7 +183,6 @@ button {
   }
 }
 
-/* reuse */
 div,
 h1 {
   margin-block-end: 0;
