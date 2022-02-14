@@ -20,7 +20,7 @@ export default /** @type {import('astro').AstroUserConfig} */ ({
 	},
 	vite: {
 		plugins: [
-			createHtmlPlugin(),
+			//createHtmlPlugin(),
 			compileTime()
 		]
 	},

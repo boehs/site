@@ -23,8 +23,8 @@ let state = false;
 let flowerElm = document.getElementById('flower')
 
 function doanimation(should_reverse = false) {
-    let flower_time = flowers[0]
-    let flower = flowers[1]
+    let flower_time = [...flowers[0]]
+    let flower = [...flowers[1]]
     isanimating = true;
     if (should_reverse) {
         flower_time = flower_time.reverse()
@@ -53,7 +53,7 @@ function shit() {
 
 timeleft = flowers[0].length
 
-// I give up
+// Hydrate via script to ensure it does not look wierd for those without javascript
 flowerElm.innerHTML = flowers[1][flowers[0].length - 1]
 flowerElm.onmouseover = () => {
     ishover = true
