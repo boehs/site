@@ -1,13 +1,14 @@
 console.log('is anyone out there? 🔦')
 
 import flowerpower from '../components/deets/flowerpower.txt?raw'
-let flowers: [[number],[string]] = [[], []], prev
+let flowers: [[number?],[string?]] = [[], []], prev
 Object.values(flowerpower.split('\n?'))
     .map((step: string,i) => {
         if (i == 0) prev = step.split('\n')
         flowers[0].push(Number(step.substring(0, 1)))
         flowers[1].push((() => {
             return step.substring(1).split('\n').map((x,i2) => {
+                x = x.replace(/[0-9]/g, match => " ".repeat(Number(match) + 2))
                 if (x == '!') return prev[i2]
                 else return x
             }).join('\n')
