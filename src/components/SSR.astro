@@ -1,4 +1,0 @@
----
-import config from '$config'
----
-{(false || (config.isServer || !Astro.slots.default)) ? `![${Astro.props.content}]!` : <slot/>}

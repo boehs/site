@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+   <head>
+     {% include "partials/meta.njk" %}
+   </head>
+   <body>
+      <div>
+         <header>
+           {% include "partials/head.njk" %}
+         </header>
+         <article>
+           <h1>{{title}}</h1>
+           {{content | safe}}
+         </article>
+         <footer>
+           {% include "partials/foot.njk" %}
+         </footer>
+         <script src="./assets/main.61d2030b.js"></script>
+      </div>
+   </body>
+</html>

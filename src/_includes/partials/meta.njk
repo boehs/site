@@ -1,0 +1,9 @@
+<meta charset="utf-8">
+{%for name,content in metaTags %}
+<meta name="{{name}}" content="{{content | interpolate}}">
+{%endfor%}
+{% if noindex %}
+<meta name="robots" content="noindex">
+{% endif %}
+<title>{{title}}</title>
+<link rel="stylesheet" href="./assets/privacy.ada0f340.css">
