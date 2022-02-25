@@ -1,0 +1,28 @@
+{
+	"scripts": {
+		"start": "npm-run-all --parallel dev:*",
+		"dev:eleventy": "ELEVENTY_ENV=development eleventy --serve --quiet",
+		"dev:parcel": "parcel watch _public/*.{scss,ts} --dist-dir dist --no-source-maps",
+		"build": "run-s prod:*",
+		"prod:eleventy": "ELEVENTY_ENV=production eleventy",
+		"prod:parcel": "parcel build _public/*.{scss,ts} --no-source-maps"
+	},
+	"dependencies": {
+		"@11ty/eleventy": "^1.0.0",
+		"@parcel/config-default": "^2.3.2",
+		"@parcel/core": "^2.3.2",
+		"@parcel/optimizer-terser": "^2.3.2",
+		"npm-run-all": "^4.1.5",
+		"nunjucks": "^3.2.3",
+		"parcel": "^2.3.2",
+		"postcss": "^8.4.7",
+		"postcss-csso": "^6.0.0",
+		"postcss-variable-compress": "^1.0.0",
+		"sass": "1.49.9",
+		"typescript": "^4.5.5"
+	},
+	"devDependencies": {
+		"@parcel/transformer-inline-string": "2.3.2",
+		"@parcel/transformer-sass": "2.3.2"
+	}
+}

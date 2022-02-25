@@ -1,6 +1,6 @@
 console.log('is anyone out there? 🔦')
 
-import flowerpower from '../components/deets/flowerpower.txt?raw'
+import flowerpower from 'bundle-text:../_data/deets/flowerpower.txt'
 let flowers: [[number?],[string?]] = [[], []], prev
 Object.values(flowerpower.split('\n?'))
     .map((step: string,i) => {
