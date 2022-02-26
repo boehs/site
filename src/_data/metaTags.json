@@ -1,6 +1,6 @@
 {
     "viewport": "width=device-width,initial-scale=1",
-    "theme-color": "{{config.color}}",
+    "theme-color": "{{color if color else config.color}}",
     "author": "{{config.author}}",
     "description": "Some ramblings about {{title}}!",
     "referrer": "no-referrer"

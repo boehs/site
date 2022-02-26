@@ -4,6 +4,14 @@
      {% include "partials/meta.njk" %}
    </head>
    <body>
+      {% if color %}
+      <style>
+        :root {
+          --0: {{color}}
+        }
+      </style>
+      {% endif %}
+
       <div>
          <header>
            {% include "partials/head.njk" %}

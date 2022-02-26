@@ -1,0 +1,3 @@
+[submodule "src/pages/c"]
+	path = src/pages/c
+	url = https://github.com/boehs/oasis
