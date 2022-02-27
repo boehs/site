@@ -7,6 +7,12 @@ specifiers:
   '@parcel/optimizer-terser': ^2.3.2
   '@parcel/transformer-inline-string': 2.3.2
   '@parcel/transformer-sass': 2.3.2
+  markdown-it: ^12.3.2
+  markdown-it-anchor: ^8.4.1
+  markdown-it-attrs: ^4.1.3
+  markdown-it-obsidian: ^1.1.0
+  markdown-it-table-of-contents: ^0.6.0
+  markdown-it-title: ^4.0.0
   npm-run-all: ^4.1.5
   nunjucks: ^3.2.3
   parcel: ^2.3.2
@@ -21,6 +27,12 @@ dependencies:
   '@parcel/config-default': 2.3.2_@parcel+core@2.3.2+postcss@8.4.7
   '@parcel/core': 2.3.2
   '@parcel/optimizer-terser': 2.3.2_@parcel+core@2.3.2
+  markdown-it: 12.3.2
+  markdown-it-anchor: 8.4.1_markdown-it@12.3.2
+  markdown-it-attrs: 4.1.3_markdown-it@12.3.2
+  markdown-it-obsidian: 1.1.0
+  markdown-it-table-of-contents: 0.6.0
+  markdown-it-title: 4.0.0
   npm-run-all: 4.1.5
   nunjucks: 3.2.3
   parcel: 2.3.2_postcss@8.4.7
@@ -1813,6 +1825,10 @@ packages:
       is-extendable: 0.1.1
     dev: false
 
+  /extend/3.0.2:
+    resolution: {integrity: sha512-fjquC59cD7CyW6urNXK0FBufkZcoiGG80wTuPujX590cB5Ttln20E2UB4S/WARVqhXffZl2LNgS+gQdPIIim/g==}
+    dev: false
+
   /fast-glob/3.2.11:
     resolution: {integrity: sha512-xrO3+1bxSo3ZVHAnqzyuewYT6aMFHRAd4Kcs92MAonjwQZLsK9d0SF1IyQ3k5PoirxTW0Oe/RqFgMQ6TcNE5Ew==}
     engines: {node: '>=8.6.0'}
@@ -2515,6 +2531,45 @@ packages:
   /luxon/2.3.0:
     resolution: {integrity: sha512-gv6jZCV+gGIrVKhO90yrsn8qXPKD8HYZJtrUDSfEbow8Tkw84T9OnCyJhWvnJIaIF/tBuiAjZuQHUt1LddX2mg==}
     engines: {node: '>=12'}
+    dev: false
+
+  /markdown-it-anchor/8.4.1_markdown-it@12.3.2:
+    resolution: {integrity: sha512-sLODeRetZ/61KkKLJElaU3NuU2z7MhXf12Ml1WJMSdwpngeofneCRF+JBbat8HiSqhniOMuTemXMrsI7hA6XyA==}
+    peerDependencies:
+      '@types/markdown-it': '*'
+      markdown-it: '*'
+    dependencies:
+      markdown-it: 12.3.2
+    dev: false
+
+  /markdown-it-attrs/4.1.3_markdown-it@12.3.2:
+    resolution: {integrity: sha512-d5yg/lzQV2KFI/4LPsZQB3uxQrf0/l2/RnMPCPm4lYLOZUSmFlpPccyojnzaHkfQpAD8wBHfnfUW0aMhpKOS2g==}
+    engines: {node: '>=6'}
+    peerDependencies:
+      markdown-it: '>= 9.0.0 < 13.0.0'
+    dependencies:
+      markdown-it: 12.3.2
+    dev: false
+
+  /markdown-it-obsidian/1.1.0:
+    resolution: {integrity: sha512-NO/ZYuIYn2PuKIHeYox9TcN0wtPuLFbrG5gn6S++jMZmoEDp6Y46km1x2mMTnvjTWj6E0sfPILfrU+yfSoI6YQ==}
+    dependencies:
+      extend: 3.0.2
+      markdown-it-regexp: 0.4.0
+      sanitize-filename: 1.6.3
+    dev: false
+
+  /markdown-it-regexp/0.4.0:
+    resolution: {integrity: sha1-1k1xPuzsVc5M/esyF1DswJniwtw=}
+    dev: false
+
+  /markdown-it-table-of-contents/0.6.0:
+    resolution: {integrity: sha512-jHvEjZVEibyW97zEYg19mZCIXO16lHbvRaPDkEuOfMPBmzlI7cYczMZLMfUvwkhdOVQpIxu3gx6mgaw46KsNsQ==}
+    engines: {node: '>6.4.0'}
+    dev: false
+
+  /markdown-it-title/4.0.0:
+    resolution: {integrity: sha512-IeDImxQEbKDGSvTFHFM1FAbHUXa0xqYYwNNM1I2EceCLuA7yqUG8yMyACR+5lt0z1VJWu//yTc+ANIKXSv6rTA==}
     dev: false
 
   /markdown-it/12.3.2:
@@ -3571,6 +3626,12 @@ packages:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
     dev: false
 
+  /sanitize-filename/1.6.3:
+    resolution: {integrity: sha512-y/52Mcy7aw3gRm7IrcGDFx/bCk4AhRh2eI9luHOQM86nZsqwiRkkq2GekHXBBD+SmPidc8i2PqtYZl+pWJ8Oeg==}
+    dependencies:
+      truncate-utf8-bytes: 1.0.2
+    dev: false
+
   /sass/1.49.9:
     resolution: {integrity: sha512-YlYWkkHP9fbwaFRZQRXgDi3mXZShslVmmo+FVK3kHLUELHHEYrCmL1x6IUjC7wLS6VuJSAFXRQS/DxdsC4xL1A==}
     engines: {node: '>=12.0.0'}
@@ -3988,6 +4049,12 @@ packages:
     resolution: {integrity: sha1-zCAOqyYT9BZtJ/+a/HylbUnfbrQ=}
     dev: false
 
+  /truncate-utf8-bytes/1.0.2:
+    resolution: {integrity: sha1-QFkjkJWS1W94pYGENLC3hInKXys=}
+    dependencies:
+      utf8-byte-length: 1.0.4
+    dev: false
+
   /type-fest/0.20.2:
     resolution: {integrity: sha512-Ne+eE4r0/iWnpAxD852z3A+N0Bt5RN//NjJwRd2VFHEmrywxf5vsZlh4R6lixl6B+wz/8d+maTSAkN1FIkI3LQ==}
     engines: {node: '>=10'}
@@ -4032,6 +4099,10 @@ packages:
   /unpipe/1.0.0:
     resolution: {integrity: sha1-sr9O6FFKrmFltIF4KdIbLvSZBOw=}
     engines: {node: '>= 0.8'}
+    dev: false
+
+  /utf8-byte-length/1.0.4:
+    resolution: {integrity: sha1-9F8VDExm7uloGGUFq5P8u4rWv2E=}
     dev: false
 
   /util-deprecate/1.0.2:

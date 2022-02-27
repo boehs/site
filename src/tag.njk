@@ -1,0 +1,25 @@
+---
+layout: base.njk
+pagination:
+  data: collections
+  size: 1
+  alias: tag
+permalink: /tag/{{ tag }}/
+eleventyComputed:
+  title: On "{{ tag }}"
+---
+{% if tagList[tag] %}
+<div class="callout" {% if tagList[tag].color %} style="background-color: {{tagList[tag].color}}" {% endif %}>
+  <p>{{tagList[tag].icon if tagList[tag].icon}} {{tag}}</p>
+  <p class="pad">{{tagList[tag].description if tagList[tag].description}}</p>
+</div>
+{% endif %}
+
+<h2>In the garden</h2>
+{% set taglist = collections[ tag ] %}
+{% for post in taglist | reverse %}
+  <div class="callout">
+    <a href="{{ post.url | url }}">{{ post.data.title }}</a>
+    <p>{{post.data.excerpt}}</p>
+  </div>
+{% endfor %}

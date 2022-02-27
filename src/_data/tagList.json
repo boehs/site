@@ -1,0 +1,8 @@
+{
+    "evergreen": {
+        "icon": "🌲",
+        "description": "Always growing, always green, and always calm, evergreen nodes are slowly updated over time.",
+        "showOnPost": false,
+        "color": "#068177"
+    }
+}

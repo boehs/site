@@ -17,7 +17,9 @@
            {% include "partials/head.njk" %}
          </header>
          <article>
-           <h1>{{title}}</h1>
+           {% if title %}
+            <h1>{{title}}</h1>
+           {% endif %}
            {{content | safe}}
          </article>
          <footer>
