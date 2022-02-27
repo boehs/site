@@ -20,6 +20,6 @@ eleventyComputed:
 {% for post in taglist | reverse %}
   <div class="callout">
     <a href="{{ post.url | url }}">{{ post.data.title }}</a>
-    <p>{{post.data.excerpt}}</p>
+    <p>{{post.data.page.excerpt}}</p>
   </div>
 {% endfor %}

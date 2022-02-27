@@ -17,15 +17,16 @@
            {% include "partials/head.njk" %}
          </header>
          <article>
-           {% if title %}
-            <h1>{{title}}</h1>
-           {% endif %}
-           {{content | safe}}
+           {% block main %}
+            {% if title %}
+              <h1>{{title}}</h1>
+            {% endif %}
+            {{content | safe}}
+           {% endblock %}
          </article>
          <footer>
            {% include "partials/foot.njk" %}
          </footer>
-         <script src="/main.js"></script>
       </div>
    </body>
 </html>

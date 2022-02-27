@@ -1,0 +1,42 @@
+---
+layout: base.njk
+---
+
+{% if date or tags %}
+<div class="kv">
+    {% if date %}
+    <div>
+        <div>Date</div>
+        <p>{{date}}</p>
+    </div>
+    {% endif %}
+    {% if tags %}
+    <div>
+        <div>Tags</div>
+        <ul>
+        {% for tag in tags %}
+            <li>
+                <a href="/tag/{{tag}}">{{tag}}</a>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+</div>
+<hr/>
+{% endif %}
+
+{% if tags %}
+    {% set islooking = true %}
+    {% for tag in tags %}
+        {% if islooking and tagList[tag].showOnPost %}
+            {% set islooking = false %}
+            <div class="callout" {% if tagList[tag].color %} style="background-color: {{tagList[tag].color}}" {% endif %}>
+                <p>{{tagList[tag].icon if tagList[tag].icon}} <a href="/tag/{{tag}}">{{tag}}</a></p>
+                <p class="pad">{{tagList[tag].description if tagList[tag].description}}</p>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{{content | safe}}

@@ -4,5 +4,11 @@
         "description": "Always growing, always green, and always calm, evergreen nodes are slowly updated over time.",
         "showOnPost": false,
         "color": "#068177"
+    },
+    "archived": {
+        "icon": "🗄️",
+        "description": "Once legendary, for one reason or another these nodes fell from fame. For historic reasons, I keep em around, but I would never use it as information, even if your life depends on it!",
+        "showOnPost": true,
+        "color": "#ccc"
     }
 }
