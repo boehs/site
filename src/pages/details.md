@@ -1,7 +1,9 @@
 ---
 is: happy you read these blurbs!
-title: details
+title: Details ✨
 ---
+
+[[toc]]
 
 I believe in details. I packed these details into [1.6 kB of HTML and 1.7 kB of CSS](/template):
 
@@ -16,30 +18,29 @@ I believe in details. I packed these details into [1.6 kB of HTML and 1.7 kB of 
   - On the [home](/) page, there is a **randomized greeting.**
   - No framework crap being sent to your browser
 
-### Some other details:
+## Some other details
 
 - I use **[uberspace](https://uberspace.de) for hosting.** This is a choice not based on speed nor price but on ethics.
   - Green energy powered
   - Small company
   - Treats everyone equally regardless of financials
   - Friendly to people of all skill levels
-- My website is **built with [astro](https://astro.build)**. This is because it allows me to:
-  - use templating
-  - run scripts at build time
-  - use TypeScript and SCSS
-  - and add nothing extra to the visitor's page
+- My website is **built with ~~astro~~[11ty](https://11ty.dev)**.
 
-### soon?
+## soon?
 
 - Small CSR, avoid resending uneeded stuff
 - Look into ways of monitizing while respecting user privacy. _never ads_
-- Flesh out photos, blog, stream, garden, and journal
+- Gemini
+- RSS
 
-### Web Rings, The Indie Web
+*see the full list at <https://todo.sr.ht/~boehs/boehs>*
+
+## Web Rings, The Indie Web
 
 My site is in a number of web rings
 
-#### Clubs
+### Clubs
 
 - Tiny website clubs!
   
@@ -47,7 +48,7 @@ My site is in a number of web rings
   - But we can do better! [Let's divide by two,](https://512kb.club/) shall we?
   - And then [fold again](https://250kb.club)
 
-#### Webrings
+### Webrings
 
 - I'm keeping an eye on
   
