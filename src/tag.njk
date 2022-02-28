@@ -11,7 +11,7 @@ eleventyComputed:
 {% if tagList[tag] %}
 <div class="callout" {% if tagList[tag].color %} style="background-color: {{tagList[tag].color}}" {% endif %}>
   <p>{{tagList[tag].icon if tagList[tag].icon}} {{tag}}</p>
-  <p class="pad">{{tagList[tag].description if tagList[tag].description}}</p>
+  <p class="pad">{{tagList[tag].description | safe if tagList[tag].description}}</p>
 </div>
 {% endif %}
 

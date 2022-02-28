@@ -33,7 +33,7 @@ layout: base.njk
             {% set islooking = false %}
             <div class="callout" {% if tagList[tag].color %} style="background-color: {{tagList[tag].color}}" {% endif %}>
                 <p>{{tagList[tag].icon if tagList[tag].icon}} <a href="/tag/{{tag}}">{{tag}}</a></p>
-                <p class="pad">{{tagList[tag].description if tagList[tag].description}}</p>
+                <p class="pad">{{tagList[tag].description | safe if tagList[tag].description}}</p>
             </div>
         {% endif %}
     {% endfor %}
