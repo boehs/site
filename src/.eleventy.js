@@ -5,6 +5,9 @@ function markdownIt() {
   let markdownIt = require("markdown-it");
   let options = {
     html: true,
+    breaks: true,
+    typographer: true,
+    linkify: true,
   };
   return (
     new markdownIt(options)

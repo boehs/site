@@ -31,7 +31,7 @@ layout: base.njk
     {% for tag in tags %}
         {% if islooking and tagList[tag].showOnPost %}
             {% set islooking = false %}
-            <div class="callout" {% if tagList[tag].color %} style="background-color: {{tagList[tag].color}}" {% endif %}>
+            <div class="card" {% if tagList[tag].color %} style="background-color: {{tagList[tag].color}}" {% endif %}>
                 <p>{{tagList[tag].icon if tagList[tag].icon}} <a href="/tag/{{tag}}">{{tag}}</a></p>
                 <p class="pad">{{tagList[tag].description | safe if tagList[tag].description}}</p>
             </div>

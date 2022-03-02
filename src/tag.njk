@@ -9,7 +9,7 @@ eleventyComputed:
   title: On "{{ tag }}"
 ---
 {% if tagList[tag] %}
-<div class="callout" {% if tagList[tag].color %} style="background-color: {{tagList[tag].color}}" {% endif %}>
+<div class="card" {% if tagList[tag].color %} style="background-color: {{tagList[tag].color}}" {% endif %}>
   <p>{{tagList[tag].icon if tagList[tag].icon}} {{tag}}</p>
   <p class="pad">{{tagList[tag].description | safe if tagList[tag].description}}</p>
 </div>
@@ -18,7 +18,7 @@ eleventyComputed:
 <h2>In the garden</h2>
 {% set taglist = collections[ tag ] %}
 {% for post in taglist | reverse %}
-  <div class="callout">
+  <div class="card">
     <a href="{{ post.url | url }}">{{ post.data.title }}</a>
     <p>{{post.data.page.excerpt}}</p>
   </div>

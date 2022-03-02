@@ -1,28 +1,38 @@
 {
-    "evergreen": {
-        "icon": "🌲",
-        "description": "Always growing, always green, and always calm, evergreen nodes are slowly updated over time.",
-        "color": "#068177"
-    },
-    "archived": {
-        "icon": "🗄️",
-        "description": "Once legendary, for one reason or another these nodes fell from fame. For historic reasons, I keep em around, but I would never use it as information, even if your life depends on it!",
-        "showOnPost": true,
-        "color": "#ccc"
-    },
-    "unstable": {
-        "icon": "😖",
-        "description": "Updating at the speed of light, blink once or twice and what you were just reading might be gone!",
-        "showOnPost": true,
-        "color": "NavajoWhite"
-    },
-    "sunset": {
-        "icon": "🌄",
-        "description": "All good things must come to an end, but that's not always a sad thing. The end of the day means the start of a new one. Sunset posts were once <a href='./evergreen'>evergreens</a>, now ready to give life for new pages",
-        "color": "#FD5E53"
-    },
-    "seed": {
-        "icon": "🌱",
-        "description": "Still young, while seeds don't look like anything much, they have the power to grow into something beautiful if given love"
+        "evergreen": {
+            "icon": "🌲",
+            "description": "Always growing, always green, and always calm, evergreen nodes are slowly updated over time.",
+            "color": "#068177"
+        },
+        "archived": {
+            "icon": "🗄️",
+            "description": "Once legendary, for one reason or another these nodes fell from fame. For historic reasons, I keep em around, but I would never use it as information, even if your life depends on it!",
+            "showOnPost": true,
+            "color": "#ccc"
+        },
+        "unstable": {
+            "icon": "😖",
+            "description": "Updating at the speed of light, blink once or twice and what you were just reading might be gone!",
+            "showOnPost": true,
+            "color": "NavajoWhite"
+        },
+        "sunset": {
+            "icon": "🌄",
+            "description": "All good things must come to an end, but that's not always a sad thing. The end of the day means the start of a new one. Sunset posts were once <a href='./evergreen'>evergreens</a>, now ready to give life for new pages",
+            "color": "#FD5E53"
+        },
+        "seed": {
+            "icon": "🌱",
+            "description": "Still young, while seeds don't look like anything much, they have the power to grow into something beautiful if given love"
+        },
+    "types": {
+        "blog": {
+            "icon": "🗞️",
+            "description": "A fleshed out story, one you just might want to read"
+        },
+        "journal": {
+            "icon": "✍️",
+            "description":  ""
+        }
     }
 }

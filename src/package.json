@@ -1,4 +1,5 @@
 {
+	"version": "2.0.0",
 	"scripts": {
 		"start": "npm-run-all --parallel dev:*",
 		"dev:eleventy": "ELEVENTY_ENV=development eleventy --serve --quiet",
