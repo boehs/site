@@ -2,9 +2,9 @@
   --light: #0aa06e;
   --lighter: #b1c8c0;
   // --darker: #086647;
-  --active: #0a61a0;
+  // --active: #0a61a0;
   --activer: #b1c1cc;
-  --warn: #d6863a;
+  // --warn: #d6863a;
   --warner: #ccbcb1;
   --radius: 3px;
 }
@@ -62,7 +62,7 @@ ul {
 }
 
 code {
-  background-color: #ccc;
+  background-color: var(--lighter);
   border-radius: var(--radius);
   padding: 0 3px;
 }
@@ -125,21 +125,57 @@ address {
 
 div.card,
 button {
-  background-color: var(--lighter);
   padding: 10px;
-  margin: 10px;
+  margin: 10px 0;
+  background-color: var(--lighter);
   border-radius: var(--radius);
   transition: 0.3s;
+  
+  & > :nth-child(1).tit {
+    margin-block-start: 1em;
+    font-weight: bold;
+    display: block;
+  }
+  & > .pad {
+    margin-left: 3ch;
+  }
+}
 
+button,
+.int {
   &:hover {
     background-color: var(--activer);
   }
+}
+
+legend,
+dt,
+label {
+  font-weight: bold;
 }
 
 button {
   cursor: pointer;
   margin: 0;
   border: none;
+}
+
+blockquote,
+dd {
+  border-left: 7px double;
+  margin: 0;
+  padding-left: 10px;
+}
+
+@keyframes details-show {
+  from {
+    opacity:0;
+    transform: translateY(-0.5em);
+  }
+}
+
+details[open] > *:not(summary) {
+  animation: details-show 150ms ease-in-out;
 }
 
 @media screen and (max-width: 800px) {
@@ -194,21 +230,5 @@ button {
 
   & > div {
     width: 64ch;
-  }
-}
-
-.callout {
-  padding: 10px;
-  margin: 10px 0;
-  background-color: var(--lighter);
-  border-radius: var(--radius);
-
-  & > :nth-child(1) {
-    margin-block-start: 1em;
-    font-weight: bold;
-    display: block;
-  }
-  :nth-child(2).pad {
-    margin-left: 3ch;
   }
 }
