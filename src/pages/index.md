@@ -1,5 +1,5 @@
 ---
-no-title: true
+notitle: true
 ---
 
 # halo! 👋 {style="margin-block-end: 0"}

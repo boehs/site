@@ -1,6 +1,5 @@
 module.exports = {
   title(data) {
-    if (data["no-title"]) return;
     if (data.title) return data.title;
     return data.page.fileSlug.replace("-", " ");
   },
