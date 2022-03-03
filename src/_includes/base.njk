@@ -11,14 +11,13 @@
         }
       </style>
       {% endif %}
-
       <div>
          <header>
            {% include "partials/head.njk" %}
          </header>
          <article>
            {% block main %}
-            {% if title and not notitle%}
+            {% if title and not notitle %}
               <h1>{{title}}</h1>
             {% endif %}
             {{content | safe}}

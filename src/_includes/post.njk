@@ -40,3 +40,15 @@ layout: base.njk
 {% endif %}
 
 {{content | safe}}
+
+{% if not backlinks | length == 0 %}
+    <hr/>
+    <h2>What links here?</h2>
+    <ul>
+        {% for backlink in backlinks %}
+            <li>
+                <a href="{{backlink.url}}">{{backlink.title}}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
