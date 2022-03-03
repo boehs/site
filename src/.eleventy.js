@@ -29,9 +29,9 @@ function markdownIt() {
 }
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addNunjucksFilter("interpolate", (str) =>
-    nunjucks.renderString(str, this.ctx)
-  );
+  eleventyConfig.addNunjucksFilter("interpolate", function(str) {
+    return nunjucks.renderString(str, this.ctx)
+  });
   eleventyConfig.addFilter("dropContentFolder", (path) =>
     path.replace(/pages\//, "")
   );
@@ -40,6 +40,7 @@ module.exports = function (eleventyConfig) {
     excerpt: (file, options) =>
       (file.excerpt = file.content.split("\n").slice(0, 4).join(" ")),
   });
+  eleventyConfig.addPassthroughCopy('favicon.ico')
   return {
     dir: {
       output: "dist",
