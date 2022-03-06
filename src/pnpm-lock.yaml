@@ -61,7 +61,7 @@ packages:
       '@iarna/toml': 2.2.5
       '@sindresorhus/slugify': 1.1.2
       browser-sync: 2.27.7_debug@4.3.3
-      chokidar: 3.5.2
+      chokidar: 3.5.3
       debug: 4.3.3
       dependency-graph: 0.11.0
       ejs: 3.1.6
@@ -72,16 +72,16 @@ packages:
       handlebars: 4.7.7
       is-glob: 4.0.3
       kleur: 4.1.4
-      liquidjs: 9.34.1
+      liquidjs: 9.35.2
       lodash: 4.17.21
-      luxon: 2.3.0
+      luxon: 2.3.1
       markdown-it: 12.3.2
       minimist: 1.2.5
       moo: 0.5.1
       multimatch: 5.0.0
       mustache: 4.2.0
       normalize-path: 3.0.0
-      nunjucks: 3.2.3_chokidar@3.5.2
+      nunjucks: 3.2.3_chokidar@3.5.3
       path-to-regexp: 6.2.0
       please-upgrade-node: 3.2.0
       pretty: 2.0.0
@@ -116,14 +116,14 @@ packages:
       js-tokens: 4.0.0
     dev: false
 
-  /@babel/parser/7.16.8:
-    resolution: {integrity: sha512-i7jDUfrVBWc+7OKcBzEe5n7fbv3i2fWtxKzzCvOjnzSxMfWMigAhtfJ7qzZNGFNMsCCd67+uz553dYKWXPvCKw==}
+  /@babel/parser/7.17.3:
+    resolution: {integrity: sha512-7yJPvPV+ESz2IUTPbOL+YkIGyCqOyNIzdguKQuJGnH7bg1WTIifuM21YqokFt/THWh1AkCRn9IgoykTRCBVpzA==}
     engines: {node: '>=6.0.0'}
     hasBin: true
     dev: false
 
-  /@babel/types/7.16.8:
-    resolution: {integrity: sha512-smN2DQc5s4M7fntyjGtyIPbRJv6wW4rU/94fmYJ7PKQuZkC0qGMHXJbg6sNGt12JmVr4k5YaptI/XtiLJBnmIg==}
+  /@babel/types/7.17.0:
+    resolution: {integrity: sha512-TmKSNO4D5rzhL5bjWFcVHHLETzfQ/AmbKpKPOSjlP0WoHZ6L911fgoOKY4Alp/emzG4cHJdyN49zpgkbXFEHHw==}
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/helper-validator-identifier': 7.16.7
@@ -1013,7 +1013,7 @@ packages:
     resolution: {integrity: sha512-GAwkz0AihzY5bkwIY5QDR+LvsRQgB/B+1foMPvi0FZPMl5fjD7ICiznUiBdLYMH1QYe6vqu4gWYytZOccLouFw==}
     engines: {node: '>= 10.0.0'}
     dependencies:
-      '@babel/types': 7.16.8
+      '@babel/types': 7.17.0
     dev: false
 
   /backo2/1.0.2:
@@ -1102,7 +1102,7 @@ packages:
       browser-sync-ui: 2.27.7
       bs-recipes: 1.3.4
       bs-snippet-injector: 2.0.1
-      chokidar: 3.5.2
+      chokidar: 3.5.3
       connect: 3.6.6
       connect-history-api-fallback: 1.6.0
       dev-ip: 1.0.1
@@ -1118,7 +1118,7 @@ packages:
       opn: 5.3.0
       portscanner: 2.1.1
       qs: 6.2.3
-      raw-body: 2.5.0
+      raw-body: 2.5.1
       resp-modifier: 6.0.2
       rx: 4.1.0
       send: 0.16.2
@@ -1241,6 +1241,21 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
 
+  /chokidar/3.5.3:
+    resolution: {integrity: sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==}
+    engines: {node: '>= 8.10.0'}
+    dependencies:
+      anymatch: 3.1.2
+      braces: 3.0.2
+      glob-parent: 5.1.2
+      is-binary-path: 2.1.0
+      is-glob: 4.0.3
+      normalize-path: 3.0.0
+      readdirp: 3.6.0
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: false
+
   /chrome-trace-event/1.0.3:
     resolution: {integrity: sha512-p3KULyQg4S7NIHixdwbGX+nFHkoBiA4YQmyWtjb8XngSKV124nJmRysgAeujbUVb15vh+RvFUfCPqU7rXk+hZg==}
     engines: {node: '>=6.0'}
@@ -1357,8 +1372,8 @@ packages:
   /constantinople/4.0.1:
     resolution: {integrity: sha512-vCrqcSIq4//Gx74TXXCGnHpulY1dskqLTFGDmhrGxzeXL8lF8kvXv6mpNWlJj1uD4DW23D4ljAqbY4RRaaUZIw==}
     dependencies:
-      '@babel/parser': 7.16.8
-      '@babel/types': 7.16.8
+      '@babel/parser': 7.17.3
+      '@babel/types': 7.17.0
     dev: false
 
   /cookie/0.4.2:
@@ -2005,7 +2020,7 @@ packages:
       source-map: 0.6.1
       wordwrap: 1.0.0
     optionalDependencies:
-      uglify-js: 3.15.1
+      uglify-js: 3.15.2
     dev: false
 
   /has-ansi/2.0.0:
@@ -2113,7 +2128,7 @@ packages:
       depd: 1.1.2
       inherits: 2.0.3
       setprototypeof: 1.1.0
-      statuses: 1.5.0
+      statuses: 1.4.0
     dev: false
 
   /http-errors/2.0.0:
@@ -2456,8 +2471,8 @@ packages:
       uc.micro: 1.0.6
     dev: false
 
-  /liquidjs/9.34.1:
-    resolution: {integrity: sha512-dmLfFbhwPPDhPd0VUXi0B31idBxeKM0vRv1jVaMCrYtwoQ+ljLFFqfkcx4QucH6oJ5/eiY9F1AHAyO/pk5L35Q==}
+  /liquidjs/9.35.2:
+    resolution: {integrity: sha512-HEhk9xU0tNpOeZE0IzY0+hYmQJvbciGfi6LmhgbNKWLHuAF+zcanfy8T56HFueRdAKf78Qhd23uIKE+Sb2dQ9g==}
     engines: {node: '>=4.8.7'}
     hasBin: true
     dev: false
@@ -2536,8 +2551,8 @@ packages:
       yallist: 4.0.0
     dev: false
 
-  /luxon/2.3.0:
-    resolution: {integrity: sha512-gv6jZCV+gGIrVKhO90yrsn8qXPKD8HYZJtrUDSfEbow8Tkw84T9OnCyJhWvnJIaIF/tBuiAjZuQHUt1LddX2mg==}
+  /luxon/2.3.1:
+    resolution: {integrity: sha512-I8vnjOmhXsMSlNMZlMkSOvgrxKJl0uOsEzdGgGNZuZPaS9KlefpE9KV95QFftlJSC+1UyCC9/I69R02cz/zcCA==}
     engines: {node: '>=12'}
     dev: false
 
@@ -2801,7 +2816,7 @@ packages:
       commander: 5.1.0
     dev: false
 
-  /nunjucks/3.2.3_chokidar@3.5.2:
+  /nunjucks/3.2.3_chokidar@3.5.3:
     resolution: {integrity: sha512-psb6xjLj47+fE76JdZwskvwG4MYsQKXUtMsPh6U0YMvmyjRtKRFcxnlXGWglNybtNTNVmGdp94K62/+NjF5FDQ==}
     engines: {node: '>= 6.9.0'}
     hasBin: true
@@ -2813,7 +2828,7 @@ packages:
     dependencies:
       a-sync-waterfall: 1.0.1
       asap: 2.0.6
-      chokidar: 3.5.2
+      chokidar: 3.5.3
       commander: 5.1.0
     dev: false
 
@@ -3502,8 +3517,8 @@ packages:
     engines: {node: '>= 0.6'}
     dev: false
 
-  /raw-body/2.5.0:
-    resolution: {integrity: sha512-XpyZ6O7PVu3ItMQl0LslfsRoKxMOxi3SzDkrOtxMES5AqLFpYjQCryxI4LGygUN2jL+RgFsPkMPPlG7cg/47+A==}
+  /raw-body/2.5.1:
+    resolution: {integrity: sha512-qqJBtEyVgS0ZmPGdCFPWJ3FreoqvG4MVQln/kCgF7Olq95IbOp0/BWyMwbdtn4VTvkM8Y7khCQ2Xgk/tcrCXig==}
     engines: {node: '>= 0.8'}
     dependencies:
       bytes: 3.1.2
@@ -3871,11 +3886,6 @@ packages:
     engines: {node: '>= 0.6'}
     dev: false
 
-  /statuses/1.5.0:
-    resolution: {integrity: sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=}
-    engines: {node: '>= 0.6'}
-    dev: false
-
   /statuses/2.0.1:
     resolution: {integrity: sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==}
     engines: {node: '>= 0.8'}
@@ -4070,8 +4080,8 @@ packages:
     resolution: {integrity: sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==}
     dev: false
 
-  /uglify-js/3.15.1:
-    resolution: {integrity: sha512-FAGKF12fWdkpvNJZENacOH0e/83eG6JyVQyanIJaBXCN1J11TUQv1T1/z8S+Z0CG0ZPk1nPcreF/c7lrTd0TEQ==}
+  /uglify-js/3.15.2:
+    resolution: {integrity: sha512-peeoTk3hSwYdoc9nrdiEJk+gx1ALCtTjdYuKSXMTDqq7n1W7dHPqWDdSi+BPL0ni2YMeHD7hKUSdbj3TZauY2A==}
     engines: {node: '>=0.8.0'}
     hasBin: true
     requiresBuild: true
@@ -4158,8 +4168,8 @@ packages:
     resolution: {integrity: sha512-RNGKj82nUPg3g5ygxkQl0R937xLyho1J24ItRCBTr/m1YnZkzJy1hUiHUJrc/VlsDQzsCnInEGSg3bci0Lmd4w==}
     engines: {node: '>= 10.0.0'}
     dependencies:
-      '@babel/parser': 7.16.8
-      '@babel/types': 7.16.8
+      '@babel/parser': 7.17.3
+      '@babel/types': 7.17.0
       assert-never: 1.2.1
       babel-walk: 3.0.0-canary-5
     dev: false
