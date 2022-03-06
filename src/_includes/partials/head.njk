@@ -2,5 +2,5 @@
     <a href="/" class="lighter">
         Evan Boehs
     </a>
-    <i>is {{is if is else "// not implemented"}}</i>
+    <i>is {% if is %}{{is}}{% else %}{{deets.is | random}}{% endif %}</i>
 </span>

@@ -44,6 +44,11 @@ module.exports = function (eleventyConfig) {
   
   eleventyConfig.addPassthroughCopy('favicon.ico')
   
+  
+  eleventyConfig.addFilter('random', function(array) {
+    return array[Math.floor(Math.random * array.length)]
+  })
+  
   return {
     dir: {
       output: "dist",
