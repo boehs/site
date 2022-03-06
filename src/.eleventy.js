@@ -46,7 +46,7 @@ module.exports = function (eleventyConfig) {
   
   
   eleventyConfig.addFilter('random', function(array) {
-    return array[Math.floor(Math.random * array.length)]
+    return array[Math.floor(Math.random() * array.length)]
   })
   
   return {

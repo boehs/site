@@ -2,9 +2,10 @@
 notitle: true
 ---
 
-# halo! 👋 {style="margin-block-end: 0"}
+{% assign hello = deets.greatings | random %}
+# {{hello.hello}}! 👋 {style="margin-block-end: 0"}
 
-<sup>Sundanese</sup> {style="margin-block-start: 0"}
+<sup>{{hello.language}}</sup> {style="margin-block-start: 0"}
 
 I'm Evan, your run-of-the-mill programmer, ski bum, photographer, and believer.
 
