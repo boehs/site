@@ -1,0 +1,15 @@
+{
+    "statuses": {
+        "frontmatter": "state"
+    },
+    "types": {
+        "mode": "differentiator",
+        "frontmatter": "type"
+    },
+    "tags": {
+        "frontmatter": "tags"
+    },
+    "date": {
+        "frontmatter": "date"
+    }
+}

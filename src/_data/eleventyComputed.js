@@ -4,11 +4,13 @@ module.exports = {
     return data.page.fileSlug.replace("-", " ");
   },
   color(data) {
-    if (data.tags) {
-      for (tag of data.tags) {
-        if (!data.tagList[tag]) continue;
-        if (data.tagList[tag].color) return data.tagList[tag].color;
-        else continue;
+    for (const [collection, settings] of Object.entries(data.collectionsControl)) {
+      const frontmatter = data[settings.frontmatter]
+      if (frontmatter) {
+        if (data.tagList[collection]?.hasOwnProperty(frontmatter)) {
+          const item = data.tagList[collection][frontmatter]
+          if (item.color) return item.color
+        }
       }
     }
     return data.config.color

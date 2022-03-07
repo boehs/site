@@ -44,6 +44,26 @@ module.exports = function (eleventyConfig) {
   
   eleventyConfig.addPassthroughCopy('favicon.ico')
   
+  // I'm so sorry to developers everywhere
+  // 11ty has little consept of order of operations, but one way to make
+  // a page get built later in the cascade is to make it reference a collection
+  // because collections by nature need the details of all pages
+  // we need the data object, and the only way to get it is via a collection item
+  // this is referenced in four.njk
+  
+  // thank god this does not work
+  eleventyConfig.addCollection('wtf',function(collectionApi){
+    console.log(collectionApi.getAll()[collectionApi.getAll().length - 1].data.internal.four)
+    return collectionApi.getAll()[collectionApi.getAll().length - 1].data.internal.four
+  })
+  
+  eleventyConfig.addNunjucksGlobal('getContext', function() { 
+    return this.ctx;
+  })
+  
+  eleventyConfig.addFilter('getType', function(thing) {
+      return ({}).toString.call(thing).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
+  })
   
   eleventyConfig.addFilter('random', function(array) {
     return array[Math.floor(Math.random() * array.length)]

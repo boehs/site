@@ -1,38 +1,45 @@
 {
+    "statuses": {
         "evergreen": {
             "icon": "🌲",
             "description": "Always growing, always green, and always calm, evergreen nodes are slowly updated over time.",
-            "color": "#068177"
+            "color": "#068177",
+            "showOnPost": true
         },
         "archived": {
             "icon": "🗄️",
-            "description": "Once legendary, for one reason or another these nodes fell from fame. For historic reasons, I keep em around, but I would never use it as information, even if your life depends on it!",
+            "description": "Once legendary, for one reason or another these nodes fell from fame. For historic reasons, I keep em around, but heed my advice and never use it as information, even if your life depends on it!",
             "showOnPost": true,
             "color": "#ccc"
         },
         "unstable": {
             "icon": "😖",
-            "description": "Updating at the speed of light, blink once or twice and what you were just reading might be gone!",
+            "description": "Updating at the speed of light, blink once and a word could be gone! These nodes are eratic, unstable, dangerous, but that's why they are fun.",
             "showOnPost": true,
-            "color": "NavajoWhite"
+            "color": "#d9bd56"
         },
         "sunset": {
             "icon": "🌄",
-            "description": "All good things must come to an end, but that's not always a sad thing. The end of the day means the start of a new one. Sunset posts were once <a href='./evergreen'>evergreens</a>, now ready to give life for new pages",
+            "description": "All good things must come to an end, but that's a good thing. The end of a day means the start of a new one. Sunset posts were once <a href='./evergreen'>evergreens</a>, now ready to give life for new pages",
             "color": "#FD5E53"
         },
         "seed": {
             "icon": "🌱",
-            "description": "Still young, while seeds don't look like anything much, they have the power to grow into something beautiful if given love"
-        },
+            "description": "Still young, while seeds don't look like anything much, they have the power to grow into something beautiful if kindled and given room to florish."
+        }
+    },
     "types": {
         "blog": {
             "icon": "🗞️",
-            "description": "A fleshed out story, one you just might want to read"
+            "description": "A fleshed out story, one you just might want to read."
         },
         "journal": {
             "icon": "✍️",
-            "description":  ""
+            "description":  "From the heart bleeds tales of longing, tales of suffering, and most importantly, tales of hope. From my little sacturary to yours."
+        },
+        "garden": {
+            "icon": "🪴",
+            "description": "A network of color and charecter, one node alone is nothing, but together beutiful."
         }
     }
 }

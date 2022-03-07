@@ -2,39 +2,46 @@
 layout: base.njk
 ---
 
-{% if date or tags %}
-<div class="kv">
-    {% if date %}
-    <div>
-        <div>Date</div>
-        <p>{{date}}</p>
-    </div>
+{% set kexists = false %}
+{% for k,v in collectionsControl %}
+    {% if getContext()[v.frontmatter] %}
+        {% set kexists = true %}
     {% endif %}
-    {% if tags %}
-    <div>
-        <div>Tags</div>
-        <ul>
-        {% for tag in tags %}
-            <li>
-                <a href="/tag/{{tag}}">{{tag}}</a>
-            </li>
-        {% endfor %}
-        </ul>
-    </div>
-    {% endif %}
-</div>
-<hr/>
-{% endif %}
+{% endfor %}
 
-{% if tags %}
-    {% set islooking = true %}
-    {% for tag in tags %}
-        {% if islooking and tagList[tag].showOnPost %}
-            {% set islooking = false %}
-            <div class="card" {% if tagList[tag].color %} style="background-color: {{tagList[tag].color}}" {% endif %}>
-                <p>{{tagList[tag].icon if tagList[tag].icon}} <a href="/tag/{{tag}}">{{tag}}</a></p>
-                <p class="pad">{{tagList[tag].description | safe if tagList[tag].description}}</p>
-            </div>
+{% if kexists %}
+    <div class="kv">
+        {% for collection,settings in collectionsControl %}
+            {% set frontmatter = getContext()[settings.frontmatter] %}
+            {% if frontmatter %}
+                <div>
+                    <div>{{settings.frontmatter}}</div>
+                    {% if frontmatter | getType == 'array'%}
+                        <ul>
+                            {% for item in frontmatter %}
+                                <li>
+                                    <a href="/{{settings.frontmatter}}/{{item}}">{{item}}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <a href="/{{settings.frontmatter}}/{{frontmatter}}">{{frontmatter}}</a>
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <hr/>
+    {% for collection,settings in collectionsControl %}
+        {% set frontmatter = getContext()[settings.frontmatter] %}
+        {% if frontmatter %}
+            {% set item = tagList[collection][frontmatter] %}
+            {% if item.showOnPost %}
+                <div class="card" {% if item.color %} style="background-color: {{item.color}}" {% endif %}>
+                    <p>{{item.icon if item.icon}} <a href="/{{settings.frontmatter}}/{{frontmatter}}">{{frontmatter}}</a></p>
+                    <p class="pad">{{item.description | safe if item.description}}</p>
+                </div>
+            {% endif %}
         {% endif %}
     {% endfor %}
 {% endif %}
