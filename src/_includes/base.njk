@@ -4,7 +4,7 @@
      {% include "partials/meta.njk" %}
    </head>
    <body>
-      {% if color %}
+      {% if color and color != config.color %}
       <style>
         :root {
           --0: {{color}}
