@@ -5,11 +5,12 @@
 		"dev:eleventy": "ELEVENTY_ENV=development eleventy --serve --quiet",
 		"dev:parcel": "parcel watch _public/*.{scss,ts} --dist-dir dist --no-source-maps",
 		"build": "run-s prod:*",
+		"prod:clear": "rm -r dist/",
 		"prod:eleventy": "ELEVENTY_ENV=production eleventy",
-		"prod:parcel": "parcel build _public/*.{scss,ts} --no-source-maps"
+		"prod:parcel": "parcel build _public/*.{scss,ts} --no-source-maps --no-content-hash --public-url ./"
 	},
 	"dependencies": {
-		"@11ty/eleventy": "^1.0.0",
+		"@11ty/eleventy": "1.0.0",
 		"@gardeners/markdown-it-wikilinks": "^1.4.3",
 		"@parcel/config-default": "^2.3.2",
 		"@parcel/core": "^2.3.2",

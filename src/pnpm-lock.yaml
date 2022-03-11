@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@11ty/eleventy': ^1.0.0
+  '@11ty/eleventy': 1.0.0
   '@gardeners/markdown-it-wikilinks': ^1.4.3
   '@parcel/config-default': ^2.3.2
   '@parcel/core': ^2.3.2
@@ -72,7 +72,7 @@ packages:
       handlebars: 4.7.7
       is-glob: 4.0.3
       kleur: 4.1.4
-      liquidjs: 9.35.2
+      liquidjs: 9.36.0
       lodash: 4.17.21
       luxon: 2.3.1
       markdown-it: 12.3.2
@@ -1539,7 +1539,7 @@ packages:
     resolution: {integrity: sha512-pYAIzeRo8J6KPEaJ0VWOh5Pzkbw/RetuzehGM7QRRX5he4fPHx2rdKMB256ehJCkX+XRQm16eZLqLNS8RSZXZw==}
     deprecated: Debug versions >=3.2.0 <3.2.7 || >=4 <4.3.1 have a low-severity ReDos regression when used in a Node.js environment. It is recommended you upgrade to 3.2.7 or 4.3.1. (https://github.com/visionmedia/debug/issues/797)
     dependencies:
-      ms: 2.1.3
+      ms: 2.1.2
     dev: false
 
   /debug/4.3.2:
@@ -2128,7 +2128,7 @@ packages:
       depd: 1.1.2
       inherits: 2.0.3
       setprototypeof: 1.1.0
-      statuses: 1.4.0
+      statuses: 1.5.0
     dev: false
 
   /http-errors/2.0.0:
@@ -2471,8 +2471,8 @@ packages:
       uc.micro: 1.0.6
     dev: false
 
-  /liquidjs/9.35.2:
-    resolution: {integrity: sha512-HEhk9xU0tNpOeZE0IzY0+hYmQJvbciGfi6LmhgbNKWLHuAF+zcanfy8T56HFueRdAKf78Qhd23uIKE+Sb2dQ9g==}
+  /liquidjs/9.36.0:
+    resolution: {integrity: sha512-HbU4xBsY1r3ZEORTgPsiluXsOtMx8iI0MqTsPejgIk+sIgta5wQUYsoQgUPuGKWVHKKKMO9PidiMEPKlePl8rg==}
     engines: {node: '>=4.8.7'}
     hasBin: true
     dev: false
@@ -2682,10 +2682,6 @@ packages:
 
   /ms/2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
-    dev: false
-
-  /ms/2.1.3:
-    resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
     dev: false
 
   /msgpackr-extract/1.0.16:
@@ -3883,6 +3879,11 @@ packages:
 
   /statuses/1.4.0:
     resolution: {integrity: sha512-zhSCtt8v2NDrRlPQpCNtw/heZLtfUDqxBM1udqikb/Hbk52LK4nQSwr10u77iopCW5LsyHpuXS0GnEc48mLeew==}
+    engines: {node: '>= 0.6'}
+    dev: false
+
+  /statuses/1.5.0:
+    resolution: {integrity: sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=}
     engines: {node: '>= 0.6'}
     dev: false
 
