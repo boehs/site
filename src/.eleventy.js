@@ -29,6 +29,7 @@ function markdownIt() {
 }
 
 module.exports = function (eleventyConfig) {
+  eleventyConfig.addPlugin(require("@11ty/eleventy-plugin-syntaxhighlight"))
   eleventyConfig.addNunjucksFilter("interpolate", function(str) {
     return nunjucks.renderString(str, this.ctx)
   });
@@ -43,6 +44,8 @@ module.exports = function (eleventyConfig) {
   });
   
   eleventyConfig.addPassthroughCopy('favicon.ico')
+  eleventyConfig.addPassthroughCopy('_assets/*')
+  eleventyConfig.addPassthroughCopy({'pages/c/Assets/*': "assets"})
   
   // I'm so sorry to developers everywhere
   // 11ty has little consept of order of operations, but one way to make
