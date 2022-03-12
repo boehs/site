@@ -1,5 +1,12 @@
 # My main website!
 
+## Some notes for developers
+
+I like to think this website is pretty cool, I've taken great care to design
+it in such a way that it is *very* flexible (although mind that the stylesheets are heavily customized)
+
+No taxonomies, be that tags, dates, or "in" properties, are hardcoded. That does not mean nothing is hardcoded though. 11ty does hot handle taxonomies in a very good way, so this introduces dependence on `collectionsControl.json` and `tagList.json` 
+
 ## Contributing
 
 Feel free to do whatever the fuck you want, provided you abide by the

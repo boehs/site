@@ -1,25 +1,10 @@
 ---
 layout: base.njk
 pagination:
-  data: collections
+  data: collections.taxes
   size: 1
-  alias: tag
-permalink: /tag/{{ tag }}/
+  alias: value
+permalink: /{{ value[0] }}/{{ value[1] }}.html
 eleventyComputed:
-  title: On "{{ tag }}"
+  title: On "{{ value[1] }}"
 ---
-{% if tagList[tag] %}
-<div class="card" {% if tagList[tag].color %} style="background-color: {{tagList[tag].color}}" {% endif %}>
-  <p>{{tagList[tag].icon if tagList[tag].icon}} {{tag}}</p>
-  <p class="pad">{{tagList[tag].description | safe if tagList[tag].description}}</p>
-</div>
-{% endif %}
-
-<h2>In the garden</h2>
-{% set taglist = collections[ tag ] %}
-{% for post in taglist | reverse %}
-  <div class="card">
-    <a href="{{ post.url | url }}">{{ post.data.title }}</a>
-    <p>{{post.data.page.excerpt}}</p>
-  </div>
-{% endfor %}
