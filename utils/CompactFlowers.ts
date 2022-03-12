@@ -1,4 +1,4 @@
-const file: string = await Deno.readTextFile('../src/components/deets/og_flowerpower.txt')
+const file: string = await Deno.readTextFile('../src/_data/deets/og_flowerpower.txt')
 const splited_file = file.split('\n?')
 
 let prev = Array.from({length: splited_file[0].split('\n').length - 1}, (_, i) => undefined)
@@ -18,4 +18,4 @@ Array.from(Array(10).keys()).reverse().forEach(i => {
     newFile = newFile.replaceAll(" ".repeat(i+2),`${i}`)
 })
 
-await Deno.writeTextFile('../src/components/deets/flowerpower.txt',newFile)
+await Deno.writeTextFile('../src/_data/deets/flowerpower.txt',newFile)
