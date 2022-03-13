@@ -9,10 +9,9 @@ eleventyComputed:
   title: "{{value[0]}}: {{value[1]}}"
 ---
 
-{% set taglist = collections.nestedTax[value[0]][value[1]] %}
-{% for post in taglist | reverse %}
+{% for post in collections.nestedTax[value[0]][value[1]] | reverse %}
   <div class="card">
     <a href="{{ post.url | url }}">{{ post.data.title }}</a>
-    <p>{{post.data.page.excerpt}}</p>
+    <p>{{post.data.page.excerpt | renderMd | safe}}</p>
   </div>
 {% endfor %}

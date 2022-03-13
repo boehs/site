@@ -51,6 +51,8 @@ function markdownIt() {
 }
 
 module.exports = function (eleventyConfig) {
+  const markdown = markdownIt()
+  
   eleventyConfig.addPlugin(require("@11ty/eleventy-plugin-syntaxhighlight"));
 
   eleventyConfig.addNunjucksFilter("interpolate", function (str) {
@@ -59,8 +61,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("dropContentFolder", (path,folder) =>
     path.replace(new RegExp(folder + "\/"), "")
   );
+  
+  eleventyConfig.addFilter("renderMd", content => markdown.render(content))
 
-  eleventyConfig.setLibrary("md", markdownIt());
+  eleventyConfig.setLibrary("md", markdown);
   eleventyConfig.setFrontMatterParsingOptions({
     excerpt: (file, options) =>
       (file.excerpt = file.content.split("\n").slice(0, 4).join(" ")),
