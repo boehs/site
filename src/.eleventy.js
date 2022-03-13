@@ -56,8 +56,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addNunjucksFilter("interpolate", function (str) {
     return nunjucks.renderString(str, this.ctx);
   });
-  eleventyConfig.addFilter("dropContentFolder", (path) =>
-    path.replace(/pages\//, "")
+  eleventyConfig.addFilter("dropContentFolder", (path,folder) =>
+    path.replace(new RegExp(folder + "\/"), "")
   );
 
   eleventyConfig.setLibrary("md", markdownIt());
@@ -105,8 +105,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("taxes", function (collectionApi) {
     // lets make a variable to hold our taxonomies and values
     let taxAndValues = [];
-    // We need to get each post in our posts folder. In my case this is /c
-    const nodes = collectionApi.getFilteredByGlob("pages/c/*.md");
+    // We need to get each post in our posts folder. In my case this is /node
+    const nodes = collectionApi.getFilteredByGlob("pages/garden/node/*.md");
     // next lets iterate over all the nodes
     nodes.forEach((node) => {
       // and then iterate over the taxonomies
@@ -147,8 +147,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addCollection("nestedTax", function (collectionApi) {
     let nestedTax = {};
-    const nodes = collectionApi.getFilteredByGlob("pages/c/*.md");
-
+    const nodes = collectionApi.getFilteredByGlob("pages/garden/node/*.md");
     nodes.forEach((node) => {
       for (const [_, value] of Object.entries(collectionControl)) {
         const taxonomy = value.frontmatter;
