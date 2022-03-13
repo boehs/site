@@ -1,5 +1,6 @@
 ---
 notitle: true
+title: Evan Boehs
 ---
 
 {% assign hello = deets.greatings | random %}

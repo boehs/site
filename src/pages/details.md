@@ -5,18 +5,18 @@ title: Details ✨
 
 [[toc]]
 
-I believe in details. I packed these details into [1.6 kB of HTML and 1.7 kB of CSS](/template):
+I believe in details. I packed these details into [1.2 kB of HTML and 1.7 kB of CSS](/template):
 
 - **The footer grass animation.** Have you tried it? It animates in and out smoothly based on cursor events.
 - **Proper use of tags.** I use `html` and `meta` tags effectively based on extensive research.
 - **CSS based theme switching.** As you would expect.
 - **Javascript only when impossible without,** and even then good `noscript` fallbacks, users without javascript would never notice!
-- **Near perfect lighthouse scores.** The only non-100 score is because of the green color's contrast
-- A [build script](https://git.sr.ht/~boehs/site/tree/master/item/build.sh) that **removes useless junk**
+- **Near perfect lighthouse scores.**
 - **some silly features:**
   - **Easily updatable `is` if not provided by the page like above.**
   - On the [home](/) page, there is a **randomized greeting.**
   - No framework crap being sent to your browser
+- Connection with my **digital garden**
 
 ## Some other details
 
