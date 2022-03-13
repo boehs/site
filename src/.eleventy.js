@@ -4,15 +4,16 @@ const sanitize = require("sanitize-filename");
 const collectionControl = require("./_data/collectionsControl.json");
 
 function markdownIt() {
-  let markdownIt = require("markdown-it");
   let options = {
     html: true,
     breaks: true,
     typographer: true,
     linkify: true,
   };
+  let markdownIt = require("markdown-it")(options);
+
   return (
-    new markdownIt(options)
+    markdownIt
       //.use(require("markdown-it-obsidian")({baseURL: '/pages/c/'}))
       .use(require("markdown-it-table-of-contents"), { includeLevel: [2, 3] })
       .use(require("markdown-it-anchor"))
@@ -27,6 +28,25 @@ function markdownIt() {
           includeWikilinks: "outer",
         })
       )
+      .use(require('markdown-it-container'), 'details', {
+
+        validate: function(params) {
+          return params.trim().match(/^details\s+(.*)$/);
+        },
+      
+        render: function (tokens, idx) {
+          var m = tokens[idx].info.trim().match(/^details\s+(.*)$/);
+      
+          if (tokens[idx].nesting === 1) {
+            // opening tag
+            return '<details><summary>' + markdownIt.utils.escapeHtml(m[1]) + '</summary>\n';
+      
+          } else {
+            // closing tag
+            return '</details>\n';
+          }
+        }
+      })
   );
 }
 
@@ -52,20 +72,20 @@ module.exports = function (eleventyConfig) {
 
   // I won't even attempt to explain this
   // thank god this does not work
-  eleventyConfig.addCollection("wtf", function (collectionApi) {
-    //console.log(collectionApi.getAll()[collectionApi.getAll().length - 1].data.internal.four)
-    const unique = [
-      ...new Set(
-        collectionApi
-          .getAll()
-          [collectionApi.getAll().length - 1].data.internal.four.map(
-            JSON.stringify
-          )
-      ),
-    ].map(JSON.parse);
-    //console.log(unique)
-    return unique;
-  });
+  //eleventyConfig.addCollection("wtf", function (collectionApi) {
+  //  //console.log(collectionApi.getAll()[collectionApi.getAll().length - 1].data.internal.four)
+  //  const unique = [
+  //    ...new Set(
+  //      collectionApi
+  //        .getAll()
+  //        [collectionApi.getAll().length - 1].data.internal.four.map(
+  //          JSON.stringify
+  //        )
+  //    ),
+  //  ].map(JSON.parse);
+  //  //console.log(unique)
+  //  return unique;
+  //});
 
   eleventyConfig.addNunjucksGlobal("getContext", function () {
     return this.ctx;
@@ -123,6 +143,49 @@ module.exports = function (eleventyConfig) {
     );
 
     return unique;
+  });
+
+  eleventyConfig.addCollection("nestedTax", function (collectionApi) {
+    let nestedTax = {};
+    const nodes = collectionApi.getFilteredByGlob("pages/c/*.md");
+
+    nodes.forEach((node) => {
+      for (const [_, value] of Object.entries(collectionControl)) {
+        const taxonomy = value.frontmatter;
+        const taxValue = node.data[taxonomy]
+
+        if (value.excludeFromPagination) continue;
+        else if (node?.data?.[taxonomy]) {
+          if (!nestedTax[taxonomy]) nestedTax[taxonomy] = {};
+          switch (
+            {}.toString
+              .call(taxValue)
+              .match(/\s([a-zA-Z]+)/)[1]
+              .toLowerCase()
+          ) {
+            case "array": {
+              taxValue.forEach((item) => {
+                // if the value in the object does not yet exist
+                if (!nestedTax[taxonomy][item]) nestedTax[taxonomy][item] = [];
+                // then add the entire page to it
+                nestedTax[taxonomy][item].push(node);
+              });
+              break;
+            }
+            // otherwise
+            default: {
+              // if the value in the object does not yet exist
+              if (!nestedTax[taxonomy][taxValue])
+                nestedTax[taxonomy][taxValue] = [];
+              // then add the entire page to it
+              nestedTax[taxonomy][taxValue].push(node);
+            }
+          }
+        }
+      }
+    });
+
+    return nestedTax;
   });
 
   return {

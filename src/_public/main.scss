@@ -106,14 +106,6 @@ footer {
   flex-wrap: wrap;
   display: flex;
   justify-content: center;
-
-  ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    list-style-position: inside;
-    padding-inline-start: 0px;
-  }
 }
 
 // kv == key-value
@@ -127,6 +119,11 @@ nav,.kv {
   ul {
     list-style: none;
     text-align: right;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    list-style-position: inside;
+    padding-inline-start: 0px;
   }
 
   & > div {
@@ -227,7 +224,7 @@ blockquote {
       display: none;
     }
 
-    nav > div {
+    nav > div,.kv > div {
       display: block;
     }
   }
