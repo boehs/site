@@ -1,0 +1,15 @@
+---
+layout: base.njk
+pagination:
+  data: collections.nestedTax
+  size: 1
+  alias: value
+permalink: /{{value}}/index.html
+eleventyComputed:
+  title: "{{value}}"
+---
+<ul>
+    {% for tag,_ in collections.nestedTax[value] %}
+        <li><a href="/{{value}}/{{tag}}">{{tag}}</a></li>
+    {% endfor %}
+<ul>
