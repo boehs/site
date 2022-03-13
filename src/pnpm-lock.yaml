@@ -16,6 +16,7 @@ specifiers:
   npm-run-all: ^4.1.5
   nunjucks: ^3.2.3
   parcel: ^2.3.2
+  pnpm: ^6.32.3
   postcss: ^8.4.7
   postcss-csso: ^6.0.0
   postcss-variable-compress: ^1.0.0
@@ -37,6 +38,7 @@ dependencies:
   npm-run-all: 4.1.5
   nunjucks: 3.2.3
   parcel: 2.3.2_postcss@8.4.7
+  pnpm: 6.32.3
   postcss: 8.4.7
   postcss-csso: 6.0.0_postcss@8.4.7
   postcss-variable-compress: 1.0.0_postcss@8.4.7
@@ -3034,6 +3036,12 @@ packages:
     resolution: {integrity: sha512-gQR3WpIgNIKwBMVLkpMUeR3e1/E1y42bqDQZfql+kDeXd8COYfM8PQA4X6y7a8u9Ua9FHmsrrmirW2vHs45hWg==}
     dependencies:
       semver-compare: 1.0.0
+    dev: false
+
+  /pnpm/6.32.3:
+    resolution: {integrity: sha512-lMQgROSwiUA+kt+suAPinjNwqevS1Iz0rppWNZ3jHhzeP07RFRQ+Ksai2OlAnM+YjlbHT9niQ4ICBVSqcdQ04w==}
+    engines: {node: '>=12.17'}
+    hasBin: true
     dev: false
 
   /portscanner/2.1.1:
