@@ -10,6 +10,7 @@ specifiers:
   '@parcel/transformer-sass': 2.3.2
   markdown-it: ^12.3.2
   markdown-it-anchor: ^8.4.1
+  markdown-it-attribution: ^0.1.4
   markdown-it-attrs: ^4.1.3
   markdown-it-container: ^3.0.0
   markdown-it-table-of-contents: ^0.6.0
@@ -32,6 +33,7 @@ dependencies:
   '@parcel/optimizer-terser': 2.3.2_@parcel+core@2.3.2
   markdown-it: 12.3.2
   markdown-it-anchor: 8.4.1_markdown-it@12.3.2
+  markdown-it-attribution: 0.1.4
   markdown-it-attrs: 4.1.3_markdown-it@12.3.2
   markdown-it-container: 3.0.0
   markdown-it-table-of-contents: 0.6.0
@@ -2567,6 +2569,10 @@ packages:
       markdown-it: '*'
     dependencies:
       markdown-it: 12.3.2
+    dev: false
+
+  /markdown-it-attribution/0.1.4:
+    resolution: {integrity: sha512-9oNU/Gb7gTyfJlLJKbMhijFfV/Frp+k4efoFwp5zgIDiBWFOXr986YfUHdGmQQz4hG0SMpjtAxGBBK+ukvZwaA==}
     dev: false
 
   /markdown-it-attrs/4.1.3_markdown-it@12.3.2:

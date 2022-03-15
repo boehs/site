@@ -36,16 +36,18 @@ function markdownIt() {
       
         render: function (tokens, idx) {
           var m = tokens[idx].info.trim().match(/^details\s+(.*)$/);
-      
           if (tokens[idx].nesting === 1) {
             // opening tag
             return '<details><summary>' + markdownIt.utils.escapeHtml(m[1]) + '</summary>\n';
-      
           } else {
             // closing tag
             return '</details>\n';
           }
         }
+      })
+      .use(require("markdown-it-attribution"),{
+        marker: '--',
+        removeMarker: false
       })
   );
 }

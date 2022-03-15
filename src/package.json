@@ -5,7 +5,7 @@
 		"dev:eleventy": "ELEVENTY_ENV=development eleventy --serve --quiet",
 		"dev:parcel": "parcel watch _public/*.{scss,ts} --dist-dir dist --no-source-maps",
 		"build": "run-s prod:*",
-		"prod:clear": "rm -r dist/",
+		"prod:clear": "rm -r dist/ || true",
 		"prod:eleventy": "ELEVENTY_ENV=production eleventy",
 		"prod:parcel": "parcel build _public/*.{scss,ts} --no-source-maps --no-content-hash --public-url ./"
 	},
@@ -17,6 +17,7 @@
 		"@parcel/optimizer-terser": "^2.3.2",
 		"markdown-it": "^12.3.2",
 		"markdown-it-anchor": "^8.4.1",
+		"markdown-it-attribution": "^0.1.4",
 		"markdown-it-attrs": "^4.1.3",
 		"markdown-it-container": "^3.0.0",
 		"markdown-it-table-of-contents": "^0.6.0",
