@@ -25,6 +25,6 @@ tasks:
       pnpm exec netlify deploy --prod
   - artifact: |
       cd site/src
-      tar -cvf build.tar ./
+      tar -cvf build.tar ./dist/
 artifacts:
   - site/src/build.tar
