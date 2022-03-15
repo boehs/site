@@ -1,0 +1,30 @@
+image: archlinux
+packages:
+  - nodejs
+  - pnpm
+sources:
+  - https://git.sr.ht/~boehs/site
+secrets:
+  - c67d26a1-1f66-4f3c-b7b0-75d118eee7b7
+tasks:
+  - setup: |
+      cd site/src
+      pnpm install --frozen-lockfile
+  - build: |
+      cd site/src
+      pnpm run build
+  - deploy: |
+      cd site/src
+      {
+        set +x
+        . ~/.buildsecrets
+        set -x
+      }
+      export NETLIFY_AUTH_TOKEN
+      pnpm install netlify-cli
+      pnpm exec netlify deploy --prod
+  - artifact: |
+      cd site/src
+      tar -cvf build.tar ./
+artifacts:
+  - site/src/build.tar
