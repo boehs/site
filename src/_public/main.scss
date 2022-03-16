@@ -32,7 +32,7 @@
   // --active: #0a61a0;
   --activer: #b1c1cc;
   // --warn: #d6863a;
-  //--warner: #ccbcb1;
+  --warner: #ccbcb1;
   --radius: 3px;
 }
 
@@ -55,12 +55,20 @@ body {
 }
 
 button,
+input[type=submit],
+input[type=button],
+input[type=reset],
 pre,
 code,
 sup,
 sub,
 h1,h2,h3,h4,h5,h6 {
   font-family: monospace;
+}
+
+button[type=reset],
+input[type=reset] {
+  background-color: var(--warner);
 }
 
 figure {
@@ -175,8 +183,11 @@ address {
 }
 
 .card,
-button {
-  padding: 10px;
+button,
+input[type=submit],
+input[type=button],
+input[type=reset] {
+  padding: 1em;
   margin: 10px 0;
   background-color: var(--lighter);
   border-radius: var(--radius);
@@ -193,6 +204,9 @@ button {
 }
 
 button,
+input[type=submit],
+input[type=button],
+input[type=reset],
 .int {
   &:hover {
     background-color: var(--activer);
@@ -209,9 +223,11 @@ label {
   font-weight: bold;
 }
 
-button {
+button,
+input[type=submit],
+input[type=button],
+input[type=reset] {
   cursor: pointer;
-  margin: 0;
   border: none;
 }
 
@@ -226,8 +242,8 @@ blockquote {
   padding: 10px 0 10px 10px;
   margin: 1em 0;
   border-radius: var(--radius);
-  background-color: #36363c;
-  color: inherit;
+  background-color: lavender;
+  color: darkblue;
 }
 
 @media screen and (max-width: 800px) {
@@ -276,6 +292,11 @@ blockquote {
   
   :not(footer) > pre {
     background-color: #fffbf8 !important;
+  }
+  
+  blockquote {
+    background-color: #36363c;
+    color: inherit;
   }
 }
 
