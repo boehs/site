@@ -15,7 +15,7 @@ function markdownIt() {
   return (
     markdownIt
       //.use(require("markdown-it-obsidian")({baseURL: '/pages/c/'}))
-      .use(require("markdown-it-table-of-contents"), { includeLevel: [2, 3] })
+      .use(require("markdown-it-table-of-contents"), { includeLevel: [2, 3, 4, 5] })
       .use(require("markdown-it-anchor"))
       .use(require("markdown-it-attrs"))
       .use(
