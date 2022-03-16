@@ -11,7 +11,7 @@ eleventyComputed:
 
 {% for post in collections.nestedTax[value[0]][value[1]] | reverse %}
   <div class="card">
-    <a href="{{ post.url | url }}">{{ post.data.title }}</a>
-    <p>{{post.data.page.excerpt | renderMd | safe}}</p>
+    <p><a href="{{ post.url | url }}">{{ post.data.title }}</a></p>
+    <p>{{post.data.description | renderMd | safe if post.data.description else post.data.page.excerpt | renderMd | safe}}</p>
   </div>
 {% endfor %}
