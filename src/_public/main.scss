@@ -61,8 +61,7 @@ input[type=reset],
 pre,
 code,
 sup,
-sub,
-h1,h2,h3,h4,h5,h6 {
+sub {
   font-family: monospace;
 }
 
@@ -213,7 +212,7 @@ input[type=reset],
   }
 }
 
-article > p,footer {
+article, nav, header {
   line-height: 1.5;
 }
 
