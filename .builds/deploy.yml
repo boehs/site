@@ -21,7 +21,6 @@ tasks:
         set -x
       }
       export NETLIFY_AUTH_TOKEN
-      pnpm install netlify-cli
       pnpm exec netlify deploy --prod
   - artifact: |
       cd site/src
