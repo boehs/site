@@ -22,14 +22,22 @@ module.exports = {
             for(const otherNote of notes) {
                 const noteContent = otherNote.template.frontMatter.content;
                 // Get all links from otherNote
-                const outboundLinks = (noteContent.match(wikilinkRegExp) || [])
-                    .map(link => (
-                        // Extract link location
-                        link.slice(2,-2)
-                            .split("|")[0]
-                            .replace(/.(md|markdown)\s?$/i, "")
-                            .trim()
-                    ));
+                
+                const outboundLinks = (function() {switch (otherNote.data.links) {
+                    case undefined: {
+                        const links = (noteContent.match(wikilinkRegExp) || [])
+                        .map(link => (
+                            // Extract link location
+                            link.slice(2,-2)
+                                .split("|")[0]
+                                .replace(/.(md|markdown)\s?$/i, "")
+                                .trim()
+                        ));
+                        otherNote.data.links = links
+                        return links
+                    }
+                    default: return otherNote.data.links
+                }})()
                 // If the other note links here, return related info
                 if(outboundLinks.some(link => caselessCompare(link, currentFileSlug))) {
                     backlinks.push({
