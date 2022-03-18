@@ -26,20 +26,24 @@
 }
 
 :root {
-  --light: #0aa06e;
-  --lighter: #cddfd9;
-  // --darker: #086647;
-  // --active: #0a61a0;
-  --activer: #b1c1cc;
-  // --warn: #d6863a;
-  --warner: #ccbcb1;
-  --radius: 3px;
+    --light: #0aa06e;
+    --lighter: #cddfd9;
+    // --darker: #086647;
+    // --active: #0a61a0;
+    --activer: #b1c1cc;
+    // --warn: #d6863a;
+    --warner: #ccbcb1;
+    --radius: 3px;
+}
+
+
+* {
+  transition: 0.3s;
 }
 
 body {
   font-family: Spectral, serif;
   font-size: 1.1rem;
-  width: 100%;
   min-height: 100vh;
   margin: 0;
   background: #fffbf8;
@@ -110,7 +114,6 @@ hr {
 
 ul {
   list-style: georgian;
-  margin-block: 0;
 }
 
 code,
@@ -177,10 +180,6 @@ main > p {
   margin-block: 10px;
 }
 
-address {
-  font-style: initial;
-}
-
 .card,
 button,
 input[type=submit],
@@ -190,7 +189,6 @@ input[type=reset] {
   margin: 10px 0;
   background-color: var(--lighter);
   border-radius: var(--radius);
-  transition: 0.3s;
   
   & > :nth-child(1).tit {
     margin-block-start: 1em;
