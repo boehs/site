@@ -24,6 +24,8 @@ layout: base.njk
                                 </li>
                             {% endfor %}
                         </ul>
+                    {% elseif frontmatter | getType == 'date' %}
+                        {{frontmatter.toUTCString()}}
                     {% else %}
                         <a href="/{{settings.frontmatter}}/{{frontmatter}}">{{frontmatter}}</a>
                     {% endif %}
