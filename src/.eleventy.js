@@ -77,21 +77,16 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "pages/c/Assets/*": "assets" });
 
   // I won't even attempt to explain this
-  // thank god this does not work
-  //eleventyConfig.addCollection("wtf", function (collectionApi) {
-  //  //console.log(collectionApi.getAll()[collectionApi.getAll().length - 1].data.internal.four)
-  //  const unique = [
-  //    ...new Set(
-  //      collectionApi
-  //        .getAll()
-  //        [collectionApi.getAll().length - 1].data.internal.four.map(
-  //          JSON.stringify
-  //        )
-  //    ),
-  //  ].map(JSON.parse);
-  //  //console.log(unique)
-  //  return unique;
-  //});
+  eleventyConfig.addCollection("wtf", function (collectionApi) {
+    // ok I lied
+    // acess the first post that can get the information we need
+    const firstPost = collectionApi.getFilteredByGlob("pages/garden/node/*.md")[0].data
+    // and then pass it to itself to emulate computed
+    const links = firstPost.eleventyComputed.brokenLinks(firstPost,true)
+    // return as array for pagination
+    return Array.from(links)
+  });
+  
 
   eleventyConfig.addNunjucksGlobal("getContext", function () {
     return this.ctx;
