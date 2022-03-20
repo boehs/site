@@ -40,7 +40,7 @@ layout: base.njk
             {% set item = tagList[collection][frontmatter] %}
             {% if item.showOnPost %}
                 <div class="card" {% if item.color %} style="background-color: {{item.color}}" {% endif %}>
-                    <p>{{item.icon if item.icon}} <a href="/{{settings.frontmatter}}/{{frontmatter}}">{{frontmatter}}</a></p>
+                    <p class="tit">{{item.icon if item.icon}} <a href="/{{settings.frontmatter}}/{{frontmatter}}">{{frontmatter}}</a></p>
                     <p class="pad">{{item.description | safe if item.description}}</p>
                 </div>
             {% endif %}

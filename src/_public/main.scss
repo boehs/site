@@ -101,7 +101,6 @@ img {
 hr {
   border: none;
   text-align: center;
-  width: 100%;
 
   &::after {
     content: "---";
@@ -142,12 +141,10 @@ nav,.kv {
   
   ul {
     list-style: none;
-    text-align: right;
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
-    list-style-position: inside;
-    padding-inline-start: 0px;
+    padding-inline: 0;
   }
 
   & > div {
@@ -162,21 +159,18 @@ nav,.kv {
 }
 
 header {
-  width: 100%;
-
   > * > * {
     display: block;
     text-align: center;
     font-size: 14pt;
   }
 
-  a.lighter {
+  a {
     text-decoration: inherit;
   }
 }
 
-main > p {
-  line-height: 1.5;
+article > p {
   margin-block: 10px;
 }
 
@@ -190,10 +184,9 @@ input[type=reset] {
   background-color: var(--lighter);
   border-radius: var(--radius);
   
-  & > :nth-child(1).tit {
+  & > .tit {
     margin-block-start: 1em;
     font-weight: bold;
-    display: block;
   }
   & > .pad {
     margin-left: 3ch;
@@ -228,7 +221,6 @@ input[type=reset] {
   border: none;
 }
 
-blockquote,
 dd {
   border-left: 7px double;
   margin: 0;
@@ -237,20 +229,18 @@ dd {
 
 blockquote {
   padding: 10px 0 10px 10px;
-  margin: 1em 0;
+  border-left: 7px double;
   border-radius: var(--radius);
+  margin: 1em 0;
   background-color: lavender;
-  color: darkblue;
 }
 
 @media screen and (max-width: 800px) {
-  main {
+  body {
     padding: 0 20px;
   }
 
   footer {
-    padding: 0 20px;
-
     pre {
       display: none;
     }
@@ -267,7 +257,7 @@ blockquote {
     color: whitesmoke;
   }
 
-  code {
+  code,.card {
     background-color: darkslategray;
   }
 
@@ -281,10 +271,6 @@ blockquote {
     &:visited {
       color: #d0adf0;
     }
-  }
-  
-  .card {
-    background-color: darkslategray;
   }
   
   :not(footer) > pre {
