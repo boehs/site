@@ -54,7 +54,7 @@ function backlinksApi(data) {
         })
                 
         outboundLinks.forEach(link => {
-            if (!data.internal.exists.has(link.toLowerCase())) data.internal.four.add(data.page.url.replace(/\/[^\/]*?(\..+)?$/, `/${link}$1`))
+            if (!data.internal.exists.has(link.toLowerCase())) data.internal.four.add(data.page.url.replace(/\/[^\/]*?(\..+)?$/, `/${link}$1`).toLowerCase())
         })
     }    
     return [backlinks,data.internal.four];
