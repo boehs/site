@@ -107,6 +107,22 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("random", function (array) {
     return array[Math.floor(Math.random() * array.length)];
   });
+  
+  eleventyConfig.addCollection("redirects", function (collectionApi) {
+    // lets make a variable to hold our redirects
+    let redirects = [];
+    // We need to get each post in our posts folder. In my case this is /node
+    const nodes = collectionApi.getFilteredByGlob("pages/garden/node/*.md");
+    // next lets iterate over all the nodes
+    nodes.forEach(node =>
+      // for each alias 
+      (node.data.aliases || []).forEach(alias =>
+        // push the target url and the old url
+        redirects.push([node.data.page.url,node.data.page.url.replace(/\/[^\/]*?(\..+)?$/, `/${alias}$1`)])
+      )
+    )
+    return redirects
+  })
 
   eleventyConfig.addCollection("taxes", function (collectionApi) {
     // lets make a variable to hold our taxonomies and values
