@@ -1,19 +1,16 @@
 // This regex finds all wikilinks in a string
 const wikilinkRegExp = /\[\[([^|]+?)(\|([\s\S]+?))?\]\]/g;
 
-function caselessCompare(a, b) {
-  return a.toLowerCase() === b.toLowerCase();
-}
-
 function backlinksApi(data) {
   const notes = data.collections.all;
   const currentFileSlug = data.page.filePathStem.replace(
     "/pages/garden/node/",
     ""
-  );
+  ).toLowerCase()
+	
   let backlinks = [];
 
-  data.internal.exists?.add(currentFileSlug.toLowerCase());
+  data.internal.exists?.add(currentFileSlug);
 
   // Search the other notes for backlinks
   for (const otherNote of notes) {
@@ -35,6 +32,7 @@ function backlinksApi(data) {
               .split("|")[0]
               .replace(/.(md|markdown)\s?$/i, "")
               .trim()
+							.toLowerCase()
           );
           otherNote.data.links = links;
           return links;
@@ -44,7 +42,7 @@ function backlinksApi(data) {
       }
     })();
     // If the other note links here, return related info
-    if (outboundLinks.some((link) => caselessCompare(link, currentFileSlug))) {
+    if (outboundLinks.some((link) => link === currentFileSlug)) {
       backlinks.push({
         url: otherNote.url,
         title: otherNote.data.title,
@@ -56,9 +54,9 @@ function backlinksApi(data) {
     });
 
     outboundLinks.forEach((link) => {
-      if (!data.internal.exists.has(link.toLowerCase()))
+      if (!data.internal.exists.has(link))
         data.internal.four.add(
-          data.page.url.replace(/\/[^\/]*?(\..+)?$/, `/${link}$1`).toLowerCase()
+          data.page.url.replace(/\/[^\/]*?(\..+)?$/, `/${link}$1`)
         );
     });
   }
@@ -72,6 +70,7 @@ module.exports = {
   permalink: '{{ page.filePathStem | dropContentFolder: "pages/garden" }}.html',
   eleventyComputed: {
     backlinks: (data) => {
+			if (data.page.url == '/node/cloudflare.html') console.log(data.page.filePathStem,backlinksApi(data)[0])
       return backlinksApi(data)[0];
     },
     brokenLinks: (data, canRun = false) => {
