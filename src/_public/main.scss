@@ -36,11 +36,6 @@
     --radius: 3px;
 }
 
-
-* {
-  transition: 0.3s;
-}
-
 body {
   font-family: Spectral, serif;
   font-size: 1.1rem;
@@ -181,6 +176,7 @@ input[type=reset] {
   margin: 10px 0;
   background-color: var(--lighter);
   border-radius: var(--radius);
+  transition: 0.3s;
   
   & > .tit {
     margin-block-start: 1em;
