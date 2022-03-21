@@ -3,11 +3,11 @@ const wikilinkRegExp = /\[\[([^|]+?)(\|([\s\S]+?))?\]\]/g;
 
 function backlinksApi(data) {
   const notes = data.collections.all;
-  const currentFileSlug = data.page.filePathStem.replace(
-    "/pages/garden/node/",
-    ""
-  ).toLowerCase()
-	
+  const currentFileSlug = (
+    data.page.url.match(/\/([^\/]*?)\..+?$/)?.[1] ||
+    data.page.filePathStem.replace("/pages/garden/node/", "")
+  ).toLowerCase();
+
   let backlinks = [];
 
   data.internal.exists?.add(currentFileSlug);
@@ -15,9 +15,10 @@ function backlinksApi(data) {
   // Search the other notes for backlinks
   for (const otherNote of notes) {
     const noteContent = otherNote.template.frontMatter.content;
-    const noteAsLink = otherNote.data.page.filePathStem
-      .replace("/pages/garden/node/", "")
-      .toLowerCase();
+    const noteAsLink = (
+      data.page.url.match(/\/([^\/]*?)\..+?$/)?.[1] ||
+      otherNote.data.page.filePathStem.replace("/pages/garden/node/", "")
+    ).toLowerCase();
 
     data.internal.exists?.add(noteAsLink);
 
@@ -32,7 +33,7 @@ function backlinksApi(data) {
               .split("|")[0]
               .replace(/.(md|markdown)\s?$/i, "")
               .trim()
-							.toLowerCase()
+              .toLowerCase()
           );
           otherNote.data.links = links;
           return links;
@@ -70,7 +71,6 @@ module.exports = {
   permalink: '{{ page.filePathStem | dropContentFolder: "pages/garden" }}.html',
   eleventyComputed: {
     backlinks: (data) => {
-			if (data.page.url == '/node/cloudflare.html') console.log(data.page.filePathStem,backlinksApi(data)[0])
       return backlinksApi(data)[0];
     },
     brokenLinks: (data, canRun = false) => {
