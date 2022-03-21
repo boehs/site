@@ -22,6 +22,9 @@ ishover = true,
 state = false,
 flowerElm = document.getElementById('flower')
 
+// Hydrate via script to ensure it does not look wack for those without javascript
+flowerElm.innerHTML = flowers[1][flowers[0].length - 1]
+
 function doanimation(should_reverse = false) {
     let flower_time = [...flowers[0]],
     flower = [...flowers[1]]
@@ -53,8 +56,6 @@ function shit() {
 
 timeleft = flowers[0].length
 
-// Hydrate via script to ensure it does not look wack for those without javascript
-flowerElm.innerHTML = flowers[1][flowers[0].length - 1]
 flowerElm.onmouseover = () => {
     ishover = true
     shit()
