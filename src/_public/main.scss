@@ -31,7 +31,7 @@
     // --darker: #086647;
     // --active: #0a61a0;
     --activer: #b1c1cc;
-    // --warn: #d6863a;
+    --warn: #d6863a;
     --warner: #ccbcb1;
     --radius: 3px;
 }
@@ -160,6 +160,25 @@ header {
 
   a {
     text-decoration: inherit;
+  }
+}
+
+:not(.kv) a {
+  color: inherit;
+  text-decoration-color: var(--light);
+  text-decoration-thickness: 2px;
+  transition: .3s;
+  
+  &[href*="//"]:not([href*="boehs.org"]) {
+    text-decoration-color: var(--warn);
+    
+    &:hover {
+      color: var(--warn);
+    }
+  }
+  
+  &:hover {
+    color: var(--light)
   }
 }
 

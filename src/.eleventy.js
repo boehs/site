@@ -24,8 +24,7 @@ function markdownIt() {
             pageName = pageName.trim();
             pageName = pageName.split("/").map(sanitize).join("/");
             return pageName;
-          },
-          includeWikilinks: "outer",
+          }
         })
       )
       .use(require('markdown-it-container'), 'details', {
