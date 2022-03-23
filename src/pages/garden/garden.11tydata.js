@@ -16,7 +16,7 @@ function backlinksApi(data) {
   for (const otherNote of notes) {
     const noteContent = otherNote.template.frontMatter.content;
     const noteAsLink = (
-      data.page.url.match(/\/([^\/]*?)\..+?$/)?.[1] ||
+      otherNote.data.page.url.match(/\/([^\/]*?)\..+?$/)?.[1] ||
       otherNote.data.page.filePathStem.replace("/pages/garden/node/", "")
     ).toLowerCase();
 
