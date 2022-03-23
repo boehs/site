@@ -1,6 +1,6 @@
 ---
 is: not creepy
-title: privacy
+title: Privacy
 hasCodeBlock: true
 ---
 
