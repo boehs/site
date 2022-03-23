@@ -46,6 +46,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-wrap: break-word;
 
   & > div {
     padding: 75px 0;
