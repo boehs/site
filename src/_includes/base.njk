@@ -11,7 +11,7 @@
         }
       </style>
       {% endif %}
-      {% if config.analytics %}
+      {% if config.analytics and getEnv("ELEVENTY_ENV","production") %}
         {{ config.analytics | safe }}
       {% endif %}
       <div>

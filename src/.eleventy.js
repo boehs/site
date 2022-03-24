@@ -90,6 +90,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addNunjucksGlobal("getContext", function () {
     return this.ctx;
   });
+  
+  eleventyConfig.addNunjucksGlobal("getEnv", function (k,v) {
+    return process.env[k] == v
+  });
 
   eleventyConfig.addFilter("getType", function (thing) {
     return {}.toString
