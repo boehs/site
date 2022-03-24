@@ -11,6 +11,9 @@
         }
       </style>
       {% endif %}
+      {% if config.analytics %}
+        {{ config.analytics | safe }}
+      {% endif %}
       <div>
          <header>
            {% include "partials/head.njk" %}

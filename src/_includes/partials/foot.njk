@@ -39,11 +39,15 @@
         <ul>
             <li>
                 <a href="/privacy">Privacy</a>
-            <li>
-                {% if config.donate %}
-                    <a href="https://liberapay.com/e">Donate</a>
-                {% endif %}
             </li>
+            {% if config.analyticsPub %}
+                <li><a href="{{config.analyticsPub}}">Public Analytics</a></li>
+            {% endif %}
+            {% if config.donate %}
+                <li>
+                    <a style="text-decoration-color: #f6c915" href="https://liberapay.com/e">Donate</a>
+                </li>
+            {% endif %}
         </ul>
     </div>
 </nav>

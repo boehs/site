@@ -3,5 +3,7 @@
     "author": "Evan Boehs",
     "isServer": false,
     "donate": "https://flattr.com/@evan",
-    "color": "#0aa06e"
+    "color": "#0aa06e",
+    "analytics": "<script async defer data-website-id=\"70dcc41f-95a1-433d-b3e1-298bee6a6f41\" src=\"https://espy.boehs.org/umami.js\"></script>",
+    "analyticsPub": "https://espy.boehs.org/share/7A58GBhX/boehs.org"
 }
