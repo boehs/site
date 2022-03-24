@@ -19,12 +19,14 @@
            {% include "partials/head.njk" %}
          </header>
          <main>
-          <article>
+          <article class="h-entry">
             {% block main %}
               {% if title and not notitle %}
-                <h1>{{title}}</h1>
+                <h1 class="h-title">{{title}}</h1>
               {% endif %}
-              {{content | safe}}
+              <div class="e-content">
+                {{content | safe}}
+              </div>
             {% endblock %}
           </article>
          </main>

@@ -13,7 +13,7 @@ layout: base.njk
         <div>
             <div>{{settings.frontmatter}}</div>
             {% if frontmatter | getType == 'array'%}
-                <ul>
+                <ul {% if settings.class %}class="{{settings.class}}"{% endif %}>
                     {% for item in frontmatter %}
                         <li>
                             <a href="/{{settings.frontmatter}}/{{item}}">{{item}}</a>
@@ -21,9 +21,10 @@ layout: base.njk
                     {% endfor %}
                 </ul>
             {% elseif frontmatter | getType == 'date' %}
-                {{page.date.toUTCString()}}
+                {# hack #}
+                <span {% if settings.class %}class="{{settings.class}}"{% endif %}>{{page.date.toUTCString()}}</span>
             {% else %}
-                <a href="/{{settings.frontmatter}}/{{frontmatter}}">{{frontmatter}}</a>
+                <a {% if settings.class %}class="{{settings.class}}"{% endif %} href="/{{settings.frontmatter}}/{{frontmatter}}">{{frontmatter}}</a>
             {% endif %}
         </div>
     {% endif %}
