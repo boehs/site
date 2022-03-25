@@ -4,13 +4,12 @@ pagination:
   data: collections.nestedTax
   size: 1
   alias: value
-permalink: /{{value}}/index.html
+permalink: /{{collectionsControl[value].plural or value}}/index.html
 eleventyComputed:
-  title: "{{value}}"
+  title: "{{collectionsControl[value].plural or value}}"
 ---
 
 {% from "partials/cardgroup.njk" import cardList %}
-
 
 {% set renderedList = [] %}
 {% for tag,_ in collections.nestedTax[value] %}
@@ -19,7 +18,7 @@ eleventyComputed:
     color: tagList[value][tag].color
   },
   {
-    url: "/" + value + "/" + tag,
+    url: "/" + [collectionsControl[value].single or value] + "/" + tag,
     title: tag
   },
   {

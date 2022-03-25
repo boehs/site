@@ -4,12 +4,15 @@ pagination:
   data: collections.taxes
   size: 1
   alias: value
-permalink: /{{ value[0] }}/{{ value[1] }}.html
+permalink: /{{collectionsControl[value[0]].single or value[0]}}/{{ value[1] }}.html
 eleventyComputed:
-  title: "{{value[0]}}: {{value[1]}}"
+  title: "{{collectionsControl[value[0]].single or value[0]}}: {{value[1]}}"
 ---
 
 {% from "partials/card.njk" import card %}
+
+
+☝ <a href="/{{ collectionsControl[value[0]].plural or value[0] }}">view all {{collectionsControl[value[0]].plural or value[0]}}</a>
 
 {% if tagList[value[0]][value[1]] %}
   {{ card({
