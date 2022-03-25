@@ -1,4 +1,4 @@
-image: archlinux
+image: alpine/latest
 packages:
   - nodejs
   - pnpm
