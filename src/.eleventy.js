@@ -130,8 +130,7 @@ module.exports = function (eleventyConfig) {
     // next lets iterate over all the nodes
     nodes.forEach((node) => {
       // and then iterate over the taxonomies
-      for (const [_, value] of Object.entries(collectionControl)) {
-        const taxonomy = value.frontmatter;
+      for (const [taxonomy, value] of Object.entries(collectionControl)) {
         // I don't want to paginate date, for instance
         // this is why my collectionControl is using objects instead of arrays
         if (value.excludeFromPagination) continue;
@@ -169,8 +168,7 @@ module.exports = function (eleventyConfig) {
     let nestedTax = {};
     const nodes = collectionApi.getFilteredByGlob("pages/garden/node/*.md");
     nodes.forEach((node) => {
-      for (const [_, value] of Object.entries(collectionControl)) {
-        const taxonomy = value.frontmatter;
+      for (const [taxonomy, value] of Object.entries(collectionControl)) {
         const taxValue = node.data[taxonomy]
 
         if (value.excludeFromPagination) continue;

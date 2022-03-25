@@ -6,19 +6,19 @@ layout: base.njk
 
 {% set hasdiv = false %}
 {% for collection,settings in collectionsControl %}
-    {% set frontmatter = getContext()[settings.frontmatter] %}
+    {% set frontmatter = getContext()[collection] %}
     {% if frontmatter %}
         {% if not hasdiv %}
             <div class="kv">
             {% set hasdiv = true %}
         {% endif %}
         <div>
-            <div>{{settings.frontmatter}}</div>
+            <div>{{collection}}</div>
             {% if frontmatter | getType == 'array'%}
                 <ul {% if settings.class %}class="{{settings.class}}"{% endif %}>
                     {% for item in frontmatter %}
                         <li>
-                            <a href="/{{settings.frontmatter}}/{{item}}">{{item}}</a>
+                            <a href="/{{collection}}/{{item}}">{{item}}</a>
                         </li>
                     {% endfor %}
                 </ul>
@@ -26,7 +26,7 @@ layout: base.njk
                 {# hack #}
                 <span {% if settings.class %}class="{{settings.class}}"{% endif %}>{{page.date.toUTCString()}}</span>
             {% else %}
-                <a {% if settings.class %}class="{{settings.class}}"{% endif %} href="/{{settings.frontmatter}}/{{frontmatter}}">{{frontmatter}}</a>
+                <a {% if settings.class %}class="{{settings.class}}"{% endif %} href="/{{collection}}/{{frontmatter}}">{{frontmatter}}</a>
             {% endif %}
         </div>
     {% endif %}
@@ -38,14 +38,14 @@ layout: base.njk
 <hr/>
 
 {% for collection,settings in collectionsControl %}
-    {% set frontmatter = getContext()[settings.frontmatter] %}
+    {% set frontmatter = getContext()[collection] %}
     {% if frontmatter %}
         {% set item = tagList[collection][frontmatter] %}
         {% if item.showOnPost %}
             {{ card({
                 color: item.color
             },{
-                url: "/" + settings.frontmatter + "/" + frontmatter,
+                url: "/" + collection + "/" + frontmatter,
                 title: frontmatter,
                 icon: item.icon
             },{

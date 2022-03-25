@@ -4,8 +4,8 @@ module.exports = {
     return data.page.fileSlug.replace("-", " ");
   },
   color(data) {
-    for (const [collection, settings] of Object.entries(data.collectionsControl)) {
-      const frontmatter = data[settings.frontmatter]
+    for (const [collection] of Object.entries(data.collectionsControl)) {
+      const frontmatter = data[collection]
       if (frontmatter) {
         if (data.tagList[collection]?.hasOwnProperty(frontmatter)) {
           const item = data.tagList[collection][frontmatter]

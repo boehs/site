@@ -1,5 +1,5 @@
 {
-    "statuses": {
+    "state": {
         "evergreen": {
             "icon": "🌲",
             "description": "Always growing, always green, and always calm, evergreen nodes are slowly updated over time.",
@@ -28,7 +28,7 @@
             "description": "Still young, while seeds don't look like anything much, they have the power to grow into something beautiful if kindled and given room to florish."
         }
     },
-    "types": {
+    "in": {
         "blog": {
             "icon": "🗞️",
             "description": "A fleshed out story, one you just might want to read."
