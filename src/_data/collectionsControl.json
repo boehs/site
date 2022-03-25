@@ -1,19 +1,15 @@
 {
-    "statuses": {
-        "frontmatter": "state",
+    "state": {
         "class": "p-category"
     },
-    "types": {
+    "in": {
         "mode": "differentiator",
-        "frontmatter": "in",
         "class": "p-category"
     },
     "tags": {
-        "frontmatter": "tags",
         "class": "p-category"
     },
     "date": {
-        "frontmatter": "date",
         "excludeFromPagination": true,
         "class": "dt-published"
     }

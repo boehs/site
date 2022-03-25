@@ -11,6 +11,19 @@ eleventyComputed:
 
 {% from "partials/card.njk" import card %}
 
+{% if tagList[value[0]][value[1]] %}
+  {{ card({
+      color: tagList[value[0]][value[1]].color
+  },{
+      url: "/" + value[0] + "/" + value[1],
+      title: value[1],
+      icon: tagList[value[0]][value[1]].icon
+  },{
+      content: tagList[value[0]][value[1]].description
+  }) }}
+  <hr/>
+{% endif %}
+
 <div class="h-feed">
   {% for post in collections.nestedTax[value[0]][value[1]] | reverse %}
     {{ card({
