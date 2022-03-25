@@ -2,6 +2,8 @@
 layout: base.njk
 ---
 
+{% from "partials/card.njk" import card %}
+
 {% set hasdiv = false %}
 {% for collection,settings in collectionsControl %}
     {% set frontmatter = getContext()[settings.frontmatter] %}
@@ -40,10 +42,15 @@ layout: base.njk
     {% if frontmatter %}
         {% set item = tagList[collection][frontmatter] %}
         {% if item.showOnPost %}
-            <div class="card" {% if item.color %} style="background-color: {{item.color}}" {% endif %}>
-                <p class="tit">{{item.icon if item.icon}} <a href="/{{settings.frontmatter}}/{{frontmatter}}">{{frontmatter}}</a></p>
-                <p class="pad">{{item.description | safe if item.description}}</p>
-            </div>
+            {{ card({
+                color: item.color
+            },{
+                url: "/" + settings.frontmatter + "/" + frontmatter,
+                title: frontmatter,
+                icon: item.icon
+            },{
+                content: item.description if item.description
+            }) }}
         {% endif %}
     {% endif %}
 {% endfor %}

@@ -9,11 +9,21 @@ eleventyComputed:
   title: "{{value[0]}}: {{value[1]}}"
 ---
 
+{% from "partials/card.njk" import card %}
+
 <div class="h-feed">
   {% for post in collections.nestedTax[value[0]][value[1]] | reverse %}
-    <div class="card h-entry">
-      <p><a href="{{ post.url | url }}" class="p-name u-url">{{ post.data.title }}</a></p>
-      <p class="p-summary">{{post.data.description | renderMd | safe if post.data.description else post.data.page.excerpt | renderMd | safe}}</p>
-    </div>
+    {{ card({
+      class: 'h-entry'
+    },
+    {
+      url: post.url | url,
+      class: "p-name u-url",
+      title: post.data.title
+    },
+    {
+      class: "p-summary",
+      content: post.data.description | renderMd if post.data.description else post.data.page.excerpt | renderMd
+    })}}
   {% endfor %}
 </div>
