@@ -28,7 +28,9 @@ eleventyComputed:
 {% endif %}
 
 <div class="h-feed">
-  {% for post in collections.nestedTax[value[0]][value[1]] | reverse %}
+  {% for location,posts in collections.nestedTax[value[0]][value[1]] | reverse | groupby("data.in") %}
+    {% if loop.length != 1 or location != value[0] %}<h2>{{location}}</h2>{% endif %}
+    {% for post in posts %}
     {{ card({
       class: 'h-entry'
     },
@@ -41,5 +43,6 @@ eleventyComputed:
       class: "p-summary",
       content: post.data.description | renderMd if post.data.description else post.data.page.excerpt | renderMd
     })}}
+    {% endfor %}
   {% endfor %}
 </div>
