@@ -1,21 +1,23 @@
 {
 	"version": "2.0.0",
 	"scripts": {
-		"start": "npm-run-all --parallel dev:*",
-		"dev:eleventy": "ELEVENTY_ENV=development eleventy --serve --quiet",
-		"dev:parcel": "parcel watch _public/*.{scss,ts} --dist-dir dist --no-source-maps",
-		"build": "run-s prod:*",
-		"prod:clear": "rm -r dist/ || true",
-		"prod:eleventy": "ELEVENTY_ENV=production eleventy",
-		"prod:parcel": "parcel build _public/*.{scss,ts} --no-source-maps --no-content-hash --public-url ./"
+		"start": "gulp dev",
+		"build": "gulp"
 	},
 	"dependencies": {
 		"@11ty/eleventy": "2.0.0-canary.4",
 		"@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
 		"@gardeners/markdown-it-wikilinks": "^1.4.3",
-		"@parcel/config-default": "^2.3.2",
-		"@parcel/core": "^2.3.2",
-		"@parcel/optimizer-terser": "^2.3.2",
+		"del": "^6.0.0",
+		"gulp": "^4.0.2",
+		"gulp-htmlmin": "^5.0.1",
+		"gulp-js-text-inject": "^1.1.0",
+		"gulp-livereload": "^4.0.2",
+		"gulp-postcss": "^9.0.1",
+		"gulp-run": "^1.7.1",
+		"gulp-sass": "^5.1.0",
+		"gulp-terser": "^2.1.0",
+		"gulp-typescript": "^6.0.0-alpha.1",
 		"markdown-it": "^12.3.2",
 		"markdown-it-anchor": "^8.4.1",
 		"markdown-it-attribution": "^0.1.4",
@@ -23,9 +25,7 @@
 		"markdown-it-container": "^3.0.0",
 		"markdown-it-table-of-contents": "^0.6.0",
 		"netlify-cli": "^9.13.2",
-		"npm-run-all": "^4.1.5",
 		"nunjucks": "^3.2.3",
-		"parcel": "^2.3.2",
 		"pnpm": "^6.32.3",
 		"postcss": "^8.4.7",
 		"postcss-csso": "^6.0.0",
@@ -33,9 +33,5 @@
 		"sanitize-filename": "^1.6.3",
 		"sass": "1.49.9",
 		"typescript": "^4.5.5"
-	},
-	"devDependencies": {
-		"@parcel/transformer-inline-string": "2.3.2",
-		"@parcel/transformer-sass": "2.3.2"
 	}
 }
