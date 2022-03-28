@@ -3,6 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@11ty/eleventy': 2.0.0-canary.4
   '@11ty/eleventy-plugin-syntaxhighlight': ^4.0.0
+  '@boehs/gulp-js-text-inject': ^1.0.3
   '@gardeners/markdown-it-wikilinks': ^1.4.3
   del: ^6.0.0
   gulp: ^4.0.2
@@ -33,6 +34,7 @@ specifiers:
 dependencies:
   '@11ty/eleventy': 2.0.0-canary.4
   '@11ty/eleventy-plugin-syntaxhighlight': 4.0.0
+  '@boehs/gulp-js-text-inject': 1.0.3
   '@gardeners/markdown-it-wikilinks': 1.4.3
   del: 6.0.0
   gulp: 4.0.2
@@ -1677,6 +1679,13 @@ packages:
     dependencies:
       '@babel/helper-validator-identifier': 7.16.7
       to-fast-properties: 2.0.0
+    dev: false
+
+  /@boehs/gulp-js-text-inject/1.0.3:
+    resolution: {integrity: sha512-F64i7WSck7ou64PFWshukDgUf6i3r2OfZrwHUKMlUPNfbIeXMkzPsDyDhvt6vz26RbzJWPKmt2j2K7dtPhqRnA==}
+    dependencies:
+      through2: 0.6.5
+      xtend: 4.0.2
     dev: false
 
   /@bugsnag/browser/7.16.2:

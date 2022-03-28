@@ -6,7 +6,7 @@ const postcssConfig = require("./.postcssrc.js")
 const postcss = require('gulp-postcss');
 
 const ts = require('gulp-typescript');
-const jsInject = require('gulp-js-text-inject')
+const jsInject = require('@boehs/gulp-js-text-inject')
 const terser = require('gulp-terser');
 
 const del = require('del');
@@ -35,6 +35,9 @@ function type() {
             moduleResolution: "node",
             target: 'ES6'
         }))
+        .pipe(jsInject({
+            basepath: './'
+        }))
         .pipe(terser({
             module: true,
             ecma: 2016,
@@ -44,9 +47,6 @@ function type() {
                 unsafe_math: true,
             },
             
-        }))
-        .pipe(jsInject({
-            basepath: './'
         }))
         .pipe(g.dest('dist/'))
 }
