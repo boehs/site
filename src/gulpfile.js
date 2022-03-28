@@ -35,9 +35,6 @@ function type() {
             moduleResolution: "node",
             target: 'ES6'
         }))
-        .pipe(jsInject({
-            basepath: './'
-        }))
         .pipe(terser({
             module: true,
             ecma: 2016,
@@ -47,6 +44,9 @@ function type() {
                 unsafe_math: true,
             },
             
+        }))
+        .pipe(jsInject({
+            basepath: './'
         }))
         .pipe(g.dest('dist/'))
 }
