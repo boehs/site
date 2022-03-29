@@ -36,6 +36,10 @@
     --radius: 3px;
 }
 
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
   font-family: Spectral, serif;
   font-size: 1.1rem;
@@ -47,6 +51,7 @@ body {
   justify-content: center;
   align-items: center;
   overflow-wrap: break-word;
+  box-sizing: border-box;
 
   & > div {
     padding: 75px 0;
@@ -164,7 +169,12 @@ header {
   }
 }
 
-a {
+.card {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+a:not(.card) {
   color: inherit;
   text-decoration-color: var(--light);
   text-decoration-thickness: 2px;
@@ -192,12 +202,12 @@ article > p {
   gap: 10px;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   
-  .card {
+  .card > div {
     margin: 0;
   }
 }
 
-.card,
+.card > div,
 button,
 input[type=submit],
 input[type=button],
@@ -207,6 +217,11 @@ input[type=reset] {
   background: var(--lighter);
   border-radius: var(--radius);
   transition: 0.3s;
+  height: 100%;
+  
+  &:hover {
+    border-radius: 20px;
+  }
 }
 
 button,
@@ -273,7 +288,7 @@ blockquote {
     color: whitesmoke;
   }
 
-  code,.card {
+  code,.card > div {
     background: darkslategray;
   }
 

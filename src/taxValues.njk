@@ -41,7 +41,7 @@ eleventyComputed:
     },
     {
       class: "p-summary",
-      content: post.data.description | renderMd if post.data.description else post.data.page.excerpt | renderMd
+      content: post.data.description | renderMd if post.data.description
     })}}
     {% endfor %}
   {% endfor %}
