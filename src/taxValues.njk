@@ -32,7 +32,8 @@ eleventyComputed:
     {% if loop.length != 1 or location != value[0] %}<h2>{{location}}</h2>{% endif %}
     {% for post in posts %}
     {{ card({
-      class: 'h-entry'
+      class: 'h-entry',
+      color: post.data.color
     },
     {
       url: post.url | url,

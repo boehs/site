@@ -3,6 +3,5 @@ module.exports = {
         require('postcss-csso')({
             restructure: true
         }),
-        require('postcss-variable-compress')
     ]
 };

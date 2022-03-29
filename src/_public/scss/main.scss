@@ -169,12 +169,7 @@ header {
   }
 }
 
-.card {
-  color: inherit;
-  text-decoration: inherit;
-}
-
-a:not(.card) {
+a {
   color: inherit;
   text-decoration-color: var(--light);
   text-decoration-thickness: 2px;
@@ -193,6 +188,18 @@ a:not(.card) {
   }
 }
 
+.card {
+  color: inherit;
+  text-decoration: inherit;
+  
+  > div {
+    height: 100%;
+    transition: .3s;
+    border-left: 2px solid var(--light);
+    padding: 0 1em;
+  }
+}
+
 article > p {
   margin-block: 10px;
 }
@@ -201,13 +208,8 @@ article > p {
   display: grid;
   gap: 10px;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  
-  .card > div {
-    margin: 0;
-  }
 }
 
-.card > div,
 button,
 input[type=submit],
 input[type=button],
@@ -216,12 +218,7 @@ input[type=reset] {
   margin: 10px 0;
   background: var(--lighter);
   border-radius: var(--radius);
-  transition: 0.3s;
-  height: 100%;
-  
-  &:hover {
-    border-radius: 20px;
-  }
+  transition: .3s;
 }
 
 button,

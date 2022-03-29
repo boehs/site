@@ -25,7 +25,6 @@ specifiers:
   pnpm: ^6.32.3
   postcss: ^8.4.7
   postcss-csso: ^6.0.0
-  postcss-variable-compress: ^1.0.0
   sanitize-filename: ^1.6.3
   sass: 1.49.9
   typescript: ^4.5.5
@@ -55,7 +54,6 @@ dependencies:
   pnpm: 6.32.3
   postcss: 8.4.7
   postcss-csso: 6.0.0_postcss@8.4.7
-  postcss-variable-compress: 1.0.0_postcss@8.4.7
   sanitize-filename: 1.6.3
   sass: 1.49.9
   typescript: 4.5.5
@@ -9457,15 +9455,6 @@ packages:
       flatten: 1.0.3
       indexes-of: 1.0.1
       uniq: 1.0.1
-    dev: false
-
-  /postcss-variable-compress/1.0.0_postcss@8.4.7:
-    resolution: {integrity: sha512-QBvOmQuM0gly8h26pw0M+uvUIhC9k6MpKjH9ApPjgVX3+YxPff5lfflOLPgYnhBSftgQCA1Yku0fL9Ll1hTy/A==}
-    engines: {node: '>=10.0.0'}
-    peerDependencies:
-      postcss: ^8.2.8
-    dependencies:
-      postcss: 8.4.7
     dev: false
 
   /postcss/8.4.12:
