@@ -5,14 +5,15 @@ module.exports = {
   },
   color(data) {
     for (const [collection] of Object.entries(data.collectionsControl)) {
-      const frontmatter = data[collection]
-      if (frontmatter) {
-        if (data.tagList[collection]?.hasOwnProperty(frontmatter)) {
-          const item = data.tagList[collection][frontmatter]
-          if (item.color) return item.color
-        }
+      const frontmatter = data[collection];
+      if (
+        frontmatter &&
+        data.tagList[collection]?.hasOwnProperty(frontmatter)
+      ) {
+        const item = data.tagList[collection][frontmatter];
+        if (item.color) return item.color;
       }
     }
-    return data.config.color
-  }
+    return data.config.color;
+  },
 };
