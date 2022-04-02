@@ -8,7 +8,7 @@
 		"@11ty/eleventy": "2.0.0-canary.4",
 		"@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
 		"@boehs/gulp-js-text-inject": "^1.0.3",
-		"@gardeners/markdown-it-wikilinks": "^1.4.3",
+		"@gardeners/markdown-it-wikilinks": "^1.5.0",
 		"del": "^6.0.0",
 		"gulp": "^4.0.2",
 		"gulp-htmlmin": "^5.0.1",

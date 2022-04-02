@@ -24,7 +24,9 @@ function markdownIt() {
             pageName = pageName.trim();
             pageName = pageName.split("/").map(sanitize).join("/");
             return pageName;
-          }
+          },
+          imagePattern: /!\[\[([^]+?)\]\]/,
+          assetPrefix: '/assets/'
         })
       )
       .use(require('markdown-it-container'), 'details', {
@@ -73,7 +75,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy("favicon.ico");
   eleventyConfig.addPassthroughCopy({ "_assets/*": "." });
-  eleventyConfig.addPassthroughCopy({ "pages/c/Assets/*": "assets" });
+  eleventyConfig.addPassthroughCopy({ "pages/garden/node/Assets/*": "assets" });
 
   // I won't even attempt to explain this
   eleventyConfig.addCollection("wtf", function (collectionApi) {
