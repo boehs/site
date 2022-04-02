@@ -11,7 +11,15 @@ function markdownIt() {
     linkify: true,
   };
   let markdownIt = require("markdown-it")(options);
-
+  
+  markdownIt.renderer.rules.table_open = function() {
+    return '<div class="twrap"><table>\n'
+  }
+  
+  markdownIt.renderer.rules.table_close = function() {
+    return '</table></div>\n'
+  }
+  
   return (
     markdownIt
       //.use(require("markdown-it-obsidian")({baseURL: '/pages/c/'}))

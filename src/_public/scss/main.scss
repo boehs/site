@@ -260,6 +260,18 @@ dd {
   padding-left: 10px;
 }
 
+.twrap {
+  overflow-x: auto;
+}
+
+table {
+  border-spacing: 1em 0;
+}
+
+th {
+  white-space: nowrap;
+}
+
 blockquote {
   padding: 10px 0 10px 10px;
   border-left: 6px double var(--light);
