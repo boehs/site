@@ -8,6 +8,7 @@ permalink: /{{collectionsControl[value[0]].single or value[0]}}/{{ value[1] }}.h
 eleventyComputed:
   title: "{{collectionsControl[value[0]].single or value[0]}}: {{value[1]}}"
   color: "{{tagList[value[0]][value[1]].color}}"
+  description: "{{tagList[value[0]][value[1]].description}}"
 ---
 
 {% from "partials/card.njk" import card %}
@@ -38,7 +39,7 @@ eleventyComputed:
 
 <div class="h-feed">
   {% for location,posts in collections.nestedTax[value[0]][value[1]] | reverse | groupby("data." + tax) %}
-    {% if loop.length != 1 or location != value[1] %}<h2><a href="/{{tax}}/{{location}}">{{location}}</a></h2>{% endif %}
+    {% if loop.length != 1 or location != value[1] %}<h2><a href="/{{tax}}/{{location}}">{{location | capitalize}}</a></h2>{% endif %}
     {% for post in posts %}
     {{ card({
       class: 'h-entry',
