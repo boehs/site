@@ -339,3 +339,12 @@ blockquote {
 //     width: 64ch;
 //   }
 // }
+
+.penpen {
+  --light: lightpink;
+  background-color: lavender;
+  
+  p::before {
+    content: '🐾 ';
+  }
+}
