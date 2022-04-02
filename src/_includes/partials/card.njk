@@ -1,10 +1,8 @@
 {% macro card(card,head,body) %}
 
 <a href="{{head.url}}" class="card{{" " + card.class if card.class else ""}}" {% if card.color %}style="--light: {{card.color}}" {% endif %}>
-<div>
     <p>{{ head.icon + " " if head.icon}}<strong {% if head.class %}class="{{head.class}}"{%endif%}>{{ head.title }}</strong></p>
     {% if body.content %}<p {% if body.class %}class="{{body.class}}"{% endif %}>{{ body.content | safe }}</p>{% endif %}
-</div>
 </a>
 
 {% endmacro %}

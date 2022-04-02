@@ -1,24 +1,19 @@
 <pre id="flower" class="lighter">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</pre>
 <nav>
     <div>
-        <div>Main</div>
+        <strong>Main</strong>
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/contact" class="umami--click--contact">Contact</a></li>
             {% if config.isJobHunting %}
                 <li><a href="/resume"><s>Resume</s></a></li>
             {% endif %}
-        </ul>
-    </div>
-    <div>
-        <div>Feeds</div>
-        <ul>
             <li><a href="/in/blog" class="umami--click--blog">Blog</a></li>
-            <li><a href="/in/now" class="umami--click--journal ">Now</a></li>
+            <li><a href="/in/now" class="umami--click--journal ">Now</a></li
         </ul>
     </div>
     <div>
-        <div>Links</div>
+        <strong>Links</strong>
         <ul>
             <li>
                 <a href="https://sr.ht/~boehs" rel="me">SourceHut</a>
@@ -34,7 +29,7 @@
         </ul>
     </div>
     <div>
-        <div>Boring</div>
+        <strong>Boring</strong>
         <ul>
             {% if config.analyticsPub %}
                 <li><a href="{{config.analyticsPub}}">Open Analytics</a></li>
