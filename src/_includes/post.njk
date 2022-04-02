@@ -14,12 +14,13 @@ layout: base.njk
         {% endif %}
         <div>
             <div>
-                {% if not collectionsControl[collection].excludeFromPagination %}
-                    <a href="/{{collectionsControl[collection].plural or collection}}">{{collection}}</a>
-                {% else %}
-                    {{collection}}
-                {% endif %}
-                        
+                <strong>
+                    {% if not collectionsControl[collection].excludeFromPagination %}
+                        <a href="/{{collectionsControl[collection].plural or collection}}">{{collection}}</a>
+                    {% else %}
+                        {{collection}}
+                    {% endif %}
+                </strong> 
             </div>
             {% if frontmatter | getType == 'array'%}
                 <ul {% if settings.class %}class="{{settings.class}}"{% endif %}>
