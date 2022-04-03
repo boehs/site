@@ -15,9 +15,6 @@ eleventyComputed:
 {% for tag,_ in collections.nestedTax[value] %}
   {% set renderedList = (renderedList.push([
   {
-    color: tagList[value][tag].color
-  },
-  {
     url: "/" + [collectionsControl[value].single or value] + "/" + tag,
     title: tag
   },

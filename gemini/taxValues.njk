@@ -10,23 +10,16 @@ eleventyComputed:
   color: "{{tagList[value[0]][value[1]].color}}"
   description: "{{tagList[value[0]][value[1]].description}}"
 ---
-
 {% from "partials/card.njk" import card %}
-
-
-☝ <a href="/{{ collectionsControl[value[0]].plural or value[0] }}">view all {{collectionsControl[value[0]].plural or value[0]}}</a>
-
+=> gemini://boehs.org/{{ collectionsControl[value[0]].plural or value[0] }} ☝ view all {{collectionsControl[value[0]].plural or value[0]}}
 {% if tagList[value[0]][value[1]] %}
   {{ card({
-      color: tagList[value[0]][value[1]].color
-  },{
       url: "/" + value[0] + "/" + value[1],
       title: value[1],
       icon: tagList[value[0]][value[1]].icon
   },{
       content: tagList[value[0]][value[1]].description
   }) }}
-  <hr/>
 {% endif %}
 
 
@@ -37,15 +30,10 @@ eleventyComputed:
   {%- endfor %}
 {%- endset %}
 
-<div class="h-feed">
   {% for location,posts in collections.nestedTax[value[0]][value[1]] | reverse | groupby("data." + tax) %}
     {% if loop.length != 1 or location != value[1] %}<h2><a href="/{{tax}}/{{location}}">{{location | capitalize}}</a></h2>{% endif %}
     {% for post in posts %}
     {{ card({
-      class: 'h-entry',
-      color: post.data.color
-    },
-    {
       url: post.url | url,
       class: "p-name u-url",
       title: post.data.title
