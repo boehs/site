@@ -25,6 +25,7 @@
   font-display: swap;
 }
 
+$radius: 3px;
 :root {
     --light: #0aa06e;
     --lighter: #cddfd9;
@@ -33,7 +34,6 @@
     --activer: #b1c1cc;
     --warn: #d6863a;
     --warner: #ccbcb1;
-    --radius: 3px;
 }
 
 *, *:before, *:after {
@@ -45,7 +45,7 @@ body {
   font-size: 1.1rem;
   min-height: 100vh;
   margin: 0;
-  padding: 75px 0;
+  padding: 75px 20px;
   background: #fffbf8;
   color: #2f2235;
   display: flex;
@@ -94,7 +94,7 @@ img {
 }
 
 img {
-  border-radius: var(--radius);
+  border-radius: $radius;
 }
 
 hr {
@@ -117,7 +117,7 @@ ul {
 code,
 :not(footer) > pre {
   background: var(--lighter);
-  border-radius: var(--radius);
+  border-radius: $radius;
 }
 
 :not(pre) > code {
@@ -128,6 +128,10 @@ footer {
   flex-wrap: wrap;
   display: flex;
   justify-content: center;
+}
+
+blockquote {
+  border-radius: $radius;
 }
 
 // kv == key-value
@@ -172,15 +176,15 @@ a {
   transition: .3s;
   
   &[href*="//"]:not([href*="boehs.org"]) {
-    text-decoration-color: var(--warn);
-    
-    &:hover {
-      color: var(--warn);
-    }
+    --light: var(--warn)
   }
   
   &:hover {
     color: var(--light)
+  }
+  
+  &:active {
+    color: #ff9e9e;
   }
 }
 
@@ -222,7 +226,7 @@ input[type=reset] {
   padding: 1em;
   margin: 10px 0;
   background: var(--lighter);
-  border-radius: var(--radius);
+  border-radius: $radius;
   transition: .3s;
 }
 
@@ -278,11 +282,16 @@ blockquote {
   margin: 1em 0;
 }
 
-@media screen and (max-width: 800px) {
-  body {
-    padding: 0 20px;
+.penpen {
+  --light: lightpink;
+  background: lavender;
+  
+  p::before {
+    content: '🐾 ';
   }
+}
 
+@media screen and (max-width: 800px) {
   footer {
     pre {
       display: none;
@@ -300,29 +309,17 @@ blockquote {
     color: whitesmoke;
   }
 
-  code,.card {
+  code,
+  blockquote {
     background: darkslategray;
   }
-
-  a {
-    color: #9e9eff;
-
-    &:active {
-      color: #ff9e9e;
-    }
-
-    &:visited {
-      color: #d0adf0;
-    }
+  
+  .penpen {
+    background: darkslategray;
   }
   
   :not(footer) > pre {
     background: #fffbf8 !important;
-  }
-  
-  blockquote {
-    background: #36363c;
-    color: inherit;
   }
 }
 
@@ -339,12 +336,3 @@ blockquote {
 //     width: 64ch;
 //   }
 // }
-
-.penpen {
-  --light: lightpink;
-  background-color: lavender;
-  
-  p::before {
-    content: '🐾 ';
-  }
-}

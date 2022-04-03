@@ -78,6 +78,7 @@ exports.clean = removeDist
 exports.ts = type
 exports.css = scss
 exports.html = html
+exports.ellty = eleventy
 
 exports.dev = async function() {
     removeDist()

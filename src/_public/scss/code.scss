@@ -11,6 +11,7 @@ pre[class*="language-"] {
 	color: #111b27;
 	background: none;
 	line-height: 1.5;
+	tab-size: 4;
 }
 
 pre[class*="language-"]::-moz-selection,
@@ -35,7 +36,6 @@ pre[class*="language-"] {
 
 /* Inline code */
 :not(pre) > code[class*="language-"] {
-	border-radius: 0.3em;
 	white-space: normal;
 }
 
@@ -111,6 +111,16 @@ pre[class*="language-"] {
 .token.deleted,
 .token.important {
 	color: #c22f2e;
+}
+
+.token.deleted:not(.prefix), code.diff-highlight .token.deleted:not(.prefix) {
+    background-color: rgba(255, 0, 0, .1);
+    display: block;
+}
+
+.token.inserted:not(.prefix), code.diff-highlight .token.inserted:not(.prefix) {
+    background-color: rgba(0, 255, 128, .1);
+    display: block;
 }
 
 .token.keyword-this,
