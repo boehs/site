@@ -26,14 +26,12 @@
 }
 
 $radius: 3px;
+$lighter: #cddfd9;
+$warner: #ccbcb1;
+$activer: #b1c1cc;
 :root {
     --light: #0aa06e;
-    --lighter: #cddfd9;
-    // --darker: #086647;
-    // --active: #0a61a0;
-    --activer: #b1c1cc;
-    --warn: #d6863a;
-    --warner: #ccbcb1;
+    --warn:#d6863a;
 }
 
 *, *:before, *:after {
@@ -70,7 +68,7 @@ sub {
 
 button[type=reset],
 input[type=reset] {
-  background: var(--warner);
+  background: $warner;
 }
 
 figure {
@@ -116,7 +114,7 @@ ul {
 
 code,
 :not(footer) > pre {
-  background: var(--lighter);
+  background: $lighter;
   border-radius: $radius;
 }
 
@@ -225,7 +223,7 @@ input[type=button],
 input[type=reset] {
   padding: 1em;
   margin: 10px 0;
-  background: var(--lighter);
+  background: $lighter;
   border-radius: $radius;
   transition: .3s;
 }
@@ -236,7 +234,7 @@ input[type=button],
 input[type=reset],
 .int {
   &:hover {
-    background: var(--activer);
+    background: $activer;
   }
 }
 
@@ -322,17 +320,3 @@ blockquote {
     background: #fffbf8 !important;
   }
 }
-
-// extra classes
-
-// .banner {
-//   background: var(--warner);
-//   width: 100%;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// 
-//   & > div {
-//     width: 64ch;
-//   }
-// }
