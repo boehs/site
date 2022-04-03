@@ -1,0 +1,29 @@
+---
+layout: base.njk
+pagination:
+  data: collections.nestedTax
+  size: 1
+  alias: value
+permalink: /{{collectionsControl[value].plural or value}}/index.html
+eleventyComputed:
+  title: "{{collectionsControl[value].plural or value}}"
+---
+
+{% from "partials/cardgroup.njk" import cardList %}
+
+{% set renderedList = [] %}
+{% for tag,_ in collections.nestedTax[value] %}
+  {% set renderedList = (renderedList.push([
+  {
+    color: tagList[value][tag].color
+  },
+  {
+    url: "/" + [collectionsControl[value].single or value] + "/" + tag,
+    title: tag
+  },
+  {
+    content: tagList[value][tag].description
+  }]), renderedList) %}
+{% endfor %}
+      
+{{cardList(renderedList)}}

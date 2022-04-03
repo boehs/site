@@ -1,0 +1,13 @@
+<meta charset="utf-8">
+{%for name,content in metaTags %}
+    <meta name="{{name}}" content="{{content | interpolate}}">
+{%endfor%}
+{% if noindex %}
+    <meta name="robots" content="noindex">
+{% endif %}
+<title>{{title}}</title>
+<link rel="stylesheet" href="/main.css">
+{% if hasCodeBlock %}
+    <link rel="stylesheet" href="/code.css">
+{% endif %}
+<script src="/main.js" defer></script>

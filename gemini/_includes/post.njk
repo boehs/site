@@ -1,0 +1,82 @@
+---
+layout: base.njk
+---
+
+{% from "partials/card.njk" import card %}
+
+{% set hasdiv = false %}
+{% for collection,settings in collectionsControl %}
+    {% set frontmatter = getContext()[collection] %}
+    {% if frontmatter %}
+        {% if not hasdiv %}
+            <div class="kv">
+            {% set hasdiv = true %}
+        {% endif %}
+        <div>
+            <div>
+                <strong>
+                    {% if not collectionsControl[collection].excludeFromPagination %}
+                        <a href="/{{collectionsControl[collection].plural or collection}}">{{collection}}</a>
+                    {% else %}
+                        {{collection}}
+                    {% endif %}
+                </strong> 
+            </div>
+            {% if frontmatter | getType == 'array'%}
+                <ul {% if settings.class %}class="{{settings.class}}"{% endif %}>
+                    {% for item in frontmatter %}
+                        <li>
+                            <a href="/{{collectionsControl[collection].single or collection}}/{{item}}">{{item}}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% elseif frontmatter | getType == 'date' %}
+                {# hack #}
+                <span {% if settings.class %}class="{{settings.class}}"{% endif %}>{{page.date.toUTCString()}}</span>
+            {% else %}
+                <a {% if settings.class %}class="{{settings.class}}"{% endif %} href="/{{collectionsControl[collection].single or collection}}/{{frontmatter}}">{{frontmatter}}</a>
+            {% endif %}
+        </div>
+    {% endif %}
+{% endfor %}
+{% if hasdiv %}
+    </div>
+{% endif %}
+
+<hr/>
+
+{% for collection,settings in collectionsControl %}
+    {% set frontmatter = getContext()[collection] %}
+    {% if frontmatter %}
+        {% set item = tagList[collection][frontmatter] %}
+        {% if item.showOnPost %}
+            {{ card({
+                color: item.color
+            },{
+                url: "/" + collection + "/" + frontmatter,
+                title: frontmatter,
+                icon: item.icon
+            },{
+                content: item.description
+            }) }}
+        {% endif %}
+    {% endif %}
+{% endfor %}
+
+{{content | safe}}
+
+{% if not backlinks | length == 0 %}
+    <hr/>
+    <h2>What links here?</h2>
+    <ul>
+        {% for backlink in backlinks %}
+            <li>
+                <a href="{{backlink.url}}">{{backlink.title}}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<div style="display: none">
+    <a rel="author" class="p-author h-card" href="https://boehs.org">Evan Boehs</a>
+    <a href="{{page.url}}" class="u-url">{{page.url}}</a>
