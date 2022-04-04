@@ -4,21 +4,21 @@ packages:
   - pnpm
 oauth: pages.sr.ht/PAGES:RW
 environment:
-  site: your-username.srht.site
+  site: boehs.srht.site
 sources:
   - https://git.sr.ht/~boehs/site
 tasks:
-  - setup: |
-      cd site/gemini
-      pnpm install --frozen-lockfile
-  - build: |
-      cd site/gemini
-      pnpm run build
-  - artifact: |
-      cd site/gemini
-      tar -cvf build.tar.gz ./dist/
-  - deploy: |
-      cd site/gemini
-      acurl -f https://pages.sr.ht/publish/$site -Fcontent=@build.tar.gz
+- setup: |
+    cd site/gemini
+    pnpm install --frozen-lockfile
+- build: |
+    cd site/gemini
+    pnpm run build
+- artifact: |
+    cd site/gemini/dist
+    tar -cvz . > ../site.tar.gz
+- deploy: |
+    cd site/gemini
+    acurl -f https://pages.sr.ht/publish/$site -Fcontent=@site.tar.gz -Fprotocol=GEMINI
 artifacts:
   - site/gemini/build.tar.gz

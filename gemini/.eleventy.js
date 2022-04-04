@@ -55,7 +55,7 @@ module.exports = function (eleventyConfig) {
         
         const md = await this.defaultRenderer(data)
         
-        if(md.match(/<p/)) {
+        if(md.match(/<(p|(li)|a)/)) {
           return dioscuri.toGemtext(dioscuri.fromMdast(toMdast.toMdast(fromParse5.fromParse5(parse5.parseFragment(md)))))
         } else return md
         
