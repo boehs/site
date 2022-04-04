@@ -4,7 +4,7 @@ packages:
   - pnpm
 oauth: pages.sr.ht/PAGES:RW
 environment:
-  site: boehs.srht.site
+  site: boehs.org
 sources:
   - https://git.sr.ht/~boehs/site
 tasks:

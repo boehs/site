@@ -4,8 +4,8 @@ packages:
   - pnpm
 sources:
   - https://git.sr.ht/~boehs/site
-secrets:
-  - c67d26a1-1f66-4f3c-b7b0-75d118eee7b7
+environment:
+  site: boehs.org
 tasks:
   - setup: |
       cd site/html
