@@ -3,10 +3,20 @@ notitle: true
 title: Evan Boehs
 ---
 
-{% assign hello = deets.greatings | random %}
-# {{hello.hello}}! 👋 {style="margin-block-end: 0"}
+```
 
-<sup>{{hello.language}}</sup> {style="margin-block-start: 0"}
+   @@@@     ____             _
+  @@()@@   |  _ \           | |         (gemini edition)
+   @@@@    | |_) | ___   ___| |__  ___   ___  _ __ __ _
+    /      |  _ < / _ \ / _ \ '_ \/ __| / _ \| '__/ _` |
+ \ |       | |_) | (_) |  __/ | | \__ \| (_) | | | (_| |
+ \\|//     |____/ \___/ \___|_| |_|___(_)___/|_|  \__, |
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ __/ |
+   .    ˙   ˙       .      .     ˙       ˙  .     |___/
+```
+
+{% assign hello = deets.greatings | random %}
+# {{hello.hello}}! ({{hello.language}})
 
 I'm Evan, your run-of-the-mill programmer, ski bum, photographer, and believer.
 
