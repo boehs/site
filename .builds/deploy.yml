@@ -4,8 +4,8 @@ packages:
   - pnpm
 sources:
   - https://git.sr.ht/~boehs/site
-environment:
-  site: boehs.org
+secrets:
+  - c67d26a1-1f66-4f3c-b7b0-75d118eee7b7
 tasks:
   - setup: |
       cd site/html
@@ -13,11 +13,42 @@ tasks:
   - build: |
       cd site/html
       pnpm run build
+  - deploy: |
+      cd site/html
+      {
+        set +x
+        . ~/.buildsecrets
+        set -x
+      }
+      export NETLIFY_AUTH_TOKEN
+      pnpm exec netlify deploy --prod
+  - artifact: |
+image: archlinux
+packages:
+  - nodejs
+  - pnpm
+sources:
+  - https://git.sr.ht/~boehs/site
+secrets:
+  - c67d26a1-1f66-4f3c-b7b0-75d118eee7b7
+tasks:
+  - setup: |
+      cd site/html
+      pnpm install --frozen-lockfile
+  - build: |
+      cd site/html
+      pnpm run build
+  - deploy: |
+      cd site/html
+      {
+        set +x
+        . ~/.buildsecrets
+        set -x
+      }
+      export NETLIFY_AUTH_TOKEN
+      pnpm exec netlify deploy --prod
   - artifact: |
       cd site/html/dist
       tar -cvz . > ../site.tar.gz
-  - deploy: |
-      cd site/html
-      acurl -f https://pages.sr.ht/publish/$site -Fcontent=@site.tar.gz
 artifacts:
-  - site/html/site.tar.gz
+  - site/html/build.tar
