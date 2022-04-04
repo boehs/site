@@ -21,4 +21,4 @@ tasks:
     cd site/gemini
     acurl -f https://pages.sr.ht/publish/$site -Fcontent=@site.tar.gz -Fprotocol=GEMINI
 artifacts:
-  - site/gemini/build.tar.gz
+  - site/gemini/site.tar.gz
