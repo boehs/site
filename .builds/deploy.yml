@@ -13,17 +13,11 @@ tasks:
   - build: |
       cd site/html
       pnpm run build
+  - artifact: |
+      cd site/html/dist
+      tar -cvz . > ../site.tar.gz
   - deploy: |
       cd site/html
-      {
-        set +x
-        . ~/.buildsecrets
-        set -x
-      }
-      export NETLIFY_AUTH_TOKEN
-      pnpm exec netlify deploy --prod
-  - artifact: |
-      cd site/html
-      tar -cvf build.tar ./dist/
+      acurl -f https://pages.sr.ht/publish/$site -Fcontent=@site.tar.gz
 artifacts:
-  - site/html/build.tar
+  - site/html/site.tar.gz
