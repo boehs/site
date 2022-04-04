@@ -14,7 +14,6 @@ function markdownIt() {
   
   return (
     markdownIt
-      .use(require("markdown-it-table-of-contents"), { includeLevel: [2, 3, 4] })
       .use(require("markdown-it-anchor"))
       .use(
         require("@gardeners/markdown-it-wikilinks")({
@@ -55,7 +54,7 @@ module.exports = function (eleventyConfig) {
         
         const md = await this.defaultRenderer(data)
         
-        if(md.match(/<(p|(li)|a)/)) {
+        if(md.match(/<(p|(li)|a|(h[1-6]))/)) {
           return dioscuri.toGemtext(dioscuri.fromMdast(toMdast.toMdast(fromParse5.fromParse5(parse5.parseFragment(md)))))
         } else return md
         

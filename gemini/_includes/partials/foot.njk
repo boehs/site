@@ -1,18 +1,15 @@
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Main
 => gemini://boehs.org/ Home
-=> gemini://boehs.org/contact Contact
-{% if config.isJobHunting %}
-=> gemini://boehs.org/resume Resume
-{% endif %}
-=> gemini://boehs.org/in/blog Blog
-=> gemini://boehs.org/in/now Now
+=> gemini://boehs.org/contact.gmi Contact
+{% if config.isJobHunting -%}=> gemini://boehs.org/resume.gmi Resume{%- endif %}
+=> gemini://boehs.org/in/blog.gmi Blog
+=> gemini://boehs.org/in/now.gmi Now
 Links
 => https://sr.ht/~boehs SourceHut
 => https://github.com/boehs GitHub
 => https://linkedin.com/in/boehs LinkedIn
 => https://500px.com/taps Photos
 Boring
-{% if config.donate %}
-=> https://liberapay.com/e Donate
-{% endif %}
+{% if config.donate %}=> https://liberapay.com/e Donate{% endif %}
