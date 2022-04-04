@@ -30,17 +30,17 @@ function scss() {
 function type() {
     return g.src('_public/ts/main.ts')
         .pipe(ts({
-            lib: ['ES6','DOM'],
+            lib: ['es2017','DOM'],
             module: "CommonJS",
             moduleResolution: "node",
-            target: 'ES6'
+            target: 'es2017'
         }))
         .pipe(jsInject({
             basepath: './'
         }))
         .pipe(terser({
             module: true,
-            ecma: 2016,
+            ecma: 2017,
             compress: {
                 booleans_as_integers: true,
                 unsafe: true,
