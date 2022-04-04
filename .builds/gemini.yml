@@ -1,0 +1,24 @@
+image: archlinux
+packages:
+  - nodejs
+  - pnpm
+oauth: pages.sr.ht/PAGES:RW
+environment:
+  site: your-username.srht.site
+sources:
+  - https://git.sr.ht/~boehs/site
+tasks:
+  - setup: |
+      cd site/gemini
+      pnpm install --frozen-lockfile
+  - build: |
+      cd site/gemini
+      pnpm run build
+  - artifact: |
+      cd site/gemini
+      tar -cvf build.tar.gz ./dist/
+  - deploy: |
+      cd site/gemini
+      acurl -f https://pages.sr.ht/publish/$site -Fcontent=@build.tar.gz
+artifacts:
+  - site/gemini/build.tar.gz
