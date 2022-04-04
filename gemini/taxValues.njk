@@ -4,7 +4,7 @@ pagination:
   data: collections.taxes
   size: 1
   alias: value
-permalink: /{{collectionsControl[value[0]].single or value[0]}}/{{ value[1] }}.html
+permalink: /{{collectionsControl[value[0]].single or value[0]}}/{{ value[1] }}.gmi
 eleventyComputed:
   title: "{{collectionsControl[value[0]].single or value[0]}}: {{value[1]}}"
   color: "{{tagList[value[0]][value[1]].color}}"

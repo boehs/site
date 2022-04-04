@@ -5,31 +5,17 @@ const collectionControl = require("./_data/collectionsControl.json");
 
 function markdownIt() {
   let options = {
-    html: true,
+    html: false,
     breaks: true,
     typographer: true,
     linkify: true,
   };
   let markdownIt = require("markdown-it")(options);
   
-  markdownIt.renderer.rules.table_open = function() {
-    return '<div class="twrap"><table>\n'
-  }
-  
-  markdownIt.renderer.rules.table_close = function() {
-    return '</table></div>\n'
-  }
-  
-  markdownIt.renderer.rules.blockquote_open = function(token,idx) {
-    return `<blockquote${token[idx + 2].content.toLowerCase().includes("[[penpen]]'s note") ? ` class="penpen"` : ''}>`
-  }
-  
   return (
     markdownIt
-      //.use(require("markdown-it-obsidian")({baseURL: '/pages/c/'}))
-      .use(require("markdown-it-table-of-contents"), { includeLevel: [2, 3, 4, 5] })
+      .use(require("markdown-it-table-of-contents"), { includeLevel: [2, 3, 4] })
       .use(require("markdown-it-anchor"))
-      .use(require("markdown-it-attrs"))
       .use(
         require("@gardeners/markdown-it-wikilinks")({
           postProcessPageName: (pageName) => {
@@ -41,27 +27,6 @@ function markdownIt() {
           assetPrefix: '/assets/'
         })
       )
-      .use(require('markdown-it-container'), 'details', {
-
-        validate: function(params) {
-          return params.trim().match(/^details\s+(.*)$/);
-        },
-      
-        render: function (tokens, idx) {
-          var m = tokens[idx].info.trim().match(/^details\s+(.*)$/);
-          if (tokens[idx].nesting === 1) {
-            // opening tag
-            return '<details><summary>' + markdownIt.utils.escapeHtml(m[1]) + '</summary>\n';
-          } else {
-            // closing tag
-            return '</details>\n';
-          }
-        }
-      })
-      .use(require("markdown-it-attribution"),{
-        marker: '--',
-        removeMarker: false
-      })
   );
 }
 
@@ -78,8 +43,29 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("renderMd", content => markdown.render(content))
 
   eleventyConfig.setLibrary("md", markdown);
+  
+  eleventyConfig.addExtension("md", {
+    compile: function (inputContent, inputPath) {
+      return async function (data) {
+        // How ugly? ME YESSS!
+        const dioscuri = await import('dioscuri')
+        const fromParse5 = await import('hast-util-from-parse5')
+        const toMdast = await import('hast-util-to-mdast')
+        const parse5 = require('parse5')
+        
+        const md = await this.defaultRenderer(data)
+        
+        if(md.match(/<p/)) {
+          return dioscuri.toGemtext(dioscuri.fromMdast(toMdast.toMdast(fromParse5.fromParse5(parse5.parseFragment(md)))))
+        } else return md
+        
+      }
+    },
+    outputFileExtension: 'gmi'
+  })
+  
   eleventyConfig.setFrontMatterParsingOptions({
-    excerpt: (file, options) =>
+    excerpt: (file) =>
       (file.excerpt = file.content.split("\n").slice(0, 4).join(" ")),
   });
 

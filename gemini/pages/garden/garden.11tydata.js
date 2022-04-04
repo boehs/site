@@ -68,7 +68,7 @@ module.exports = {
   layout: "post.njk",
   in: "garden",
   hasCodeBlock: true,
-  permalink: '{{ page.filePathStem | dropContentFolder: "pages/garden" }}.html',
+  permalink: '{{ page.filePathStem | dropContentFolder: "pages/garden" }}.gmi',
   eleventyComputed: {
     backlinks: (data) => {
       return backlinksApi(data)[0];
