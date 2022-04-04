@@ -11,7 +11,6 @@ specifiers:
   hast-util-to-mdast: ^8.3.1
   markdown-it: ^12.3.2
   markdown-it-anchor: ^8.4.1
-  markdown-it-table-of-contents: ^0.6.0
   nunjucks: ^3.2.3
   parse5: ^6.0.1
   pnpm: ^6.32.3
@@ -28,7 +27,6 @@ dependencies:
   hast-util-to-mdast: 8.3.1
   markdown-it: 12.3.2
   markdown-it-anchor: 8.4.1_markdown-it@12.3.2
-  markdown-it-table-of-contents: 0.6.0
   nunjucks: 3.2.3
   parse5: 6.0.1
   pnpm: 6.32.3
@@ -2287,11 +2285,6 @@ packages:
 
   /markdown-it-regexp/0.4.0:
     resolution: {integrity: sha1-1k1xPuzsVc5M/esyF1DswJniwtw=}
-    dev: false
-
-  /markdown-it-table-of-contents/0.6.0:
-    resolution: {integrity: sha512-jHvEjZVEibyW97zEYg19mZCIXO16lHbvRaPDkEuOfMPBmzlI7cYczMZLMfUvwkhdOVQpIxu3gx6mgaw46KsNsQ==}
-    engines: {node: '>6.4.0'}
     dev: false
 
   /markdown-it/12.3.2:
