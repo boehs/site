@@ -3,7 +3,7 @@
 Main
 => gemini://boehs.org/ Home
 => gemini://boehs.org/contact.gmi Contact
-{% if config.isJobHunting -%}=> gemini://boehs.org/resume.gmi Resume{%- endif %}
+{% if config.isJobHunting -%}{{'\n'}}=> gemini://boehs.org/resume.gmi Resume{%- endif %}
 => gemini://boehs.org/in/blog.gmi Blog
 => gemini://boehs.org/in/now.gmi Now
 Links
@@ -11,5 +11,4 @@ Links
 => https://github.com/boehs GitHub
 => https://linkedin.com/in/boehs LinkedIn
 => https://500px.com/taps Photos
-Boring
-{% if config.donate %}=> https://liberapay.com/e Donate{% endif %}
+Boring{% if config.donate %}{{'\n'}}=> {{config.donate}} Donate{% endif %}

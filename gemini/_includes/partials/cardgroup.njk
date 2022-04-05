@@ -1,12 +1,14 @@
 {% from "partials/card.njk" import card %}
 
-{% macro cardList(list)%}
+{% macro cardList(list) -%}
 ===============
-    {% for item in list %}
+    {% for item in list -%}
         {% if not loop.first %}
+
 ---
         {% endif %}
-{{ card(item[1], item[2]) }}
-    {% endfor %}
+{{ card(item[0], item[1]) }}
+    {%- endfor %}
+
 ===============
-{% endmacro %}
+{%- endmacro %}

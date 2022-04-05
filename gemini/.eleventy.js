@@ -63,6 +63,20 @@ module.exports = function (eleventyConfig) {
     outputFileExtension: 'gmi'
   })
   
+  const nunjucksEnvironment = new nunjucks.Environment(
+    // Specify the directories where your templates reside.
+    new nunjucks.FileSystemLoader(["./", "_includes"]),
+
+    // Apply rendering options
+    { 
+      lstripBlocks: true,
+      trimBlocks: true,
+      autoescape: false
+    }
+  );
+  
+  eleventyConfig.setLibrary("njk", nunjucksEnvironment);
+  
   eleventyConfig.setFrontMatterParsingOptions({
     excerpt: (file) =>
       (file.excerpt = file.content.split("\n").slice(0, 4).join(" ")),

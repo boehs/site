@@ -40,11 +40,11 @@ layout: base.njk
     {% endif %}
 {% endfor %}
 
-{{content | safe}}
-
+{{- content | safe -}}
 {% if not backlinks | length == 0 %}
+{{'\n'}}
 ## What links here?
     {% for backlink in backlinks %}
-* gemini://boehs.org{{backlink.url}} {{backlink.title}}
+=> gemini://boehs.org{{backlink.url}} {{backlink.title}}
     {% endfor %}
 {% endif %}
