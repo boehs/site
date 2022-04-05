@@ -7,17 +7,17 @@ layout: base.njk
     {% set frontmatter = getContext()[collection] %}
     {% if frontmatter -%}
         {% if not collectionsControl[collection].excludeFromPagination %}
-=> gemini://boehs.org/{{collectionsControl[collection].plural or collection}} {{collection}}:
+=> gemini://gmi.boehs.org/{{collectionsControl[collection].plural or collection}} {{collection}}:
         {% else %}
 {{collection}}:
         {% endif %}
         {% if frontmatter | getType == 'array' -%}
             {% for item in frontmatter %}
-=> gemini://boehs.org/{{collectionsControl[collection].single or collection}}/{{item}} {{item}}{% endfor %}
+=> gemini://gmi.boehs.org/{{collectionsControl[collection].single or collection}}/{{item}} {{item}}{% endfor %}
         {% elseif frontmatter | getType == 'date' %}
 {{page.date.toUTCString()}}
         {% else %}
-=> gemini://boehs.org/{{collectionsControl[collection].single or collection}}/{{frontmatter}} {{frontmatter}}
+=> gemini://gmi.boehs.org/{{collectionsControl[collection].single or collection}}/{{frontmatter}} {{frontmatter}}
         {%- endif %}
     {%- endif %}
 {%- endfor %}
@@ -45,6 +45,6 @@ layout: base.njk
 {{'\n'}}
 ## What links here?
     {% for backlink in backlinks %}
-=> gemini://boehs.org{{backlink.url}} {{backlink.title}}
+=> gemini://gmi.boehs.org{{backlink.url}} {{backlink.title}}
     {% endfor %}
 {% endif %}

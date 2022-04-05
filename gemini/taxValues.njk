@@ -10,13 +10,14 @@ eleventyComputed:
   color: "{{tagList[value[0]][value[1]].color}}"
   description: "{{tagList[value[0]][value[1]].description}}"
 ---
-{% from "partials/card.njk" import card %}=> gemini://boehs.org/{{ collectionsControl[value[0]].plural or value[0] }}.gmi ☝ view all {{collectionsControl[value[0]].plural or value[0]}}
+{% from "partials/card.njk" import card %}=> gemini://gmi.boehs.org/{{ collectionsControl[value[0]].plural or value[0] }}.gmi ☝ view all {{collectionsControl[value[0]].plural or value[0]}}
 
 {% if tagList[value[0]][value[1]] -%}
 {{tagList[value[0]][value[1]].icon}} {{tagList[value[0]][value[1]].description}}
 {%- endif %}
 
-{% set tax -%}{% for k,v in collectionsControl -%}
+
+==============={% set tax -%}{% for k,v in collectionsControl -%}
     {% if v.mode == 'differentiator' -%}
       {{- k -}}
     {%- endif %}
@@ -24,16 +25,20 @@ eleventyComputed:
 {%- endset %}
 {% for location,posts in collections.nestedTax[value[0]][value[1]] | reverse | groupby("data." + tax) %}
 {% if loop.length != 1 or location != value[1] %}
+
+
 ## {{location | capitalize}}{% endif %}
 
 
   {% for post in posts %}
 {{ card({
-  url: post.url | url,
+  url: post.url,
   title: post.data.title
 },
 {
   content: post.data.description
 })}}
+
   {% endfor %}
 {% endfor %}
+===============
