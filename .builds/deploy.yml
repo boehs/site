@@ -51,4 +51,4 @@ tasks:
       cd site/html/dist
       tar -cvz . > ../site.tar.gz
 artifacts:
-  - site/html/build.tar
+  - site/html/site.tar.gz
