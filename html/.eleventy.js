@@ -3,6 +3,7 @@ const sanitize = require("sanitize-filename");
 const slugify = require('./slugify.js')
 
 const collectionControl = require("./_data/collectionsControl.json");
+const extraRedirects = require('./_config/redirects.json')
 
 function markdownIt() {
   let options = {
@@ -135,9 +136,12 @@ module.exports = function (eleventyConfig) {
       // for each alias 
       (node.data.aliases || []).forEach(alias =>
         // push the target url and the old url
-        redirects.push([node.data.page.url,node.data.page.url.replace(/\/[^\/]*?(\..+)?$/, `/${alias}$1`)])
+        redirects.push([slugify(node.data.page.url),slugify(node.data.page.url).replace(/\/[^\/]*?(\..+)?$/, `/${alias}$1`)])
       )
     )
+    
+    redirects = [...redirects,...extraRedirects]
+    
     return redirects
   })
 
