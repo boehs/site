@@ -5,7 +5,9 @@ specifiers:
   '@11ty/eleventy-plugin-syntaxhighlight': ^4.0.0
   '@boehs/gulp-js-text-inject': ^1.0.3
   '@gardeners/markdown-it-wikilinks': ^1.5.0
+  '@sindresorhus/slugify': ^2.1.0
   del: ^6.0.0
+  esm: ^3.2.25
   gulp: ^4.0.2
   gulp-htmlmin: ^5.0.1
   gulp-livereload: ^4.0.2
@@ -34,7 +36,9 @@ dependencies:
   '@11ty/eleventy-plugin-syntaxhighlight': 4.0.0
   '@boehs/gulp-js-text-inject': 1.0.3
   '@gardeners/markdown-it-wikilinks': 1.5.0
+  '@sindresorhus/slugify': 2.1.0
   del: 6.0.0
+  esm: 3.2.25
   gulp: 4.0.2
   gulp-htmlmin: 5.0.1
   gulp-livereload: 4.0.2
@@ -5191,6 +5195,11 @@ packages:
   /eslint-visitor-keys/2.1.0:
     resolution: {integrity: sha512-0rSmRBzXgDzIsD6mGdJgevzgezI534Cer5L/vyMX0kHzT/jiB43jRhd9YUlMGYLQy2zprNmoT8qasCGtY+QaKw==}
     engines: {node: '>=10'}
+    dev: false
+
+  /esm/3.2.25:
+    resolution: {integrity: sha512-U1suiZ2oDVWv4zPO56S0NcR5QriEahGtdN2OR6FiOG4WJvcjBVFB0qI4+eKoWFH483PKGuLuu6V8Z4T5g63UVA==}
+    engines: {node: '>=6'}
     dev: false
 
   /esprima/4.0.1:

@@ -4,13 +4,13 @@ pagination:
   data: collections.taxes
   size: 1
   alias: value
-permalink: /{{collectionsControl[value[0]].single or value[0]}}/{{ value[1] }}.gmi
+permalink: "'/' + {{collectionsControl[value[0]].single or value[0]}} + '/' + {{ value[1] }} + '.gmi' | slugify}}"
 eleventyComputed:
   title: "{{collectionsControl[value[0]].single or value[0]}}: {{value[1]}}"
   color: "{{tagList[value[0]][value[1]].color}}"
   description: "{{tagList[value[0]][value[1]].description}}"
 ---
-{% from "partials/card.njk" import card %}=> gemini://gmi.boehs.org/{{ collectionsControl[value[0]].plural or value[0] }}.gmi ☝ view all {{collectionsControl[value[0]].plural or value[0]}}
+{% from "partials/card.njk" import card %}=> gemini://gmi.boehs.org/{{ collectionsControl[value[0]].plural or value[0] | slugify }}.gmi ☝ view all {{collectionsControl[value[0]].plural or value[0]}}
 
 {% if tagList[value[0]][value[1]] -%}
 {{tagList[value[0]][value[1]].icon}} {{tagList[value[0]][value[1]].description}}
