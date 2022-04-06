@@ -10,3 +10,11 @@ permalink: "{{ item | slugshive }}"
 <p><strong>There is nothing here</strong> (yet?)</p>
 <p>There probably was never anything here, Cool urls don't change!</p>
 <p>If a link is broken somewhere, or you want to nudge me to write this, please reach out via email!</p>
+
+{% set q = qdb | random %}
+
+<figure>
+    <blockquote>{{q.q}}</blockquote>
+    <figcaption>-- [[{{q.b}}]]</figcaption>
+</figure>
+    
