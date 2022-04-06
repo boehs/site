@@ -1,7 +1,0 @@
-{
-    "viewport": "width=device-width,initial-scale=1",
-    "theme-color": "{{color}}",
-    "author": "{{config.author}}",
-    "description": "{{description if description else \"Some ramblings about \" + title + \"!\"}}",
-    "referrer": "no-referrer"
-}
