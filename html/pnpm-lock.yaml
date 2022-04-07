@@ -5,7 +5,6 @@ specifiers:
   '@11ty/eleventy-plugin-syntaxhighlight': ^4.0.0
   '@boehs/gulp-js-text-inject': ^1.0.3
   '@gardeners/markdown-it-wikilinks': ^1.5.0
-  '@sindresorhus/slugify': ^2.1.0
   del: ^6.0.0
   esm: ^3.2.25
   gulp: ^4.0.2
@@ -36,7 +35,6 @@ dependencies:
   '@11ty/eleventy-plugin-syntaxhighlight': 4.0.0
   '@boehs/gulp-js-text-inject': 1.0.3
   '@gardeners/markdown-it-wikilinks': 1.5.0
-  '@sindresorhus/slugify': 2.1.0
   del: 6.0.0
   esm: 3.2.25
   gulp: 4.0.2
