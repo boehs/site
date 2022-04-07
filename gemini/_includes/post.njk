@@ -1,28 +1,21 @@
 ---
 layout: base.njk
 ---
-
 {% from "partials/card.njk" import card %}
 {% for collection,settings in collectionsControl -%}
     {% set frontmatter = getContext()[collection] %}
     {% if frontmatter -%}
-        {% if not collectionsControl[collection].excludeFromPagination %}
-=> gemini://gmi.boehs.org/{{collectionsControl[collection].plural or collection}} {{collection}}:
-        {% else %}
-{{collection}}:
-        {% endif %}
+{{'\n' + collection}}:
         {% if frontmatter | getType == 'array' -%}
             {% for item in frontmatter %}
-=> gemini://gmi.boehs.org/{{collectionsControl[collection].single or collection}}/{{item}} {{item}}{% endfor %}
+=> gemini://gmi.boehs.org/{{collectionsControl[collection].single or collection}}/{{item}}.gmi {{item}}{% endfor %}
         {% elseif frontmatter | getType == 'date' %}
 {{page.date.toUTCString()}}
         {% else %}
-=> gemini://gmi.boehs.org/{{collectionsControl[collection].single or collection}}/{{frontmatter}} {{frontmatter}}
+=> gemini://gmi.boehs.org/{{collectionsControl[collection].single or collection}}/{{frontmatter}}.gmi {{frontmatter}}
         {%- endif %}
     {%- endif %}
 {%- endfor %}
-
-+++
 
 {% for collection,settings in collectionsControl %}
     {% set frontmatter = getContext()[collection] %}
