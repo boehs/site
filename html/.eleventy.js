@@ -1,6 +1,6 @@
 const nunjucks = require("nunjucks");
 const sanitize = require("sanitize-filename");
-const slugify = require('./slugify.js')
+const slugify = require('../shared/slugify')
 
 const collectionControl = require("./_data/collectionsControl.json");
 const extraRedirects = require('./_config/redirects.json')

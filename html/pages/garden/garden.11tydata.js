@@ -1,4 +1,4 @@
-const slugshive = require('../../slugify')
+const slugshive = require('../../../shared/slugify')
 
 // This regex finds all wikilinks in a string
 const wikilinkRegExp = /\[\[([^|]+?)(\|([\s\S]+?))?\]\]/g;

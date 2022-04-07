@@ -4,7 +4,7 @@ pagination:
   data: collections.nestedTax
   size: 1
   alias: value
-permalink: /{{collectionsControl[value].plural or value}}/index.gmi
+permalink: /{{collectionsControl[value].plural or value | slugshive}}/index.gmi
 eleventyComputed:
   title: "{{collectionsControl[value].plural or value}}"
 ---

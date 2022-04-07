@@ -1,5 +1,6 @@
 const nunjucks = require("nunjucks");
 const sanitize = require("sanitize-filename");
+const slugify = require('../shared/slugify')
 
 const collectionControl = require("./_data/collectionsControl.json");
 
@@ -20,10 +21,12 @@ function markdownIt() {
           postProcessPageName: (pageName) => {
             pageName = pageName.trim();
             pageName = pageName.split("/").map(sanitize).join("/");
+            pageName = slugify(pageName)
             return pageName;
           },
           imagePattern: /!\[\[([^]+?)\]\]/,
-          assetPrefix: '/assets/'
+          assetPrefix: '/assets/',
+          uriSuffix: '.gmi'
         })
       )
   );
@@ -38,7 +41,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("dropContentFolder", (path,folder) =>
     path.replace(new RegExp(folder + "\/"), "")
   );
-  
+  eleventyConfig.addFilter('slugshive',(path) => 
+    slugify(path)
+  )
   eleventyConfig.addFilter("renderMd", content => markdown.render(content))
 
   eleventyConfig.setLibrary("md", markdown);

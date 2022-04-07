@@ -1,12 +1,14 @@
+const slugshive = require('../../../shared/slugify')
+
 // This regex finds all wikilinks in a string
 const wikilinkRegExp = /\[\[([^|]+?)(\|([\s\S]+?))?\]\]/g;
 
 function backlinksApi(data) {
   const notes = data.collections.all;
-  const currentFileSlug = (
+  const currentFileSlug = slugshive(
     data.page.url.match(/\/([^\/]*?)\..+?$/)?.[1] ||
     data.page.filePathStem.replace("/pages/garden/node/", "")
-  ).toLowerCase();
+  )
 
   let backlinks = [];
 
@@ -15,10 +17,10 @@ function backlinksApi(data) {
   // Search the other notes for backlinks
   for (const otherNote of notes) {
     const noteContent = otherNote.template.frontMatter.content;
-    const noteAsLink = (
+    const noteAsLink = slugshive(
       otherNote.data.page.url.match(/\/([^\/]*?)\..+?$/)?.[1] ||
       otherNote.data.page.filePathStem.replace("/pages/garden/node/", "")
-    ).toLowerCase();
+    );
 
     data.internal.exists?.add(noteAsLink);
 
@@ -28,7 +30,7 @@ function backlinksApi(data) {
         case undefined: {
           const links = (noteContent.match(wikilinkRegExp) || []).map((link) =>
             // Extract link location
-            link
+            slugshive(link)
               .slice(2, -2)
               .split("|")[0]
               .replace(/.(md|markdown)\s?$/i, "")
@@ -51,7 +53,7 @@ function backlinksApi(data) {
     }
 
     (otherNote.data.aliases || []).forEach(function (alias) {
-      data.internal.exists?.add(alias);
+      data.internal.exists?.add(slugshive(alias));
     });
 
     outboundLinks.forEach((link) => {
@@ -68,7 +70,7 @@ module.exports = {
   layout: "post.njk",
   in: "garden",
   hasCodeBlock: true,
-  permalink: '{{ page.filePathStem | dropContentFolder: "pages/garden" }}.gmi',
+  permalink: '{{ page.filePathStem | dropContentFolder: "pages/garden" | slugshive }}.gmi',
   eleventyComputed: {
     backlinks: (data) => {
       return backlinksApi(data)[0];

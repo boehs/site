@@ -1,4 +1,4 @@
 {
     "layout": "base.njk",
-    "permalink": "{{ page.filePathStem | dropContentFolder: \"pages\" }}.gmi"
+    "permalink": "{{ page.filePathStem | dropContentFolder: \"pages\" | slugshive}}.gmi"
 }
