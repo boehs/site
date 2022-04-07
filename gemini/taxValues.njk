@@ -37,7 +37,6 @@ eleventyComputed:
 },
 {
   content: post.data.description
-})}}
-
+})}}{{ '\n' if not loop.last }}
   {% endfor %}
 {% endfor %}
