@@ -1,6 +1,7 @@
 const nunjucks = require("nunjucks");
 const sanitize = require("sanitize-filename");
 const slugify = require('../shared/slugify')
+const pluginRss = require("@11ty/eleventy-plugin-rss");
 
 const collectionControl = require("./_data/collectionsControl.json");
 const extraRedirects = require('./_config/redirects.json')
@@ -72,6 +73,7 @@ module.exports = function (eleventyConfig) {
   const markdown = markdownIt()
   
   eleventyConfig.addPlugin(require("@11ty/eleventy-plugin-syntaxhighlight"));
+  eleventyConfig.addPlugin(pluginRss);
 
   eleventyConfig.addNunjucksFilter("interpolate", function (str) {
     return nunjucks.renderString(str, this.ctx);

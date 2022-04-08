@@ -20,7 +20,7 @@ function removeDist() {
 }
 
 function scss() {
-    return g.src('_public/scss/*(main|code).scss')
+    return g.src('_public/scss/*(main|code|notallfeedsaregross).scss')
         .pipe(sass.sync({outputStyle: 'compressed'})
             .on('error', sass.logError))
         .pipe(postcss(postcssConfig.plugins))
@@ -82,7 +82,7 @@ exports.ellty = eleventy
 
 exports.dev = async function() {
     removeDist()
-    elevendev()
+    //elevendev()
     g.watch('_public/scss/*.scss',{ ignoreInitial: false },scss)
     g.watch('_public/ts/*.ts',{ ignoreInitial: false },type)
     // causes loop
