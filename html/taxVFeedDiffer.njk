@@ -1,15 +1,19 @@
 ---
 pagination:
-  data: collections.taxes
+  data: collections.taxesDiffer
   size: 1
   alias: value
-permalink: "/{{collectionsControl[value[0]].single or value[0] | slugshive}}/{{ value[1] | slugshive }}.xml"
+permalink: "/{{collectionsControl[value[0]].single or value[0] | slugshive}}/{{ value[1] | slugshive }}.{{ value[2] }}.xml"
 eleventyComputed:
-  title: "{{collectionsControl[value[0]].single or value[0]}}: {{value[1]}}"
   color: "{{tagList[value[0]][value[1]].color}}"
   description: "{{tagList[value[0]][value[1]].description}}"
 ---
-<?xml version="1.0" encoding="utf-8"?>
+{% set tax -%}{% for k,v in collectionsControl -%}
+    {% if v.mode == 'differentiator' -%}
+      {{- k -}}
+    {%- endif %}
+  {%- endfor %}
+{%- endset %}<?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="/notallfeedsaregross.css"?>
 <?xml-stylesheet href="/main.css"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
@@ -21,7 +25,7 @@ eleventyComputed:
       <name>{{ config.author.name }}</name>
       <email>{{ config.author.email }}</email>
     </author>
-    <title>{{ title }}</title>
+    <title>{{collectionsControl[value[0]].single or value[0]}}: {{value[1]}} &#38; {{tax}}: {{value[2]}}</title>
     <subtitle>{{ description }}</subtitle>
     <link href="{{ config.baseurl }}{{ permalink }}" rel="self"/>
     <link href="{{ config.baseurl }}"/>
@@ -29,6 +33,7 @@ eleventyComputed:
     <updated>{{ collections.nestedTax[value[0]][value[1]] | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
     <id>{{config.author.name}}/{{collectionsControl[value[0]].single or value[0] | slugshive}}/{{ value[1] | slugshive }}</id>
     {% for post in collections.nestedTax[value[0]][value[1]] | reverse %}
+    {% if post.data[tax] == value[2] %}
     <entry{%if post.data.color%} style="--light: {{post.data.color}}"{% endif %}>
       <title>{{ post.data.title }}</title>
       <link href="{{ config.baseurl }}{{ post.url | url }}"/>
@@ -37,6 +42,7 @@ eleventyComputed:
       <content type="html">{{ post.url | url }}</content>
       {% if post.data.description %}<summary>{{post.data.description}}</summary>{% endif %}
     </entry>
+    {% endif %}
     {%- endfor %}
   </div>
 </feed>

@@ -188,6 +188,45 @@ module.exports = function (eleventyConfig) {
 
     return unique;
   });
+  
+  eleventyConfig.addCollection("taxesDiffer", function (collectionApi) {
+    let taxAndValues = [];
+    const nodes = collectionApi.getFilteredByGlob("pages/garden/node/*.md");
+    const differ = Object.keys(collectionControl)[Object.values(collectionControl).findIndex(value => value.mode == "differentiator")]
+    nodes.forEach((node) => {
+      for (const [taxonomy, value] of Object.entries(collectionControl)) {
+        if (value.excludeFromPagination) continue;
+          else if (node?.data?.[taxonomy]) {
+          switch (
+            {}.toString
+              .call(node.data[taxonomy])
+              .match(/\s([a-zA-Z]+)/)[1]
+              .toLowerCase()
+          ) {
+            case "array": {
+              node.data[taxonomy].forEach((item) => {
+                
+                if (!(taxonomy == differ && item == node.data[differ]))
+                  taxAndValues.push([taxonomy, item, node.data[differ]]);
+              });
+              break;
+            }
+            default:
+              if (!(taxonomy == differ && node.data[taxonomy] == node.data[differ]))
+                taxAndValues.push([taxonomy, node.data[taxonomy],node.data[differ]]);
+          }
+        }
+      }
+    });
+
+    // custom set, sets don't work with objects
+    const unique = [...new Set(taxAndValues.map(JSON.stringify))].map(
+      JSON.parse
+    );
+    
+    console.log(unique)
+    return unique;
+  });
 
   eleventyConfig.addCollection("nestedTax", function (collectionApi) {
     let nestedTax = {};

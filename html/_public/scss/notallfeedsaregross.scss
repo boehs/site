@@ -101,7 +101,8 @@ link {
     color: blue;
 }
 
-entry {
+entry,
+warn {
     color: inherit;
     text-decoration: inherit;
     transition: .3s;
@@ -109,4 +110,10 @@ entry {
     padding: 0 1em;
     display: block;
     margin: 1em 0;
+}
+
+warn {
+    padding: 1em;
+    background-color: lightcoral;
+    border: none;
 }
