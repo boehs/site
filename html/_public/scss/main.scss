@@ -1,3 +1,5 @@
+// Fonts //
+
 @font-face {
   font-family: 'spectral';
   src: url('/spectralbold.woff2') format('woff2'),
@@ -25,6 +27,8 @@
   font-display: swap;
 }
 
+// Variables //
+
 $radius: 3px;
 $lighter: #cddfd9;
 $warner: #ccbcb1;
@@ -33,6 +37,12 @@ $activer: #b1c1cc;
     --light: #0aa06e;
     --warn:#d6863a;
 }
+
+.lighter {
+  color: var(--light) !important;
+}
+
+// Setup //
 
 *, *:before, *:after {
   box-sizing: inherit;
@@ -57,42 +67,15 @@ body {
   }
 }
 
-button,
-input[type=submit],
-input[type=button],
-input[type=reset],
-sup,
-sub {
-  font-family: monospace;
-}
+// Images
 
-button[type=reset],
-input[type=reset] {
-  background: $warner;
-}
-
-figure {
-  blockquote {
-    margin-block-end: 0 
-  }
-  margin-inline: 0;
-  figcaption {
-    padding-left: 17px;
-  }
-}
-
-:not(footer) > pre,
-code {
-  font-size: 1rem;
+img {
+  border-radius: $radius;
 }
 
 nav > *,
 img {
   width: 100%;
-}
-
-h1,h2 {
-  position: relative;
 }
 
 h1 > a > img,
@@ -108,8 +91,77 @@ h1 > a > img {
   bottom: 12px;
 }
 
-img {
+// Code //
+
+code,
+:not(footer) > pre {
+  font-size: 1rem;
+  background: $lighter;
   border-radius: $radius;
+}
+
+:not(pre) > code {
+  padding: 0 3px;
+}
+
+// Links //
+
+a {
+  color: inherit;
+  text-decoration-color: var(--light);
+  text-decoration-thickness: 2px;
+  transition: color .3s;
+  
+  &[href*="//"]:not([href*="boehs.org"]) {
+    --light: var(--warn)
+  }
+  
+  &:hover {
+    color: var(--light)
+  }
+  
+  &:active {
+    color: #ff9e9e;
+  }
+}
+
+// Cards //
+
+.card {
+  color: inherit;
+  text-decoration: inherit;
+  border-left: 2px solid var(--light);
+  padding: 0 1em;
+  display: block;
+}
+
+.contain {
+  display: grid;
+  grid-template-rows: masonry;
+  gap: 1em;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  
+  .card {
+    :first-child {
+      margin-top: 0;
+    }
+    
+    :last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Structure //
+
+// (headings)
+h1,h2 {
+  position: relative;
+}
+
+// (lists)
+ul {
+  list-style: georgian;
 }
 
 hr {
@@ -119,34 +171,6 @@ hr {
   &::after {
     content: "---";
   }
-}
-
-.lighter {
-  color: var(--light) !important;
-}
-
-ul {
-  list-style: georgian;
-}
-
-code,
-:not(footer) > pre {
-  background: $lighter;
-  border-radius: $radius;
-}
-
-:not(pre) > code {
-  padding: 0 3px;
-}
-
-footer {
-  flex-wrap: wrap;
-  display: flex;
-  justify-content: center;
-}
-
-blockquote {
-  border-radius: $radius;
 }
 
 // kv == key-value
@@ -184,53 +208,51 @@ header {
   }
 }
 
-a {
-  color: inherit;
-  text-decoration-color: var(--light);
-  text-decoration-thickness: 2px;
-  transition: color .3s;
-  
-  &[href*="//"]:not([href*="boehs.org"]) {
-    --light: var(--warn)
-  }
-  
-  &:hover {
-    color: var(--light)
-  }
-  
-  &:active {
-    color: #ff9e9e;
-  }
+footer {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
 }
 
-.card {
-  color: inherit;
-  text-decoration: inherit;
-  border-left: 2px solid var(--light);
-  padding: 0 1em;
-  display: block;
-
+article, nav, header {
+  line-height: 1.6;
 }
 
 article > p {
   margin-block: 10px;
 }
 
-.contain {
-  display: grid;
-  grid-template-rows: masonry;
-  gap: 1em;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  
-  .card {
-    :first-child {
-      margin-top: 0;
-    }
-    
-    :last-child {
-      margin-bottom: 0;
-    }
-  }
+// Labeling and such //
+
+legend,
+dt,
+label {
+  font-weight: bold;
+}
+
+dd {
+  border-left: 6px double var(--light);
+  margin: 0;
+  padding-left: 10px;
+}
+
+sup,
+sub {
+  font-family: monospace;
+}
+
+// Buttons //
+
+button,
+input[type=submit],
+input[type=button],
+input[type=reset] {
+  font-family: monospace;
+}
+
+button[type=reset],
+input[type=reset] {
+  background: $warner;
 }
 
 button,
@@ -242,6 +264,8 @@ input[type=reset] {
   background: $lighter;
   border-radius: $radius;
   transition: .3s;
+  cursor: pointer;
+  border: none;
 }
 
 button,
@@ -254,29 +278,7 @@ input[type=reset],
   }
 }
 
-article, nav, header {
-  line-height: 1.6;
-}
-
-legend,
-dt,
-label {
-  font-weight: bold;
-}
-
-button,
-input[type=submit],
-input[type=button],
-input[type=reset] {
-  cursor: pointer;
-  border: none;
-}
-
-dd {
-  border-left: 6px double var(--light);
-  margin: 0;
-  padding-left: 10px;
-}
+// Tables //
 
 .twrap {
   overflow-x: auto;
@@ -290,10 +292,23 @@ th {
   white-space: nowrap;
 }
 
+// Blockquote //
+
+figure {
+  blockquote {
+    margin-block-end: 0 
+  }
+  margin-inline: 0;
+  figcaption {
+    padding-left: 17px;
+  }
+}
+
 blockquote {
   padding: 10px 0 10px 10px;
   border-left: 6px double var(--light);
   margin: 1em 0;
+  border-radius: $radius;
 }
 
 .penpen {
@@ -304,6 +319,8 @@ blockquote {
     content: '🐾 ';
   }
 }
+
+// Media //
 
 @media screen and (max-width: 800px) {
   footer {
