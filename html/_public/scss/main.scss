@@ -243,17 +243,6 @@ sub {
 
 // Buttons //
 
-button,
-input[type=submit],
-input[type=button],
-input[type=reset] {
-  font-family: monospace;
-}
-
-button[type=reset],
-input[type=reset] {
-  background: $warner;
-}
 
 button,
 input[type=submit],
@@ -266,6 +255,12 @@ input[type=reset] {
   transition: .3s;
   cursor: pointer;
   border: none;
+  font-family: monospace;
+}
+
+button[type=reset],
+input[type=reset] {
+  background: $warner;
 }
 
 button,
