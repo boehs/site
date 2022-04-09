@@ -224,7 +224,6 @@ module.exports = function (eleventyConfig) {
       JSON.parse
     );
     
-    console.log(unique)
     return unique;
   });
 

@@ -91,6 +91,23 @@ img {
   width: 100%;
 }
 
+h1,h2 {
+  position: relative;
+}
+
+h1 > a > img,
+h2 > a > img {
+  padding-left: 5px;
+  width: initial;
+  height: 15px;
+  position: absolute;
+  bottom: 8px;
+}
+
+h1 > a > img {
+  bottom: 12px;
+}
+
 img {
   border-radius: $radius;
 }
@@ -171,7 +188,7 @@ a {
   color: inherit;
   text-decoration-color: var(--light);
   text-decoration-thickness: 2px;
-  transition: .3s;
+  transition: color .3s;
   
   &[href*="//"]:not([href*="boehs.org"]) {
     --light: var(--warn)
@@ -189,7 +206,6 @@ a {
 .card {
   color: inherit;
   text-decoration: inherit;
-  transition: .3s;
   border-left: 2px solid var(--light);
   padding: 0 1em;
   display: block;

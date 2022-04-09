@@ -3,7 +3,7 @@ Humans Humans Humans Humans Humans Humans
 Honestly, I'm not convinced you guys exist. Looking at my logs, I get
 WAY too many of these requests for all of you guys to be real. Still,
 
-1. My website is built with 11ty. It is hosted on uberspace, and proxied
+1. My website is built with 11ty. It is hosted with netlify, and proxied
 through cloudflare
 2. If you do happen to be a human, let's chat! Shoot me an email at /contact
 

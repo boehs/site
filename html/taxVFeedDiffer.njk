@@ -26,7 +26,7 @@ eleventyComputed:
       <email>{{ config.author.email }}</email>
     </author>
     <title>{{collectionsControl[value[0]].single or value[0]}}: {{value[1]}} &#38; {{tax}}: {{value[2]}}</title>
-    <subtitle>{{ description }}</subtitle>
+    <subtitle>{{ description | safe }}</subtitle>
     <link href="{{ config.baseurl }}{{ permalink }}" rel="self"/>
     <link href="{{ config.baseurl }}"/>
     <icon>/favicon.ico</icon>

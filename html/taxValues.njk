@@ -1,21 +1,24 @@
 ---
-layout: base.njk
 pagination:
   data: collections.taxes
   size: 1
   alias: value
 permalink: /{{collectionsControl[value[0]].single or value[0] | slugshive}}/{{ value[1] | slugshive }}.html
 eleventyComputed:
-  title: "{{collectionsControl[value[0]].single or value[0]}}: {{value[1]}}"
   color: "{{tagList[value[0]][value[1]].color}}"
   description: "{{tagList[value[0]][value[1]].description}}"
 ---
-
 {% from "partials/card.njk" import card %}
-
-
-☝ <a href="/{{ collectionsControl[value[0]].plural or value[0] }}">view all {{collectionsControl[value[0]].plural or value[0]}}</a>
-
+{% extends "base.njk" %}
+{% block title %}
+<h1 class="p-name">
+  <a href="/{{ collectionsControl[value[0]].plural or value[0] }}">{{collectionsControl[value[0]].single or value[0] | capitalize}}</a>: {{value[1]}}
+  <a href="/{{collectionsControl[value[0]].single or value[0] | slugshive}}/{{ value[1] | slugshive }}.xml">
+    <img src="/feed.svg"/>
+  </a>
+</h1>
+{% endblock%}
+{% set content %}
 {% if tagList[value[0]][value[1]] %}
   {{ card({
       color: tagList[value[0]][value[1]].color
@@ -39,7 +42,7 @@ eleventyComputed:
 
 <div class="h-feed">
   {% for location,posts in collections.nestedTax[value[0]][value[1]] | reverse | groupby("data." + tax) %}
-    {% if loop.length != 1 or location != value[1] %}<h2><a href="/{{tax}}/{{location}}">{{location | capitalize}}</a></h2>{% endif %}
+    {% if loop.length != 1 or location != value[1] %}<h2><a href="/{{tax}}/{{location}}">{{location | capitalize}}</a><a href="/{{collectionsControl[value[0]].single or value[0] | slugshive}}/{{ value[1] | slugshive }}.{{location}}.xml"><img src="/feed.svg"/></a></h2>{% endif %}
     {% for post in posts %}
     {{ card({
       class: 'h-entry',
@@ -57,3 +60,4 @@ eleventyComputed:
     {% endfor %}
   {% endfor %}
 </div>
+{% endset %}
