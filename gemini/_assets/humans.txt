@@ -1,1 +1,1 @@
-../shared/humans.txt
+../../shared/humans.txt
