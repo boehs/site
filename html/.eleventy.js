@@ -138,7 +138,7 @@ module.exports = function (eleventyConfig) {
       // for each alias 
       (node.data.aliases || []).forEach(alias =>
         // push the target url and the old url
-        redirects.push([slugify(node.data.page.url),slugify(node.data.page.url).replace(/\/[^\/]*?(\..+)?$/, `/${alias}$1`)])
+        redirects.push([slugify(node.data.page.url),slugify(node.data.page.url).replace(/\/[^\/]*?(\..+)?$/, `/${slugify(alias)}$1`)])
       )
     )
     

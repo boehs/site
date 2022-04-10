@@ -15,7 +15,7 @@ layout: base.njk
             <dt>
                 <strong>
                     {% if not collectionsControl[collection].excludeFromPagination %}
-                        <a href="/{{collectionsControl[collection].plural or collection}}">{{collection}}</a>
+                        <a href="/{{(collectionsControl[collection].plural or collection) | slugshive}}">{{collection}}</a>
                     {% else %}
                         {{collection}}
                     {% endif %}
@@ -26,7 +26,7 @@ layout: base.njk
                 <ul {% if settings.class %}class="{{settings.class}}"{% endif %}>
                     {% for item in frontmatter %}
                         <li>
-                            <a href="/{{collectionsControl[collection].single or collection}}/{{item}}">{{item}}</a>
+                            <a href="/{{(collectionsControl[collection].single or collection) | slugshive}}/{{item | slugshive}}">{{item}}</a>
                         </li>
                     {% endfor %}
                 </ul>
@@ -34,7 +34,7 @@ layout: base.njk
                 {# hack #}
                 <span {% if settings.class %}class="{{settings.class}}"{% endif %}>{{page.date.toUTCString()}}</span>
             {% else %}
-                <a {% if settings.class %}class="{{settings.class}}"{% endif %} href="/{{collectionsControl[collection].single or collection}}/{{frontmatter}}">{{frontmatter}}</a>
+                <a {% if settings.class %}class="{{settings.class}}"{% endif %} href="/{{(collectionsControl[collection].single or collection) | slugshive}}/{{frontmatter | slugshive}}">{{frontmatter}}</a>
             {% endif %}
             </dd>
     {% endif %}
