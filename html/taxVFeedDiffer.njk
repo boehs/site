@@ -17,32 +17,30 @@ eleventyComputed:
 <?xml-stylesheet href="/notallfeedsaregross.css"?>
 <?xml-stylesheet href="/main.css"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <div>
-    <warn>
-      DO NOT BE DECEIVED! YOU ARE READING AN ATOM FEED!!!! IF THIS IS INTENTIONAL, PLEASE PASTE THIS URL INTO YOUR FEED READER, OTHERWISE REMOVE .XML FROM THE END OF THE URL.
-    </warn>
-    <author>
-      <name>{{ config.author.name }}</name>
-      <email>{{ config.author.email }}</email>
-    </author>
-    <title>{{collectionsControl[value[0]].single or value[0]}}: {{value[1]}} &#38; {{tax}}: {{value[2]}}</title>
-    <subtitle>{{ description | safe }}</subtitle>
-    <link href="{{ config.baseurl }}{{ permalink }}" rel="self"/>
-    <link href="{{ config.baseurl }}"/>
-    <icon>/favicon.ico</icon>
-    <updated>{{ collections.nestedTax[value[0]][value[1]] | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
-    <id>{{config.author.name}}/{{collectionsControl[value[0]].single or value[0] | slugshive}}/{{ value[1] | slugshive }}</id>
-    {% for post in collections.nestedTax[value[0]][value[1]] | reverse %}
-    {% if post.data[tax] == value[2] %}
-    <entry{%if post.data.color%} style="--light: {{post.data.color}}"{% endif %}>
-      <title>{{ post.data.title }}</title>
-      <link href="{{ config.baseurl }}{{ post.url | url }}"/>
-      <updated>{{ post.date | dateToRfc3339 }}</updated>
-      <id xmlns:xlink="{{ config.baseurl }}{{ post.url | url }}" xlink:type="simple">{{ post.url | url }}</id>
-      <content type="html">{{ post.url | url }}</content>
-      {% if post.data.description %}<summary>{{post.data.description}}</summary>{% endif %}
-    </entry>
-    {% endif %}
-    {%- endfor %}
-  </div>
+  <warn>
+    DO NOT BE DECEIVED! YOU ARE READING AN ATOM FEED!!!! IF THIS IS INTENTIONAL, PLEASE PASTE THIS URL INTO YOUR FEED READER, OTHERWISE REMOVE .XML FROM THE END OF THE URL.
+  </warn>
+  <author>
+    <name>{{ config.author.name }}</name>
+    <email>{{ config.author.email }}</email>
+  </author>
+  <title>{{collectionsControl[value[0]].single or value[0]}}: {{value[1]}} &#38; {{tax}}: {{value[2]}}</title>
+  <subtitle>{{ description | safe }}</subtitle>
+  <link href="{{ config.baseurl }}{{ permalink }}" rel="self"/>
+  <link href="{{ config.baseurl }}"/>
+  <icon>/favicon.ico</icon>
+  <updated>{{ collections.nestedTax[value[0]][value[1]] | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
+  <id>{{config.author.name}}/{{collectionsControl[value[0]].single or value[0] | slugshive}}/{{ value[1] | slugshive }}</id>
+  {% for post in collections.nestedTax[value[0]][value[1]] | reverse %}
+  {% if post.data[tax] == value[2] %}
+  <entry{%if post.data.color%} style="--light: {{post.data.color}}"{% endif %}>
+    <title>{{ post.data.title }}</title>
+    <link href="{{ config.baseurl }}{{ post.url | url }}"/>
+    <updated>{{ post.date | dateToRfc3339 }}</updated>
+    <id xmlns:xlink="{{ config.baseurl }}{{ post.url | url }}" xlink:type="simple">{{ post.url | url }}</id>
+    <content type="html">{{ post.url | url }}</content>
+    {% if post.data.description %}<summary>{{post.data.description}}</summary>{% endif %}
+  </entry>
+  {% endif %}
+  {%- endfor %}
 </feed>

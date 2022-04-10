@@ -49,15 +49,14 @@ feed {
   background: #fffbf8;
   color: #2f2235;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-wrap: wrap;
   overflow-wrap: break-word;
   box-sizing: border-box;
 
-  & > div {
-    width: min(600px, 100%);
+  & > * {
+    flex: 0 1 100%;
     
-    &  * {
+    & * {
         display: block;
     }
   }
@@ -105,7 +104,7 @@ entry,
 warn {
     color: inherit;
     text-decoration: inherit;
-    transition: .3s;
+    transition: color .3s;
     border-left: 2px solid var(--light);
     padding: 0 1em;
     display: block;
