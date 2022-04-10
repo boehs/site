@@ -43,21 +43,25 @@ eleventyComputed:
 <div class="h-feed">
   {% for location,posts in collections.nestedTax[value[0]][value[1]] | reverse | groupby("data." + tax) %}
     {% if loop.length != 1 or location != value[1] %}<h2><a href="/{{tax}}/{{location}}">{{location | capitalize}}</a><a href="/{{collectionsControl[value[0]].single or value[0] | slugshive}}/{{ value[1] | slugshive }}.{{location}}.xml"><img src="/feed.svg"/></a></h2>{% endif %}
-    {% for post in posts %}
-    {{ card({
-      class: 'h-entry',
-      color: post.data.color
-    },
-    {
-      url: post.url | url,
-      class: "p-name u-url",
-      title: post.data.title
-    },
-    {
-      class: "p-summary",
-      content: post.data.description | renderMd if post.data.description
-    })}}
-    {% endfor %}
+    <ol>
+      {% for post in posts %}
+        <li>
+        {{ card({
+          class: 'h-entry',
+          color: post.data.color
+        },
+        {
+          url: post.url | url,
+          class: "p-name u-url",
+          title: post.data.title
+        },
+        {
+          class: "p-summary",
+          content: post.data.description | renderMd if post.data.description
+        })}}
+        </li>
+      {% endfor %}
+    </ol>
   {% endfor %}
 </div>
 {% endset %}
