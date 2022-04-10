@@ -74,7 +74,7 @@ img {
   border-radius: $radius;
 }
 
-nav > *,
+nav,
 img {
   width: 100%;
 }
@@ -83,7 +83,6 @@ h1 > a > img,
 h2 > a > img {
   padding-left: 5px;
   width: initial;
-  height: 15px;
   position: absolute;
   bottom: 8px;
 }
@@ -175,8 +174,15 @@ hr {
 }
 
 // kv == key-value
-nav,.kv {
-  width: 100%;
+nav > dl,.kv {
+  display: grid;
+  grid-template-columns: auto max-content;
+  gap: 10px;
+
+  & > dd {
+    border-left: none;
+    margin-left: auto;
+}
 
   * {
     margin-block: 0;
@@ -188,12 +194,6 @@ nav,.kv {
     flex-wrap: wrap;
     gap: 15px;
     padding-inline: 0;
-  }
-
-  & > div {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
   }
 }
 
@@ -325,8 +325,12 @@ blockquote {
     }
   }
   
-  footer > nav > div,.kv > div {
+  footer > nav > dl,.kv {
     display: block;
+    
+    dd {
+      padding-left: 0;
+    }
   }
 }
 

@@ -9,11 +9,10 @@ layout: base.njk
     {% set frontmatter = getContext()[collection] %}
     {% if frontmatter %}
         {% if not hasdiv %}
-            <div class="kv">
+            <dl class="kv">
             {% set hasdiv = true %}
         {% endif %}
-        <div>
-            <div>
+            <dt>
                 <strong>
                     {% if not collectionsControl[collection].excludeFromPagination %}
                         <a href="/{{collectionsControl[collection].plural or collection}}">{{collection}}</a>
@@ -21,7 +20,8 @@ layout: base.njk
                         {{collection}}
                     {% endif %}
                 </strong> 
-            </div>
+            </dt>
+            <dd>
             {% if frontmatter | getType == 'array'%}
                 <ul {% if settings.class %}class="{{settings.class}}"{% endif %}>
                     {% for item in frontmatter %}
@@ -36,11 +36,11 @@ layout: base.njk
             {% else %}
                 <a {% if settings.class %}class="{{settings.class}}"{% endif %} href="/{{collectionsControl[collection].single or collection}}/{{frontmatter}}">{{frontmatter}}</a>
             {% endif %}
-        </div>
+            </dd>
     {% endif %}
 {% endfor %}
 {% if hasdiv %}
-    </div>
+    </dl>
 {% endif %}
 
 <hr/>
@@ -80,3 +80,4 @@ layout: base.njk
 <div style="display: none">
     <a rel="author" class="p-author h-card" href="https://boehs.org">Evan Boehs</a>
     <a href="{{page.url}}" class="u-url">{{page.url}}</a>
+</div>
