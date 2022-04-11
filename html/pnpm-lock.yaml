@@ -5,7 +5,7 @@ specifiers:
   '@11ty/eleventy-plugin-rss': ^1.1.2
   '@11ty/eleventy-plugin-syntaxhighlight': ^4.0.0
   '@boehs/gulp-js-text-inject': ^1.0.3
-  '@gardeners/markdown-it-wikilinks': ^1.5.0
+  '@gardeners/markdown-it-wikilinks': ^1.5.1
   del: ^6.0.0
   esm: ^3.2.25
   gulp: ^4.0.2
@@ -35,7 +35,7 @@ dependencies:
   '@11ty/eleventy': 2.0.0-canary.4
   '@11ty/eleventy-plugin-syntaxhighlight': 4.0.0
   '@boehs/gulp-js-text-inject': 1.0.3
-  '@gardeners/markdown-it-wikilinks': 1.5.0
+  '@gardeners/markdown-it-wikilinks': 1.5.1
   del: 6.0.0
   esm: 3.2.25
   gulp: 4.0.2
@@ -1773,8 +1773,8 @@ packages:
       kuler: 2.0.0
     dev: false
 
-  /@gardeners/markdown-it-wikilinks/1.5.0:
-    resolution: {integrity: sha512-qH1uhqCQfZkTxuc6cALKbnSCyf6+eey31oGSNkTzJmbDZjXldM2jN67eeY9KzRGxZyfBOq+kXjk6/YJdW+3ovA==}
+  /@gardeners/markdown-it-wikilinks/1.5.1:
+    resolution: {integrity: sha512-8X3w6/G9mvhOnzmUJZu8sH1bkBC1+CGmi5DgisSl+uyYBdUmdKM+d5wgQISWVPRbDPTFDWndESUizDfrsXuzwQ==}
     dependencies:
       extend: 3.0.2
       markdown-it-regexp: 0.4.0
