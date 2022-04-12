@@ -1,5 +1,18 @@
 <span>
-    <a href="/" class="lighter p-author">
-        <strong>Evan Boehs</strong></a>
-    <i>is {% if is %}{{is}}{% else %}{{deets.is | random | safe}}{% endif %}</i>
+    <span class="h-card">
+        <a href="/" class="lighter p-author p-name">
+            <strong>{{config.author.name}}</strong>
+        </a>
+        <a class="u-url" href="{{ config.baseurl }}">website</a>
+        <a class="u-email" href="mailto:{{ config.author.email }}">email</a>
+        <img class="u-photo" src="{{config.author.image}}"/>
+        <div class="p-country-name">{{config.author.location.country}}</div>
+    </span>
+    <i>is
+        {% if is %}
+            {{ is }}
+        {% else %}
+            {{ deets.is | random | safe }}
+        {% endif %}
+    </i>
 </span>

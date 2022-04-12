@@ -1,5 +1,7 @@
 # My main website!
 
+This website is an `indieweb`-enabled `digital garden` with `dynamic taxonomies`, `aliases`, `gemini`, `scss`, `ts`, and lots of love.
+
 ## Some notes for developers
 
 I like to think this website is pretty cool, I've taken great care to design

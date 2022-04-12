@@ -2,7 +2,11 @@
     "isJobHunting": false,
     "author": {
         "name": "Evan Boehs",
-        "email": "evan@boehs.org"
+        "email": "evan@boehs.org",
+        "image": "https://github.com/boehs.png",
+        "location": {
+            "country": "United States"
+        }
     },
     "isServer": false,
     "donate": "https://liberapay.com/e",

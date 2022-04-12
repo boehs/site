@@ -203,6 +203,10 @@ nav > dl,.kv {
   }
 }
 
+.h-card > :not(.p-name) {
+  display: none;
+}
+
 header {
   > * > * {
     display: block;
