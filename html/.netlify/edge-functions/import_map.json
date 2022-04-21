@@ -1,5 +1,0 @@
-{
-  "imports": {
-    "eleventy:edge": "https://cdn.11ty.dev/edge@1.0.0/eleventy-edge.js"
-  }
-}
