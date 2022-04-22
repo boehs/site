@@ -21,7 +21,7 @@ export default async (request, context) => {
       eleventyConfig.addFilter("random", function (array) {
         return array[Math.floor(Math.random() * array.length)];
       });
-      eleventyConfig.addGlobalData('is',is)
+      eleventyConfig.addFilter('is',(_) => is)
     });
 
     return await edge.handleResponse();
