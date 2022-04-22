@@ -65,7 +65,8 @@ function html() {
             collapseWhitespace: true,
             minifyCSS: true,
             minifyJS: true,
-            minifyURLs: true
+            minifyURLs: true,
+	    ignoreCustomComments: [/^!/,/ELEVENTYEDGE_edge/]
         }))
         .pipe(g.dest('dist'));
 }
