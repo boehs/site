@@ -1,6 +1,10 @@
 import { EleventyEdge } from "eleventy:edge";
 import precompiledAppData from "./_generated/eleventy-edge-app-data.js";
 
+const deets = {
+  is: JSON.parse('@@import _data/deets/is.json')
+}
+
 export default async (request, context) => {
   try {
     let edge = new EleventyEdge("edge", {
@@ -19,6 +23,7 @@ export default async (request, context) => {
       eleventyConfig.addFilter("random", function (array) {
         return array[Math.floor(Math.random() * array.length)];
       });
+      eleventyConfig.addGlobalData('deets',deets)
     });
 
     return await edge.handleResponse();

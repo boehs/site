@@ -17,5 +17,7 @@ yarn-error.log*
 # macOS-specific files
 .DS_Store
 
-server/config/secrets.json
-.parcel-cache
+_generated
+html/.netlify/edge-*
+html/.netlify/plugins
+edge-functions
