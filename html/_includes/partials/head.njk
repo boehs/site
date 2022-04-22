@@ -12,7 +12,7 @@
         {% if is %}
             {{ is }}
         {% else %}
-           {% edge %} {{ deets.is | random | safe }} {% endedge %}
+           {% edge %} {{ deets.is | random }} {% endedge %}
         {% endif %}
     </i>
 </span>

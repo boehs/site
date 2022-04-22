@@ -16,6 +16,9 @@ export default async (request, context) => {
       // Add some custom Edge-specific configuration
       // e.g. Fancier json output
       // eleventyConfig.addFilter("json", obj => JSON.stringify(obj, null, 2));
+      eleventyConfig.addFilter("random", function (array) {
+        return array[Math.floor(Math.random() * array.length)];
+      });
     });
 
     return await edge.handleResponse();
