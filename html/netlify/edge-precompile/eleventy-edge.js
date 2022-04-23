@@ -1,7 +1,6 @@
 import { EleventyEdge } from "eleventy:edge";
 import precompiledAppData from "./_generated/eleventy-edge-app-data.js";
 
-const is = JSON.parse('@@import _data/deets/is.json')
 
 export default async (request, context) => {
   try {
@@ -18,10 +17,10 @@ export default async (request, context) => {
       // Add some custom Edge-specific configuration
       // e.g. Fancier json output
       // eleventyConfig.addFilter("json", obj => JSON.stringify(obj, null, 2));
-      eleventyConfig.addFilter("random", function (array) {
-        return array[Math.floor(Math.random() * array.length)];
+const is = JSON.parse('@@import _data/deets/is.json')
+      eleventyConfig.addFilter("rIs", function (_) {
+        return is[Math.floor(Math.random() * is.length)];
       });
-      eleventyConfig.addFilter('is',(_) => is)
     });
 
     return await edge.handleResponse();

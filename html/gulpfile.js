@@ -98,4 +98,4 @@ exports.dev = async function() {
     //g.watch('dist/**/*.html',html)    
 }
 
-exports.default = g.series(removeDist,g.parallel(scss,type,edge),eleventy,html)
+exports.default = g.series(removeDist,g.parallel(scss,type,edge),eleventy)

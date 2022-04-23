@@ -5,7 +5,7 @@
 		"build": "gulp"
 	},
 	"dependencies": {
-		"@11ty/eleventy": "2.0.0-canary.7",
+		"@11ty/eleventy": "2.0.0-canary.8",
 		"@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
 		"@boehs/gulp-js-text-inject": "^1.0.3",
 		"@gardeners/markdown-it-wikilinks": "^1.5.1",
