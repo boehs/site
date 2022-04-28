@@ -51,6 +51,14 @@ function type() {
         .pipe(g.dest('dist/'))
 }
 
+function edge() {
+    return g.src('netlify/edge-precompile/eleventy-edge.js')
+	.pipe(jsInject({
+	    basepath: './'
+	}))
+	.pipe(g.dest('netlify/edge-functions'))
+}
+
 function eleventy() {
     return run('ELEVENTY_ENV=production eleventy --quiet').exec()
 }
@@ -65,7 +73,8 @@ function html() {
             collapseWhitespace: true,
             minifyCSS: true,
             minifyJS: true,
-            minifyURLs: true
+            minifyURLs: true,
+	    ignoreCustomComments: [/^!/,/ELEVENTYEDGE_edge/]
         }))
         .pipe(g.dest('dist'));
 }
@@ -89,4 +98,4 @@ exports.dev = async function() {
     //g.watch('dist/**/*.html',html)    
 }
 
-exports.default = g.series(removeDist,g.parallel(scss,type),eleventy,html)
+exports.default = g.series(removeDist,g.parallel(scss,type,edge),eleventy)
