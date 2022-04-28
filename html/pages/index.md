@@ -8,6 +8,6 @@ title: Evan Boehs
 
 <sup>{{hello.language}}</sup> {style="margin-block-start: 0"}
 
-I'm Evan, your run-of-the-mill programmer, ski bum, photographer, and believer.
+I'm Evan, a run-of-the-mill programmer, ski bum, photographer, and believer.
 
-I believe in [[details]], that the little things make us whole. I believe that with hard work and love, anything is possible. For what it's worth, I also believe in you.
+I believe in [[details]], that the little things make us whole. I believe that with hard work and love, anything is possible. For what it's worth, I believe in you.
