@@ -1,7 +1,6 @@
 import { EleventyEdge } from "eleventy:edge";
 import precompiledAppData from "./_generated/eleventy-edge-app-data.js";
 
-
 export default async (request, context) => {
   try {
     let edge = new EleventyEdge("edge", {
@@ -17,7 +16,16 @@ export default async (request, context) => {
       // Add some custom Edge-specific configuration
       // e.g. Fancier json output
       // eleventyConfig.addFilter("json", obj => JSON.stringify(obj, null, 2));
-const is = JSON.parse('@@import _data/deets/is.json')
+      const is = [
+        "dreaming",
+        "crying over spilled milk",
+        "putting out tiny fires",
+        "eating life's lemons",
+        "feeling good",
+        "breaking things",
+        '"insane"',
+        "taking big risks",
+      ];
       eleventyConfig.addFilter("rIs", function (_) {
         return is[Math.floor(Math.random() * is.length)];
       });

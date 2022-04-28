@@ -91,11 +91,13 @@ exports.ellty = eleventy
 
 exports.dev = async function() {
     removeDist()
-    elevendev()
+    eleventy()
     g.watch('_public/scss/*.scss',{ ignoreInitial: false },scss)
     g.watch('_public/ts/*.ts',{ ignoreInitial: false },type)
     // causes loop
     //g.watch('dist/**/*.html',html)    
 }
 
-exports.default = g.series(removeDist,g.parallel(scss,type,edge),eleventy)
+exports.default = g.series(removeDist,g.parallel(scss,type
+    //,edge
+    ),eleventy)

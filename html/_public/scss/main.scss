@@ -216,6 +216,10 @@ header {
   a {
     text-decoration: inherit;
   }
+  
+  i > p{
+    display: inline;
+  }
 }
 
 footer {

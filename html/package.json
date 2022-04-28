@@ -25,6 +25,7 @@
 		"markdown-it-attrs": "^4.1.3",
 		"markdown-it-container": "^3.0.0",
 		"markdown-it-table-of-contents": "^0.6.0",
+		"netlify": "11.0.1",
 		"netlify-cli": "^10.0.0",
 		"nunjucks": "^3.2.3",
 		"pnpm": "^6.32.3",

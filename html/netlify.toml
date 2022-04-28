@@ -1,24 +1,18 @@
 [build]
     publish = "dist"
     command = "pnpm run build"
+    framework = "#static"
 # If skip_processing = true, all other settings are ignored
-[build.processing]
-    skip_processing = false
-[build.processing.css]
-    bundle = false
-    minify = true
-[build.processing.js]
-    bundle = true
-    minify = true
-[build.processing.html]
-    pretty_urls = true
-[build.processing.images]
-  compress = true
-[[redirects]]
-    from = "https://evn.netlify.app/*"
-    to = "https://boehs.org/:splat"
-    status = 301
-    force = "true"
+[dev]
+    publish = "dist"
+    command = "gulp dev"
+    framework = "#static"
 [[edge_functions]]
-function = "eleventy-edge"
-path = "/*"
+    function = "eleventy-edge"
+    path = "/*"
+    
+#[[redirects]]
+#    from = "https://evn.netlify.app/*"
+#    to = "https://boehs.org/:splat"
+#    status = 301
+#    force = "true"
