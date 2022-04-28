@@ -82,7 +82,7 @@ exports.ellty = eleventy
 
 exports.dev = async function() {
     removeDist()
-    //elevendev()
+    elevendev()
     g.watch('_public/scss/*.scss',{ ignoreInitial: false },scss)
     g.watch('_public/ts/*.ts',{ ignoreInitial: false },type)
     // causes loop
