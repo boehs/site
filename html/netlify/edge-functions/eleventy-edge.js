@@ -25,6 +25,7 @@ export default async (request, context) => {
         "breaking things",
         '"insane"',
         "taking big risks",
+        "crossing tees and dotting eyes 😉"
       ];
       eleventyConfig.addFilter("rIs", function (_) {
         return is[Math.floor(Math.random() * is.length)];
