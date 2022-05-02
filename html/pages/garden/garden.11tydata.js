@@ -1,7 +1,7 @@
 const slugshive = require('../../../shared/slugify')
 
 // This regex finds all wikilinks in a string
-const wikilinkRegExp = /[^!]\[\[([^|]+?)(\|([\s\S]+?))?\]\]/g;
+const wikilinkRegExp = /(?<!!)\[\[([^|]+?)(\|([\s\S]+?))?\]\]/g;
 
 function backlinksApi(data) {
   const notes = data.collections.all;
