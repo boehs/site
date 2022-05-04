@@ -19,13 +19,15 @@ export default async (request, context) => {
       const is = [
         "dreaming",
         "crying over spilled milk",
-        "putting out tiny fires",
+        "putting out fires",
         "eating life's lemons",
         "feeling good",
         "breaking things",
         '"insane"',
         "taking big risks",
-        "crossing tees and dotting eyes 😉"
+        "crossing tees and dotting eyes",
+        "out of bubblegum",
+        "never gonna give u up"
       ];
       eleventyConfig.addFilter("rIs", function (_) {
         return is[Math.floor(Math.random() * is.length)];
