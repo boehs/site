@@ -18,5 +18,3 @@ yarn-error.log*
 .DS_Store
 
 _generated
-html/.netlify/edge-*
-html/.netlify/plugins

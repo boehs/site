@@ -9,7 +9,11 @@ const is = [
   "taking big risks",
   "crossing tees and dotting eyes",
   "out of bubblegum",
-  "never gonna give u up"
+  "never gonna give u up",
+  "using his owl eyes",
+  "forgetting something",
+  "eating pasta",
+  "chasing the sun"
 ];
 
 // @ts-expect-error
@@ -24,10 +28,11 @@ export async function onRequest(context): PagesFunction {
     data, // arbitrary space for passing data between middlewares
   } = context;  
   
-  return new HTMLRewriter().on('div#cfis', {
+  const response = await next()
+  
+  return new HTMLRewriter().on('header>span>i', {
     element(element) {
-      console.log(element)
-      element.replace(is[Math.floor(Math.random() * is.length)])
+      element.setInnerContent(is[Math.floor(Math.random() * is.length)])
     }
-  }).transform(request)
+  }).transform(response)
 }

@@ -51,20 +51,8 @@ function type() {
         .pipe(g.dest('dist/'))
 }
 
-function edge() {
-    return g.src('netlify/edge-precompile/eleventy-edge.js')
-	.pipe(jsInject({
-	    basepath: './'
-	}))
-	.pipe(g.dest('netlify/edge-functions'))
-}
-
 function eleventy() {
     return run('ELEVENTY_ENV=production eleventy --quiet').exec()
-}
-
-function elevendev() {
-    return run('ELEVENTY_ENV=development eleventy --serve --quiet --incremental').exec()
 }
 
 function html() {
