@@ -22,15 +22,7 @@ export async function onRequest(context): PagesFunction {
     waitUntil, // same as ctx.waitUntil in existing Worker API
     next, // used for middleware or to fetch assets
     data, // arbitrary space for passing data between middlewares
-  } = context;
-  
-  // Make sure we only modify text, not images.
-  let type = request.headers.get("Content-Type") || ""
-  if (!type.startsWith("text/")) {
-    // Not text. Don't modify.
-    return request
-  }
-  
+  } = context;  
   
   return new HTMLRewriter().on('div#cfis', {
     element(element) {
