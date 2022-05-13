@@ -23,13 +23,12 @@ export async function onRequest(context): PagesFunction {
     next, // used for middleware or to fetch assets
     data, // arbitrary space for passing data between middlewares
   } = context;
-  const response: Response = await fetch(request)
   
   // Make sure we only modify text, not images.
-  let type = response.headers.get("Content-Type") || ""
+  let type = request.headers.get("Content-Type") || ""
   if (!type.startsWith("text/")) {
     // Not text. Don't modify.
-    return response
+    return request
   }
   
   
@@ -38,5 +37,5 @@ export async function onRequest(context): PagesFunction {
       console.log(element)
       element.replace(is[Math.floor(Math.random() * is.length)])
     }
-  }).transform(response)
+  }).transform(request)
 }
