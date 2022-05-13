@@ -1,0 +1,13 @@
+lockfileVersion: 5.3
+
+specifiers:
+  '@cloudflare/workers-types': ^3.10.0
+
+dependencies:
+  '@cloudflare/workers-types': 3.10.0
+
+packages:
+
+  /@cloudflare/workers-types/3.10.0:
+    resolution: {integrity: sha512-gn+H5Ps9yV1VYz8FJ08bMfXLW8ubNblRF9Z+m+0ctNMyl3CdoZmUfH1pMTxYE8SMUJbLxuNvpdlZhwLDoGFXaw==}
+    dev: false
