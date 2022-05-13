@@ -26,6 +26,7 @@ export async function onRequest(context): PagesFunction {
   const response: Response = await next()
   return new HTMLRewriter().on('#cloudflareplzfix', {
     element(element) {
+      console.log(element)
       element.replace(is[Math.floor(Math.random() * is.length)])
     }
   }).transform(response)
