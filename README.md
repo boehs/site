@@ -1,5 +1,6 @@
 # My main website!
 ![](https://wakapi.dev/api/badge/evan/interval:any/project:site)
+
 This website is an `indieweb`-enabled `digital garden` with `dynamic taxonomies`, `aliases`, `gemini`, `scss`, `ts`, and lots of love.
 
 ## Some notes for developers
