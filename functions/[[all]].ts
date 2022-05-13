@@ -12,7 +12,6 @@ const is = [
   "never gonna give u up",
   "using his owl eyes",
   "forgetting something",
-  "eating pasta",
   "chasing the sun"
 ];
 
@@ -30,9 +29,10 @@ export async function onRequest(context): PagesFunction {
   
   const response = await next()
   
-  return new HTMLRewriter().on('header>span>i', {
+  return new HTMLRewriter().on('header>span>i#needis', {
     element(element) {
-      element.setInnerContent(is[Math.floor(Math.random() * is.length)])
+      element.setInnerContent("is " + is[Math.floor(Math.random() * is.length)])
+      element.removeAttribute("id")
     }
   }).transform(response)
 }
