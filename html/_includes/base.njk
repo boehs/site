@@ -2,9 +2,6 @@
 <html lang="en">
   <head>
     {% include "partials/meta.njk" %}
-    {% if page.url == "/" %}
-      <link rel="pgpkey" type="application/pgp-keys" href="/key.pub">
-    {% endif %}
   </head>
   <body {% if color and color != config.color %}style="--light: {{color}}"{% endif %}>
   {% if config.analytics and getEnv("ELEVENTY_ENV","production") %}
