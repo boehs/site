@@ -1,3 +1,6 @@
+// Heavily modified from Binyamin Aron Green's https://github.com/binyamin/eleventy-garden
+// The license of this file has been derived.
+
 const slugshive = require('../../../shared/slugify')
 
 // This regex finds all wikilinks in a string
