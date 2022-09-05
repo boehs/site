@@ -9,10 +9,11 @@ const is = [
   "taking big risks",
   "crossing tees and dotting eyes",
   "out of bubblegum",
-  "never gonna give u up",
+  "never gonna give you up",
   "using his owl eyes",
   "forgetting something",
-  "chasing the sun"
+  "chasing the sun",
+  "on a roll",
 ];
 
 // @ts-expect-error
