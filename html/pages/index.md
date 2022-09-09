@@ -4,9 +4,9 @@ title: Evan Boehs
 ---
 
 {% assign hello = deets.greatings | random %}
-# {{hello.hello}}! 👋 {style="margin-block-end: 0"}
+# {{hello.hello}}! 👋 {style="margin-block-end: 0" class="needstitle"}
 
-<sup>{{hello.language}}</sup> {style="margin-block-start: 0"}
+<sup id="needslang">{{hello.language}}</sup> {style="margin-block-start: 0"}
 
 I'm Evan, a run-of-the-mill programmer, ski bum, photographer, and believer.
 
