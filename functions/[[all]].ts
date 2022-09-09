@@ -35,16 +35,16 @@ export async function onRequest(context): PagesFunction {
         element.removeAttribute("id")
       }
     })
-    .on('#needslang', {
+    .on('.needstitle', {
       element(element: HTMLSpanElement) {
         element.setInnerContent(greeting.hello + " 👋")
-        element.removeAttribute("id")
+        element.removeAttribute("class")
       }
     })
     .on('#needslang', {
       element(element: HTMLSpanElement) {
         element.setInnerContent(greeting.language)
-        element.removeAttribute("class")
+        element.removeAttribute("id")
       }
     })
     .transform(response)
