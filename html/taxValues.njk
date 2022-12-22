@@ -7,61 +7,67 @@ permalink: /{{collectionsControl[value[0]].single or value[0] | slugshive}}/{{ v
 eleventyComputed:
   color: "{{tagList[value[0]][value[1]].color}}"
   description: "{{tagList[value[0]][value[1]].description}}"
+layout: base.njk
 ---
 {% from "partials/card.njk" import card %}
-{% extends "base.njk" %}
-{% block title %}
-<h1 class="p-name">
-  <a href="/{{ collectionsControl[value[0]].plural or value[0] }}">{{collectionsControl[value[0]].single or value[0] | capitalize}}</a>: {{value[1]}}
-  <a href="/{{collectionsControl[value[0]].single or value[0] | slugshive}}/{{ value[1] | slugshive }}.xml">
-    <img src="/feed.svg"/>
-  </a>
-</h1>
-{% endblock%}
-{% set content %}
-{% if tagList[value[0]][value[1]] %}
-  {{ card({
-      color: tagList[value[0]][value[1]].color
-  },{
-      url: "/" + value[0] + "/" + value[1],
-      title: value[1],
-      icon: tagList[value[0]][value[1]].icon
-  },{
-      content: tagList[value[0]][value[1]].description
-  }) }}
-  <hr/>
-{% endif %}
-
-
-{% set tax -%}{% for k,v in collectionsControl -%}
-    {% if v.mode == 'differentiator' -%}
-      {{- k -}}
-    {%- endif %}
-  {%- endfor %}
-{%- endset %}
-
-<div class="h-feed">
-  {% for location,posts in collections.nestedTax[value[0]][value[1]] | reverse | groupby("data." + tax) %}
-    {% if loop.length != 1 or location != value[1] %}<h2><a href="/{{tax}}/{{location}}">{{location | capitalize}}</a><a href="/{{collectionsControl[value[0]].single or value[0] | slugshive}}/{{ value[1] | slugshive }}.{{location}}.xml"><img src="/feed.svg"/></a></h2>{% endif %}
-    <ol>
-      {% for post in posts %}
-        <li>
+<header>
+    {% include "partials/head.njk" %}
+</header>
+<main>
+  <article>
+    <h1 class="p-name">
+      <a href="/{{ collectionsControl[value[0]].plural or value[0] }}">{{collectionsControl[value[0]].single or value[0] | capitalize}}</a>: {{value[1]}}
+      <a href="/{{collectionsControl[value[0]].single or value[0] | slugshive}}/{{ value[1] | slugshive }}.xml">
+        <img src="/feed.svg"/>
+      </a>
+    </h1>
+    <div class="e-content">
+      {% if tagList[value[0]][value[1]] %}
         {{ card({
-          class: 'h-entry',
-          color: post.data.color
-        },
-        {
-          url: post.url | url,
-          class: "p-name u-url",
-          title: post.data.title
-        },
-        {
-          class: "p-summary",
-          content: post.data.description | renderMd if post.data.description
-        })}}
-        </li>
-      {% endfor %}
-    </ol>
-  {% endfor %}
-</div>
-{% endset %}
+            color: tagList[value[0]][value[1]].color
+        },{
+            url: "/" + value[0] + "/" + value[1],
+            title: value[1],
+            icon: tagList[value[0]][value[1]].icon
+        },{
+            content: tagList[value[0]][value[1]].description
+        }) }}
+        <hr/>
+      {% endif %}
+
+      {% set tax -%}{% for k,v in collectionsControl -%}
+          {% if v.mode == 'differentiator' -%}
+            {{- k -}}
+          {%- endif %}
+        {%- endfor %}
+      {% endset %}
+
+      <div class="h-feed">
+        {% for location,posts in collections.nestedTax[value[0]][value[1]] | reverse | groupby("data." + tax) %}
+        {{location}}{{posts}}
+          {% if loop.length != 1 or location != value[1] %}<h2><a href="/{{tax}}/{{location}}">{{location | capitalize}}</a><a href="/{{collectionsControl[value[0]].single or value[0] | slugshive}}/{{ value[1] | slugshive }}.{{location}}.xml"><img src="/feed.svg"/></a></h2>{% endif %}
+          <ol>
+            {% for post in posts %}
+              <li>
+              {{ card({
+                class: 'h-entry',
+                color: post.data.color
+              },
+              {
+                url: post.url | url,
+                class: "p-name u-url",
+                title: post.data.title
+              },
+              {
+                class: "p-summary",
+                content: post.data.description | renderMd if post.data.description
+              })}}
+              </li>
+            {% endfor %}
+          </ol>
+        {% endfor %}
+      </div>
+    </div>
+  </article>
+</main>
+  

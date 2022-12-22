@@ -1,83 +1,94 @@
 ---
 layout: base.njk
+classes: "h-entry"
 ---
-
 {% from "partials/card.njk" import card %}
 
-{% set hasdiv = false %}
-{% for collection,settings in collectionsControl %}
-    {% set frontmatter = getContext()[collection] %}
-    {% if frontmatter %}
-        {% if not hasdiv %}
-            <dl class="kv">
-            {% set hasdiv = true %}
+<header>
+    {% include "partials/head.njk" %}
+</header>
+<main>
+    <article>
+        {% if title and not notitle %}
+            {% block title %}
+                <h1 class="p-name">{{ title | capitalize }}</h1>
+            {% endblock %}
         {% endif %}
-            <dt>
-                <strong>
-                    {% if not collectionsControl[collection].excludeFromPagination %}
-                        <a href="/{{(collectionsControl[collection].plural or collection) | slugshive}}">{{collection}}</a>
+        {% set hasdiv = false %}
+        {% for collection,settings in collectionsControl %}
+            {% set frontmatter = getContext()[collection] %}
+            {% if frontmatter %}
+                {% if not hasdiv %}
+                    <dl class="kv">
+                    {% set hasdiv = true %}
+                {% endif %}
+                    <dt>
+                        <strong>
+                            {% if not collectionsControl[collection].excludeFromPagination %}
+                                <a href="/{{(collectionsControl[collection].plural or collection) | slugshive}}">{{collection}}</a>
+                            {% else %}
+                                {{collection}}
+                            {% endif %}
+                        </strong>
+                    </dt>
+                    <dd>
+                    {% if frontmatter | getType == 'array'%}
+                        <ul {% if settings.class %}class="{{settings.class}}"{% endif %}>
+                            {% for item in frontmatter %}
+                                <li>
+                                    <a href="/{{(collectionsControl[collection].single or collection) | slugshive}}/{{item | slugshive}}">{{item}}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% elseif frontmatter | getType == 'date' %}
+                        {# hack #}
+                        <span {% if settings.class %}class="{{settings.class}}"{% endif %}>{{page.date.toUTCString()}}</span>
                     {% else %}
-                        {{collection}}
+                        <a {% if settings.class %}class="{{settings.class}}"{% endif %} href="/{{(collectionsControl[collection].single or collection) | slugshive}}/{{frontmatter | slugshive}}">{{frontmatter}}</a>
                     {% endif %}
-                </strong> 
-            </dt>
-            <dd>
-            {% if frontmatter | getType == 'array'%}
-                <ul {% if settings.class %}class="{{settings.class}}"{% endif %}>
-                    {% for item in frontmatter %}
+                    </dd>
+            {% endif %}
+        {% endfor %}
+        {% if hasdiv %}
+            </dl>
+        {% endif %}
+        <hr/>
+        {% for collection,settings in collectionsControl %}
+            {% set frontmatter = getContext()[collection] %}
+            {% if frontmatter %}
+                {% set item = tagList[collection][frontmatter] %}
+                {% if item.showOnPost %}
+                    {{ card({
+                        color: item.color
+                    },{
+                        url: "/" + collection + "/" + frontmatter,
+                        title: frontmatter,
+                        icon: item.icon
+                    },{
+                        content: item.description
+                    }) }}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        <div class="e-content">
+            {{ content | safe }}
+        </div>
+        {% if not backlinks | length == 0 %}
+            <section>
+                <hr/>
+                <h2>What links here?</h2>
+                <ul>
+                    {% for backlink in backlinks %}
                         <li>
-                            <a href="/{{(collectionsControl[collection].single or collection) | slugshive}}/{{item | slugshive}}">{{item}}</a>
+                            <a href="{{backlink.url}}">{{backlink.title}}</a>
                         </li>
                     {% endfor %}
                 </ul>
-            {% elseif frontmatter | getType == 'date' %}
-                {# hack #}
-                <span {% if settings.class %}class="{{settings.class}}"{% endif %}>{{page.date.toUTCString()}}</span>
-            {% else %}
-                <a {% if settings.class %}class="{{settings.class}}"{% endif %} href="/{{(collectionsControl[collection].single or collection) | slugshive}}/{{frontmatter | slugshive}}">{{frontmatter}}</a>
-            {% endif %}
-            </dd>
-    {% endif %}
-{% endfor %}
-{% if hasdiv %}
-    </dl>
-{% endif %}
-
-<hr/>
-
-{% for collection,settings in collectionsControl %}
-    {% set frontmatter = getContext()[collection] %}
-    {% if frontmatter %}
-        {% set item = tagList[collection][frontmatter] %}
-        {% if item.showOnPost %}
-            {{ card({
-                color: item.color
-            },{
-                url: "/" + collection + "/" + frontmatter,
-                title: frontmatter,
-                icon: item.icon
-            },{
-                content: item.description
-            }) }}
+            </section>
         {% endif %}
-    {% endif %}
-{% endfor %}
+    </article>
+</main>
 
-{{content | safe}}
-
-{% if not backlinks | length == 0 %}
-    <hr/>
-    <h2>What links here?</h2>
-    <ul>
-        {% for backlink in backlinks %}
-            <li>
-                <a href="{{backlink.url}}">{{backlink.title}}</a>
-            </li>
-        {% endfor %}
-    </ul>
-{% endif %}
-
-<div style="display: none">
-    <a rel="author" class="p-author h-card" href="https://boehs.org">Evan Boehs</a>
-    <a href="{{page.url}}" class="u-url">{{page.url}}</a>
-</div>
+<footer>
+    {% include "partials/foot.njk" %}
+</footer>

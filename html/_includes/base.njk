@@ -7,26 +7,7 @@
   {% if config.analytics and getEnv("ELEVENTY_ENV","production") %}
     {{ config.analytics | safe }}
   {% endif %}
-  <div>
-    <header>
-      {% include "partials/head.njk" %}
-    </header>
-    <main>
-      <article class="h-entry">
-        {% block main %}
-          {% if title and not notitle %}
-            {% block title %}
-              <h1 class="p-name">{{ title | capitalize}}</h1>
-            {% endblock %}
-          {% endif %}
-          <div class="e-content">
-            {{ content | safe }}
-          </div>
-        {% endblock %}
-      </article>
-    </main>
-    <footer>
-      {% include "partials/foot.njk" %}
-    </footer>
+  <div {% if classes %}class="{{classes}}"{% endif %}>
+    {{ content | safe }}
   </div>
 </body></html>

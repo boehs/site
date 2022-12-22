@@ -1,0 +1,24 @@
+---
+layout: base.njk
+classes: "h-entry"
+---
+<header>
+    {% include "partials/head.njk" %}
+</header>
+<main>
+    <article>
+        {% block main %}
+            {% if title and not notitle %}
+                {% block title %}
+                    <h1 class="p-name">{{ title | capitalize }}</h1>
+                {% endblock %}
+            {% endif %}
+            <div class="e-content">
+                {{ content | safe }}
+            </div>
+        {% endblock %}
+    </article>
+</main>
+<footer>
+    {% include "partials/foot.njk" %}
+</footer>
