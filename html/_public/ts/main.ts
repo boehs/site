@@ -8,12 +8,11 @@ flowerpower.split('\n?')
         if (i == 0) prev = step.split('\n')
         flowers[0].push(Number(step.substring(0, 1)))
         flowers[1].push((() =>
-            step.substring(1).split('\n').map((x,i2) =>
+            step.split(/\n/).map((x,i2) =>
                 x.replace(/[0-9]/g, match => " ".repeat(Number(match) + 2))
                 .replace(/!/g,prev[i2])
             ).join('\n')
         )());
-        // @ts-ignore
         prev = flowers[1][i].split('\n')
     })
 // @ts-ignore
@@ -26,7 +25,6 @@ state = false,
 flowerElm = document.getElementById('flower')
 
 // Hydrate via script to ensure it does not look wack for those without javascript
-// @ts-ignore
 flowerElm.innerHTML = flowers[1][flowers[0].length - 1]
 
 function doanimation(should_reverse = false) {
@@ -40,10 +38,8 @@ function doanimation(should_reverse = false) {
     }
     else state = true
     let int = setInterval(() => {
-        // @ts-ignore
         flowerElm.innerHTML = flower[timeleft - 1]
         if (flower_time[timeleft - 1] == 0) timeleft -= 1
-        // @ts-ignore
         else flower_time[timeleft - 1] -= 1
         if (timeleft == 0) {
             clearInterval(int)
@@ -62,12 +58,10 @@ function shit() {
 
 timeleft = flowers[0].length
 
-// @ts-ignore
 flowerElm.onmouseover = () => {
     ishover = true
     shit()
 };
-// @ts-ignore
 flowerElm.onmouseout = () => {
     ishover = false
     shit()
