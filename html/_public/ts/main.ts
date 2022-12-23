@@ -1,9 +1,11 @@
 console.log('is anyone out there? 🔦')
 
-let prev = [], flowers = '@@import _data/deets/flowerpower.txt'.split('\n?').map((step: string, i) => {
+let prev: string[], flowers = '@@import _data/deets/flowerpower.txt'.split('\n?').map((step: string, i) => {
     if (i == 0) prev = step.split('\n')
     const frame: [number,string] = [
         Number(step.substring(0, 1)),
+        // I think it's possible to remove the .replace and move it all into the .split
+        // but I'm too stupid and gave up
         step.substring(1).replace(/!(?<!$)/g, '!\n').split('\n').map((x, i2) =>
             x.replace(/[0-9]/g, match => " ".repeat(Number(match) + 2))
                 .replace(/!/g, prev[i2])
