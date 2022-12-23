@@ -6,7 +6,7 @@ const is = [
   "feeling good",
   "breaking things",
   '"insane"',
-  "taking big risks",
+  "taking risks",
   "crossing tees and dotting eyes",
   "out of bubblegum",
   "never gonna give you up",
@@ -14,7 +14,11 @@ const is = [
   "forgetting something",
   "chasing the sun",
   "on a roll",
-  "rocking out"
+  "rocking out",
+  "doing flips",
+  "jumping for joy",
+  "always learning",
+  "geeking out"
 ];
 import greetings from '../html/_data/deets/greatings.json'
 
@@ -28,7 +32,6 @@ export async function onRequest(context): PagesFunction {
   const response = await next()
   const greeting = greetings[Math.floor(Math.random() * greetings.length)]
   
-
   return new HTMLRewriter()
     .on('header>span>i#needis', {
       element(element) {
