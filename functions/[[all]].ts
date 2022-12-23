@@ -14,6 +14,7 @@ const is = [
   "forgetting something",
   "chasing the sun",
   "on a roll",
+  "rocking out"
 ];
 import greetings from '../html/_data/deets/greatings.json'
 

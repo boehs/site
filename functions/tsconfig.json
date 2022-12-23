@@ -2,8 +2,8 @@
   "compilerOptions": {
     "noEmit": true,
     "module": "esnext",
-    "target": "es2020",
-    "lib": ["es2020"],
+    "target": "esnext",
+    "lib": ["esnext"],
     "strict": true,
     "alwaysStrict": true,
     "preserveConstEnums": true,

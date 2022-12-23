@@ -14,7 +14,7 @@ let prev = [], flowers = '@@import _data/deets/flowerpower.txt'.split('\n?').map
 }).reverse()
 
 let isanimating = false,
-    timeleft: number,
+    timeleft = flowers.length,
     ishover = true,
     state = false,
     flowerElm = document.getElementById('flower')
@@ -48,8 +48,6 @@ function shit() {
     if (ishover == false && state == true) doanimation(true)
     else if (ishover == true && state == false) doanimation(false)
 }
-
-timeleft = flowers.length
 
 flowerElm.onmouseover = () => {
     ishover = true
