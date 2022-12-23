@@ -1,22 +1,17 @@
 console.log('is anyone out there? 🔦')
 
-const flowerpower = '@@import _data/deets/flowerpower.txt'
-
-let flowers: [[number?], [string?]] = [[], []], prev: string[];
-flowerpower.split('\n?')
-    .map((step: string, i) => {
-        if (i == 0) prev = step.split('\n')
-        flowers[0].push(Number(step.substring(0, 1)))
-        flowers[1].push((() =>
-            step.substring(1).replaceAll(/!(?<!$)/g, '!\n').split('\n').map((x, i2) =>
-                x.replace(/[0-9]/g, match => " ".repeat(Number(match) + 2))
-                    .replace(/!/g, prev[i2])
-            ).join('\n')
-        )());
-        prev = flowers[1][i].split('\n')
-    })
-// @ts-ignore
-flowers = flowers.map(x => x.reverse())
+let prev = [], flowers = '@@import _data/deets/flowerpower.txt'.split('\n?').map((step: string, i) => {
+    if (i == 0) prev = step.split('\n')
+    const frame: [number,string] = [
+        Number(step.substring(0, 1)),
+        step.substring(1).replace(/!(?<!$)/g, '!\n').split('\n').map((x, i2) =>
+            x.replace(/[0-9]/g, match => " ".repeat(Number(match) + 2))
+                .replace(/!/g, prev[i2])
+        ).join('\n')
+    ];
+    prev = frame[1].split('\n')
+    return frame
+}).reverse()
 
 let isanimating = false,
     timeleft: number,
@@ -25,25 +20,23 @@ let isanimating = false,
     flowerElm = document.getElementById('flower')
 
 // Hydrate via script to ensure it does not look wack for those without javascript
-flowerElm.innerHTML = flowers[1][flowers[0].length - 1]
+flowerElm.innerHTML = flowers[flowers.length - 1][1]
 
-function doanimation(should_reverse = false) {
-    let flower_time = [...flowers[0]],
-        flower = [...flowers[1]]
+function doanimation(should_reverse: boolean) {
+    let flower = JSON.parse(JSON.stringify(flowers))
     isanimating = true;
     if (should_reverse) {
-        flower_time = flower_time.reverse()
         flower = flower.reverse()
         state = false
     }
     else state = true
     let int = setInterval(() => {
-        flowerElm.innerHTML = flower[timeleft - 1]
-        if (flower_time[timeleft - 1] == 0) timeleft -= 1
-        else flower_time[timeleft - 1] -= 1
+        flowerElm.innerHTML = flower[timeleft - 1][1]
+        if (flower[timeleft - 1][0] == 0) timeleft -= 1
+        else flower[timeleft - 1][0] -= 1
         if (timeleft == 0) {
             clearInterval(int)
-            timeleft = flower_time.length
+            timeleft = flowers.length
             isanimating = false;
             shit()
         }
@@ -56,7 +49,7 @@ function shit() {
     else if (ishover == true && state == false) doanimation(false)
 }
 
-timeleft = flowers[0].length
+timeleft = flowers.length
 
 flowerElm.onmouseover = () => {
     ishover = true
