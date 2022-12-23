@@ -3,7 +3,7 @@ console.log('is anyone out there? 🔦')
 const flowerpower = '@@import _data/deets/flowerpower.txt'
 
 let flowers: [[number?],[string?]] = [[], []], prev: string[];
-Object.values(flowerpower.split('\n?'))
+flowerpower.split('\n?')
     .map((step: string,i) => {
         if (i == 0) prev = step.split('\n')
         flowers[0].push(Number(step.substring(0, 1)))

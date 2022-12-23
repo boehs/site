@@ -8,9 +8,10 @@
     "alwaysStrict": true,
     "preserveConstEnums": true,
     "moduleResolution": "node",
+    "resolveJsonModule": true,
     "sourceMap": true,
     "types": ["@cloudflare/workers-types", "@types/jest", "@types/service-worker-mock"]
   },
   "include": ["src"],
-  "exclude": ["node_modules", "dist", "test"]
+  "exclude": ["node_modules", "dist", "test"],
 }
