@@ -12,6 +12,6 @@
     "sourceMap": true,
     "types": ["@cloudflare/workers-types", "@types/jest", "@types/service-worker-mock"]
   },
-  "include": ["src"],
+  "include": ["*"],
   "exclude": ["node_modules", "dist", "test"],
 }
