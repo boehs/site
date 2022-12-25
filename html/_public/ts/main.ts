@@ -1,6 +1,6 @@
 console.log('is anyone out there? 🔦')
 
-let prev = [], flowers = '@@import _data/deets/flowerpower.txt'.split('\n?').map((step: string, i) => {
+let prev = [], flowers = '@@import _data/anim/flowerpower.txt'.split('\n?').map((step: string, i) => {
     const frame: [number,string] = [
         Number(step.substring(0, 1)),
         // I think it's possible to remove the .replace and move it all into the .split

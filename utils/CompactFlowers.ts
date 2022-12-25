@@ -1,6 +1,6 @@
 import { readFile } from "fs/promises"
 
-const file: string = await readFile('../html/_data/deets/og_flowerpower.txt','utf8')
+const file: string = await readFile('../anim/flowerpower.txt','utf8')
 const splited_file = file.split('\n?')
 
 let prev = Array.from({length: splited_file[0].split('\n').length - 1}, (_, i) => undefined)
