@@ -20,9 +20,10 @@ const is = [
   "always learning",
   "geeking out"
 ];
-import * as greetings from '../html/_data/deets/greatings.json'
+import greetings from '../html/_data/deets/greatings.json'
 
-export const onRequest: PagesFunction = async (context) => {
+// @ts-expect-error
+export async function onRequest(context): PagesFunction {
   // Contents of context object
   const {
     next, // used for middleware or to fetch assets
@@ -30,7 +31,7 @@ export const onRequest: PagesFunction = async (context) => {
 
   const response = await next()
   const greeting = greetings[Math.floor(Math.random() * greetings.length)]
-
+  
   return new HTMLRewriter()
     .on('header>span>i#needis', {
       element(element) {
@@ -39,13 +40,13 @@ export const onRequest: PagesFunction = async (context) => {
       }
     })
     .on('.needstitle', {
-      element(element) {
+      element(element: HTMLSpanElement) {
         element.setInnerContent(greeting.hello + " 👋")
         element.removeAttribute("class")
       }
     })
     .on('#needslang', {
-      element(element) {
+      element(element: HTMLSpanElement) {
         element.setInnerContent(greeting.language)
         element.removeAttribute("id")
       }
