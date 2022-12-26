@@ -31,25 +31,24 @@ export const onRequest: PagesFunction = async (context) => {
   const response = await next()
   const greeting = greetings[Math.floor(Math.random() * greetings.length)]
 
-  //return new HTMLRewriter()
-  //  .on('header>span>i#needis', {
-  //    element(element) {
-  //      element.setInnerContent("is " + is[Math.floor(Math.random() * is.length)])
-  //      element.removeAttribute("id")
-  //    }
-  //  })
-  //  .on('.needstitle', {
-  //    element(element) {
-  //      element.setInnerContent(greeting.hello + " 👋")
-  //      element.removeAttribute("class")
-  //    }
-  //  })
-  //  .on('#needslang', {
-  //    element(element) {
-  //      element.setInnerContent(greeting.language)
-  //      element.removeAttribute("id")
-  //    }
-  //  })
-  //  .transform(response)
-  return response
+  return new HTMLRewriter()
+    .on('header>span>i#needis', {
+      element(element) {
+        element.setInnerContent("is " + is[Math.floor(Math.random() * is.length)])
+        element.removeAttribute("id")
+      }
+    })
+    .on('.needstitle', {
+      element(element) {
+        element.setInnerContent(greeting.hello + " 👋")
+        element.removeAttribute("class")
+      }
+    })
+    .on('#needslang', {
+      element(element) {
+        element.setInnerContent(greeting.language)
+        element.removeAttribute("id")
+      }
+    })
+    .transform(response)
 }

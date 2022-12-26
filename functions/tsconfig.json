@@ -1,17 +1,9 @@
 {
   "compilerOptions": {
-    "noEmit": true,
-    "module": "esnext",
-    "target": "esnext",
-    "lib": ["esnext"],
-    "strict": true,
-    "alwaysStrict": true,
-    "preserveConstEnums": true,
-    "moduleResolution": "node",
     "resolveJsonModule": true,
-    "sourceMap": true,
-    "types": ["@cloudflare/workers-types", "@types/jest", "@types/service-worker-mock"]
-  },
-  "include": ["*"],
-  "exclude": ["node_modules", "dist", "test"],
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["esnext"],
+    "types": ["@cloudflare/workers-types"]
+  }
 }
