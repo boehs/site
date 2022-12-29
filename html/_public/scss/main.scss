@@ -34,7 +34,8 @@ $lighter: #cddfd9;
 $warner: #ccbcb1;
 $activer: #b1c1cc;
 :root {
-    --light: #0a74a0;
+    --base: 198deg;
+    --light: hsl(var(--base),88%,33%);
     --warn:#df803f;
 }
 
@@ -54,7 +55,7 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 75px 20px;
-  background: #f8feff;
+  background: hsl(var(--base), 100%, 99%);
   color: #2f2235;
   display: flex;
   justify-content: center;
