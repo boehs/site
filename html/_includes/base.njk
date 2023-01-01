@@ -4,9 +4,6 @@
     {% include "partials/meta.njk" %}
   </head>
   <body {% if color and color != config.color %}style="--light: {{color}}"{% endif %}>
-  {% if config.analytics and getEnv("ELEVENTY_ENV","production") %}
-    {{ config.analytics | safe }}
-  {% endif %}
   <div>
     <header>
       {% include "partials/head.njk" %}

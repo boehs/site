@@ -6,9 +6,12 @@
     <meta name="robots" content="noindex">
 {% endif %}
 <title>{{title}}</title>
-<link rel="preload" as="font" type="font/woff2" href="/spectralregular.woff2" crossorigin/>
 <link rel="stylesheet" href="/main.css">
+<link rel="preload" as="font" type="font/woff2" href="/spectralregular.woff2" crossorigin/>
 {% if hasCodeBlock %}
     <link rel="stylesheet" href="/code.css">
 {% endif %}
 <script src="/main.js" defer></script>
+{% if config.analytics and getEnv("ELEVENTY_ENV","production") %}
+    {{ config.analytics | safe }}
+{% endif %}
