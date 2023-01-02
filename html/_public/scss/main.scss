@@ -30,12 +30,12 @@
 // Variables //
 
 $radius: 3px;
-$lighter: #cddfd9;
 $warner: #ccbcb1;
 $activer: #b1c1cc;
 :root {
     --base: 198deg;
     --light: hsl(var(--base),88%,33%);
+    --lighter: hsl(var(--base),22%, 84%);
     --warn:#df803f;
 }
 
@@ -96,7 +96,7 @@ h1 > a > img {
 code,
 :not(footer) > pre {
   font-size: 1rem;
-  background: $lighter;
+  background: var(--lighter);
   border-radius: $radius;
 }
 
@@ -266,7 +266,7 @@ input[type=button],
 input[type=reset] {
   padding: 1em;
   margin: 10px 0;
-  background: $lighter;
+  background: var(--lighter);
   border-radius: $radius;
   transition: .3s;
   cursor: pointer;

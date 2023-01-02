@@ -29,7 +29,7 @@
     "postcss": "^8.4.7",
     "postcss-csso": "^6.0.0",
     "sanitize-filename": "^1.6.3",
-    "sass": "1.49.9",
+    "sass": "1.57.1",
     "typescript": "^4.5.5"
   },
   "devDependencies": {
