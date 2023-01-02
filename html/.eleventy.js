@@ -5,6 +5,9 @@ const pluginRss = require("@11ty/eleventy-plugin-rss");
 const collectionControl = require("./_data/collectionsControl.json");
 const extraRedirects = require('./_config/redirects.json')
 
+const { readFileSync } = require('fs')
+const flowerFile = readFileSync('_data/anim/starynight.txt','utf8')
+
 function markdownIt() {
   let options = {
     html: true,
@@ -82,6 +85,11 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("slugshive", (path) =>
     slugify(path)
   );
+  
+  // sorry
+  eleventyConfig.addFilter("footerBase", () => {
+    return flowerFile.match(/([^\n]*)\n\?/)[1].replace(/[0-9]/g, match => " ".repeat(Number(match) + 2))
+  })
   
   eleventyConfig.addFilter("renderMd", content => markdown.render(content))
 
