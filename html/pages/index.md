@@ -8,6 +8,6 @@ title: Evan Boehs
 
 <sup id="needslang">{{hello.language}}</sup> {style="margin-block-start: 0"}
 
-I'm Evan, a run-of-the-mill programmer, ski bum, photographer, and believer.
+Most days I'm busy crafting silly things, but on the good ones I'm out skiing.
 
-I believe in [[details]], that the little things make us whole. I believe that with hard work and love, anything is possible. For what it's worth, I believe in you.
+I'm interested in empowering individuals through technology, and understanding the intricate magic that makes our world go round.

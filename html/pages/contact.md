@@ -3,6 +3,7 @@ is: a chatterbox
 title: Contact
 ---
 
-- By **email (prefered!!!)**: `⟨evan@!?!?!.org⟩` (@24h)
-- On **matrix**: `⟨@ewwn:matrix.org⟩` (@1w)
-- On **irc**: `⟨eb@Libera.Chat⟩` (@1m)
+- Shoot me an **email**: [`⟨evan@boehs.org⟩`](mailto:evan@boehs.org)
+- Toot from **mastodon**: [`⟨@eb@social.coop⟩`](https://social.coop/@eb)
+- Hack into the **matrix**: `⟨@ewwn:matrix.org⟩`
+- Go old school with **irc**: `⟨eb@Libera.Chat⟩`
