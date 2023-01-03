@@ -1,3 +1,7 @@
+// Don't look at this file!
+// It's a dirty secret!
+// No modularity :(
+
 const EleventyFetch = require("@11ty/eleventy-fetch");
 
 class Analytics {
