@@ -11,7 +11,7 @@
     "isServer": false,
     "donate": "https://liberapay.com/e",
     "color": "#0a74a0",
-    "analytics": {
+    "_analytics": {
         "script": "https://espy.boehs.org/colophon.js",
         "base": "https://espy.boehs.org",
         "id": "70dcc41f-95a1-433d-b3e1-298bee6a6f41",
