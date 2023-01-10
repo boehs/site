@@ -88,7 +88,7 @@ module.exports = function (eleventyConfig) {
   
   // sorry
   eleventyConfig.addFilter("footerBase", () => {
-    return "\n".repeat(flowerFile.split('?')[0].split('\n').length) + flowerFile.match(/([^\n]*)\n\?/)[1].replace(/[0-9]/g, match => " ".repeat(Number(match) + 2))
+    return "\n".repeat(flowerFile.split('?')[0].split('\n').length) + flowerFile.match(/([^\n]*)\n\?/)[1].replace(/[0-9]/g, match => " ".repeat(Number(match) + 2).substring(1))
   })
   
   eleventyConfig.addFilter("renderMd", content => markdown.render(content))
