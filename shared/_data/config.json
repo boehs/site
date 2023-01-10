@@ -15,7 +15,7 @@
         "script": "https://espy.boehs.org/colophon.js",
         "base": "https://espy.boehs.org",
         "id": "70dcc41f-95a1-433d-b3e1-298bee6a6f41",
-        "analytics": "<script async defer src=\"/colophon.js\"></script>",
+        "analytics": "<script defer src=\"/colophon.js\"></script>",
         "pub": "https://espy.boehs.org/share/7A58GBhX/boehs.org"
     },
     "baseurl": "https://boehs.org"
