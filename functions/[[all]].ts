@@ -15,7 +15,6 @@ export async function onRequest(context): PagesFunction {
     .on('i#is', {
       element(element) {
         element.setInnerContent("is " + is[Math.floor(Math.random() * is.length)])
-        element.removeAttribute("id")
       }
     })
     .on('.needstitle', {
