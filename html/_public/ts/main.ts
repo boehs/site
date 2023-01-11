@@ -58,3 +58,7 @@ flowerElm.onmouseout = () => {
     ishover = false
     shit()
 };
+
+document.getElementById('is')
+    .onclick = async ({target}) =>
+        (target as HTMLElement).textContent = (await (await fetch('/api/is')).text())

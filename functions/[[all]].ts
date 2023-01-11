@@ -1,29 +1,4 @@
-const is = [
-  "dreaming",
-  "crying over spilled milk",
-  "putting out fires",
-  "eating life's lemons",
-  "feeling good",
-  "breaking things",
-  '"insane"',
-  "taking risks",
-  "crossing tees and dotting eyes",
-  "out of bubblegum",
-  "never gonna give you up",
-  "using his owl eyes",
-  "forgetting something",
-  "chasing the sun",
-  "on a roll",
-  "rocking out",
-  "doing flips",
-  "jumping for joy",
-  "always learning",
-  "geeking out",
-  "about the journey", // not the dest
-  "really cool",
-  "working hard",
-  "helping out"
-];
+import { is } from './api/is';
 import greetings from '../html/_data/deets/greatings.json'
 
 // @ts-expect-error
@@ -37,7 +12,7 @@ export async function onRequest(context): PagesFunction {
   const greeting = greetings[Math.floor(Math.random() * greetings.length)]
   
   return new HTMLRewriter()
-    .on('header>span>i#needis', {
+    .on('i#is', {
       element(element) {
         element.setInnerContent("is " + is[Math.floor(Math.random() * is.length)])
         element.removeAttribute("id")
