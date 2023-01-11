@@ -18,7 +18,11 @@ const is = [
   "doing flips",
   "jumping for joy",
   "always learning",
-  "geeking out"
+  "geeking out",
+  "about the journey", // not the dest
+  "really cool",
+  "working hard",
+  "running fast",
 ];
 import greetings from '../html/_data/deets/greatings.json'
 
