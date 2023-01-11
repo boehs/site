@@ -1,6 +1,6 @@
 <span>
     <span class="p-author h-card">
-        <a href="/" class="lighter p-name">
+        <a href="/" class="lighter p-name umami--click--home">
             <strong>{{config.author.name}}</strong>
         </a>
         <a class="u-url" rel="me" href="{{ config.baseurl }}">website</a>
@@ -11,6 +11,6 @@
         <div class="p-country-name">{{config.author.location.country}}</div>
     </span>
     <span>
-        <i {% if not is %}id="is"{% endif %}>is {{ is }}</i>
+        <i {% if not is %}id="is"{% endif %} class="umami--click--is">is {{ is }}</i>
     </span>
 </span>
