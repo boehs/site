@@ -60,5 +60,5 @@ flowerElm.onmouseout = () => {
 };
 
 document.getElementById('is')
-    .onclick = async ({target}) =>
-        (target as HTMLElement).textContent = (await (await fetch('/api/is')).text())
+    .onclick = async (e) =>
+        (e.target as HTMLElement).textContent = await fetch('/api/is').then(r=>r.text())
