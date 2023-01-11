@@ -22,7 +22,8 @@ export const is = [
     "about the journey", // not the dest
     "really cool",
     "working hard",
-    "helping out"
+    "helping out",
+    "setting sail"
 ];
 
 export function onRequestGet(context) {
