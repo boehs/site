@@ -10,5 +10,7 @@
         <img class="u-photo" src="{{config.author.image}}" loading="lazy"/>
         <div class="p-country-name">{{config.author.location.country}}</div>
     </span>
-    <i {% if not is %}id="is"{% endif %}>is {{ is }}</i>
+    <span>
+        <i {% if not is %}id="is"{% endif %}>is {{ is }}</i>
+    </span>
 </span>
