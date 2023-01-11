@@ -22,7 +22,7 @@ const is = [
   "about the journey", // not the dest
   "really cool",
   "working hard",
-  "running fast",
+  "helping out"
 ];
 import greetings from '../html/_data/deets/greatings.json'
 
