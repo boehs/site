@@ -59,6 +59,6 @@ flowerElm.onmouseout = () => {
     shit()
 };
 
-document.getElementById('is')
-    .onclick = async ({target}) =>
-        (target as HTMLElement).textContent = (await (await fetch('/api/is')).text())
+(document.getElementById('is') as HTMLSpanElement)
+    .addEventListener('click', async ({target}) =>
+        (target as HTMLSpanElement).textContent = (await (await fetch('/api/is')).text()))
