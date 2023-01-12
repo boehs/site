@@ -7,8 +7,8 @@
         <a rel="me" href="https://social.coop/@eb">Mastodon</a>
         <a class="u-key" rel="pgpkey" type="application/pgp-keys" href="/key.pub">PGP Key</a>
         <a class="u-email" href="mailto:{{ config.author.email }}">email</a>
-        <img class="u-photo" src="{{config.author.image}}" loading="lazy"/>
-        <div class="p-country-name">{{config.author.location.country}}</div>
+        <img class="u-photo" src="{{config.author.image}}" alt="A drawing of an astronaut in space" loading="lazy"/>
+        <span class="p-country-name">{{config.author.location.country}}</span>
     </span>
     <span>
         <i {% if not is %}id="is"{% endif %} class="umami--click--is">is {{ is }}</i>

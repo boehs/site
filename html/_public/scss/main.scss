@@ -98,6 +98,7 @@ code,
   font-size: 1rem;
   background: var(--lighter);
   border-radius: $radius;
+  white-space: pre-wrap;
 }
 
 :not(pre) > code {
