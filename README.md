@@ -1,5 +1,5 @@
 # My main website!
-![](https://wakapi.dev/api/badge/evan/interval:any/project:site)
+![](https://wakapi.dev/api/badge/evan/interval:any/project:site) ![](https://img.shields.io/w3c-validation/html?targetUrl=https%3A%2F%2Fboehs.org) ![](https://img.shields.io/website?url=https%3A%2F%2Fboehs.org)
 
 This website is an `indieweb`-enabled `digital garden` with `dynamic taxonomies`, `aliases`, `gemini`, `scss`, `ts`, and lots of love.
 
