@@ -16,11 +16,6 @@
     "hello": "ello-hay"
   },
   {
-    "language": "Binary",
-    "about": "https://en.wikipedia.org/wiki/Binary_number",
-    "hello": "01001000 01100101 01101100 01101100 01101111"
-  },
-  {
     "language": "Morse Code",
     "about": "https://en.wikipedia.org/wiki/Morse_code",
     "hello": ".... . .-.. .-.. ---"
@@ -47,10 +42,12 @@
   },
   {
     "language": "Amharic",
+    "about": "https://en.wikipedia.org/wiki/Amhara_people",
     "hello": "ሰላም"
   },
   {
     "language": "Arabic",
+    "about": "https://en.wikipedia.org/wiki/Arab_world",
     "hello": "مرحبا"
   },
   {
@@ -60,18 +57,22 @@
   },
   {
     "language": "Azerbaijani",
+    "about": "https://en.wikipedia.org/wiki/Azerbaijanis",
     "hello": "Salam"
   },
   {
     "language": "Basque",
+    "about": "https://en.wikipedia.org/wiki/Basque_Country_(greater_region)",
     "hello": "Kaixo"
   },
   {
     "language": "Belarusian",
+    "about": "https://en.wikipedia.org/wiki/Belarus",
     "hello": "добры дзень"
   },
   {
     "language": "Bengali",
+    "about": "https://en.wikipedia.org/wiki/Bengal",
     "hello": "হ্যালো"
   },
   {
