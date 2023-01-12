@@ -21,6 +21,7 @@
   },
   {
     "language": "Armenian",
+    "about": "https://en.wikipedia.org/wiki/Armenians",
     "hello": "Բարեւ"
   },
   {
@@ -131,6 +132,7 @@
   },
   {
     "language": "Hawaiian",
+    "about": "https://en.wikipedia.org/wiki/Hana_Highway",
     "hello": "Alohaʻoe"
   },
   {
@@ -245,6 +247,7 @@
   },
   {
     "language": "Pashto",
+    "about": "https://en.wikipedia.org/wiki/Pashtuns",
     "hello": "سلام"
   },
   {
@@ -281,10 +284,12 @@
   },
   {
     "language": "Sindhi",
+    "about": "https://en.wikipedia.org/wiki/Sindh",
     "hello": "هيلو"
   },
   {
     "language": "Sinhala",
+    "about": "https://en.wikipedia.org/wiki/Sri_Lanka",
     "hello": "හෙලෝ"
   },
   {
@@ -361,6 +366,7 @@
   },
   {
     "language": "Yoruba",
+    "about": "https://en.wikipedia.org/wiki/Yorubaland",
     "hello": "Kaabo"
   },
   {
