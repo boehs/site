@@ -4,11 +4,45 @@
     "hello": "Hey"
   },
   {
+    "language": "Old English",
+    "hello": "Wes hāl"
+  },
+  {
+    "language": "Pirate",
+    "hello": "Ahoy"
+  },
+  {
+    "language": "Pig Latin",
+    "hello": "ello-hay"
+  },
+  {
+    "language": "Binary",
+    "about": "https://en.wikipedia.org/wiki/Binary_number",
+    "hello": "01001000 01100101 01101100 01101100 01101111"
+  },
+  {
+    "language": "Morse Code",
+    "about": "https://en.wikipedia.org/wiki/Morse_code",
+    "hello": ".... . .-.. .-.. ---"
+  },
+  {
+    "language": "Braille",
+    "about": "https://en.wikipedia.org/wiki/Braille",
+    "hello": "⠓⠑⠇⠇⠕"
+  },
+  {
+    "language": "Esperanto",
+    "about": "https://en.wikipedia.org/wiki/Esperanto",
+    "hello": "Saluton"
+  },
+  {
     "language": "Afrikaans",
+    "about": "https://en.wikipedia.org/wiki/Afrikaners",
     "hello": "hallo"
   },
   {
     "language": "Albanian",
+    "about": "https://en.wikipedia.org/wiki/Albania",
     "hello": "Përshëndetje"
   },
   {
