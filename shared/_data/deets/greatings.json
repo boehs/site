@@ -105,6 +105,7 @@
   },
   {
     "language": "Georgian",
+    "about": "https://en.wikipedia.org/wiki/Georgia_(country)",
     "hello": "გამარჯობა"
   },
   {
@@ -117,6 +118,7 @@
   },
   {
     "language": "Gujarati",
+    "about": "https://en.wikipedia.org/wiki/Gujarati_people",
     "hello": "હેલો"
   },
   {
@@ -141,6 +143,7 @@
   },
   {
     "language": "Hmong",
+    "about": "https://en.wikipedia.org/wiki/Hmong_people",
     "hello": "Nyob zoo"
   },
   {
@@ -153,6 +156,7 @@
   },
   {
     "language": "Igbo",
+    "about": "https://en.wikipedia.org/wiki/Igboland",
     "hello": "Ndewo"
   },
   {

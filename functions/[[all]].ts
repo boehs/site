@@ -27,6 +27,12 @@ export async function onRequest(context): PagesFunction {
       element(element: HTMLSpanElement) {
         element.setInnerContent(greeting.language)
         element.removeAttribute("id")
+        
+        if (greeting.about) {
+          element.tagName = 'a'
+          element.setAttribute('title', 'teach me something new!')
+          element.setAttribute('href',greeting.about)
+        }
       }
     })
     .transform(response)
