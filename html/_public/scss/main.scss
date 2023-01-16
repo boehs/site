@@ -51,11 +51,17 @@ $activer: #b1c1cc;
   box-sizing: inherit;
 }
 
+// setting this and the same in body is similar to 100vh
+// but it works on mobile browsers as well
+// could also do 100vh but low support
+html {
+  height: 100%;
+}
+
 body {
   font-family: Spectral, serif;
   font-size: 1.1rem;
-  min-height: 100vh;
-  min-height: 100dvh;
+  min-height: 100%;
   margin: auto;
   padding: 75px 20px;
   background: hsl(var(--base), 100%, 99%);
