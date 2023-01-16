@@ -62,13 +62,19 @@ body {
   font-family: Spectral, serif;
   font-size: 1.1rem;
   min-height: 100%;
-  margin: auto;
+  margin: 0;
   padding: 75px 20px;
   background: hsl(var(--base), 100%, 99%);
   color: #2f2235;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow-wrap: break-word;
   box-sizing: border-box;
-  width: min(600px, 100%);
+
+  & > div {
+    width: min(600px, 100%);
+  }
 }
 
 // Images
