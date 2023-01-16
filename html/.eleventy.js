@@ -17,14 +17,6 @@ function markdownIt() {
   };
   let markdownIt = require("markdown-it")(options);
   
-  markdownIt.renderer.rules.table_open = function() {
-    return '<div class="twrap"><table>\n'
-  }
-  
-  markdownIt.renderer.rules.table_close = function() {
-    return '</table></div>\n'
-  }
-  
   markdownIt.renderer.rules.blockquote_open = function(token,idx) {
     return `<blockquote${token[idx + 2].content.toLowerCase().includes("[[penpen]]'s note") ? ` class="penpen"` : ''}>`
   }

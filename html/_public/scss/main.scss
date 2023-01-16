@@ -1,27 +1,27 @@
 // Fonts //
 
 @font-face {
-  font-family: 'spectral';
-  src: url('/spectralbold.woff2') format('woff2'),
-       url('/spectralbold.woff') format('woff');
+  font-family: "spectral";
+  src: url("/spectralbold.woff2") format("woff2"),
+    url("/spectralbold.woff") format("woff");
   font-weight: bold;
   font-style: normal;
   font-display: optional;
 }
 
 @font-face {
-  font-family: 'spectral';
-  src: url('/spectralitalic.woff2') format('woff2'),
-       url('/spectralitalic.woff') format('woff');
+  font-family: "spectral";
+  src: url("/spectralitalic.woff2") format("woff2"),
+    url("/spectralitalic.woff") format("woff");
   font-weight: normal;
   font-style: italic;
   font-display: optional;
 }
 
 @font-face {
-  font-family: 'spectral';
-  src: url('/spectralregular.woff2') format('woff2'),
-       url('/spectralregular.woff') format('woff');
+  font-family: "spectral";
+  src: url("/spectralregular.woff2") format("woff2"),
+    url("/spectralregular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -33,10 +33,10 @@ $radius: 3px;
 $warner: #ccbcb1;
 $activer: #b1c1cc;
 :root {
-    --base: 198deg;
-    --light: hsl(var(--base),88%,33%);
-    --lighter: hsl(var(--base),22%, 84%);
-    --warn:#df803f;
+  --base: 198deg;
+  --light: hsl(var(--base), 88%, 33%);
+  --lighter: hsl(var(--base), 22%, 84%);
+  --warn: #df803f;
 }
 
 .lighter {
@@ -45,7 +45,9 @@ $activer: #b1c1cc;
 
 // Setup //
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
@@ -64,7 +66,7 @@ body {
   box-sizing: border-box;
 
   & > div {
-    width: min(600px,100%);
+    width: min(600px, 100%);
   }
 }
 
@@ -111,16 +113,17 @@ a {
   color: inherit;
   text-decoration-color: var(--light);
   text-decoration-thickness: 2px;
-  transition: color .3s;
-  
-  &[href*="//"]:not([href*="boehs.org"]) {
-    --light: var(--warn)
+  transition: color 0.3s;
+
+  &[href*="//"]:not([href*="boehs.org"])
+  {
+    --light: var(--warn);
   }
-  
+
   &:hover {
-    color: var(--light)
+    color: var(--light);
   }
-  
+
   &:active {
     color: #ff9e9e;
   }
@@ -143,12 +146,12 @@ a {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   list-style-type: none;
   padding-inline: 0;
-  
+
   .card {
     :first-child {
       margin-top: 0;
     }
-    
+
     :last-child {
       margin-bottom: 0;
     }
@@ -163,7 +166,8 @@ a {
 // Structure //
 
 // (headings)
-h1,h2 {
+h1,
+h2 {
   position: relative;
 }
 
@@ -182,7 +186,8 @@ hr {
 }
 
 // kv == key-value
-nav > dl,.kv {
+nav > dl,
+.kv {
   display: grid;
   grid-template-columns: auto max-content;
   gap: 10px;
@@ -195,7 +200,7 @@ nav > dl,.kv {
   * {
     margin-block: 0;
   }
-  
+
   ul {
     list-style: none;
     display: flex;
@@ -219,7 +224,7 @@ header {
   a {
     text-decoration: inherit;
   }
-  
+
   i {
     cursor: pointer;
   }
@@ -231,7 +236,9 @@ footer {
   justify-content: center;
 }
 
-article, nav, header {
+article,
+nav,
+header {
   line-height: 1.6;
 }
 
@@ -260,30 +267,29 @@ sub {
 
 // Buttons //
 
-
 button,
-input[type=submit],
-input[type=button],
-input[type=reset] {
+input[type="submit"],
+input[type="button"],
+input[type="reset"] {
   padding: 1em;
   margin: 10px 0;
   background: var(--lighter);
   border-radius: $radius;
-  transition: .3s;
+  transition: 0.3s;
   cursor: pointer;
   border: none;
   font-family: monospace;
 }
 
-button[type=reset],
-input[type=reset] {
+button[type="reset"],
+input[type="reset"] {
   background: $warner;
 }
 
 button,
-input[type=submit],
-input[type=button],
-input[type=reset],
+input[type="submit"],
+input[type="button"],
+input[type="reset"],
 .int {
   &:hover {
     background: $activer;
@@ -292,24 +298,30 @@ input[type=reset],
 
 // Tables //
 
-.twrap {
-  overflow-x: auto;
-}
-
 table {
-  border-spacing: 1em 0;
-  table-layout: fixed;
+  border-collapse: collapse;
+  text-align: left;
+  width: 100%;
 }
 
-th {
-  white-space: nowrap;
+tr {
+  border-bottom: 1px solid lightgrey;
+  
+  &:nth-of-type(odd) td {
+    background-color: #f8f8f8;
+  }
+}
+
+th,
+td {
+  padding: 6px;
 }
 
 // Blockquote //
 
 figure {
   blockquote {
-    margin-block-end: 0 
+    margin-block-end: 0;
   }
   margin-inline: 0;
   figcaption {
@@ -327,9 +339,9 @@ blockquote {
 .penpen {
   --light: lightpink;
   background: lavender;
-  
+
   p::before {
-    content: '🐾 ';
+    content: "🐾 ";
   }
 }
 
@@ -341,10 +353,11 @@ blockquote {
       display: none;
     }
   }
-  
-  footer > nav > dl,.kv {
+
+  footer > nav > dl,
+  .kv {
     display: block;
-    
+
     dd {
       padding-left: 0;
     }
@@ -361,11 +374,11 @@ blockquote {
   blockquote {
     background: darkslategray;
   }
-  
+
   .penpen {
     background: #483341;
   }
-  
+
   :not(footer) > pre {
     background: #fffbf8 !important;
   }
