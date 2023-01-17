@@ -274,7 +274,7 @@ sub {
 
 // Buttons //
 
-button,
+/*button,
 input[type="submit"],
 input[type="button"],
 input[type="reset"] {
@@ -296,12 +296,11 @@ input[type="reset"] {
 button,
 input[type="submit"],
 input[type="button"],
-input[type="reset"],
-.int {
+input[type="reset"] {
   &:hover {
     background: $activer;
   }
-}
+}*/
 
 // Tables //
 

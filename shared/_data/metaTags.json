@@ -3,5 +3,5 @@
     "theme-color": "{{color}}",
     "author": "{{config.author.name}}",
     "description": "{{description if description else \"Some ramblings about \" + title + \"!\"}}",
-    "referrer": "no-referrer"
+    "generator": "Eleventy"
 }
