@@ -13,17 +13,22 @@ export const is = [
     "using his owl eyes",
     "forgetting something",
     "chasing the sun",
-    "on a roll",
-    "rocking out",
-    "doing flips",
     "jumping for joy",
     "always learning",
+    "on a journey",
+    "on a roll",
+    "doing flips",
     "geeking out",
-    "about the journey", // not the dest
     "really cool",
     "working hard",
+    "setting sail",
+    "high on life",
+    "rocking out",
     "helping out",
-    "setting sail"
+    "vibing out",
+    "a goofball",
+    "chugging on",
+    "full of life",
 ];
 
 export function onRequestGet(context) {
