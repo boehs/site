@@ -29,6 +29,11 @@ export const is = [
     "a goofball",
     "chugging on",
     "full of life",
+    "touching grass",
+    "getting out there",
+    "taking on challenges",
+    "making new friends",
+    "petting the dog"
 ];
 
 export function onRequestGet(context) {
