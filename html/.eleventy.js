@@ -1,6 +1,6 @@
 const nunjucks = require("nunjucks");
 const sanitize = require("sanitize-filename");
-const slugify = require('../shared/slugify')
+const slugify = require('./slugify')
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const collectionControl = require("./_data/collectionsControl.json");
 const extraRedirects = require('./_config/redirects.json')

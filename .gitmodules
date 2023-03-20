@@ -1,3 +1,3 @@
 [submodule "src/pages/c"]
-	path = shared/node
+	path = html/pages/garden/node
 	url = https://git.sr.ht/~boehs/oasis

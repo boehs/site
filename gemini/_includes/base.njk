@@ -1,9 +1,0 @@
-{% include "partials/head.njk" %}
-{% block main %}
-
-
-{% if title and not notitle %}# {{ title | capitalize}}
-
-{% endif %}{{ content | safe }}{% endblock %}
-
-{% include "partials/foot.njk" %}

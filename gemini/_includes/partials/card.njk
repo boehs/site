@@ -1,3 +1,0 @@
-{% macro card(head,body) -%}
-=> gemini://gmi.boehs.org{{head.url}} {{ head.icon + " " if head.icon}}{{ head.title | capitalize }}{% if body.content -%}{{'\n'}}{{ body.content | safe }}{%- endif %}
-{%- endmacro %}
