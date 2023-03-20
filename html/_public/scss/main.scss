@@ -64,7 +64,7 @@ body {
   min-height: 100%;
   margin: 0;
   padding: 75px 20px;
-  background: hsl(var(--base), 100%, 99%);
+  background: hsl(20, 100%, 97%);
   color: #2f2235;
   display: flex;
   justify-content: center;
@@ -241,6 +241,10 @@ footer {
   flex-wrap: wrap;
   display: flex;
   justify-content: center;
+  
+  pre {
+    font-weight: bold;
+  }
 }
 
 article,
