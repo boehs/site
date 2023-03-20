@@ -228,7 +228,7 @@ header {
     font-size: 14pt;
   }
 
-  a {
+  > span a {
     text-decoration: inherit;
   }
 }
@@ -244,6 +244,7 @@ footer {
   
   pre {
     font-weight: bold;
+    margin: 0;
   }
 }
 
