@@ -126,6 +126,10 @@ module.exports = function (eleventyConfig) {
     return array[Math.floor(Math.random() * array.length)];
   });
   
+  eleventyConfig.addFilter("rainbow", function (i,n) {
+    return `hsl(${(360 / n) * i},50%,60%)`
+  });
+  
   eleventyConfig.addCollection("redirects", function (collectionApi) {
     // lets make a variable to hold our redirects
     let redirects = [];
