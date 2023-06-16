@@ -18,6 +18,7 @@ export const is = [
     "on a journey",
     "on a roll",
     "doing flips",
+    "defying gravity",
     "really cool",
     "working hard",
     "setting sail",
@@ -30,7 +31,11 @@ export const is = [
     "high on life",
     "touching grass",
     "making friends",
-    "petting the dog"
+    "making waves",
+    "making peace",
+    "petting the dog",
+    "lost in thought",
+    "charting waters",
 ];
 
 export function onRequestGet(context) {
