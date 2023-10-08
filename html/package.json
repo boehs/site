@@ -27,7 +27,7 @@
     "markdown-it-container": "^3.0.0",
     "markdown-it-table-of-contents": "^0.6.0",
     "nunjucks": "^3.2.3",
-    "postcss": "^8.4.7",
+    "postcss": "^8.4.31",
     "postcss-csso": "^6.0.0",
     "sanitize-filename": "^1.6.3",
     "sass": "1.57.1",
