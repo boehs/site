@@ -19,12 +19,12 @@ function backlinksApi(data) {
 
   // Search the other notes for backlinks
   for (const otherNote of notes) {
-    const noteContent = otherNote.template.frontMatter.content;
+    const noteContent = otherNote.rawInput;
     const noteAsLink = slugshive(
       otherNote.data.page.url.match(/\/([^\/]*?)\..+?$/)?.[1] ||
       otherNote.data.page.filePathStem.replace("/pages/garden/node/", "")
     );
-    
+
     data.internal.exists?.add(noteAsLink);
 
     // Get all links from otherNote
