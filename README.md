@@ -3,7 +3,7 @@
 
 This is the site wherein I push 11ty to it's absolute limits and then some. It works on some 11ty versions but not all of them.
 
-This website is an `indieweb`-enabled `digital garden` with `dynamic taxonomies`, `aliases`, `gemini`, `scss`, `ts`, and lots of love.
+This website is my `indieweb`-enabled `digital garden` with `dynamic taxonomies`, `aliases`, ~~`gemini`~~, `scss`, `ts`, and lots of love.
 
 ## Some notes for developers
 
