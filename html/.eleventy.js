@@ -5,6 +5,7 @@ import pluginRss from "@11ty/eleventy-plugin-rss";
 import { build as esbuild } from "esbuild";
 import * as sass from "sass";
 import postcss from "postcss";
+import { minify } from "html-minifier";
 
 import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
@@ -124,6 +125,17 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy({ "_public/": "." });
   eleventyConfig.addPassthroughCopy({ "pages/garden/node/Assets/*": "assets" });
+
+  eleventyConfig.addTransform("html", function (content) {
+    if (this.page.outputPath && this.page.outputPath.endsWith(".html")) {
+      return minify(content, {
+        useShortDoctype: true,
+        removeComments: true,
+        collapseWhitespace: true,
+      });
+    }
+    return content;
+  });
 
   // I won't even attempt to explain this
   eleventyConfig.addCollection("wtf", function (collectionApi) {
