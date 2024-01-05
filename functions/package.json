@@ -1,7 +1,7 @@
 {
-  "name": "functions",
-  "version": "1.0.0",
-  "dependencies": {
-    "@cloudflare/workers-types": "^3.10.0"
-  }
+    "name": "functions",
+    "version": "1.0.0",
+    "dependencies": {
+        "@cloudflare/workers-types": "^3.10.0"
+    }
 }
