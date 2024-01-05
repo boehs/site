@@ -4,6 +4,9 @@ import slugify from './slugify.js'
 import pluginRss from "@11ty/eleventy-plugin-rss";
 import collectionControl from "./_data/collectionsControl.json" with { type: "json" }
 import extraRedirects from './_config/redirects.json' with { type: "json" }
+import { build as esbuild } from 'esbuild';
+import * as sass from 'sass'
+import postcss from "postcss";
 
 import { readFileSync } from 'fs'
 const flowerFile = readFileSync('_data/anim/starynight.txt', 'utf8')
@@ -18,6 +21,7 @@ import mdItC from 'markdown-it-container'
 import mdItOtherAttrLol from 'markdown-it-attribution'
 
 import synHl from '@11ty/eleventy-plugin-syntaxhighlight'
+import path from "path";
 
 function markdownIt() {
   let options = {
@@ -279,6 +283,53 @@ export default function (eleventyConfig) {
 
     return nestedTax;
   });
+
+  eleventyConfig.addTemplateFormats('ts');
+	eleventyConfig.addExtension('ts', {
+		outputFileExtension: 'js',
+		compile: async function (inputContent, inputPath) {
+			return async () => {
+				const result = await esbuild({
+                    entryPoints: [inputPath],
+                    define: {},
+                    format: 'iife',
+                    platform: 'browser',
+                    minify: process.env.NODE_ENV === 'production',
+                    bundle: true,
+                    write: false,
+                  });
+                
+                  return result.outputFiles[0].text;
+			};
+		},
+	});
+
+    eleventyConfig.addTemplateFormats('scss');
+	eleventyConfig.addExtension('scss', {
+		outputFileExtension: 'css',
+		compile: async function (inputContent, inputPath) {
+			let { css, loadedUrls } = sass.compileString(inputContent, {
+				loadPaths: [path.parse(inputPath).dir || '.'],
+				sourceMap: false,
+			});
+
+			this.addDependencies(inputPath, loadedUrls);
+
+			return async () => {
+				const { content } = await postcss([require('postcss-csso')({
+                    restructure: true
+                }),]).process(css, {
+					from: undefined,
+				});
+
+				return content;
+			};
+		},
+	});
+
+
+    eleventyConfig.setQuietMode(true);
+
 
   return {
     dir: {
