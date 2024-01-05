@@ -1,0 +1,23 @@
+name: CodeQL
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      actions: write
+      contents: read
+    if: ${{ github.event.commits[0].author.name != 'dependabot[bot]' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+
+      - name: Perform analysis
+        uses: github/codeql-action/analyze@v3
