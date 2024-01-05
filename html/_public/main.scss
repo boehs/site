@@ -1,30 +1,30 @@
 // Fonts //
 
 @font-face {
-  font-family: "spectral";
-  src: url("/spectralbold.woff2") format("woff2"),
-    url("/spectralbold.woff") format("woff");
-  font-weight: bold;
-  font-style: normal;
-  font-display: optional;
+	font-family: "spectral";
+	src: url("/spectralbold.woff2") format("woff2"),
+		url("/spectralbold.woff") format("woff");
+	font-weight: bold;
+	font-style: normal;
+	font-display: optional;
 }
 
 @font-face {
-  font-family: "spectral";
-  src: url("/spectralitalic.woff2") format("woff2"),
-    url("/spectralitalic.woff") format("woff");
-  font-weight: normal;
-  font-style: italic;
-  font-display: optional;
+	font-family: "spectral";
+	src: url("/spectralitalic.woff2") format("woff2"),
+		url("/spectralitalic.woff") format("woff");
+	font-weight: normal;
+	font-style: italic;
+	font-display: optional;
 }
 
 @font-face {
-  font-family: "spectral";
-  src: url("/spectralregular.woff2") format("woff2"),
-    url("/spectralregular.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+	font-family: "spectral";
+	src: url("/spectralregular.woff2") format("woff2"),
+		url("/spectralregular.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
 }
 
 // Variables //
@@ -33,14 +33,14 @@ $radius: 3px;
 $warner: #ccbcb1;
 $activer: #b1c1cc;
 :root {
-  --base: 198deg;
-  --light: hsl(var(--base), 88%, 33%);
-  --lighter: hsl(var(--base), 22%, 84%);
-  --warn: #df803f;
+	--base: 198deg;
+	--light: hsl(var(--base), 88%, 33%);
+	--lighter: hsl(var(--base), 22%, 84%);
+	--warn: #df803f;
 }
 
 .lighter {
-  color: var(--light) !important;
+	color: var(--light) !important;
 }
 
 // Setup //
@@ -48,126 +48,126 @@ $activer: #b1c1cc;
 *,
 *:before,
 *:after {
-  box-sizing: inherit;
+	box-sizing: inherit;
 }
 
 // setting this and the same in body is similar to 100vh
 // but it works on mobile browsers as well
 // could also do 100vh but low support
 html {
-  height: 100%;
+	height: 100%;
 }
 
 body {
-  font-family: Spectral, serif;
-  font-size: 1.1rem;
-  min-height: 100%;
-  margin: 0;
-  padding: 75px 20px;
-  background: hsl(20, 100%, 98%);
-  color: #101010;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow-wrap: break-word;
-  box-sizing: border-box;
+	font-family: Spectral, serif;
+	font-size: 1.1rem;
+	min-height: 100%;
+	margin: 0;
+	padding: 75px 20px;
+	background: hsl(20, 100%, 98%);
+	color: #101010;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow-wrap: break-word;
+	box-sizing: border-box;
 
-  & > div {
-    width: min(600px, 100%);
-  }
+	& > div {
+		width: min(600px, 100%);
+	}
 }
 
 // Images
 
 img {
-  border-radius: $radius;
+	border-radius: $radius;
 }
 
 nav,
 img {
-  width: 100%;
+	width: 100%;
 }
 
 h1 > a > img,
 h2 > a > img {
-  padding-left: 5px;
-  width: initial;
-  position: absolute;
-  bottom: 10px;
+	padding-left: 5px;
+	width: initial;
+	position: absolute;
+	bottom: 10px;
 }
 
 h1 > a > img {
-  bottom: 12px;
+	bottom: 12px;
 }
 
 // Code //
 
 code,
 :not(footer) > pre {
-  font-size: 1rem;
-  background: var(--lighter);
-  border-radius: $radius;
-  white-space: pre-wrap;
+	font-size: 1rem;
+	background: var(--lighter);
+	border-radius: $radius;
+	white-space: pre-wrap;
 }
 
 :not(pre) > code {
-  padding: 0 3px;
+	padding: 0 3px;
 }
 
 // Links //
 
 a {
-  color: inherit;
-  text-decoration-color: var(--light);
-  text-decoration-thickness: 2px;
-  transition: color 0.3s;
+	color: inherit;
+	text-decoration-color: var(--light);
+	text-decoration-thickness: 2px;
+	transition: color 0.3s;
 
-  &[href*="//"]:not([href*="boehs.org"])
-  {
-    --light: var(--warn);
-  }
+	&[href*="//"]:not([href*="boehs.org"])
+	{
+		--light: var(--warn);
+	}
 
-  &:hover {
-    color: var(--light);
-  }
+	&:hover {
+		color: var(--light);
+	}
 
-  &:active {
-    color: #ff9e9e;
-  }
+	&:active {
+		color: #ff9e9e;
+	}
 }
 
 // Cards //
 
 .card {
-  color: inherit;
-  text-decoration: inherit;
-  border-left: 2px solid var(--light);
-  padding: 0 1em;
-  display: block;
+	color: inherit;
+	text-decoration: inherit;
+	border-left: 2px solid var(--light);
+	padding: 0 1em;
+	display: block;
 }
 
 .contain {
-  display: grid;
-  grid-template-rows: masonry;
-  gap: 1em;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  list-style-type: none;
-  padding-inline: 0;
+	display: grid;
+	grid-template-rows: masonry;
+	gap: 1em;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	list-style-type: none;
+	padding-inline: 0;
 
-  .card {
-    :first-child {
-      margin-top: 0;
-    }
+	.card {
+		:first-child {
+			margin-top: 0;
+		}
 
-    :last-child {
-      margin-bottom: 0;
-    }
-  }
+		:last-child {
+			margin-bottom: 0;
+		}
+	}
 }
 
 .h-feed > ol {
-  list-style-type: none;
-  padding-inline: 0;
+	list-style-type: none;
+	padding-inline: 0;
 }
 
 // Structure //
@@ -175,87 +175,87 @@ a {
 // (headings)
 h1,
 h2 {
-  position: relative;
+	position: relative;
 }
 
 // (lists)
 ul {
-  list-style: georgian;
+	list-style: georgian;
 }
 
 hr {
-  border: none;
-  text-align: center;
+	border: none;
+	text-align: center;
 
-  &::after {
-    content: "✲✲✲";
-  }
+	&::after {
+		content: "✲✲✲";
+	}
 }
 
 // kv == key-value
 nav > dl,
 .kv {
-  display: grid;
-  grid-template-columns: auto max-content;
-  gap: 10px;
+	display: grid;
+	grid-template-columns: auto max-content;
+	gap: 10px;
 
-  & > dd {
-    border-left: none;
-    margin-left: auto;
-  }
+	& > dd {
+		border-left: none;
+		margin-left: auto;
+	}
 
-  * {
-    margin-block: 0;
-  }
+	* {
+		margin-block: 0;
+	}
 
-  ul {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    padding-inline: 0;
-  }
+	ul {
+		list-style: none;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 15px;
+		padding-inline: 0;
+	}
 }
 
 .h-card > :not(.p-name) {
-  display: none;
+	display: none;
 }
 
 header {
-  > * {
-    display: block;
-    text-align: center;
-    font-size: 14pt;
-  }
+	> * {
+		display: block;
+		text-align: center;
+		font-size: 14pt;
+	}
 
-  > span a {
-    text-decoration: inherit;
-  }
+	> span a {
+		text-decoration: inherit;
+	}
 }
 
 #is {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 footer {
-  flex-wrap: wrap;
-  display: flex;
-  justify-content: center;
-  
-  pre {
-    font-weight: bold;
-    margin: 0;
-  }
+	flex-wrap: wrap;
+	display: flex;
+	justify-content: center;
+
+	pre {
+		font-weight: bold;
+		margin: 0;
+	}
 }
 
 article,
 nav,
 header {
-  line-height: 1.6;
+	line-height: 1.6;
 }
 
 article > p {
-  margin-block: 10px;
+	margin-block: 10px;
 }
 
 // Labeling and such //
@@ -263,18 +263,18 @@ article > p {
 legend,
 dt,
 label {
-  font-weight: bold;
+	font-weight: bold;
 }
 
 dd {
-  border-left: 6px double var(--light);
-  margin: 0;
-  padding-left: 10px;
+	border-left: 6px double var(--light);
+	margin: 0;
+	padding-left: 10px;
 }
 
 sup,
 sub {
-  font-family: monospace;
+	font-family: monospace;
 }
 
 // Buttons //
@@ -310,87 +310,91 @@ input[type="reset"] {
 // Tables //
 
 table {
-  border-collapse: collapse;
-  text-align: left;
-  width: 100%;
+	border-collapse: collapse;
+	text-align: left;
+	width: 100%;
 }
 
 tr {
-  border-bottom: 1px solid lightgrey;
-  
-  &:nth-of-type(odd) td {
-    background-color: #f8f8f8;
-  }
+	border-bottom: 1px solid lightgrey;
+
+	&:nth-of-type(odd) td {
+		background-color: #f8f8f8;
+	}
 }
 
 th,
 td {
-  padding: 6px;
+	padding: 6px;
 }
 
 // Blockquote //
 
 figure {
-  blockquote {
-    margin-block-end: 0;
-  }
-  margin-inline: 0;
-  figcaption {
-    padding-left: 17px;
-  }
+	blockquote {
+		margin-block-end: 0;
+	}
+	margin-inline: 0;
+	figcaption {
+		padding-left: 17px;
+	}
 }
 
 blockquote {
-  padding: 10px 0 10px 10px;
-  border-left: 6px double var(--light);
-  margin: 1em 0;
-  border-radius: $radius;
+	padding: 10px 0 10px 10px;
+	border-left: 6px double var(--light);
+	margin: 1em 0;
+	border-radius: $radius;
 }
 
 .penpen {
-  --light: lightpink;
-  background: lavender;
+	--light: lightpink;
+	background: lavender;
 
-  p::before {
-    content: "🐾 ";
-  }
+	p::before {
+		content: "🐾 ";
+	}
 }
 
 // Media //
 
 @media screen and (max-width: 800px) {
-  footer {
-    pre {
-      display: none;
-    }
-  }
+	footer {
+		pre {
+			display: none;
+		}
+	}
 
-  footer > nav > dl,
-  .kv {
-    display: block;
+	footer > nav > dl,
+	.kv {
+		display: block;
 
-    dd {
-      padding-left: 0;
-    }
-  }
+		dd {
+			padding-left: 0;
+		}
+	}
 }
 
 @media (prefers-color-scheme: dark) {
-  body {
-    background: #282828;
-    color: whitesmoke;
-  }
+	body {
+		background: #282828;
+		color: whitesmoke;
+	}
 
-  code,
-  blockquote {
-    background: darkslategray;
-  }
+	code,
+	blockquote {
+		background: darkslategray;
+	}
 
-  .penpen {
-    background: #483341;
-  }
+	.penpen {
+		background: #483341;
+	}
 
-  :not(footer) > pre {
-    background: #fffbf8 !important;
-  }
+	:not(footer) > pre {
+		background: #fffbf8 !important;
+	}
 }
+
+@import "banner";
+@import "code";
+@import "notallfeedsaregross";
