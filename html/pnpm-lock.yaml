@@ -9,8 +9,8 @@ dependencies:
     specifier: 3.0.0-alpha.4
     version: 3.0.0-alpha.4
   '@11ty/eleventy-fetch':
-    specifier: ^3.0.0
-    version: 3.0.0
+    specifier: ^4.0.0
+    version: 4.0.0
   '@11ty/eleventy-plugin-syntaxhighlight':
     specifier: ^4.0.0
     version: 4.0.0
@@ -23,9 +23,6 @@ dependencies:
   del:
     specifier: ^6.0.0
     version: 6.0.0
-  esm:
-    specifier: ^3.2.25
-    version: 3.2.25
   gulp:
     specifier: ^4.0.2
     version: 4.0.2
@@ -49,7 +46,7 @@ dependencies:
     version: 2.1.0
   gulp-typescript:
     specifier: ^6.0.0-alpha.1
-    version: 6.0.0-alpha.1(typescript@4.5.5)
+    version: 6.0.0-alpha.1(typescript@5.3.3)
   markdown-it:
     specifier: ^12.3.2
     version: 12.3.2
@@ -63,8 +60,8 @@ dependencies:
     specifier: ^4.1.3
     version: 4.1.3(markdown-it@12.3.2)
   markdown-it-container:
-    specifier: ^3.0.0
-    version: 3.0.0
+    specifier: ^4.0.0
+    version: 4.0.0
   markdown-it-table-of-contents:
     specifier: ^0.6.0
     version: 0.6.0
@@ -81,11 +78,11 @@ dependencies:
     specifier: ^1.6.3
     version: 1.6.3
   sass:
-    specifier: 1.57.1
-    version: 1.57.1
+    specifier: 1.69.7
+    version: 1.69.7
   typescript:
-    specifier: ^4.5.5
-    version: 4.5.5
+    specifier: ^5.3.3
+    version: 5.3.3
 
 devDependencies:
   '@11ty/eleventy-plugin-rss':
@@ -131,9 +128,9 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@11ty/eleventy-fetch@3.0.0:
-    resolution: {integrity: sha512-qJvfb331rYQAmlCS71Ygg0/XHUdB4/qXBOLsG0DJ1m61WL5JNha52OtKVeQq34u2J2Nfzim+X4TIL/+QyesB7Q==}
-    engines: {node: '>=12'}
+  /@11ty/eleventy-fetch@4.0.0:
+    resolution: {integrity: sha512-wGAd0r+8DUWr22fK5r07dOKuNY6ltA7hX+sJzngGZL1yJmuUVdM/xPQZ+iq0BFgf/ZeRdpVEzf2D0cpVZUuiTg==}
+    engines: {node: '>=14'}
     dependencies:
       debug: 4.3.4
       flat-cache: 3.0.4
@@ -1270,11 +1267,6 @@ packages:
       acorn: 8.11.3
     dev: false
 
-  /esm@3.2.25:
-    resolution: {integrity: sha512-U1suiZ2oDVWv4zPO56S0NcR5QriEahGtdN2OR6FiOG4WJvcjBVFB0qI4+eKoWFH483PKGuLuu6V8Z4T5g63UVA==}
-    engines: {node: '>=6'}
-    dev: false
-
   /esprima@4.0.1:
     resolution: {integrity: sha512-eGuFFw7Upda+g4p+QHvnW0RyTX/SVeJBDM/gCtMARO0cLuT2HcEKnTPvhjV6aGeqrCB/sbNop0Kszm0jsaWU4A==}
     engines: {node: '>=4'}
@@ -1788,7 +1780,7 @@ packages:
       vinyl-sourcemaps-apply: 0.2.1
     dev: false
 
-  /gulp-typescript@6.0.0-alpha.1(typescript@4.5.5):
+  /gulp-typescript@6.0.0-alpha.1(typescript@5.3.3):
     resolution: {integrity: sha512-KoT0TTfjfT7w3JItHkgFH1T/zK4oXWC+a8xxKfniRfVcA0Fa1bKrIhztYelYmb+95RB80OLMBreknYkdwzdi2Q==}
     engines: {node: '>= 8'}
     peerDependencies:
@@ -1798,7 +1790,7 @@ packages:
       plugin-error: 1.0.1
       source-map: 0.7.3
       through2: 3.0.2
-      typescript: 4.5.5
+      typescript: 5.3.3
       vinyl: 2.2.1
       vinyl-fs: 3.0.3
     dev: false
@@ -2563,8 +2555,8 @@ packages:
       markdown-it: 12.3.2
     dev: false
 
-  /markdown-it-container@3.0.0:
-    resolution: {integrity: sha512-y6oKTq4BB9OQuY/KLfk/O3ysFhB3IMYoIWhGJEidXt1NQFocFK2sA2t0NYZAMyMShAGL6x5OPIbrmXPIqaN9rw==}
+  /markdown-it-container@4.0.0:
+    resolution: {integrity: sha512-HaNccxUH0l7BNGYbFbjmGpf5aLHAMTinqRZQAEQbMr2cdD3z91Q6kIo1oUn1CQndkT03jat6ckrdRYuwwqLlQw==}
     dev: false
 
   /markdown-it-regexp@0.4.0:
@@ -3568,9 +3560,9 @@ packages:
       truncate-utf8-bytes: 1.0.2
     dev: false
 
-  /sass@1.57.1:
-    resolution: {integrity: sha512-O2+LwLS79op7GI0xZ8fqzF7X2m/m8WFfI02dHOdsK5R2ECeS5F62zrwg/relM1rjSLy7Vd/DiMNIvPrQGsA0jw==}
-    engines: {node: '>=12.0.0'}
+  /sass@1.69.7:
+    resolution: {integrity: sha512-rzj2soDeZ8wtE2egyLXgOOHQvaC2iosZrkF6v3EUG+tBwEvhqUCzm0VP3k9gHF9LXbSrRhT5SksoI56Iw8NPnQ==}
+    engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
       chokidar: 3.5.3
@@ -4007,9 +3999,9 @@ packages:
     resolution: {integrity: sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=}
     dev: false
 
-  /typescript@4.5.5:
-    resolution: {integrity: sha512-TCTIul70LyWe6IJWT8QSYeA54WQe8EjQFU4wY52Fasj5UKx88LNYKCgBEHcOMOrFF1rKGbD8v/xcNWVUq9SymA==}
-    engines: {node: '>=4.2.0'}
+  /typescript@5.3.3:
+    resolution: {integrity: sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==}
+    engines: {node: '>=14.17'}
     hasBin: true
     dev: false
 
