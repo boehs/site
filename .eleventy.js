@@ -1,6 +1,6 @@
 import nunjucks from "nunjucks";
 import sanitize from "sanitize-filename";
-import slugify from "./slugify.js";
+import slugify from "./utils/slugify.js";
 import pluginRss from "@11ty/eleventy-plugin-rss";
 import { build as esbuild } from "esbuild";
 import * as sass from "sass";
@@ -10,11 +10,11 @@ import { minify } from "html-minifier";
 import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
 
-const collectionControl = require("./_data/collectionsControl.json");
-const extraRedirects = require("./_config/redirects.json");
+const collectionControl = require("./src/_data/collectionsControl.json");
+const extraRedirects = require("./src/_config/redirects.json");
 
 import { readFileSync } from "fs";
-const flowerFile = readFileSync("_data/anim/starynight.txt", "utf8");
+const flowerFile = readFileSync("src/_data/anim/starynight.txt", "utf8");
 
 import mdIt from "markdown-it";
 
@@ -27,7 +27,7 @@ import mdItOtherAttrLol from "markdown-it-attribution";
 
 import synHl from "@11ty/eleventy-plugin-syntaxhighlight";
 import path from "path";
-import textInject from "./text-inject.js";
+import textInject from "./utils/text-inject.js";
 
 function markdownIt() {
   let options = {
@@ -92,6 +92,18 @@ function markdownIt() {
 }
 
 export default function (eleventyConfig) {
+  const sindreSlugify = eleventyConfig.getFilter("slugify");
+  eleventyConfig.addFilter("slugify", (string) => {
+    console.log("Spying on slugify...");
+    if (sindreSlugify(string) !== slugify(string)) {
+      console.log(
+        `Sindre Sorhus's slugify gave ${sindreSlugify(
+          string,
+        )} while the custom one gave ${slugify(string)}.`,
+      );
+    }
+    return sindreSlugify(string);
+  });
   const markdown = markdownIt();
 
   eleventyConfig.addPlugin(synHl);
@@ -124,8 +136,10 @@ export default function (eleventyConfig) {
       (file.excerpt = file.content.split("\n").slice(0, 4).join(" ")),
   });
 
-  eleventyConfig.addPassthroughCopy({ "_public/": "." });
-  eleventyConfig.addPassthroughCopy({ "pages/garden/node/Assets/*": "assets" });
+  eleventyConfig.addPassthroughCopy({ "./src/_public/": "." });
+  eleventyConfig.addPassthroughCopy({
+    "./src/pages/garden/node/Assets/*": "assets",
+  });
 
   eleventyConfig.addTransform("html", function (content) {
     if (this.page.outputPath && this.page.outputPath.endsWith(".html")) {
@@ -143,7 +157,7 @@ export default function (eleventyConfig) {
     // ok I lied
     // acess the first post that can get the information we need
     const firstPost = collectionApi.getFilteredByGlob(
-      "pages/garden/node/*.md",
+      "./src/pages/garden/node/*.md",
     )[0].data;
     // and then pass it to itself to emulate computed
     const links = firstPost.eleventyComputed.brokenLinks(firstPost, true);
@@ -178,7 +192,9 @@ export default function (eleventyConfig) {
     // lets make a variable to hold our redirects
     let redirects = [];
     // We need to get each post in our posts folder. In my case this is /node
-    const nodes = collectionApi.getFilteredByGlob("pages/garden/node/*.md");
+    const nodes = collectionApi.getFilteredByGlob(
+      "./src/pages/garden/node/*.md",
+    );
     // next lets iterate over all the nodes
     nodes.forEach((node) =>
       // for each alias
@@ -203,7 +219,9 @@ export default function (eleventyConfig) {
     // lets make a variable to hold our taxonomies and values
     let taxAndValues = [];
     // We need to get each post in our posts folder. In my case this is /node
-    const nodes = collectionApi.getFilteredByGlob("pages/garden/node/*.md");
+    const nodes = collectionApi.getFilteredByGlob(
+      "./src/pages/garden/node/*.md",
+    );
     // next lets iterate over all the nodes
     nodes.forEach((node) => {
       // and then iterate over the taxonomies
@@ -243,7 +261,9 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addCollection("taxesDiffer", function (collectionApi) {
     let taxAndValues = [];
-    const nodes = collectionApi.getFilteredByGlob("pages/garden/node/*.md");
+    const nodes = collectionApi.getFilteredByGlob(
+      "./src/pages/garden/node/*.md",
+    );
     const differ =
       Object.keys(collectionControl)[
         Object.values(collectionControl).findIndex(
@@ -293,7 +313,9 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addCollection("nestedTax", function (collectionApi) {
     let nestedTax = {};
-    const nodes = collectionApi.getFilteredByGlob("pages/garden/node/*.md");
+    const nodes = collectionApi.getFilteredByGlob(
+      "./src/pages/garden/node/*.md",
+    );
     nodes.forEach((node) => {
       for (const [taxonomy, value] of Object.entries(collectionControl)) {
         const taxValue = node.data[taxonomy];
@@ -387,6 +409,7 @@ export default function (eleventyConfig) {
 
   return {
     dir: {
+      input: "src",
       output: "dist",
     },
   };

@@ -1,7 +1,7 @@
 // Heavily modified from Binyamin Aron Green's https://github.com/binyamin/eleventy-garden
 // The license of this file has been derived.
 
-import slugshive from "../../slugify.js";
+import slugshive from "../../../utils/slugify.js";
 
 // This regex finds all wikilinks in a string
 const wikilinkRegExp = /(?<!!)\[\[([^|]+?)(\|([\s\S]+?))?\]\]/g;
