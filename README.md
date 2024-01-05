@@ -1,6 +1,8 @@
 # My main website!
 ![](https://wakapi.dev/api/badge/evan/interval:any/project:site) ![](https://img.shields.io/w3c-validation/html?targetUrl=https%3A%2F%2Fboehs.org) ![](https://img.shields.io/website?url=https%3A%2F%2Fboehs.org)
 
+This is the site wherein I push 11ty to it's absolute limits and then some. It works on some 11ty versions but not all of them.
+
 This website is an `indieweb`-enabled `digital garden` with `dynamic taxonomies`, `aliases`, `gemini`, `scss`, `ts`, and lots of love.
 
 ## Some notes for developers
@@ -14,9 +16,9 @@ No taxonomies, be that tags, dates, or "in" properties, are hardcoded. That does
 
 Feel free to do whatever the fuck you want, provided you abide by the
 included LICENSE.md file. This includes adding pages, squashing bugs, and
-tiny improvements. It's all welcome here!
+tiny improvements. Anything really.
 
-I encourage **all visitors** to submit a PR adding a line to
+If you want, submit a PR adding a line to
 
 - `/shared/_data/deets/greatings.json` (Hi, Hello, Hola, etc) **or**
 - `/functions/api/is.ts` (Evan Boehs is (verb|adjective))
