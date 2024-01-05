@@ -93,18 +93,6 @@ function markdownIt() {
 }
 
 export default function (eleventyConfig) {
-    const sindreSlugify = eleventyConfig.getFilter("slugify");
-    eleventyConfig.addFilter("slugify", (string) => {
-        console.log("Spying on slugify...");
-        if (sindreSlugify(string) !== slugify(string)) {
-            console.log(
-                `Sindre Sorhus's slugify gave ${sindreSlugify(
-                    string,
-                )} while the custom one gave ${slugify(string)}.`,
-            );
-        }
-        return sindreSlugify(string);
-    });
     const markdown = markdownIt();
 
     eleventyConfig.addPlugin(synHl);
