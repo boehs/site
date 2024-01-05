@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   title(data) {
     if (data.title) return data.title;
     return data.page.fileSlug.replace("-", " ");

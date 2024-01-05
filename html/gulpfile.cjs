@@ -2,7 +2,7 @@
 const g = require('gulp');
 
 const sass = require('gulp-sass')(require('sass'));
-const postcssConfig = require("./.postcssrc.js")
+const postcssConfig = require("./.postcssrc.cjs")
 const postcss = require('gulp-postcss');
 
 const ts = require('gulp-typescript');
@@ -21,7 +21,7 @@ function removeDist() {
 
 function scss() {
     return g.src('_public/scss/*(main|code|notallfeedsaregross).scss')
-        .pipe(sass.sync({outputStyle: 'compressed'})
+        .pipe(sass.sync({ outputStyle: 'compressed' })
             .on('error', sass.logError))
         .pipe(postcss(postcssConfig.plugins))
         .pipe(g.dest('dist/'))
@@ -30,7 +30,7 @@ function scss() {
 function type() {
     return g.src('_public/ts/main.ts')
         .pipe(ts({
-            lib: ['es2017','DOM'],
+            lib: ['es2017', 'DOM'],
             module: "CommonJS",
             moduleResolution: "node",
             target: 'es2017'
@@ -46,7 +46,7 @@ function type() {
                 unsafe: true,
                 unsafe_math: true,
             },
-            
+
         }))
         .pipe(g.dest('dist/'))
 }
@@ -62,7 +62,7 @@ function html() {
             minifyCSS: true,
             minifyJS: true,
             minifyURLs: true,
-	    ignoreCustomComments: [/^!/,/ELEVENTYEDGE_edge/]
+            ignoreCustomComments: [/^!/, /ELEVENTYEDGE_edge/]
         }))
         .pipe(g.dest('dist'));
 }
@@ -77,15 +77,15 @@ exports.css = scss
 exports.html = html
 exports.ellty = eleventy
 
-exports.dev = async function() {
+exports.dev = async function () {
     removeDist()
     eleventy()
-    g.watch('_public/scss/*.scss',{ ignoreInitial: false },scss)
-    g.watch('_public/ts/*.ts',{ ignoreInitial: false },type)
+    g.watch('_public/scss/*.scss', { ignoreInitial: false }, scss)
+    g.watch('_public/ts/*.ts', { ignoreInitial: false }, type)
     // causes loop
-    //g.watch('dist/**/*.html',html)    
+    //g.watch('dist/**/*.html',html)
 }
 
-exports.default = g.series(removeDist,g.parallel(scss,type
+exports.default = g.series(removeDist, g.parallel(scss, type
     //,edge
-    ),eleventy)
+), eleventy)

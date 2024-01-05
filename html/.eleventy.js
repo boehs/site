@@ -1,12 +1,23 @@
-const nunjucks = require("nunjucks");
-const sanitize = require("sanitize-filename");
-const slugify = require('./slugify')
-const pluginRss = require("@11ty/eleventy-plugin-rss");
-const collectionControl = require("./_data/collectionsControl.json");
-const extraRedirects = require('./_config/redirects.json')
+import nunjucks from "nunjucks";
+import sanitize from "sanitize-filename";
+import slugify from './slugify.js'
+import pluginRss from "@11ty/eleventy-plugin-rss";
+import collectionControl from "./_data/collectionsControl.json" with { type: "json" }
+import extraRedirects from './_config/redirects.json' with { type: "json" }
 
-const { readFileSync } = require('fs')
-const flowerFile = readFileSync('_data/anim/starynight.txt','utf8')
+import { readFileSync } from 'fs'
+const flowerFile = readFileSync('_data/anim/starynight.txt', 'utf8')
+
+import mdIt from 'markdown-it'
+
+import mdItToC from 'markdown-it-table-of-contents'
+import mdItAc from 'markdown-it-anchor'
+import mdItAttr from 'markdown-it-attrs'
+import mmdItWl from "@gardeners/markdown-it-wikilinks"
+import mdItC from 'markdown-it-container'
+import mdItOtherAttrLol from 'markdown-it-attribution'
+
+import synHl from '@11ty/eleventy-plugin-syntaxhighlight'
 
 function markdownIt() {
   let options = {
@@ -15,36 +26,35 @@ function markdownIt() {
     typographer: true,
     linkify: true,
   };
-  let markdownIt = require("markdown-it")(options);
-  
-  markdownIt.renderer.rules.blockquote_open = function(token,idx) {
+  let markdownIt = mdIt(options);
+
+  markdownIt.renderer.rules.blockquote_open = function (token, idx) {
     return `<blockquote${token[idx + 2].content.toLowerCase().includes("[[penpen]]'s note") ? ` class="penpen"` : ''}>`
   }
-  
+
   return (
     markdownIt
       //.use(require("markdown-it-obsidian")({baseURL: '/pages/c/'}))
-      .use(require("markdown-it-table-of-contents"), { includeLevel: [2, 3, 4, 5] })
-      .use(require("markdown-it-anchor"))
-      .use(require("markdown-it-attrs"))
-      .use(
-        require("@gardeners/markdown-it-wikilinks")({
-          postProcessPageName: (pageName) => {
-            pageName = pageName.trim();
-            pageName = pageName.split("/").map(sanitize).join("/");
-            pageName = slugify(pageName)
-            return pageName;
-          },
-          imagePattern: /!\[\[([^]+?)\]\]/,
-          assetPrefix: '/assets/'
-        })
+      .use(mdItToC, { includeLevel: [2, 3, 4, 5] })
+      .use(mdItAc)
+      .use(mdItAttr)
+      .use(mmdItWl({
+        postProcessPageName: (pageName) => {
+          pageName = pageName.trim();
+          pageName = pageName.split("/").map(sanitize).join("/");
+          pageName = slugify(pageName)
+          return pageName;
+        },
+        imagePattern: /!\[\[([^]+?)\]\]/,
+        assetPrefix: '/assets/'
+      })
       )
-      .use(require('markdown-it-container'), 'details', {
+      .use(mdItC, 'details', {
 
-        validate: function(params) {
+        validate: function (params) {
           return params.trim().match(/^details\s+(.*)$/);
         },
-      
+
         render: function (tokens, idx) {
           var m = tokens[idx].info.trim().match(/^details\s+(.*)$/);
           if (tokens[idx].nesting === 1) {
@@ -56,33 +66,33 @@ function markdownIt() {
           }
         }
       })
-      .use(require("markdown-it-attribution"),{
+      .use(mdItOtherAttrLol, {
         marker: '--',
         removeMarker: false
       })
   );
 }
 
-module.exports = function (eleventyConfig) {
+export default function (eleventyConfig) {
   const markdown = markdownIt()
-  
-  eleventyConfig.addPlugin(require("@11ty/eleventy-plugin-syntaxhighlight"));
+
+  eleventyConfig.addPlugin(synHl);
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addNunjucksFilter("interpolate", function (str) {
     return nunjucks.renderString(str, this.ctx);
   });
-  eleventyConfig.addFilter("dropContentFolder", (path,folder) =>
+  eleventyConfig.addFilter("dropContentFolder", (path, folder) =>
     path.replace(new RegExp(folder + "\/"), "")
   );
   eleventyConfig.addFilter("slugshive", (path) =>
     slugify(path)
   );
-  
+
   // sorry
   eleventyConfig.addFilter("footerBase", () => {
     return "\n".repeat(flowerFile.split('?')[0].split('\n').length) + flowerFile.match(/([^\n]*)\n\?/)[1].replace(/[0-9]/g, match => " ".repeat(Number(match) + 2).substring(1))
   })
-  
+
   eleventyConfig.addFilter("renderMd", content => markdown.render(content))
 
   eleventyConfig.setLibrary("md", markdown);
@@ -101,17 +111,17 @@ module.exports = function (eleventyConfig) {
     // acess the first post that can get the information we need
     const firstPost = collectionApi.getFilteredByGlob("pages/garden/node/*.md")[0].data
     // and then pass it to itself to emulate computed
-    const links = firstPost.eleventyComputed.brokenLinks(firstPost,true)
+    const links = firstPost.eleventyComputed.brokenLinks(firstPost, true)
     // return as array for pagination
     return Array.from(links)
   });
-  
+
 
   eleventyConfig.addNunjucksGlobal("getContext", function () {
     return this.ctx;
   });
-  
-  eleventyConfig.addNunjucksGlobal("getEnv", function (k,v) {
+
+  eleventyConfig.addNunjucksGlobal("getEnv", function (k, v) {
     return process.env[k] == v
   });
 
@@ -125,11 +135,11 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("random", function (array) {
     return array[Math.floor(Math.random() * array.length)];
   });
-  
-  eleventyConfig.addFilter("rainbow", function (i,n) {
+
+  eleventyConfig.addFilter("rainbow", function (i, n) {
     return `hsl(${(360 / n) * i},50%,60%)`
   });
-  
+
   eleventyConfig.addCollection("redirects", function (collectionApi) {
     // lets make a variable to hold our redirects
     let redirects = [];
@@ -137,15 +147,15 @@ module.exports = function (eleventyConfig) {
     const nodes = collectionApi.getFilteredByGlob("pages/garden/node/*.md");
     // next lets iterate over all the nodes
     nodes.forEach(node =>
-      // for each alias 
+      // for each alias
       (node.data.aliases || []).forEach(alias =>
         // push the target url and the old url
-        redirects.push([slugify(node.data.page.url),slugify(node.data.page.url).replace(/\/[^\/]*?(\..+)?$/, `/${slugify(alias)}$1`)])
+        redirects.push([slugify(node.data.page.url), slugify(node.data.page.url).replace(/\/[^\/]*?(\..+)?$/, `/${slugify(alias)}$1`)])
       )
     )
-    
-    redirects = [...redirects,...extraRedirects]
-    
+
+    redirects = [...redirects, ...extraRedirects]
+
     return redirects
   })
 
@@ -164,10 +174,10 @@ module.exports = function (eleventyConfig) {
         else if (node?.data?.[taxonomy]) {
           // this is typeof on drugs
           switch (
-            {}.toString
-              .call(node.data[taxonomy])
-              .match(/\s([a-zA-Z]+)/)[1]
-              .toLowerCase()
+          {}.toString
+            .call(node.data[taxonomy])
+            .match(/\s([a-zA-Z]+)/)[1]
+            .toLowerCase()
           ) {
             // if it is an array (for tags especially)
             case "array":
@@ -190,7 +200,7 @@ module.exports = function (eleventyConfig) {
 
     return unique;
   });
-  
+
   eleventyConfig.addCollection("taxesDiffer", function (collectionApi) {
     let taxAndValues = [];
     const nodes = collectionApi.getFilteredByGlob("pages/garden/node/*.md");
@@ -198,16 +208,16 @@ module.exports = function (eleventyConfig) {
     nodes.forEach((node) => {
       for (const [taxonomy, value] of Object.entries(collectionControl)) {
         if (value.excludeFromPagination) continue;
-          else if (node?.data?.[taxonomy]) {
+        else if (node?.data?.[taxonomy]) {
           switch (
-            {}.toString
-              .call(node.data[taxonomy])
-              .match(/\s([a-zA-Z]+)/)[1]
-              .toLowerCase()
+          {}.toString
+            .call(node.data[taxonomy])
+            .match(/\s([a-zA-Z]+)/)[1]
+            .toLowerCase()
           ) {
             case "array": {
               node.data[taxonomy].forEach((item) => {
-                
+
                 if (!(taxonomy == differ && item == node.data[differ]))
                   taxAndValues.push([taxonomy, item, node.data[differ]]);
               });
@@ -215,7 +225,7 @@ module.exports = function (eleventyConfig) {
             }
             default:
               if (!(taxonomy == differ && node.data[taxonomy] == node.data[differ]))
-                taxAndValues.push([taxonomy, node.data[taxonomy],node.data[differ]]);
+                taxAndValues.push([taxonomy, node.data[taxonomy], node.data[differ]]);
           }
         }
       }
@@ -225,7 +235,7 @@ module.exports = function (eleventyConfig) {
     const unique = [...new Set(taxAndValues.map(JSON.stringify))].map(
       JSON.parse
     );
-    
+
     return unique;
   });
 
@@ -240,10 +250,10 @@ module.exports = function (eleventyConfig) {
         else if (node?.data?.[taxonomy]) {
           if (!nestedTax[taxonomy]) nestedTax[taxonomy] = {};
           switch (
-            {}.toString
-              .call(taxValue)
-              .match(/\s([a-zA-Z]+)/)[1]
-              .toLowerCase()
+          {}.toString
+            .call(taxValue)
+            .match(/\s([a-zA-Z]+)/)[1]
+            .toLowerCase()
           ) {
             case "array": {
               taxValue.forEach((item) => {

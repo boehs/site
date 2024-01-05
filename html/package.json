@@ -1,8 +1,8 @@
 {
   "version": "2.0.0",
   "scripts": {
-    "start": "gulp dev",
-    "build": "gulp"
+    "start": "gulp dev -f gulpfile.cjs",
+    "build": "gulp -f gulpfile.cjs"
   },
   "dependencies": {
     "@11ty/eleventy": "3.0.0-alpha.4",
@@ -35,5 +35,6 @@
   },
   "devDependencies": {
     "@11ty/eleventy-plugin-rss": "^1.1.2"
-  }
+  },
+  "type": "module"
 }
