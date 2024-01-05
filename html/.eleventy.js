@@ -27,6 +27,7 @@ import mdItOtherAttrLol from "markdown-it-attribution";
 
 import synHl from "@11ty/eleventy-plugin-syntaxhighlight";
 import path from "path";
+import textInject from "./text-inject.js";
 
 function markdownIt() {
   let options = {
@@ -346,7 +347,11 @@ export default function (eleventyConfig) {
           write: false,
         });
 
-        return result.outputFiles[0].text;
+        let output = result.outputFiles[0].text;
+
+        output = textInject(output);
+
+        return output;
       };
     },
   });
