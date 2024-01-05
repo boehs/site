@@ -10,11 +10,11 @@
 {% endif %}
 <title>{{title}}</title>
 <link rel="preload" as="font" type="font/woff2" href="/spectralregular.woff2" crossorigin>
-<link rel="stylesheet" href="/styles/main.css">
+<link rel="stylesheet" href="/main.css">
 {% if hasCodeBlock %}
-    <link rel="stylesheet" href="/styles/code.css">
+    <link rel="stylesheet" href="/code.css">
 {% endif %}
-<script src="/scripts/main.js" defer></script>
+<script src="/main.js" defer></script>
 {% if config.analytics and getEnv("ELEVENTY_ENV","production") %}
     {{ config.analytics.analytics | safe }}
 {% endif %}
