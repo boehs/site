@@ -1,15 +1,15 @@
 {
-    "isJobHunting": false,
-    "author": {
-        "name": "Evan Boehs",
-        "email": "evan@boehs.org",
-        "image": "https://github.com/boehs.png",
-        "location": {
-            "country": "United States"
-        }
-    },
-    "isServer": false,
-    "donate": "https://liberapay.com/e",
-    "color": "#0a74a0",
-    "baseurl": "https://boehs.org"
+  "isJobHunting": false,
+  "author": {
+    "name": "Evan Boehs",
+    "email": "evan@boehs.org",
+    "image": "https://github.com/boehs.png",
+    "location": {
+      "country": "United States"
+    }
+  },
+  "isServer": false,
+  "donate": "https://liberapay.com/e",
+  "color": "#0a74a0",
+  "baseurl": "https://boehs.org"
 }

@@ -1,45 +1,45 @@
 {
-    "state": {
-        "evergreen": {
-            "icon": "🌲",
-            "description": "Always growing, always green, and always calm, evergreen nodes are slowly updated over time.",
-            "color": "#068177",
-            "showOnPost": true
-        },
-        "archived": {
-            "icon": "🗄️",
-            "description": "Once legendary, for one reason or another these nodes fell from fame. For historic reasons, I keep them around, but heed my advice and never take them at face value, even if your life depends on it!",
-            "showOnPost": true,
-            "color": "#ccc"
-        },
-        "unstable": {
-            "icon": "😖",
-            "description": "Updating at the speed of light, blink once and a word could be gone! These nodes are eratic, unstable, dangerous, but that's why they are fun.",
-            "showOnPost": true,
-            "color": "#d9bd56"
-        },
-        "sunset": {
-            "icon": "🌄",
-            "description": "All good things must come to an end, but that's a good thing. The end of a day means the start of a new one. Sunset posts were once evergreens, now ready to give life to new pages",
-            "color": "#FD5E53"
-        },
-        "seed": {
-            "icon": "🌱",
-            "description": "Still young, while seeds don't look like anything much, they have the power to grow into something beautiful if kindled and given room to flourish."
-        }
+  "state": {
+    "evergreen": {
+      "icon": "🌲",
+      "description": "Always growing, always green, and always calm, evergreen nodes are slowly updated over time.",
+      "color": "#068177",
+      "showOnPost": true
     },
-    "in": {
-        "blog": {
-            "icon": "🗞️",
-            "description": "A fleshed out story, one you just might want to read."
-        },
-        "journal": {
-            "icon": "✍️",
-            "description":  "From the heart bleeds tales of longing, tales of suffering, and most importantly, tales of hope. From my little sanctuary to yours."
-        },
-        "garden": {
-            "icon": "🪴",
-            "description": "A network of color and character, one node alone is nothing, but together beautiful."
-        }
+    "archived": {
+      "icon": "🗄️",
+      "description": "Once legendary, for one reason or another these nodes fell from fame. For historic reasons, I keep them around, but heed my advice and never take them at face value, even if your life depends on it!",
+      "showOnPost": true,
+      "color": "#ccc"
+    },
+    "unstable": {
+      "icon": "😖",
+      "description": "Updating at the speed of light, blink once and a word could be gone! These nodes are eratic, unstable, dangerous, but that's why they are fun.",
+      "showOnPost": true,
+      "color": "#d9bd56"
+    },
+    "sunset": {
+      "icon": "🌄",
+      "description": "All good things must come to an end, but that's a good thing. The end of a day means the start of a new one. Sunset posts were once evergreens, now ready to give life to new pages",
+      "color": "#FD5E53"
+    },
+    "seed": {
+      "icon": "🌱",
+      "description": "Still young, while seeds don't look like anything much, they have the power to grow into something beautiful if kindled and given room to flourish."
     }
+  },
+  "in": {
+    "blog": {
+      "icon": "🗞️",
+      "description": "A fleshed out story, one you just might want to read."
+    },
+    "journal": {
+      "icon": "✍️",
+      "description": "From the heart bleeds tales of longing, tales of suffering, and most importantly, tales of hope. From my little sanctuary to yours."
+    },
+    "garden": {
+      "icon": "🪴",
+      "description": "A network of color and character, one node alone is nothing, but together beautiful."
+    }
+  }
 }

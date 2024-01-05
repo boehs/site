@@ -6,7 +6,8 @@ export default {
   color(data) {
     for (const [collection] of Object.entries(data.collectionsControl)) {
       let frontmatter = data[collection];
-      if (typeof frontmatter == 'object') frontmatter = frontmatter[frontmatter.length - 1]
+      if (typeof frontmatter == "object")
+        frontmatter = frontmatter[frontmatter.length - 1];
       if (
         frontmatter &&
         data.tagList[collection]?.hasOwnProperty(frontmatter)

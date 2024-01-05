@@ -1,7 +1,7 @@
 // Heavily modified from Binyamin Aron Green's https://github.com/binyamin/eleventy-garden
 // The license of this file has been derived.
 
-import slugshive from '../../slugify.js'
+import slugshive from "../../slugify.js";
 
 // This regex finds all wikilinks in a string
 const wikilinkRegExp = /(?<!!)\[\[([^|]+?)(\|([\s\S]+?))?\]\]/g;
@@ -10,7 +10,7 @@ function backlinksApi(data) {
   const notes = data.collections.all;
   const currentFileSlug = slugshive(
     data.page.url.match(/\/([^\/]*?)\..+?$/)?.[1] ||
-    data.page.filePathStem.replace("/pages/garden/node/", "")
+      data.page.filePathStem.replace("/pages/garden/node/", ""),
   );
 
   let backlinks = [];
@@ -22,7 +22,7 @@ function backlinksApi(data) {
     const noteContent = otherNote.rawInput;
     const noteAsLink = slugshive(
       otherNote.data.page.url.match(/\/([^\/]*?)\..+?$/)?.[1] ||
-      otherNote.data.page.filePathStem.replace("/pages/garden/node/", "")
+        otherNote.data.page.filePathStem.replace("/pages/garden/node/", ""),
     );
 
     data.internal.exists?.add(noteAsLink);
@@ -38,7 +38,7 @@ function backlinksApi(data) {
               .split("|")[0]
               .replace(/.(md|markdown)\s?$/i, "")
               .trim()
-              .toLowerCase()
+              .toLowerCase(),
           );
           otherNote.data.links = links;
           return links;
@@ -62,7 +62,7 @@ function backlinksApi(data) {
     outboundLinks.forEach((link) => {
       if (!data.internal.exists.has(link))
         data.internal.four.add(
-          data.page.url.replace(/\/[^\/]*?(\..+)?$/, `/${link}$1`)
+          data.page.url.replace(/\/[^\/]*?(\..+)?$/, `/${link}$1`),
         );
     });
   }
@@ -73,7 +73,8 @@ export default {
   layout: "post.njk",
   in: "garden",
   hasCodeBlock: true,
-  permalink: '{{ page.filePathStem | dropContentFolder: "pages/garden" | slugshive}}.html',
+  permalink:
+    '{{ page.filePathStem | dropContentFolder: "pages/garden" | slugshive}}.html',
   eleventyComputed: {
     backlinks: (data) => {
       return backlinksApi(data)[0];

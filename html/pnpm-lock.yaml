@@ -11,6 +11,9 @@ dependencies:
   '@11ty/eleventy-fetch':
     specifier: ^4.0.0
     version: 4.0.0
+  '@11ty/eleventy-plugin-rss':
+    specifier: ^1.1.2
+    version: 1.1.2
   '@11ty/eleventy-plugin-syntaxhighlight':
     specifier: ^4.0.0
     version: 4.0.0
@@ -88,9 +91,9 @@ dependencies:
     version: 5.3.3
 
 devDependencies:
-  '@11ty/eleventy-plugin-rss':
-    specifier: ^1.1.2
-    version: 1.1.2
+  prettier:
+    specifier: ^3.1.1
+    version: 3.1.1
 
 packages:
 
@@ -152,7 +155,7 @@ packages:
       posthtml-urls: 1.0.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
+    dev: false
 
   /@11ty/eleventy-plugin-syntaxhighlight@4.0.0:
     resolution: {integrity: sha512-t95DIZQ7MnaspgpmXyKIgz2TpyN7EshMt9+SFfqVUYKTISU3+T3FTXFscoLownyNWb/5EC0od69BnCZwEcMzCg==}
@@ -567,6 +570,7 @@ packages:
 
   /any-promise@0.1.0:
     resolution: {integrity: sha1-gwtoCqflbzNFHUsEnzvYBESY7ic=}
+    dev: false
 
   /anymatch@2.0.0:
     resolution: {integrity: sha512-5teOsQWABXHHBFP9y3skS5P3d/WfWXpv3FUpy+LorMrNYaT9pI4oLMQX7jzQ2KklNpGpWHzdCXTDT2Y3XGlZBw==}
@@ -1229,7 +1233,7 @@ packages:
         optional: true
     dependencies:
       ms: 2.1.2
-    dev: true
+    dev: false
 
   /debug@4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
@@ -1337,15 +1341,18 @@ packages:
       domelementtype: 2.2.0
       domhandler: 4.3.0
       entities: 2.1.0
+    dev: false
 
   /domelementtype@2.2.0:
     resolution: {integrity: sha512-DtBMo82pv1dFtUmHyr48beiuq792Sxohr+8Hm9zoxklYPfa6n0Z3Byjj2IV7bmr2IyqClnqEQhfgHJJ5QF0R5A==}
+    dev: false
 
   /domhandler@4.3.0:
     resolution: {integrity: sha512-fC0aXNQXqKSFTr2wDNZDhsEYjCiYsDWl3D01kwt25hm1YIPyDGHvvi3rw+PLqHAl/m71MaiF7d5zvBr0p5UB2g==}
     engines: {node: '>= 4'}
     dependencies:
       domelementtype: 2.2.0
+    dev: false
 
   /domutils@2.8.0:
     resolution: {integrity: sha512-w96Cjofp72M5IIhpjgobBimYEfoPjx1Vx0BSX9P30WBdZW2WIKU0T1Bd0kz2eNZ9ikjKgHbEyKx8BB6H1L3h3A==}
@@ -1353,6 +1360,7 @@ packages:
       dom-serializer: 1.3.2
       domelementtype: 2.2.0
       domhandler: 4.3.0
+    dev: false
 
   /duplexer2@0.0.2:
     resolution: {integrity: sha1-xhTc9n4vsUmVqRcR5aYX6KYKMds=}
@@ -1393,6 +1401,7 @@ packages:
 
   /entities@2.1.0:
     resolution: {integrity: sha512-hCx1oky9PFrJ611mf0ifBLBRW8lUUVRlFolb5gWRfIELabBlbp9xZvrqZLZAs+NxFnbfQoeGd8wDkygjg7U85w==}
+    dev: false
 
   /entities@3.0.1:
     resolution: {integrity: sha512-WiyBqoomrwMdFG1e0kqvASYfnlb0lp8M5o5Fw2OFq1hNZxxcNk8Ik0Xm7LxzBhuidnZB/UtBqVCgUz3kBOP51Q==}
@@ -2184,7 +2193,7 @@ packages:
       domhandler: 4.3.0
       domutils: 2.8.0
       entities: 2.1.0
-    dev: true
+    dev: false
 
   /htmlparser2@7.2.0:
     resolution: {integrity: sha512-H7MImA4MS6cw7nbyURtLPO1Tms7C5H602LRETv95z1MxO/7CP7rDVROehUYeYBUYEON94NXXDEPmZuq+hX4sog==}
@@ -2198,6 +2207,7 @@ packages:
   /http-equiv-refresh@1.0.0:
     resolution: {integrity: sha1-jsU4hmBCvl8/evpzfRmNlL6xsHs=}
     engines: {node: '>= 0.10'}
+    dev: false
 
   /http-parser-js@0.5.6:
     resolution: {integrity: sha512-vDlkRPDJn93swjcjqMSaGSPABbIarsr1TLAui/gLDXzV5VsJNdXNzMYDyNBLQkjWQCJ1uizu8T2oDMhmGt0PRA==}
@@ -2614,6 +2624,7 @@ packages:
 
   /list-to-array@1.1.0:
     resolution: {integrity: sha1-yn3/ZAYGQzysdcvoRGrNhksVv28=}
+    dev: false
 
   /livereload-js@2.4.0:
     resolution: {integrity: sha512-XPQH8Z2GDP/Hwz2PCDrh2mth4yFejwA1OZ/81Ti3LgKyhDcEjsSsqFWZojHG0va/duGd+WyosY7eXLDoOyqcPw==}
@@ -2971,6 +2982,7 @@ packages:
 
   /ms@2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
+    dev: false
 
   /ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
@@ -3288,6 +3300,7 @@ packages:
 
   /parse-srcset@1.0.2:
     resolution: {integrity: sha1-8r0iH2zJcKk42IVWq8WJyqqiveE=}
+    dev: false
 
   /parseurl@1.3.3:
     resolution: {integrity: sha512-CiyeOxFT/JZyN5m0z9PfXw4SCBJ6Sygz1Dpl0wqjlhDEGGBP1GnsUVEL0p63hoG1fcj3fHynXi9NYO4nWOL+qQ==}
@@ -3441,12 +3454,12 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       htmlparser2: 6.1.0
-    dev: true
+    dev: false
 
   /posthtml-render@1.4.0:
     resolution: {integrity: sha512-W1779iVHGfq0Fvh2PROhCe2QhB8mEErgqzo1wpIt36tCgChafP+hbXIhLDOM8ePJrZcFs0vkNEtdibEWVqChqw==}
     engines: {node: '>=10'}
-    dev: true
+    dev: false
 
   /posthtml-render@3.0.0:
     resolution: {integrity: sha512-z+16RoxK3fUPgwaIgH9NGnK1HKY9XIDpydky5eQGgAFVXTCSezalv9U2jQuNV+Z9qV1fDWNzldcw4eK0SSbqKA==}
@@ -3463,6 +3476,7 @@ packages:
       list-to-array: 1.1.0
       parse-srcset: 1.0.2
       promise-each: 2.2.0
+    dev: false
 
   /posthtml@0.15.2:
     resolution: {integrity: sha512-YugEJ5ze/0DLRIVBjCpDwANWL4pPj1kHJ/2llY8xuInr0nbkon3qTiMPe5LQa+cCwNjxS7nAZZTp+1M+6mT4Zg==}
@@ -3470,7 +3484,7 @@ packages:
     dependencies:
       posthtml-parser: 0.7.2
       posthtml-render: 1.4.0
-    dev: true
+    dev: false
 
   /posthtml@0.16.6:
     resolution: {integrity: sha512-JcEmHlyLK/o0uGAlj65vgg+7LIms0xKXe60lcDOTU7oVX/3LuEuLwrQpW3VJ7de5TaFKiW4kWkaIpJL42FEgxQ==}
@@ -3479,6 +3493,12 @@ packages:
       posthtml-parser: 0.11.0
       posthtml-render: 3.0.0
     dev: false
+
+  /prettier@3.1.1:
+    resolution: {integrity: sha512-22UbSzg8luF4UuZtzgiUOfcGM8s4tjBv6dJRT7j275NXsy2jb4aJa4NNveul5x4eqlF1wuhuR2RElK71RvmVaw==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dev: true
 
   /pretty-hrtime@1.0.3:
     resolution: {integrity: sha1-t+PqQkNaTJsnWdmeDyAesZWALuE=}
@@ -3498,6 +3518,7 @@ packages:
     resolution: {integrity: sha1-M1MXTv8mlEgQN+BOAfd6oPttG2A=}
     dependencies:
       any-promise: 0.1.0
+    dev: false
 
   /promise@7.3.1:
     resolution: {integrity: sha512-nolQXZ/4L+bP/UGlkfaIujX9BKxGwmQ9OT4mOt5yvy8iK1h3wqTEJCijzGANTCCl9nWjY41juyAn2K3Q1hLLTg==}

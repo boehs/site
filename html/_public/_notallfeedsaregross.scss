@@ -1,6 +1,7 @@
 @font-face {
   font-family: "spectral";
-  src: url("/spectralbold.woff2") format("woff2"),
+  src:
+    url("/spectralbold.woff2") format("woff2"),
     url("/spectralbold.woff") format("woff");
   font-weight: bold;
   font-style: normal;
@@ -9,7 +10,8 @@
 
 @font-face {
   font-family: "spectral";
-  src: url("/spectralitalic.woff2") format("woff2"),
+  src:
+    url("/spectralitalic.woff2") format("woff2"),
     url("/spectralitalic.woff") format("woff");
   font-weight: normal;
   font-style: italic;
@@ -18,7 +20,8 @@
 
 @font-face {
   font-family: "spectral";
-  src: url("/spectralregular.woff2") format("woff2"),
+  src:
+    url("/spectralregular.woff2") format("woff2"),
     url("/spectralregular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
@@ -55,64 +58,64 @@ feed {
 
   & > * {
     flex: 0 1 100%;
-    
+
     & * {
-        display: block;
+      display: block;
     }
   }
 }
 
 title {
-    font-size: 2em;
-    font-weight: bold;
+  font-size: 2em;
+  font-weight: bold;
 }
 
 icon,
 id,
-link[rel=self],
+link[rel="self"],
 email {
-    display: none !important;
+  display: none !important;
 }
 
 name {
-    display: block;
-    text-align: center;
-    font-size: 14pt;
-    font-weight: bold;
-    color: var(--light);
-    padding: 50px 0;
+  display: block;
+  text-align: center;
+  font-size: 14pt;
+  font-weight: bold;
+  color: var(--light);
+  padding: 50px 0;
 }
 
 entry {
-    title {
-        font-size: 1.5em;
-    }
+  title {
+    font-size: 1.5em;
+  }
 }
 
 updated,
 link,
 content {
-    font-style: italic;
+  font-style: italic;
 }
 
 content,
 link {
-    color: blue;
+  color: blue;
 }
 
 entry,
 warn {
-    color: inherit;
-    text-decoration: inherit;
-    transition: color .3s;
-    border-left: 2px solid var(--light);
-    padding: 0 1em;
-    display: block;
-    margin: 1em 0;
+  color: inherit;
+  text-decoration: inherit;
+  transition: color 0.3s;
+  border-left: 2px solid var(--light);
+  padding: 0 1em;
+  display: block;
+  margin: 1em 0;
 }
 
 warn {
-    padding: 1em;
-    background-color: lightcoral;
-    border: none;
+  padding: 1em;
+  background-color: lightcoral;
+  border: none;
 }
