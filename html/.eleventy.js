@@ -122,8 +122,7 @@ export default function (eleventyConfig) {
       (file.excerpt = file.content.split("\n").slice(0, 4).join(" ")),
   });
 
-  eleventyConfig.addPassthroughCopy("favicon.ico");
-  eleventyConfig.addPassthroughCopy({ "_assets/*": "." });
+  eleventyConfig.addPassthroughCopy({ "_public/": "." });
   eleventyConfig.addPassthroughCopy({ "pages/garden/node/Assets/*": "assets" });
 
   // I won't even attempt to explain this
