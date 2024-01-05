@@ -6,6 +6,7 @@ import { build as esbuild } from "esbuild";
 import * as sass from "sass";
 import postcss from "postcss";
 import { minify } from "html-minifier";
+import { minify as minifyTs } from "terser";
 
 import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
@@ -39,11 +40,10 @@ function markdownIt() {
     let markdownIt = mdIt(options);
 
     markdownIt.renderer.rules.blockquote_open = function (token, idx) {
-        return `<blockquote${
-            token[idx + 2].content.toLowerCase().includes("[[penpen]]'s note")
-                ? ` class="penpen"`
-                : ""
-        }>`;
+        return `<blockquote${token[idx + 2].content.toLowerCase().includes("[[penpen]]'s note")
+            ? ` class="penpen"`
+            : ""
+            }>`;
     };
 
     return (
@@ -232,10 +232,10 @@ export default function (eleventyConfig) {
                 else if (node?.data?.[taxonomy]) {
                     // this is typeof on drugs
                     switch (
-                        {}.toString
-                            .call(node.data[taxonomy])
-                            .match(/\s([a-zA-Z]+)/)[1]
-                            .toLowerCase()
+                    {}.toString
+                        .call(node.data[taxonomy])
+                        .match(/\s([a-zA-Z]+)/)[1]
+                        .toLowerCase()
                     ) {
                         // if it is an array (for tags especially)
                         case "array":
@@ -266,19 +266,19 @@ export default function (eleventyConfig) {
         );
         const differ =
             Object.keys(collectionControl)[
-                Object.values(collectionControl).findIndex(
-                    (value) => value.mode == "differentiator",
-                )
+            Object.values(collectionControl).findIndex(
+                (value) => value.mode == "differentiator",
+            )
             ];
         nodes.forEach((node) => {
             for (const [taxonomy, value] of Object.entries(collectionControl)) {
                 if (value.excludeFromPagination) continue;
                 else if (node?.data?.[taxonomy]) {
                     switch (
-                        {}.toString
-                            .call(node.data[taxonomy])
-                            .match(/\s([a-zA-Z]+)/)[1]
-                            .toLowerCase()
+                    {}.toString
+                        .call(node.data[taxonomy])
+                        .match(/\s([a-zA-Z]+)/)[1]
+                        .toLowerCase()
                     ) {
                         case "array": {
                             node.data[taxonomy].forEach((item) => {
@@ -334,10 +334,10 @@ export default function (eleventyConfig) {
                 else if (node?.data?.[taxonomy]) {
                     if (!nestedTax[taxonomy]) nestedTax[taxonomy] = {};
                     switch (
-                        {}.toString
-                            .call(taxValue)
-                            .match(/\s([a-zA-Z]+)/)[1]
-                            .toLowerCase()
+                    {}.toString
+                        .call(taxValue)
+                        .match(/\s([a-zA-Z]+)/)[1]
+                        .toLowerCase()
                     ) {
                         case "array": {
                             taxValue.forEach((item) => {
@@ -373,18 +373,26 @@ export default function (eleventyConfig) {
                 const result = await esbuild({
                     entryPoints: [inputPath],
                     define: {},
-                    format: "iife",
+                    format: "esm",
                     platform: "browser",
-                    minify: process.env.NODE_ENV === "production",
+                    minify: false, // process.env.NODE_ENV === "production",
                     bundle: true,
                     write: false,
                 });
 
-                let output = result.outputFiles[0].text;
+                let r2 = await minifyTs(result.outputFiles[0].text, {
+                    module: true,
+                    ecma: 2017,
+                    compress: {
+                        booleans_as_integers: true,
+                        unsafe: true,
+                        unsafe_math: true,
+                    }
+                })
 
-                output = textInject(output);
 
-                return output;
+                return textInject(r2.code);
+
             };
         },
     });
