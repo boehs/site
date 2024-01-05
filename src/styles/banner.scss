@@ -1,0 +1,52 @@
+// This file will probably stay unused
+
+header {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    padding-bottom: 100px;
+    width: 100%;
+
+    background: radial-gradient(
+            ellipse at 50% 80%,
+            rgba(0, 0, 0, 0.8) 0%,
+            rgba(255, 255, 255, 0) 100%
+        ),
+        url(https://loremflickr.com/cache/resized/65535_51753613651_5ccc7315a0_k_1280_711_nofilter.jpg);
+    background-size: cover;
+
+    color: white;
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    span strong {
+        font-size: 1.7rem;
+    }
+
+    i {
+        font-size: 1.5rem;
+    }
+}
+
+body {
+    padding: 0 0 75px 0;
+}
+
+body > div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body > div > :not(header) {
+    width: min(600px, 100%);
+}
+
+.title {
+    width: 600px;
+}

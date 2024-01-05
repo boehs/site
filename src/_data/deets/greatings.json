@@ -1,0 +1,411 @@
+[
+    {
+        "language": "English",
+        "hello": "Hey"
+    },
+    {
+        "language": "Old English",
+        "hello": "Wes hāl"
+    },
+    {
+        "language": "Pirate",
+        "hello": "Ahoy"
+    },
+    {
+        "language": "Pig Latin",
+        "hello": "ello-hay"
+    },
+    {
+        "language": "Morse Code",
+        "about": "https://en.wikipedia.org/wiki/Morse_code",
+        "hello": ".... . .-.. .-.. ---"
+    },
+    {
+        "language": "Braille",
+        "about": "https://en.wikipedia.org/wiki/Braille",
+        "hello": "⠓⠑⠇⠇⠕"
+    },
+    {
+        "language": "Esperanto",
+        "about": "https://en.wikipedia.org/wiki/Esperanto",
+        "hello": "Saluton"
+    },
+    {
+        "language": "Afrikaans",
+        "about": "https://en.wikipedia.org/wiki/Afrikaners",
+        "hello": "hallo"
+    },
+    {
+        "language": "Albanian",
+        "about": "https://en.wikipedia.org/wiki/Albania",
+        "hello": "Përshëndetje"
+    },
+    {
+        "language": "Amharic",
+        "about": "https://en.wikipedia.org/wiki/Amhara_people",
+        "hello": "ሰላም"
+    },
+    {
+        "language": "Arabic",
+        "about": "https://en.wikipedia.org/wiki/Arab_world",
+        "hello": "مرحبا"
+    },
+    {
+        "language": "Armenian",
+        "about": "https://en.wikipedia.org/wiki/Armenians",
+        "hello": "Բարեւ"
+    },
+    {
+        "language": "Azerbaijani",
+        "about": "https://en.wikipedia.org/wiki/Azerbaijanis",
+        "hello": "Salam"
+    },
+    {
+        "language": "Basque",
+        "about": "https://en.wikipedia.org/wiki/Basque_Country_(greater_region)",
+        "hello": "Kaixo"
+    },
+    {
+        "language": "Belarusian",
+        "about": "https://en.wikipedia.org/wiki/Belarus",
+        "hello": "добры дзень"
+    },
+    {
+        "language": "Bengali",
+        "about": "https://en.wikipedia.org/wiki/Bengal",
+        "hello": "হ্যালো"
+    },
+    {
+        "language": "Bosnian",
+        "hello": "zdravo"
+    },
+    {
+        "language": "Bulgarian",
+        "hello": "Здравейте"
+    },
+    {
+        "language": "Catalan",
+        "hello": "Hola"
+    },
+    {
+        "language": "Chichewa",
+        "hello": "Moni"
+    },
+    {
+        "language": "Chinese (Simplified)",
+        "hello": "您好"
+    },
+    {
+        "language": "Chinese (Traditional)",
+        "hello": "您好"
+    },
+    {
+        "language": "Corsican",
+        "hello": "Bonghjornu"
+    },
+    {
+        "language": "Croatian",
+        "hello": "zdravo"
+    },
+    {
+        "language": "Czech",
+        "hello": "Ahoj"
+    },
+    {
+        "language": "Danish",
+        "hello": "Hej"
+    },
+    {
+        "language": "Dutch",
+        "hello": "Hallo"
+    },
+    {
+        "language": "Esperanto",
+        "hello": "Saluton"
+    },
+    {
+        "language": "Estonian",
+        "hello": "Tere"
+    },
+    {
+        "language": "Finnish",
+        "hello": "Hei"
+    },
+    {
+        "language": "French",
+        "hello": "Bonjour"
+    },
+    {
+        "language": "Galician",
+        "hello": "Ola"
+    },
+    {
+        "language": "Georgian",
+        "about": "https://en.wikipedia.org/wiki/Georgia_(country)",
+        "hello": "გამარჯობა"
+    },
+    {
+        "language": "German",
+        "hello": "Hallo"
+    },
+    {
+        "language": "Greek",
+        "hello": "Γεια σας"
+    },
+    {
+        "language": "Gujarati",
+        "about": "https://en.wikipedia.org/wiki/Gujarati_people",
+        "hello": "હેલો"
+    },
+    {
+        "language": "Haitian Creole",
+        "hello": "Bonjou"
+    },
+    {
+        "language": "Hausa",
+        "hello": "Sannu"
+    },
+    {
+        "language": "Hawaiian",
+        "about": "https://en.wikipedia.org/wiki/Hana_Highway",
+        "hello": "Alohaʻoe"
+    },
+    {
+        "language": "Hebrew",
+        "hello": "שלום"
+    },
+    {
+        "language": "Hindi",
+        "hello": "नमस्ते"
+    },
+    {
+        "language": "Hmong",
+        "about": "https://en.wikipedia.org/wiki/Hmong_people",
+        "hello": "Nyob zoo"
+    },
+    {
+        "language": "Hungarian",
+        "hello": "Helló"
+    },
+    {
+        "language": "Icelandic",
+        "hello": "Halló"
+    },
+    {
+        "language": "Igbo",
+        "about": "https://en.wikipedia.org/wiki/Igboland",
+        "hello": "Ndewo"
+    },
+    {
+        "language": "Indonesian",
+        "hello": "Halo"
+    },
+    {
+        "language": "Irish",
+        "hello": "Dia duit"
+    },
+    {
+        "language": "Italian",
+        "hello": "Ciao"
+    },
+    {
+        "language": "Japanese",
+        "hello": "こんにちは"
+    },
+    {
+        "language": "Kannada",
+        "hello": "ಹಲೋ"
+    },
+    {
+        "language": "Kazakh",
+        "hello": "Сәлем"
+    },
+    {
+        "language": "Khmer",
+        "hello": "ជំរាបសួរ"
+    },
+    {
+        "language": "Kyrgyz",
+        "hello": "салам"
+    },
+    {
+        "language": "Lao",
+        "hello": "ສະບາຍດີ"
+    },
+    {
+        "language": "Latin",
+        "hello": "salve"
+    },
+    {
+        "language": "Latvian",
+        "hello": "Labdien"
+    },
+    {
+        "language": "Lithuanian",
+        "hello": "Sveiki"
+    },
+    {
+        "language": "Luxembourgish",
+        "hello": "Moien"
+    },
+    {
+        "language": "Macedonian",
+        "hello": "Здраво"
+    },
+    {
+        "language": "Malayalam",
+        "hello": "ഹലോ"
+    },
+    {
+        "language": "Maori",
+        "hello": "Hiha"
+    },
+    {
+        "language": "Marathi",
+        "hello": "हॅलो"
+    },
+    {
+        "language": "Mongolian",
+        "hello": "Сайн байна уу"
+    },
+    {
+        "language": "Myanmar (Burmese)",
+        "hello": "မင်္ဂလာပါ"
+    },
+    {
+        "language": "Nepali",
+        "hello": "नमस्ते"
+    },
+    {
+        "language": "Norwegian",
+        "hello": "Hallo"
+    },
+    {
+        "language": "Pashto",
+        "about": "https://en.wikipedia.org/wiki/Pashtuns",
+        "hello": "سلام"
+    },
+    {
+        "language": "Persian",
+        "hello": "سلام"
+    },
+    {
+        "language": "Polish",
+        "hello": "Cześć"
+    },
+    {
+        "language": "Portuguese",
+        "hello": "Olá"
+    },
+    {
+        "language": "Punjabi",
+        "hello": "ਹੈਲੋ"
+    },
+    {
+        "language": "Romanian",
+        "hello": "Alo"
+    },
+    {
+        "language": "Russian",
+        "hello": "привет"
+    },
+    {
+        "language": "Samoan",
+        "hello": "Talofa"
+    },
+    {
+        "language": "Serbian",
+        "hello": "Здраво"
+    },
+    {
+        "language": "Sindhi",
+        "about": "https://en.wikipedia.org/wiki/Sindh",
+        "hello": "هيلو"
+    },
+    {
+        "language": "Sinhala",
+        "about": "https://en.wikipedia.org/wiki/Sri_Lanka",
+        "hello": "හෙලෝ"
+    },
+    {
+        "language": "Slovak",
+        "hello": "ahoj"
+    },
+    {
+        "language": "Slovenian",
+        "hello": "Pozdravljeni"
+    },
+    {
+        "language": "Spanish",
+        "hello": "Hola"
+    },
+    {
+        "language": "Sundanese",
+        "hello": "halo"
+    },
+    {
+        "language": "Swahili",
+        "hello": "Sawa"
+    },
+    {
+        "language": "Swedish",
+        "hello": "Hallå"
+    },
+    {
+        "language": "Tajik",
+        "hello": "Салом"
+    },
+    {
+        "language": "Tamil",
+        "hello": "ஹலோ"
+    },
+    {
+        "language": "Telugu",
+        "hello": "హలో"
+    },
+    {
+        "language": "Thai",
+        "hello": "สวัสดี"
+    },
+    {
+        "language": "Turkish",
+        "hello": "Merhaba"
+    },
+    {
+        "language": "Ukranian",
+        "hello": "Здрастуйте"
+    },
+    {
+        "language": "Urdu",
+        "hello": "ہیلو"
+    },
+    {
+        "language": "Uzbek",
+        "hello": "Salom"
+    },
+    {
+        "language": "Vietnamese",
+        "hello": "Xin chào"
+    },
+    {
+        "language": "Welsh",
+        "hello": "Helo"
+    },
+    {
+        "language": "Xhosa",
+        "hello": "Sawubona"
+    },
+    {
+        "language": "Yiddish",
+        "hello": "העלא"
+    },
+    {
+        "language": "Yoruba",
+        "about": "https://en.wikipedia.org/wiki/Yorubaland",
+        "hello": "Kaabo"
+    },
+    {
+        "language": "Zulu",
+        "hello": "Sawubona"
+    }
+]

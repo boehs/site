@@ -39,9 +39,9 @@ export const is = [
 ];
 
 export function onRequestGet(context) {
-    return new Response('is ' + is[Math.floor(Math.random() * is.length)], {
+    return new Response("is " + is[Math.floor(Math.random() * is.length)], {
         headers: {
-            'Content-Type': 'text/plain'
-        }
-    })
+            "Content-Type": "text/plain",
+        },
+    });
 }

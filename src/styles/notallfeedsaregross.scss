@@ -1,0 +1,121 @@
+@font-face {
+    font-family: "spectral";
+    src:
+        url("/spectralbold.woff2") format("woff2"),
+        url("/spectralbold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: optional;
+}
+
+@font-face {
+    font-family: "spectral";
+    src:
+        url("/spectralitalic.woff2") format("woff2"),
+        url("/spectralitalic.woff") format("woff");
+    font-weight: normal;
+    font-style: italic;
+    font-display: optional;
+}
+
+@font-face {
+    font-family: "spectral";
+    src:
+        url("/spectralregular.woff2") format("woff2"),
+        url("/spectralregular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+$radius: 3px;
+$lighter: #cddfd9;
+$warner: #ccbcb1;
+$activer: #b1c1cc;
+:root {
+    --light: #0aa06e;
+    --warn: #d6863a;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+feed {
+    font-family: Spectral, serif;
+    font-size: 1.1rem;
+    min-height: 100vh;
+    margin: 0;
+    padding: 75px 20px;
+    background: #fffbf8;
+    color: #2f2235;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-wrap: break-word;
+    box-sizing: border-box;
+
+    & > * {
+        flex: 0 1 100%;
+
+        & * {
+            display: block;
+        }
+    }
+}
+
+title {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+icon,
+id,
+link[rel="self"],
+email {
+    display: none !important;
+}
+
+name {
+    display: block;
+    text-align: center;
+    font-size: 14pt;
+    font-weight: bold;
+    color: var(--light);
+    padding: 50px 0;
+}
+
+entry {
+    title {
+        font-size: 1.5em;
+    }
+}
+
+updated,
+link,
+content {
+    font-style: italic;
+}
+
+content,
+link {
+    color: blue;
+}
+
+entry,
+warn {
+    color: inherit;
+    text-decoration: inherit;
+    transition: color 0.3s;
+    border-left: 2px solid var(--light);
+    padding: 0 1em;
+    display: block;
+    margin: 1em 0;
+}
+
+warn {
+    padding: 1em;
+    background-color: lightcoral;
+    border: none;
+}
