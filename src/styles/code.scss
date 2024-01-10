@@ -309,3 +309,14 @@ pre > code.diff-highlight .token.token.inserted:not(.prefix) {
 .command-line .command-line-prompt > span:before {
     color: #3c526dda;
 }
+
+
+@media (prefers-color-scheme: dark) {
+    code[class*=language-], pre[class*=language-] {
+        color: whitesmoke;
+    }
+
+    .token.punctuation {
+        color: #686d72;
+    }
+}

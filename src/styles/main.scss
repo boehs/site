@@ -322,7 +322,7 @@ tr {
     border-bottom: 1px solid lightgrey;
 
     &:nth-of-type(odd) td {
-        background-color: #f8f8f8;
+        background-color: #fff1ec;
     }
 }
 
@@ -394,6 +394,14 @@ blockquote {
     }
 
     :not(footer) > pre {
-        background: #fffbf8 !important;
+        filter: brightness(1.3);
+    }
+
+    tr {
+        border-bottom: 1px solid #363636;
+
+        &:nth-of-type(odd) td {
+            background-color: #fff1ec;
+        }
     }
 }
