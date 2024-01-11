@@ -379,6 +379,10 @@ blockquote {
 }
 
 @media (prefers-color-scheme: dark) {
+    :root {
+        --light: hsl(var(--base), 81%, 40%);
+    }
+
     body {
         background: #282828;
         color: whitesmoke;
