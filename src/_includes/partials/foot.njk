@@ -4,22 +4,22 @@
         <dt><strong>Main</strong></dt>
         <dd>
             <ul>
-                <li><a href="/" class="umami--click--home" style="--light: {{ 0 | rainbow(9) }}">Home</a></li>
-                <li><a href="/contact" class="umami--click--contact" style="--light: {{ 1 | rainbow(9) }}">Contact</a></li>
+                <li><a href="/" data-umami-event="home" style="--light: {{ 0 | rainbow(9) }}">Home</a></li>
+                <li><a href="/contact" data-umami-event="contact" style="--light: {{ 1 | rainbow(9) }}">Contact</a></li>
                 {% if config.isJobHunting %}
                     <li><a href="/resume"><s>Resume</s></a></li>
                 {% endif %}
-                <li><a href="/in/blog" class="umami--click--blog" style="--light: {{ 2 | rainbow(9) }}">Blog</a></li>
+                <li><a href="/in/blog" data-umami-event="blog" style="--light: {{ 2 | rainbow(9) }}">Blog</a></li>
             </ul>
         </dd>
         <dt><strong>Links</strong></dt>
         <dd>
             <ul>
                 <li>
-                    <a href="https://github.com/boehs" class="umami--click--github" rel="me" style="--light: {{ 3 | rainbow(9) }}">GitHub</a>
+                    <a href="https://github.com/boehs" data-umami-event="github" rel="me" style="--light: {{ 3 | rainbow(9) }}">GitHub</a>
                 </li>
                 <li>
-                    <a href="https://social.coop/@eb" style="--light: {{ 4 | rainbow(9) }}" class="umami--click--mastodon" rel="me">Mastodon</a>
+                    <a href="https://social.coop/@eb" style="--light: {{ 4 | rainbow(9) }}" data-umami-event="mastodon" rel="me">Mastodon</a>
                 </li>
             </ul>
         </dd>
@@ -31,7 +31,7 @@
                 </li>
                 {% if config.donate %}
                     <li>
-                        <a style="--light: {{ 7 | rainbow(9) }}" href="{{config.donate}}" class="umami--click--donate">Donate</a>
+                        <a style="--light: {{ 7 | rainbow(9) }}" href="{{config.donate}}" data-umami-event="donate">Donate</a>
                     </li>
                 {% endif %}
                 {% if config.analytics.pub %}
