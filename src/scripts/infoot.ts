@@ -5,10 +5,10 @@ function ordinal(n: number) {
 }
 
 (async () => {
-    let a = "{{{this}}}";
-    let token = await fetch(
-        "{{{this.config.analytics.base}}}/api/share/{{{this.config.analytics.pub}}}",
-    )
+    let root = "{{{this.config.analytics.base}}}/api/";
+    let siteId = "/{{{this.config.analytics.id}}}/";
+
+    let token = await fetch(`${root}share/{{{this.config.analytics.pub}}}`)
         .then((v) => v.json())
         .then((j) => j.token as string);
     let h: RequestInit = {
@@ -16,13 +16,13 @@ function ordinal(n: number) {
             "X-Umami-Share-Token": token,
         },
     };
-    let range = (await fetch(
-        "{{{this.config.analytics.base}}}/api/websites/{{{this.config.analytics.id}}}/daterange",
-        h,
-    ).then((res) => res.json())) as { maxdate: string; mindate: string };
+    let range = (await fetch(`${root}websites${siteId}daterange`, h).then(
+        (res) => res.json(),
+    )) as { maxdate: string; mindate: string };
     let res = (
         (await fetch(
-            "{{{this.config.analytics.base}}}/api/websites/{{{this.config.analytics.id}}}/stats?" +
+            `${root}websites${siteId}stats?` +
+                // @ts-ignore
                 new URLSearchParams({
                     startAt: Date.parse(range.mindate),
                     endAt: Date.parse(range.maxdate),
