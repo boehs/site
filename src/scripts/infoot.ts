@@ -25,7 +25,7 @@ function ordinal(n: number) {
             "{{{this.config.analytics.base}}}/api/websites/{{{this.config.analytics.id}}}/stats?" +
                 new URLSearchParams({
                     startAt: Date.parse(range.mindate),
-                    endAt: Date.parse(range.mindate),
+                    endAt: Date.parse(range.maxdate),
                     url: window.location.pathname,
                 }),
             h,
