@@ -92,6 +92,10 @@ function markdownIt() {
     );
 }
 
+function evalInContext(js, context) {
+    return function() { return eval(js); }.call(context);
+}
+
 export default function (eleventyConfig) {
     const markdown = markdownIt();
 
@@ -358,7 +362,7 @@ export default function (eleventyConfig) {
     eleventyConfig.addExtension("ts", {
         outputFileExtension: "js",
         compile: async function (inputContent, inputPath) {
-            return async () => {
+            return async (data) => {
                 const result = await esbuild({
                     entryPoints: [inputPath],
                     define: {},
@@ -378,7 +382,8 @@ export default function (eleventyConfig) {
                         unsafe_math: true,
                     },
                 });
-                return textInject(r2.code);
+                return textInject(r2.code).replaceAll(/{{{(.*?)}}}/g, (...match) =>
+                evalInContext(match[1],data))
             };
         },
         compileOptions: {
