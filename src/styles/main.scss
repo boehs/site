@@ -389,7 +389,8 @@ blockquote {
     }
 
     code,
-    blockquote {
+    blockquote,
+    :not(footer) > pre {
         background: darkslategray;
     }
 
@@ -399,6 +400,11 @@ blockquote {
 
     :not(footer) > pre {
         filter: brightness(1.5);
+    }
+
+    :not(footer) > pre code,
+    :not(footer) > pre {
+        filter: saturate(0.4);
     }
 
     tr {
