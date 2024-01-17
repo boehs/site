@@ -3,6 +3,7 @@
 // No modularity :(
 
 const EleventyFetch = require("@11ty/eleventy-fetch");
+const terser = require("terser")
 
 class Analytics {
 	data() {
@@ -21,7 +22,7 @@ class Analytics {
 				type: "text"
 			});
 
-			return content
+			let script = content
 				.replace(/.\(.\+"website-id"\)/,`"${config.analytics.id}"`)
 				.replace(/.=.\(.\+"host-url"\),/,'')
                 .replace(/.\(.\+"domains"\)\|\|/,'')
@@ -31,6 +32,8 @@ class Analytics {
                 // now h isn't needed
                 .replace(/.=.\.getAttribute\.bind\(.\),/, "")
                 // also d = u.currentScript; is not needed but it's too annoying to remove
+
+			return (await terser.minify(script)).code
 		} catch (e) {
 			return {
 				// my failure fallback data
