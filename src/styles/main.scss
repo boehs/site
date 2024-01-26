@@ -255,7 +255,7 @@ footer {
 article,
 nav,
 header {
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 article > p {
@@ -401,11 +401,6 @@ blockquote {
 
     :not(footer) > pre {
         filter: brightness(1.5);
-    }
-
-    :not(footer) > pre code,
-    :not(footer) > pre {
-        filter: saturate(0.4);
     }
 
     tr {
