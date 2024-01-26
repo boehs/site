@@ -345,10 +345,13 @@ figure {
 }
 
 blockquote {
-    padding: 10px 0 10px 10px;
     border-left: 6px double var(--light);
     margin: 1em 0;
     border-radius: $radius;
+
+    > p {
+        padding: 10px 0 10px 15px;
+    }
 }
 
 .penpen {
