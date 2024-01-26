@@ -37,7 +37,7 @@ $warner: #ccbcb1;
 $activer: #b1c1cc;
 :root {
     --base: 198deg;
-    --light: hsl(var(--base), 88%, 33%);
+    --light: var(--arc-palette-foregroundPrimary, hsl(var(--base), 88%, 33%));
     --lighter: hsl(var(--base), 22%, 84%);
     --warn: #df803f;
 }
