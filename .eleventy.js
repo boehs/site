@@ -93,7 +93,9 @@ function markdownIt() {
 }
 
 function evalInContext(js, context) {
-    return function() { return eval(js); }.call(context);
+    return function () {
+        return eval(js);
+    }.call(context);
 }
 
 export default function (eleventyConfig) {
@@ -382,8 +384,10 @@ export default function (eleventyConfig) {
                         unsafe_math: true,
                     },
                 });
-                return textInject(r2.code).replaceAll(/{{{(.*?)}}}/g, (...match) =>
-                evalInContext(match[1],data))
+                return textInject(r2.code).replaceAll(
+                    /{{{(.*?)}}}/g,
+                    (...match) => evalInContext(match[1], data),
+                );
             };
         },
         compileOptions: {

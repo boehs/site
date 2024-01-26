@@ -21,3 +21,4 @@
 {% if config.analytics and getEnv("ELEVENTY_ENV","production") %}
     {{ config.analytics.analytics | safe }}
 {% endif %}
+{% if headInject %}{{ headInject | safe }}{% endif %}
