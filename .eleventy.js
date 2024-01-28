@@ -114,7 +114,7 @@ export default function (eleventyConfig) {
     // sorry
     eleventyConfig.addFilter("footerBase", () => {
         return (
-            "\n".repeat(flowerFile.split("?")[0].split("\n").length) +
+            "\n".repeat(flowerFile.split("?")[0].split("\n").length - 1) +
             flowerFile
                 .match(/([^\n]*)\n\?/)[1]
                 .replace(/[0-9]/g, (match) =>
