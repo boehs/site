@@ -15,5 +15,9 @@
     "date": {
         "excludeFromPagination": true,
         "class": "dt-published"
+    },
+    "license": {
+        "excludeFromPagination": true,
+        "class": "license"
     }
 }

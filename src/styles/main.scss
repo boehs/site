@@ -355,13 +355,13 @@ blockquote {
     border-radius: $radius;
 
     > p {
-        padding: 10px 0 10px 15px;
+        padding: 10px 10px 10px 15px;
     }
 }
 
 .penpen {
     --light: lightpink;
-    background: lavender;
+    background: #fae6f3;
 
     p::before {
         content: "🐾 ";
