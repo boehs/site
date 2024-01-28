@@ -146,8 +146,13 @@ a {
     color: inherit;
     text-decoration: inherit;
     border-left: 2px solid var(--light);
-    padding: 0 1em;
+    padding-left: 1em;
     display: block;
+    margin-block: 1em;
+
+    > p {
+        margin-block: 0.5em;
+    }
 }
 
 .contain {
