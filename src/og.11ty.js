@@ -10,6 +10,7 @@ export default class Og {
                 alias: "entry",
             },
             eleventyExcludeFromCollections: true,
+            mdTemplateEngine: false,
             htmlTemplateEngine: false,
             eleventyComputed: {
                 permalink: (ctx) => {

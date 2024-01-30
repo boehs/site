@@ -154,7 +154,7 @@ export default function (eleventyConfig) {
         "./src/pages/garden/node/Assets/*": "assets",
     });
 
-    eleventyConfig.addTransform("html", function (content) {
+    eleventyConfig.addTransform("html", (content) => {
         if (this.page.outputPath && this.page.outputPath.endsWith(".html")) {
             return minify(content, {
                 useShortDoctype: true,
@@ -202,11 +202,14 @@ export default function (eleventyConfig) {
     });
 
     eleventyConfig.addCollection("ogReady", function (collectionApi) {
-        return collectionApi.getAll().filter(function (item) {
-            return (
-                item.outputPath.endsWith("html") && item.page.title != "missing"
-            );
-        });
+        return collectionApi
+            .getFilteredByGlob("./src/pages/**/*.*")
+            .filter(function (item) {
+                return (
+                    item.outputPath.endsWith("html") &&
+                    item.data.title != "missing"
+                );
+            });
     });
 
     eleventyConfig.addCollection("redirects", function (collectionApi) {
