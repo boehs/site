@@ -25,6 +25,7 @@ import mdItAttr from "markdown-it-attrs";
 import mmdItWl from "@gardeners/markdown-it-wikilinks";
 import mdItC from "markdown-it-container";
 import mdItOtherAttrLol from "markdown-it-attribution";
+import mdItFootnote from "markdown-it-footnote";
 
 import synHl from "@11ty/eleventy-plugin-syntaxhighlight";
 import path from "path";
@@ -47,49 +48,62 @@ function markdownIt() {
         }>`;
     };
 
-    return (
-        markdownIt
-            //.use(require("markdown-it-obsidian")({baseURL: '/pages/c/'}))
-            .use(mdItToC, { includeLevel: [2, 3, 4, 5] })
-            .use(mdItAc)
-            .use(mdItAttr)
-            .use(
-                mmdItWl({
-                    postProcessPageName: (pageName) => {
-                        pageName = pageName.trim();
-                        pageName = pageName.split("/").map(sanitize).join("/");
-                        pageName = slugify(pageName);
-                        return pageName;
-                    },
-                    imagePattern: /!\[\[([^]+?)\]\]/,
-                    assetPrefix: "/assets/",
-                }),
-            )
-            .use(mdItC, "details", {
-                validate: function (params) {
-                    return params.trim().match(/^details\s+(.*)$/);
+    markdownIt
+        //.use(require("markdown-it-obsidian")({baseURL: '/pages/c/'}))
+        .use(mdItToC, { includeLevel: [2, 3, 4, 5] })
+        .use(mdItAc)
+        .use(mdItAttr)
+        .use(
+            mmdItWl({
+                postProcessPageName: (pageName) => {
+                    pageName = pageName.trim();
+                    pageName = pageName.split("/").map(sanitize).join("/");
+                    pageName = slugify(pageName);
+                    return pageName;
                 },
+                imagePattern: /!\[\[([^]+?)\]\]/,
+                assetPrefix: "/assets/",
+            }),
+        )
+        .use(mdItC, "details", {
+            validate: function (params) {
+                return params.trim().match(/^details\s+(.*)$/);
+            },
 
-                render: function (tokens, idx) {
-                    var m = tokens[idx].info.trim().match(/^details\s+(.*)$/);
-                    if (tokens[idx].nesting === 1) {
-                        // opening tag
-                        return (
-                            "<details><summary>" +
-                            markdownIt.utils.escapeHtml(m[1]) +
-                            "</summary>\n"
-                        );
-                    } else {
-                        // closing tag
-                        return "</details>\n";
-                    }
-                },
-            })
-            .use(mdItOtherAttrLol, {
-                marker: "--",
-                removeMarker: false,
-            })
-    );
+            render: function (tokens, idx) {
+                var m = tokens[idx].info.trim().match(/^details\s+(.*)$/);
+                if (tokens[idx].nesting === 1) {
+                    // opening tag
+                    return (
+                        "<details><summary>" +
+                        markdownIt.utils.escapeHtml(m[1]) +
+                        "</summary>\n"
+                    );
+                } else {
+                    // closing tag
+                    return "</details>\n";
+                }
+            },
+        })
+        .use(mdItOtherAttrLol, {
+            marker: "--",
+            removeMarker: false,
+        })
+        .use(mdItFootnote);
+
+    markdownIt.renderer.rules.footnote_block_open = () =>
+        "<hr/>\n" +
+        "<h2>👟 Footnotes</h2>\n" +
+        '<section class="footnotes">\n' +
+        '<ol class="footnotes-list">\n';
+
+    markdownIt.renderer.rules.footnote_caption = function (tokens, idx) {
+        let n = Number(tokens[idx].meta.id + 1).toString();
+        if (tokens[idx].meta.subId > 0) n += `:${tokens[idx].meta.subId}`;
+        return `${n}`;
+    };
+
+    return markdownIt;
 }
 
 function evalInContext(js, context) {
