@@ -4,7 +4,8 @@
         "start": "eleventy --serve",
         "build": "eleventy",
         "clean": "rimraf dist/",
-        "format": "prettier --write ."
+        "format": "prettier --write .",
+        "og": "node ./utils/og.js"
     },
     "dependencies": {
         "@11ty/eleventy": "3.0.0-alpha.4",
@@ -12,6 +13,7 @@
         "@11ty/eleventy-plugin-rss": "^1.2.0",
         "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
         "@gardeners/markdown-it-wikilinks": "^1.5.1",
+        "@resvg/resvg-js": "^2.6.0",
         "esbuild": "^0.19.11",
         "html-minifier": "^4.0.0",
         "markdown-it": "^14.0.0",
@@ -21,10 +23,12 @@
         "markdown-it-container": "^4.0.0",
         "markdown-it-table-of-contents": "^0.6.0",
         "nunjucks": "^3.2.4",
+        "p-limit": "^5.0.0",
         "postcss": "^8.4.33",
         "postcss-csso": "^6.0.1",
         "sanitize-filename": "^1.6.3",
         "sass": "1.69.7",
+        "satori": "^0.10.13",
         "terser": "^5.26.0",
         "typescript": "^5.3.3"
     },

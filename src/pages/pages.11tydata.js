@@ -5,9 +5,7 @@ export default {
     eleventyComputed: {
         metaTags: (data) => {
             return {
-                "og:image": `https://v1.opengraph.11ty.dev/${encodeURIComponent(
-                    "https://boehs.org" + data.page.url,
-                )}`,
+                "og:image": "/og" + data.page.url.replace("html", "png"),
             };
         },
     },
