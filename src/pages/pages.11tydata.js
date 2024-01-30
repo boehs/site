@@ -6,6 +6,7 @@ export default {
         metaTags: (data) => {
             return {
                 "og:image": "/og" + data.page.url.replace("html", "png"),
+                "twitter:card": "summary_large_image",
             };
         },
     },
