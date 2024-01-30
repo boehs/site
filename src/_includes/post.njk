@@ -32,7 +32,7 @@ layout: base.njk
                 </ul>
             {% elseif frontmatter | getType == 'date' %}
                 {# hack #}
-                <span {% if settings.class %}class="{{settings.class}}"{% endif %}>{{page.date.toUTCString()}}</span>
+                <span {% if settings.class %}class="{{settings.class}}"{% endif %}>{{page.date | dateString}}</span>
             {% elseif collectionsControl[collection].excludeFromPagination %}
                 <span {% if settings.class %}class="{{settings.class}}"{% endif %}>{{frontmatter}}</span>
             {% else %}

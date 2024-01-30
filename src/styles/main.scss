@@ -1,58 +1,4 @@
-// Fonts //
-
-@font-face {
-    font-family: "spectral";
-    src:
-        url("/spectralbold.woff2") format("woff2"),
-        url("/spectralbold.woff") format("woff");
-    font-weight: bold;
-    font-style: normal;
-    font-display: optional;
-}
-
-@font-face {
-    font-family: "spectral";
-    src:
-        url("/spectralitalic.woff2") format("woff2"),
-        url("/spectralitalic.woff") format("woff");
-    font-weight: normal;
-    font-style: italic;
-    font-display: optional;
-}
-
-@font-face {
-    font-family: "spectral";
-    src:
-        url("/spectralregular.woff2") format("woff2"),
-        url("/spectralregular.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-// Variables //
-
-$radius: 3px;
-$warner: #ccbcb1;
-$activer: #b1c1cc;
-:root {
-    --base: 198deg;
-    --light: var(--arc-palette-foregroundPrimary, hsl(var(--base), 88%, 33%));
-    --lighter: hsl(var(--base), 22%, 84%);
-    --warn: #df803f;
-}
-
-.lighter {
-    color: var(--light) !important;
-}
-
-// Setup //
-
-*,
-*:before,
-*:after {
-    box-sizing: inherit;
-}
+@use "base.scss";
 
 // setting this and the same in body is similar to 100vh
 // but it works on mobile browsers as well
@@ -84,7 +30,7 @@ body {
 
 img,
 lite-youtube {
-    border-radius: $radius;
+    border-radius: base.$radius;
 }
 
 nav,
@@ -110,7 +56,7 @@ code,
 :not(footer) > pre {
     font-size: 1rem;
     background: var(--lighter);
-    border-radius: $radius;
+    border-radius: base.$radius;
     white-space: pre-wrap;
 }
 
@@ -352,7 +298,7 @@ figure {
 blockquote {
     border-left: 6px double var(--light);
     margin: 1em 0;
-    border-radius: $radius;
+    border-radius: base.$radius;
 
     > p {
         padding: 10px 10px 10px 15px;

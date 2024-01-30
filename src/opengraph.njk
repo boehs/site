@@ -1,0 +1,43 @@
+---
+pagination:
+    data: collections.all
+    size: 1
+    alias: "node"
+permalink: '/opengraph/{{ node.url }}'
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <link
+            rel="preload"
+            as="font"
+            type="font/woff2"
+            href="/spectralregular.woff2"
+            crossorigin
+        />
+        <link rel="stylesheet" href="/og.css" />
+    </head>
+    <body>
+        <pre class="lighter">
+.            +                /`\     x     (         /`\
+    x                  /`\   // \\          ))   *   // \\
+          *     .     // \\  // \\  /`\_____||       // \\
+                      // \\  // \\ // /       \  /`\ // \\
+.        +            // \\  // \\ ///_________\// \\// \\
+                      // \\  // \\ // |-[+]---| // \\// \\
+  .                   // \\  // \\ // |-------| // \\// \\
+          _____,....-----'------'-----''-------'---'----'--
+        </pre>
+        <div>
+          <h1>{{ node.data.title }}</h1>
+          <p>
+              <i>{{ node.data.description }}</i>
+          </p>
+        </div>
+        <div>
+          <p style="font-size: 32px;"> {{ node.data.date | dateString }} </p>
+          <strong class="lighter">Evan Boehs</strong>
+        </div>
+    </body>
+</html>
