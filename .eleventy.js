@@ -201,6 +201,14 @@ export default function (eleventyConfig) {
         return `hsl(${(360 / n) * i},50%,60%)`;
     });
 
+    eleventyConfig.addCollection("ogReady", function (collectionApi) {
+        return collectionApi.getAll().filter(function (item) {
+            return (
+                item.outputPath.endsWith("html") && item.page.title != "missing"
+            );
+        });
+    });
+
     eleventyConfig.addCollection("redirects", function (collectionApi) {
         // lets make a variable to hold our redirects
         let redirects = [];
