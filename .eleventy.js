@@ -154,7 +154,8 @@ export default function (eleventyConfig) {
         "./src/pages/garden/node/Assets/*": "assets",
     });
 
-    eleventyConfig.addTransform("html", (content) => {
+    eleventyConfig.addTransform("html", function (content) {
+        JSON.stringify(this.page);
         if (this.page.outputPath && this.page.outputPath.endsWith(".html")) {
             return minify(content, {
                 useShortDoctype: true,
