@@ -111,6 +111,10 @@ export default function (eleventyConfig) {
     );
     eleventyConfig.addFilter("slugshive", (path) => slugify(path));
 
+    eleventyConfig.addFilter("dateString", (date) =>
+        date?.toLocaleDateString(),
+    );
+
     // sorry
     eleventyConfig.addFilter("footerBase", () => {
         return (

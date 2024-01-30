@@ -1,4 +1,0 @@
-{
-    "layout": "base.njk",
-    "permalink": "{{ page.filePathStem | dropContentFolder: \"pages\" | slugshive}}.html"
-}
