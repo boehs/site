@@ -106,17 +106,12 @@ export default function (eleventyConfig) {
     eleventyConfig.addNunjucksFilter("interpolate", function (str) {
         return nunjucks.renderString(str, this.ctx);
     });
-
     eleventyConfig.addFilter("dropContentFolder", (path, folder) =>
         path.replace(new RegExp(folder + "/"), ""),
     );
     eleventyConfig.addFilter("slugshive", (path) => slugify(path));
 
-    eleventyConfig.addFilter("dateString", (date) =>
-        date?.toLocaleDateString(),
-    );
-
-    // used to prefill footer
+    // sorry
     eleventyConfig.addFilter("footerBase", () => {
         return (
             "\n".repeat(flowerFile.split("?")[0].split("\n").length - 1) +
@@ -163,13 +158,6 @@ export default function (eleventyConfig) {
         const links = firstPost.eleventyComputed.brokenLinks(firstPost, true);
         // return as array for pagination
         return Array.from(links);
-    });
-
-    eleventyConfig.addCollection("nodes", function (collectionApi) {
-        let collection = collectionApi.getFilteredByGlob(
-            "./src/pages/garden/node/*.md",
-        );
-        return collection;
     });
 
     eleventyConfig.addNunjucksGlobal("getContext", function () {
