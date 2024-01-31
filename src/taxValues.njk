@@ -7,7 +7,7 @@ permalink: /{{collectionsControl[value[0]].single or value[0] | slugshive}}/{{ v
 eleventyComputed:
   color: "{{tagList[value[0]][value[1]].color}}"
   description: "{{tagList[value[0]][value[1]].description}}"
-  title: "{{collectionsControl[value[0]].single or value[0] | capitalize}}"
+  title: "{{collectionsControl[value[0]].single or value[0] | capitalize}}: {{value[1]}}"
 ---
 {% from "partials/card.njk" import card %}
 {% extends "base.njk" %}

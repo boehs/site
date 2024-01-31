@@ -4,8 +4,7 @@
         "start": "eleventy --serve",
         "build": "eleventy",
         "clean": "rimraf dist/",
-        "format": "prettier --write .",
-        "og": "node ./utils/og.js"
+        "format": "prettier --write ."
     },
     "dependencies": {
         "@11ty/eleventy": "3.0.0-alpha.4",
