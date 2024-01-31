@@ -23,6 +23,9 @@ dependencies:
   '@resvg/resvg-js':
     specifier: ^2.6.0
     version: 2.6.0
+  '@resvg/resvg-wasm':
+    specifier: ^2.6.0
+    version: 2.6.0
   esbuild:
     specifier: ^0.19.11
     version: 0.19.11
@@ -626,6 +629,11 @@ packages:
       '@resvg/resvg-js-win32-arm64-msvc': 2.6.0
       '@resvg/resvg-js-win32-ia32-msvc': 2.6.0
       '@resvg/resvg-js-win32-x64-msvc': 2.6.0
+    dev: false
+
+  /@resvg/resvg-wasm@2.6.0:
+    resolution: {integrity: sha512-iDkBM6Ivex8nULtBu8cX670/lfsGxq8U1cuqE+qS9xFpPQP1enPdVm/33Kq3+B+bAldA+AHNZnCgpmlHo/fZrQ==}
+    engines: {node: '>= 10'}
     dev: false
 
   /@shuding/opentype.js@1.4.0-beta.0:

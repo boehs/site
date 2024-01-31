@@ -1,16 +1,12 @@
 import satori from "satori";
-import { readFile } from "node:fs/promises";
+import base from "../src/_public/spectralregular.woff";
+import italic from "./src/_public/spectralitalic.woff";
+import bold from "./src/_public/spectralbold.woff";
+import office from "./src/_public/office.ttf";
 
 const fonts = [];
 
 {
-    const [base, italic, bold, office] = await Promise.all([
-        readFile(`./src/_public/spectralregular.woff`),
-        readFile(`./src/_public/spectralitalic.woff`),
-        readFile(`./src/_public/spectralbold.woff`),
-        readFile(`./src/_public/office.ttf`),
-    ]);
-
     fonts.push(
         {
             name: "Spectral",

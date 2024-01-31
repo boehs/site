@@ -16,7 +16,7 @@ export default class Og {
                 permalink: (ctx) => {
                     return (
                         "og" +
-                        ctx.entry.outputPath
+                        ctx.entry.url
                             .replace(".html", ".png")
                             .replace("out", "")
                     );
