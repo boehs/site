@@ -8,8 +8,6 @@
  */
 code[class*="language-"],
 pre[class*="language-"] {
-    color: #111b27;
-    background: none;
     line-height: 1.5;
     tab-size: 4;
 }
@@ -310,12 +308,7 @@ pre > code.diff-highlight .token.token.inserted:not(.prefix) {
     color: #3c526dda;
 }
 
-
 @media (prefers-color-scheme: dark) {
-    code[class*=language-], pre[class*=language-] {
-        color: whitesmoke;
-    }
-
     .token.punctuation {
         color: #686d72;
     }
