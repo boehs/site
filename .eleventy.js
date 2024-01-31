@@ -155,7 +155,6 @@ export default function (eleventyConfig) {
     });
 
     eleventyConfig.addTransform("html", function (content) {
-        JSON.stringify(this.page);
         if (this.page.outputPath && this.page.outputPath.endsWith(".html")) {
             return minify(content, {
                 useShortDoctype: true,

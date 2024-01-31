@@ -14,7 +14,12 @@ export default class Og {
             htmlTemplateEngine: false,
             eleventyComputed: {
                 permalink: (ctx) => {
-                    return "og" + ctx.entry.url.replace(".html", ".png");
+                    return (
+                        "og" +
+                        ctx.entry.outputPath
+                            .replace(".html", ".png")
+                            .replace("out", "")
+                    );
                 },
             },
         };
