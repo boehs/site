@@ -1,8 +1,5 @@
-import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
-import { Resvg } from "@resvg/resvg-js";
 import satori from "satori";
-
-await mkdir("out/og", { recursive: true });
+import { readFile } from "node:fs/promises";
 
 const fonts = [];
 
@@ -42,26 +39,7 @@ const fonts = [];
     );
 }
 
-function decodeEntities(encodedString) {
-    var translate_re = /&(nbsp|amp|quot|lt|gt);/g;
-    var translate = {
-        nbsp: " ",
-        amp: "&",
-        quot: '"',
-        lt: "<",
-        gt: ">",
-    };
-    return encodedString
-        .replace(translate_re, function (match, entity) {
-            return translate[entity];
-        })
-        .replace(/&#(\d+);/gi, function (match, numStr) {
-            var num = parseInt(numStr, 10);
-            return String.fromCharCode(num);
-        });
-}
-
-const svg = async ({ title, date, desc, color = "#3C898B" }) => {
+export const svg = async ({ title, date, desc, color = "#3C898B" }) => {
     return await satori(
         // @ts-ignore
         {
@@ -174,55 +152,3 @@ const svg = async ({ title, date, desc, color = "#3C898B" }) => {
         },
     );
 };
-
-let dirs = (await readdir("./out", { recursive: true, withFileTypes: true }))
-    .filter((dir) => dir.isFile())
-    .filter((dir) => dir.name.endsWith("html"))
-    .map((dir) => dir.path + "/" + dir.name);
-
-let now = performance.now();
-let timeSpentParsing = 0;
-let madeDirs = new Set();
-for (let f of dirs) {
-    let file = decodeEntities((await readFile(f)).toString());
-    let title = (file.match(/<title>(.*?)<\//) || [])[1];
-    if (title == "missing") continue;
-    if (title.startsWith("Redirecting to: ")) continue;
-    let date = (file.match(/dt-published">(.*?)<\//) || [])[1];
-    let desc = (file.match(/name="description" content="(.*?)"/) || [])[1];
-    let color = (((file.match(/<body .*?>/) || [])[0] || "").match(
-        /light: (.*?)">/,
-    ) || [])[1];
-    let now = performance.now();
-    const renderedSvg = await svg({ title, date, desc, color });
-    const png = new Resvg(renderedSvg, {
-        font: {
-            loadSystemFonts: false,
-        },
-    })
-        .render()
-        .asPng();
-    timeSpentParsing += performance.now() - now;
-    let url = `out/og/${f
-        .split("/")
-        .slice(0, -1)
-        .join("/")
-        .replace("out/", "")}`;
-    if (!madeDirs.has(url)) {
-        try {
-            await mkdir(url, { recursive: true });
-        } catch (e) {
-            if (e.code != "EEXIST") throw e;
-        }
-        madeDirs.add(url);
-    }
-    await writeFile(
-        `out/og/${f.replace("out/", "").replace("html", "png")}`,
-        png,
-    );
-}
-console.log(
-    `wrote ${dirs.length} files in ${performance.now() - now}ms (avg: ${
-        (performance.now() - now) / dirs.length
-    }) (${performance.now() - now - timeSpentParsing})`,
-);
