@@ -89,6 +89,7 @@ async function _run(e, url) {
     main.innerHTML = res.main;
     document.querySelector("i").textContent = res.message;
     spa(main.querySelectorAll("a"));
+    window.track && track();
 }
 
 async function run(e, url, isBack) {
