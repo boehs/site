@@ -46,5 +46,5 @@ export default function (text, separator = "-") {
         text = text.replace(/-/g, separator);
     }
 
-    return text;
+    return text.replace(".html", "");
 }
