@@ -73,7 +73,7 @@ layout: base.njk
     <ul>
         {% for backlink in backlinks %}
             <li>
-                <a href="{{backlink.url}}">{{backlink.title}}</a>
+                <a href="{{backlink.url | replace(".html", "")}}">{{backlink.title}}</a>
             </li>
         {% endfor %}
     </ul>

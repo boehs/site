@@ -7,16 +7,15 @@ export async function onRequest(context): PagesFunction {
     const {
         next, // used for middleware or to fetch assets
     } = context;
-
+    let now = performance.now();
     const response = await next();
     const greeting = greetings[Math.floor(Math.random() * greetings.length)];
+    let isT = "is " + is[Math.floor(Math.random() * is.length)];
 
-    return new HTMLRewriter()
+    let res = new HTMLRewriter()
         .on("i#is", {
             element(element) {
-                element.setInnerContent(
-                    "is " + is[Math.floor(Math.random() * is.length)],
-                );
+                element.setInnerContent(isT);
             },
         })
         .on(".needstitle", {
@@ -36,6 +35,74 @@ export async function onRequest(context): PagesFunction {
                     element.setAttribute("href", greeting.about);
                 }
             },
-        })
-        .transform(response);
+        });
+
+    if (context.request.url.endsWith("?spa")) {
+        let json = {
+            main: "",
+            head: "",
+            message: "",
+            color: "",
+        };
+        await res
+            .on("header i", {
+                text({ text }) {
+                    json.message += text;
+                },
+            })
+            .on("head", {
+                text({ text }) {
+                    json.head += text;
+                },
+            })
+            .on("head *", {
+                element(el) {
+                    const maybeAttrs = [...el.attributes]
+                        .map(([k, v]) => ` ${k}="${v}"`)
+                        .join("");
+                    json.head += `<${el.tagName}${maybeAttrs}>`;
+                    try {
+                        el.onEndTag((endTag) => {
+                            json.head += `</${endTag.name}>`;
+                        });
+                    } catch {}
+                },
+            })
+            .on("main", {
+                text({ text }) {
+                    json.main += text;
+                },
+            })
+            .on("body", {
+                element(el) {
+                    json.color += el.getAttribute("style");
+                },
+            })
+            .on("main *", {
+                element(el) {
+                    const maybeAttrs = [...el.attributes]
+                        .map(([k, v]) => ` ${k}="${v}"`)
+                        .join("");
+                    json.main += `<${el.tagName}${maybeAttrs}>`;
+                    try {
+                        el.onEndTag((endTag) => {
+                            json.main += `</${endTag.name}>`;
+                        });
+                    } catch {}
+                },
+            })
+            .transform(response)
+            .arrayBuffer();
+
+        if (json.message == "is") json.message = isT;
+        if (json.color == "undefined") json.color = "";
+
+        return new Response(JSON.stringify(json), {
+            headers: {
+                "content-type": "application/json;charset=UTF-8",
+            },
+        });
+    }
+
+    return res.transform(response);
 }
