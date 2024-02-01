@@ -76,3 +76,165 @@ if (is)
         ((e.target as HTMLElement).textContent = await fetch("/api/is").then(
             (r) => r.text(),
         ));
+
+// This SPA code is derived from flamethrower
+
+let cantViewTransition = !document.startViewTransition;
+
+async function _run(e, url) {
+    let res = await (await fetch(url + "?spa")).json();
+    mergeHead(new DOMParser().parseFromString(res.head, "text/html"));
+    document.body.setAttribute("style", res.color);
+    let main = document.querySelector("main");
+    main.innerHTML = res.main;
+    document.querySelector("i").textContent = res.message;
+    spa(main.querySelectorAll("a"));
+}
+
+async function run(e, url, isBack) {
+    if (cantViewTransition) {
+        _run(e, url);
+        return;
+    } else {
+        if (isBack) {
+            document.documentElement.classList.add("back-transition");
+        }
+        e.preventDefault();
+        const transition = document.startViewTransition(() => _run(e, url));
+        try {
+            await transition.finished;
+        } finally {
+            document.documentElement.classList.remove("back-transition");
+        }
+    }
+}
+
+function spa(links) {
+    Array.from(links)
+        .filter(
+            (node) =>
+                node.href.includes(document.location.origin) && // on origin url
+                !node.href.includes("#") && // not an id anchor
+                node.href !==
+                    (document.location.href || document.location.href + "/"), // not current page
+        )
+        .forEach((node) => {
+            if (cantViewTransition) {
+                const url = node.getAttribute("href");
+                /*node.addEventListener(
+                "pointerdown",
+                () => {
+                    const linkEl = document.createElement("link");
+                    linkEl.rel = "prefetch";
+                    linkEl.href = url + "?spa";
+                    //linkEl.as = "document";
+                    document.head.appendChild(linkEl);
+                },
+                {
+                    once: true,
+                },
+            );*/
+                node.addEventListener("click", (e) => {
+                    if (
+                        !window.history.state ||
+                        window.history.state.url !== url
+                    ) {
+                        window.history.pushState({ url }, "internalLink", url);
+                    }
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                    run(e, url, false);
+                });
+            }
+        });
+}
+
+function mergeHead(nextDoc) {
+    // Update head
+    // Head elements that changed on next document
+    const getValidNodes = (doc) => Array.from(doc.head.querySelectorAll("*"));
+    const oldNodes = getValidNodes(document);
+    const nextNodes = getValidNodes(nextDoc);
+    const { staleNodes, freshNodes } = partitionNodes(oldNodes, nextNodes);
+
+    staleNodes.forEach((node) => node.remove());
+
+    document.head.append(...freshNodes);
+}
+
+function partitionNodes(oldNodes, nextNodes) {
+    const staleNodes = [];
+    const freshNodes = [];
+    let oldMark = 0;
+    let nextMark = 0;
+    while (oldMark < oldNodes.length || nextMark < nextNodes.length) {
+        const old = oldNodes[oldMark];
+        const next = nextNodes[nextMark];
+        if (old?.isEqualNode(next)) {
+            oldMark++;
+            nextMark++;
+            continue;
+        }
+        const oldInFresh = old
+            ? freshNodes.findIndex((node) => node.isEqualNode(old))
+            : -1;
+        if (oldInFresh !== -1) {
+            freshNodes.splice(oldInFresh, 1);
+            oldMark++;
+            continue;
+        }
+        const nextInStale = next
+            ? staleNodes.findIndex((node) => node.isEqualNode(next))
+            : -1;
+        if (nextInStale !== -1) {
+            staleNodes.splice(nextInStale, 1);
+            nextMark++;
+            continue;
+        }
+        old && staleNodes.push(old);
+        next && freshNodes.push(next);
+        oldMark++;
+        nextMark++;
+    }
+
+    return { staleNodes, freshNodes };
+}
+
+spa(document.links);
+
+function isBackNavigation(navigateEvent) {
+    if (
+        navigateEvent.navigationType === "push" ||
+        navigateEvent.navigationType === "replace"
+    ) {
+        return false;
+    }
+    if (
+        navigateEvent.destination.index !== -1 &&
+        navigateEvent.destination.index < navigation.currentEntry.index
+    ) {
+        return true;
+    }
+    return false;
+}
+
+if (cantViewTransition) {
+    window.addEventListener("popstate", (e) => {
+        run(e, window.location.href, false);
+    });
+} else {
+    navigation.addEventListener("navigate", (event) => {
+        const toUrl = new URL(event.destination.url);
+
+        if (location.origin !== toUrl.origin) return;
+        if (location.pathname == toUrl.pathname) return;
+        const isBack = isBackNavigation(event);
+
+        event.intercept({
+            async handler() {
+                if (event.info === "ignore") return;
+
+                await run(event, toUrl, isBack);
+            },
+        });
+    });
+}
