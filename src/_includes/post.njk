@@ -15,7 +15,7 @@ layout: base.njk
             <dt>
                 <strong>
                     {% if not collectionsControl[collection].excludeFromPagination %}
-                        <a href="/{{(collectionsControl[collection].plural or collection) | slugshive}}">{{collection}}</a>
+                        <a href="/{{(collectionsControl[collection].plural or collection) | slugshive}}/">{{collection}}</a>
                     {% else %}
                         {{collection}}
                     {% endif %}
