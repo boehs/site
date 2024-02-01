@@ -89,14 +89,11 @@ async function _run(e, url) {
     main.innerHTML = res.main;
     document.querySelector("i").textContent = res.message;
     spa(main.querySelectorAll("a"));
-    if (!cantViewTransition) {
-        window.track && track();
-    }
 }
 
 async function run(e, url, isBack) {
     if (cantViewTransition) {
-        _run(e, url);
+        await _run(e, url);
         return;
     } else {
         if (isBack) {
@@ -108,6 +105,9 @@ async function run(e, url, isBack) {
             await transition.finished;
         } finally {
             document.documentElement.classList.remove("back-transition");
+            if (!cantViewTransition) {
+                window.track && track();
+            }
         }
     }
 }
