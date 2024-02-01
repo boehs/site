@@ -87,7 +87,6 @@ async function run(e, url) {
     let main = document.querySelector("main");
     main.innerHTML = res.main;
     spa(main.querySelectorAll("a"));
-    window.runFoot && runFoot();
 }
 
 function spa(links) {
