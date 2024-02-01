@@ -92,42 +92,42 @@ async function _run(e, url) {
 }
 
 async function run(e, url, isBack) {
+    e.preventDefault();
     if (cantViewTransition) {
         await _run(e, url);
         return;
-    } else {
-        if (isBack) {
-            document.documentElement.classList.add("back-transition");
-        }
-        e.preventDefault();
-        const transition = document.startViewTransition(() => _run(e, url));
-        try {
-            await transition.finished;
-        } finally {
-            document.documentElement.classList.remove("back-transition");
-            window.umami &&
-                window.umami.track((w) => {
-                    return {
-                        ...w,
-                        title: document.title,
-                        url: window.location.pathname,
-                    };
-                });
-        }
+    }
+    if (isBack) {
+        document.documentElement.classList.add("back-transition");
+    }
+    const transition = document.startViewTransition(() => _run(e, url));
+    try {
+        await transition.finished;
+    } finally {
+        document.documentElement.classList.remove("back-transition");
+        window.umami &&
+            window.umami.track((w) => {
+                return {
+                    ...w,
+                    title: document.title,
+                    url: window.location.pathname,
+                };
+            });
     }
 }
 
 function spa(links) {
-    Array.from(links)
-        .filter(
-            (node) =>
-                node.href.includes(document.location.origin) && // on origin url
-                !node.href.includes("#") && // not an id anchor
-                node.href !==
-                    (document.location.href || document.location.href + "/"), // not current page
-        )
-        .forEach((node) => {
-            if (cantViewTransition) {
+    if (cantViewTransition) {
+        Array.from(links)
+            .filter(
+                (node) =>
+                    node.href.includes(document.location.origin) && // on origin url
+                    !node.href.includes("#") && // not an id anchor
+                    node.href !==
+                        (document.location.href ||
+                            document.location.href + "/"), // not current page
+            )
+            .forEach((node) => {
                 const url = node.getAttribute("href");
                 /*node.addEventListener(
                 "pointerdown",
@@ -152,8 +152,8 @@ function spa(links) {
                     window.scrollTo({ top: 0, behavior: "smooth" });
                     run(e, url, false);
                 });
-            }
-        });
+            });
+    }
 }
 
 function mergeHead(nextDoc) {
@@ -240,7 +240,6 @@ if (cantViewTransition) {
         event.intercept({
             async handler() {
                 if (event.info === "ignore") return;
-
                 await run(event, toUrl, isBack);
             },
         });
