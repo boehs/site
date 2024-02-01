@@ -1,0 +1,15 @@
+{
+    "version": 1,
+    "include": ["/*"],
+    "exclude": [
+        "/assets/*",
+        "/main.js",
+        "/infoot.js",
+        "/colophon.js",
+        "/main.css",
+        "/code.css",
+        "/spectralregular.woff2",
+        "/spectralbold.woff2",
+        "/spectralitalic.woff2"
+    ]
+}
