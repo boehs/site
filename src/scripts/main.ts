@@ -105,9 +105,7 @@ async function run(e, url, isBack) {
             await transition.finished;
         } finally {
             document.documentElement.classList.remove("back-transition");
-            if (!cantViewTransition) {
-                window.umami && window.umami.track();
-            }
+            window.umami && window.umami.track();
         }
     }
 }
