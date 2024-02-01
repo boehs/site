@@ -106,7 +106,7 @@ async function run(e, url, isBack) {
         } finally {
             document.documentElement.classList.remove("back-transition");
             if (!cantViewTransition) {
-                window.track && track();
+                window.umami && window.umami.track();
             }
         }
     }
