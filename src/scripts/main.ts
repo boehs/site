@@ -117,7 +117,14 @@ function spa(links) {
                 if (!window.history.state || window.history.state.url !== url) {
                     window.history.pushState({ url }, "internalLink", url);
                 }
-                run(e, url);
+                window.scrollTo({ top: 0, behavior: "smooth" });
+                if (!document.startViewTransition) {
+                    run(e, url);
+                    return;
+                } else {
+                    e.preventDefault();
+                    document.startViewTransition(() => run(e, url));
+                }
             });
         });
 }
@@ -176,5 +183,9 @@ function partitionNodes(oldNodes, nextNodes) {
 spa(document.links);
 
 window.addEventListener("popstate", (e) => {
-    run(e, window.location.href);
+    if (!document.startViewTransition) {
+        run(e, window.location.href);
+        return;
+    }
+    document.startViewTransition(() => run(e, window.location.href));
 });

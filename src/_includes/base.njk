@@ -13,7 +13,7 @@
         {% block main %}
           {% if title and not notitle %}
             {% block title %}
-              <h1 class="p-name">{{ title | capitalize}}</h1>
+              <h1 class="p-name" style="view-transition-name: {{title | slugify }}">{{ title | capitalize}}</h1>
             {% endblock %}
           {% endif %}
           <div class="e-content">
