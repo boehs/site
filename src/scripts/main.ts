@@ -79,14 +79,33 @@ if (is)
 
 // This SPA code is derived from flamethrower
 
-async function run(e, url) {
-    e.preventDefault();
+let cantViewTransition = !document.startViewTransition;
+
+async function _run(e, url) {
     let res = await (await fetch(url + "?spa")).json();
     mergeHead(new DOMParser().parseFromString(res.head, "text/html"));
     document.body.setAttribute("style", res.color);
     let main = document.querySelector("main");
     main.innerHTML = res.main;
     spa(main.querySelectorAll("a"));
+}
+
+async function run(e, url, isBack) {
+    if (cantViewTransition) {
+        _run(e, url);
+        return;
+    } else {
+        if (isBack) {
+            document.documentElement.classList.add("back-transition");
+        }
+        e.preventDefault();
+        const transition = document.startViewTransition(() => _run(e, url));
+        try {
+            await transition.finished;
+        } finally {
+            document.documentElement.classList.remove("back-transition");
+        }
+    }
 }
 
 function spa(links) {
@@ -99,8 +118,9 @@ function spa(links) {
                     (document.location.href || document.location.href + "/"), // not current page
         )
         .forEach((node) => {
-            const url = node.getAttribute("href");
-            /*node.addEventListener(
+            if (!cantViewTransition) {
+                const url = node.getAttribute("href");
+                /*node.addEventListener(
                 "pointerdown",
                 () => {
                     const linkEl = document.createElement("link");
@@ -113,19 +133,17 @@ function spa(links) {
                     once: true,
                 },
             );*/
-            node.addEventListener("click", (e) => {
-                if (!window.history.state || window.history.state.url !== url) {
-                    window.history.pushState({ url }, "internalLink", url);
-                }
-                window.scrollTo({ top: 0, behavior: "smooth" });
-                if (!document.startViewTransition) {
-                    run(e, url);
-                    return;
-                } else {
-                    e.preventDefault();
-                    document.startViewTransition(() => run(e, url));
-                }
-            });
+                node.addEventListener("click", (e) => {
+                    if (
+                        !window.history.state ||
+                        window.history.state.url !== url
+                    ) {
+                        window.history.pushState({ url }, "internalLink", url);
+                    }
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                    run(e, url, false);
+                });
+            }
         });
 }
 
@@ -182,10 +200,41 @@ function partitionNodes(oldNodes, nextNodes) {
 
 spa(document.links);
 
-window.addEventListener("popstate", (e) => {
-    if (!document.startViewTransition) {
-        run(e, window.location.href);
-        return;
+function isBackNavigation(navigateEvent) {
+    if (
+        navigateEvent.navigationType === "push" ||
+        navigateEvent.navigationType === "replace"
+    ) {
+        return false;
     }
-    document.startViewTransition(() => run(e, window.location.href));
-});
+    if (
+        navigateEvent.destination.index !== -1 &&
+        navigateEvent.destination.index < navigation.currentEntry.index
+    ) {
+        return true;
+    }
+    return false;
+}
+
+if (cantViewTransition) {
+    window.addEventListener("popstate", (e) => {
+        run(e, window.location.href, false);
+    });
+} else {
+    navigation.addEventListener("navigate", (event) => {
+        const toUrl = new URL(event.destination.url);
+
+        if (location.origin !== toUrl.origin) return;
+
+        const fromPath = location.pathname;
+        const isBack = isBackNavigation(event);
+
+        event.intercept({
+            async handler() {
+                if (event.info === "ignore") return;
+
+                await run(event, toUrl, isBack);
+            },
+        });
+    });
+}

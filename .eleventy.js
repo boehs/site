@@ -63,7 +63,7 @@ function markdownIt() {
                 },
                 imagePattern: /!\[\[([^]+?)\]\]/,
                 assetPrefix: "/assets/",
-                suffix: "",
+                uriSuffix: "",
             }),
         )
         .use(mdItC, "details", {
