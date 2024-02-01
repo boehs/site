@@ -87,6 +87,7 @@ async function _run(e, url) {
     document.body.setAttribute("style", res.color);
     let main = document.querySelector("main");
     main.innerHTML = res.main;
+    document.querySelector("i").textContent = res.message;
     spa(main.querySelectorAll("a"));
 }
 
@@ -118,7 +119,7 @@ function spa(links) {
                     (document.location.href || document.location.href + "/"), // not current page
         )
         .forEach((node) => {
-            if (!cantViewTransition) {
+            if (cantViewTransition) {
                 const url = node.getAttribute("href");
                 /*node.addEventListener(
                 "pointerdown",
@@ -225,8 +226,7 @@ if (cantViewTransition) {
         const toUrl = new URL(event.destination.url);
 
         if (location.origin !== toUrl.origin) return;
-
-        const fromPath = location.pathname;
+        if (location.pathname == toUrl.pathname) return;
         const isBack = isBackNavigation(event);
 
         event.intercept({
