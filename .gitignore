@@ -20,3 +20,4 @@ yarn-error.log*
 _generated
 .cache
 out
+.wrangler
