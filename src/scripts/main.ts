@@ -120,9 +120,6 @@ function spa(links) {
                 run(e, url);
             });
         });
-    window.addEventListener("popstate", (e) => {
-        run(e, window.location.href);
-    });
 }
 
 function mergeHead(nextDoc) {
@@ -177,3 +174,7 @@ function partitionNodes(oldNodes, nextNodes) {
 }
 
 spa(document.links);
+
+window.addEventListener("popstate", (e) => {
+    run(e, window.location.href);
+});
