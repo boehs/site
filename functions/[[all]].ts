@@ -95,7 +95,7 @@ export async function onRequest(context): PagesFunction {
             .arrayBuffer();
 
         if (json.message == "is") json.message = isT;
-        if (json.color == "undefined") json.color = "";
+        if (json.color == "undefined" || json.color == "null") json.color = "";
 
         return new Response(JSON.stringify(json), {
             headers: {
