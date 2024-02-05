@@ -82,13 +82,16 @@ if (is)
 let cantViewTransition = !document.startViewTransition;
 
 async function _run(e, url) {
-    let res = await (await fetch(url + "?spa")).json();
-    mergeHead(new DOMParser().parseFromString(res.head, "text/html"));
-    document.body.setAttribute("style", res.color);
+    let res = new DOMParser().parseFromString(
+        await (await fetch(url + "?spa")).text(),
+        "text/html",
+    );
+    document.body.setAttribute("style", res.body.getAttribute("style"));
     let main = document.querySelector("main");
-    main.innerHTML = res.main;
-    document.querySelector("i").textContent = res.message;
+    main.innerHTML = res.querySelector("main").innerHTML;
+    document.querySelector("i").replaceWith(res.querySelector("i"));
     spa(main.querySelectorAll("a"));
+    mergeHead(res);
 }
 
 async function run(e, url, isBack) {

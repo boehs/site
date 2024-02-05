@@ -38,70 +38,18 @@ export async function onRequest(context): PagesFunction {
         });
 
     if (context.request.url.endsWith("?spa")) {
-        let json = {
-            main: "",
-            head: "",
-            message: "",
-            color: "",
-        };
-        await res
-            .on("header i", {
-                text({ text }) {
-                    json.message += text;
-                },
-            })
-            .on("head", {
-                text({ text }) {
-                    json.head += text;
-                },
-            })
-            .on("head *", {
+        return res
+            .on(".p-author.h-card,footer", {
                 element(el) {
-                    const maybeAttrs = [...el.attributes]
-                        .map(([k, v]) => ` ${k}="${v}"`)
-                        .join("");
-                    json.head += `<${el.tagName}${maybeAttrs}>`;
-                    try {
-                        el.onEndTag((endTag) => {
-                            json.head += `</${endTag.name}>`;
-                        });
-                    } catch {}
+                    el.remove();
                 },
             })
-            .on("main", {
-                text({ text }) {
-                    json.main += text;
-                },
-            })
-            .on("body", {
+            .on("body > div, header", {
                 element(el) {
-                    json.color += el.getAttribute("style");
+                    el.removeAndKeepContent();
                 },
             })
-            .on("main *", {
-                element(el) {
-                    const maybeAttrs = [...el.attributes]
-                        .map(([k, v]) => ` ${k}="${v}"`)
-                        .join("");
-                    json.main += `<${el.tagName}${maybeAttrs}>`;
-                    try {
-                        el.onEndTag((endTag) => {
-                            json.main += `</${endTag.name}>`;
-                        });
-                    } catch {}
-                },
-            })
-            .transform(response)
-            .arrayBuffer();
-
-        if (json.message == "is") json.message = isT;
-        if (json.color == "undefined" || json.color == "null") json.color = "";
-
-        return new Response(JSON.stringify(json), {
-            headers: {
-                "content-type": "application/json;charset=UTF-8",
-            },
-        });
+            .transform(response);
     }
 
     return res.transform(response);
