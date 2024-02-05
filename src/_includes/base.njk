@@ -20,6 +20,9 @@
             {{ content | safe }}
           </div>
         {% endblock %}
+        {% if hasCodeBlock %}
+          <span id="postlude"/>
+        {% endif %}
       </article>
     </main>
     <footer>

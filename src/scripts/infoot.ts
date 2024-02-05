@@ -24,7 +24,7 @@ fetch(
             }>,
     )
     .then((json) => {
-        document.querySelector("article")!.innerHTML +=
+        document.getElementById("postlude")!.innerHTML +=
             `<hr/><p>You are the <strong>${ordinal(
                 json.pageviews.value + 1,
             )}</strong> visitor to this page!</p>`;
