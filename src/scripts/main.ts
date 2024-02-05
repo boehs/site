@@ -166,10 +166,17 @@ function mergeHead(nextDoc) {
     const oldNodes = getValidNodes(document);
     const nextNodes = getValidNodes(nextDoc);
     const { staleNodes, freshNodes } = partitionNodes(oldNodes, nextNodes);
-
     staleNodes.forEach((node) => node.remove());
-
-    document.head.append(...freshNodes);
+    freshNodes.forEach((node) => {
+        // Per the spec, DOMParser scripts are not executable
+        // https://www.w3.org/TR/2011/WD-html5-20110405/scripting-1.html#script-processing-noscript
+        if (node.tagName == "SCRIPT") {
+            node = document
+                .createRange()
+                .createContextualFragment(node.outerHTML);
+        }
+        document.head.appendChild(node);
+    });
 }
 
 function partitionNodes(oldNodes, nextNodes) {
