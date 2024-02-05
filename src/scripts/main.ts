@@ -112,7 +112,6 @@ async function run(e, url, isBack) {
             window.umami.track((w) => {
                 return {
                     ...w,
-                    title: document.title,
                     url: window.location.pathname,
                 };
             });
@@ -245,12 +244,15 @@ if (cantViewTransition) {
 
         if (location.origin !== toUrl.origin) return;
         if (location.pathname == toUrl.pathname) return;
-        const isBack = isBackNavigation(event);
+        if (event.info === "ignore") return;
 
+        const isBack = isBackNavigation(event);
         event.intercept({
             async handler() {
-                if (event.info === "ignore") return;
                 await run(event, toUrl, isBack);
+                if (event.navigationType == "push") {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                }
             },
         });
     });
