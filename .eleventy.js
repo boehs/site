@@ -31,6 +31,20 @@ import synHl from "@11ty/eleventy-plugin-syntaxhighlight";
 import path from "path";
 import textInject from "./utils/text-inject.js";
 
+const railsEncode = (msg, rails) =>
+    fence(msg.length, rails)
+        .map((i) => msg[i])
+        .join("");
+
+function fence(length, rails) {
+    const cycle_len = 2 * rails - 2;
+    return Array.from({ length: rails }).flatMap((_, r) =>
+        Array.from({ length }, (_, i) => i).filter(
+            (i) => i % cycle_len === r || i % cycle_len === cycle_len - r,
+        ),
+    );
+}
+
 function markdownIt() {
     let options = {
         html: true,
@@ -125,6 +139,14 @@ export default function (eleventyConfig) {
         path.replace(new RegExp(folder + "/"), ""),
     );
     eleventyConfig.addFilter("slugshive", (path) => slugify(path));
+    eleventyConfig.addFilter(
+        "rails",
+        (str, n) =>
+            `<a class="rails" href="${railsEncode(
+                "mailto:" + str,
+                n,
+            )}" n="${n}">${railsEncode(str, n)}</a>`,
+    );
 
     eleventyConfig.addFilter("dateString", (date) =>
         date?.toLocaleDateString(),
@@ -398,7 +420,7 @@ export default function (eleventyConfig) {
                 const result = await esbuild({
                     entryPoints: [inputPath],
                     define: {},
-                    format: "esm",
+                    //format: "esm",
                     platform: "browser",
                     minify: false, // process.env.NODE_ENV === "production",
                     bundle: true,
