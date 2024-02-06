@@ -2,7 +2,7 @@
     "isJobHunting": false,
     "author": {
         "name": "Evan Boehs",
-        "email": "evan@boehs.org",
+        "email": "evan [at] [last name].org",
         "image": "https://github.com/boehs.png",
         "location": {
             "country": "United States"
