@@ -1,7 +1,7 @@
 import { readdir, readFile, writeFile } from "fs/promises";
 
 (await readdir("./anim", "utf8")).forEach(async (path) => {
-    const file = await readFile(`./anim/${path}`, "utf8").split("\n?");
+    const file = (await readFile(`./anim/${path}`, "utf8")).split("\n?");
 
     let _prev = Array.from(
         { length: file[0].split("\n").length - 1 },
@@ -26,5 +26,5 @@ import { readdir, readFile, writeFile } from "fs/promises";
             _new = _new.replaceAll(" ".repeat(i + 2), `${i}`);
         });
 
-    await writeFile(`./html/_data/anim/${path}`, _new);
+    await writeFile(`./src/_data/anim/${path}`, _new);
 });
