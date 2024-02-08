@@ -203,7 +203,8 @@ ul {
     list-style: georgian;
 }
 
-li > p {
+li > p,
+figcaption > p {
     margin-block: 0;
 }
 
