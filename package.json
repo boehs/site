@@ -21,6 +21,7 @@
         "markdown-it-attrs": "^4.1.6",
         "markdown-it-container": "^4.0.0",
         "markdown-it-footnote": "^4.0.0",
+        "markdown-it-image-figures": "^2.1.1",
         "markdown-it-table-of-contents": "^0.6.0",
         "nunjucks": "^3.2.4",
         "p-limit": "^5.0.0",

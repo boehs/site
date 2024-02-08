@@ -1,6 +1,7 @@
 import nunjucks from "nunjucks";
 import sanitize from "sanitize-filename";
 import slugify from "./utils/slugify.js";
+// @ts-ignore
 import pluginRss from "@11ty/eleventy-plugin-rss";
 import { build as esbuild } from "esbuild";
 import * as sass from "sass";
@@ -19,14 +20,22 @@ const flowerFile = readFileSync("src/_data/anim/starynight.txt", "utf8");
 
 import mdIt from "markdown-it";
 
+let gardenStr = "./src/pages/garden/node/**/*.{md,csv}";
+
+// @ts-ignore
 import mdItToC from "markdown-it-table-of-contents";
 import mdItAc from "markdown-it-anchor";
 import mdItAttr from "markdown-it-attrs";
+// @ts-ignore
 import mmdItWl from "@gardeners/markdown-it-wikilinks";
 import mdItC from "markdown-it-container";
+// @ts-ignore
 import mdItOtherAttrLol from "markdown-it-attribution";
 import mdItFootnote from "markdown-it-footnote";
+// @ts-ignore
+import mdItFig from "markdown-it-image-figures";
 
+// @ts-ignore
 import synHl from "@11ty/eleventy-plugin-syntaxhighlight";
 import path from "path";
 import textInject from "./utils/text-inject.js";
@@ -104,7 +113,10 @@ function markdownIt() {
             marker: "--",
             removeMarker: false,
         })
-        .use(mdItFootnote);
+        .use(mdItFootnote)
+        .use(mdItFig, {
+            figcaption: "alt",
+        });
 
     markdownIt.renderer.rules.footnote_block_open = () =>
         "<hr/>\n" +
@@ -156,6 +168,7 @@ export default function (eleventyConfig) {
     eleventyConfig.addFilter("footerBase", () => {
         return (
             "\n".repeat(flowerFile.split("?")[0].split("\n").length - 1) +
+            // @ts-ignore
             flowerFile
                 .match(/([^\n]*)\n\?/)[1]
                 .replace(/[0-9]/g, (match) =>
@@ -168,6 +181,7 @@ export default function (eleventyConfig) {
 
     eleventyConfig.setLibrary("md", markdown);
     eleventyConfig.setFrontMatterParsingOptions({
+        // @ts-ignore
         excerpt: (file, options) =>
             (file.excerpt = file.content.split("\n").slice(0, 4).join(" ")),
     });
@@ -192,9 +206,7 @@ export default function (eleventyConfig) {
     eleventyConfig.addCollection("wtf", function (collectionApi) {
         // ok I lied
         // acess the first post that can get the information we need
-        const firstPost = collectionApi.getFilteredByGlob(
-            "./src/pages/garden/node/*.md",
-        )[0].data;
+        const firstPost = collectionApi.getFilteredByGlob(gardenStr)[0].data;
         // and then pass it to itself to emulate computed
         const links = firstPost.eleventyComputed.brokenLinks(firstPost, true);
         // return as array for pagination
@@ -230,6 +242,7 @@ export default function (eleventyConfig) {
             .filter(function (item) {
                 return (
                     item.outputPath.endsWith("html") &&
+                    item.page.inputPath.endsWith(".md") &&
                     item.data.title != "missing"
                 );
             });
@@ -239,9 +252,7 @@ export default function (eleventyConfig) {
         // lets make a variable to hold our redirects
         let redirects = [];
         // We need to get each post in our posts folder. In my case this is /node
-        const nodes = collectionApi.getFilteredByGlob(
-            "./src/pages/garden/node/*.md",
-        );
+        const nodes = collectionApi.getFilteredByGlob("");
         // next lets iterate over all the nodes
         nodes.forEach((node) =>
             // for each alias
@@ -266,15 +277,14 @@ export default function (eleventyConfig) {
         // lets make a variable to hold our taxonomies and values
         let taxAndValues = [];
         // We need to get each post in our posts folder. In my case this is /node
-        const nodes = collectionApi.getFilteredByGlob(
-            "./src/pages/garden/node/*.md",
-        );
+        const nodes = collectionApi.getFilteredByGlob(gardenStr);
         // next lets iterate over all the nodes
         nodes.forEach((node) => {
             // and then iterate over the taxonomies
             for (const [taxonomy, value] of Object.entries(collectionControl)) {
                 // I don't want to paginate date, for instance
                 // this is why my collectionControl is using objects instead of arrays
+                // @ts-ignore
                 if (value.excludeFromPagination) continue;
                 else if (node?.data?.[taxonomy]) {
                     // this is typeof on drugs
@@ -299,7 +309,9 @@ export default function (eleventyConfig) {
         });
 
         // custom set, sets don't work with objects
+        // @ts-ignore
         const unique = [...new Set(taxAndValues.map(JSON.stringify))].map(
+            // @ts-ignore
             JSON.parse,
         );
 
@@ -308,17 +320,17 @@ export default function (eleventyConfig) {
 
     eleventyConfig.addCollection("taxesDiffer", function (collectionApi) {
         let taxAndValues = [];
-        const nodes = collectionApi.getFilteredByGlob(
-            "./src/pages/garden/node/*.md",
-        );
+        const nodes = collectionApi.getFilteredByGlob(gardenStr);
         const differ =
             Object.keys(collectionControl)[
                 Object.values(collectionControl).findIndex(
+                    // @ts-ignore
                     (value) => value.mode == "differentiator",
                 )
             ];
         nodes.forEach((node) => {
             for (const [taxonomy, value] of Object.entries(collectionControl)) {
+                // @ts-ignore
                 if (value.excludeFromPagination) continue;
                 else if (node?.data?.[taxonomy]) {
                     switch (
@@ -361,7 +373,9 @@ export default function (eleventyConfig) {
         });
 
         // custom set, sets don't work with objects
+        // @ts-ignore
         const unique = [...new Set(taxAndValues.map(JSON.stringify))].map(
+            // @ts-ignore
             JSON.parse,
         );
 
@@ -370,13 +384,12 @@ export default function (eleventyConfig) {
 
     eleventyConfig.addCollection("nestedTax", function (collectionApi) {
         let nestedTax = {};
-        const nodes = collectionApi.getFilteredByGlob(
-            "./src/pages/garden/node/*.md",
-        );
+        const nodes = collectionApi.getFilteredByGlob(gardenStr);
         nodes.forEach((node) => {
             for (const [taxonomy, value] of Object.entries(collectionControl)) {
                 const taxValue = node.data[taxonomy];
 
+                // @ts-ignore
                 if (value.excludeFromPagination) continue;
                 else if (node?.data?.[taxonomy]) {
                     if (!nestedTax[taxonomy]) nestedTax[taxonomy] = {};
@@ -415,6 +428,7 @@ export default function (eleventyConfig) {
     eleventyConfig.addTemplateFormats("ts");
     eleventyConfig.addExtension("ts", {
         outputFileExtension: "js",
+        // @ts-ignore
         compile: async function (inputContent, inputPath) {
             return async (data) => {
                 const result = await esbuild({
@@ -443,6 +457,7 @@ export default function (eleventyConfig) {
             };
         },
         compileOptions: {
+            // @ts-ignore
             permalink: function (contents, inputPath) {
                 return inputPath
                     .replace("src/scripts/", "")
@@ -477,11 +492,54 @@ export default function (eleventyConfig) {
             };
         },
         compileOptions: {
+            // @ts-ignore
             permalink: function (contents, inputPath) {
                 return inputPath
                     .replace("src/styles/", "")
                     .replace("scss", "css");
             },
+        },
+    });
+
+    eleventyConfig.addTemplateFormats("csv");
+    eleventyConfig.addExtension("csv", {
+        outputFileExtension: "html",
+        /**
+         *
+         * @param {string} inputContent
+         * @returns
+         */
+        compile: async (inputContent) => {
+            inputContent = inputContent.trim();
+            let end = "";
+
+            if (inputContent.endsWith("---")) {
+                let split = inputContent.split("\n---\n", 2);
+                end = split[1];
+                inputContent = split[0];
+            }
+
+            let output = "<table><thead>",
+                lines = inputContent.split("\n");
+            for (let i = 0; i < lines.length; i++)
+                if (i > 0) {
+                    output +=
+                        "<tr><td>\n\n" +
+                        lines[i].split(",").join("\n\n</td><td>\n\n") +
+                        "\n\n</td></tr>";
+                } else {
+                    output +=
+                        "<tr><th>" +
+                        lines[i].split(",").join("</th><th>") +
+                        "</th></tr></thead><tbody>";
+                }
+            output += "</tbody></table>";
+            output = markdown.render(output + "\n" + end.slice(0, -3));
+
+            // @ts-ignore
+            return async (d) => {
+                return output;
+            };
         },
     });
 

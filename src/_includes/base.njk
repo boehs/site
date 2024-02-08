@@ -4,7 +4,6 @@
     {% include "partials/meta.njk" %}
   </head>
   <body {% if color and color != config.color %}style="--light: {{color}}"{% endif %}>
-  <div>
     <header>
       {% include "partials/head.njk" %}
     </header>
@@ -28,5 +27,4 @@
     <footer>
       {% include "partials/foot.njk" %}
     </footer>
-  </div>
 </body></html>

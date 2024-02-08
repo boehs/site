@@ -40,6 +40,10 @@
         "garden": {
             "icon": "🪴",
             "description": "A network of color and character, one node alone is nothing, but together beautiful."
+        },
+        "data": {
+            "icon": "📊",
+            "description": "Open source data collected for various nodes"
         }
     }
 }

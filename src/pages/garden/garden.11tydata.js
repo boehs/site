@@ -9,8 +9,9 @@ const wikilinkRegExp = /(?<!!)\[\[([^|]+?)(\|([\s\S]+?))?\]\]/g;
 function backlinksApi(data) {
     const notes = data.collections.all;
     const currentFileSlug = slugshive(
-        data.page.url.match(/\/([^\/]*?)\..+?$/)?.[1] ||
-            data.page.filePathStem.replace("/pages/garden/node/", ""),
+        data.page.url
+            ? data.page.url.replace("/node/", "").replace(".html", "")
+            : data.page.filePathStem.replace("/pages/garden/node/", ""),
     );
 
     let backlinks = [];
@@ -21,11 +22,12 @@ function backlinksApi(data) {
     for (const otherNote of notes) {
         const noteContent = otherNote.rawInput;
         const noteAsLink = slugshive(
-            otherNote.data.page.url.match(/\/([^\/]*?)\..+?$/)?.[1] ||
-                otherNote.data.page.filePathStem.replace(
-                    "/pages/garden/node/",
-                    "",
-                ),
+            otherNote.data.page.url
+                ? data.page.url.replace("/node/", "").replace(".html", "")
+                : otherNote.data.page.filePathStem.replace(
+                      "/pages/garden/node/",
+                      "",
+                  ),
         );
 
         data.internal.exists?.add(noteAsLink);

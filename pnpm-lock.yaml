@@ -47,6 +47,9 @@ dependencies:
   markdown-it-footnote:
     specifier: ^4.0.0
     version: 4.0.0
+  markdown-it-image-figures:
+    specifier: ^2.1.1
+    version: 2.1.1(markdown-it@14.0.0)
   markdown-it-table-of-contents:
     specifier: ^0.6.0
     version: 0.6.0
@@ -1436,6 +1439,15 @@ packages:
 
   /markdown-it-footnote@4.0.0:
     resolution: {integrity: sha512-WYJ7urf+khJYl3DqofQpYfEYkZKbmXmwxQV8c8mO/hGIhgZ1wOe7R4HLFNwqx7TjILbnC98fuyeSsin19JdFcQ==}
+    dev: false
+
+  /markdown-it-image-figures@2.1.1(markdown-it@14.0.0):
+    resolution: {integrity: sha512-mwXSQ2nPeVUzCMIE3HlLvjRioopiqyJLNph0pyx38yf9mpqFDhNGnMpAXF9/A2Xv0oiF2cVyg9xwfF0HNAz05g==}
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      markdown-it: '*'
+    dependencies:
+      markdown-it: 14.0.0
     dev: false
 
   /markdown-it-regexp@0.4.0:

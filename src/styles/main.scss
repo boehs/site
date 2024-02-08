@@ -76,8 +76,9 @@ body {
     align-items: center;
     overflow-wrap: break-word;
     box-sizing: border-box;
+    flex-direction: column;
 
-    & > div {
+    & > * {
         width: min(600px, 100%);
     }
 }
@@ -85,7 +86,8 @@ body {
 // Images
 
 img,
-lite-youtube {
+lite-youtube,
+svg {
     border-radius: $radius;
 }
 
@@ -201,6 +203,10 @@ ul {
     list-style: georgian;
 }
 
+li > p {
+    margin-block: 0;
+}
+
 hr {
     border: none;
     text-align: center;
@@ -301,6 +307,11 @@ dd {
 sup,
 sub {
     font-family: monospace;
+    font-size: 12px;
+
+    &.footnote-ref > a {
+        text-decoration: none;
+    }
 }
 
 // Buttons //
@@ -362,7 +373,8 @@ figure {
     }
     margin-inline: 0;
     figcaption {
-        padding-left: 17px;
+        font-size: 12px;
+        font-family: monospace;
     }
 }
 
