@@ -10,7 +10,6 @@ import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
 
 const collectionControl = require("./src/_data/collectionsControl.json");
-const extraRedirects = require("./src/_config/redirects.json");
 
 import { readFileSync } from "fs";
 const flowerFile = readFileSync("src/_data/anim/starynight.txt", "utf8");
@@ -161,7 +160,7 @@ export default function (eleventyConfig) {
         // lets make a variable to hold our redirects
         let redirects = [];
         // We need to get each post in our posts folder. In my case this is /node
-        const nodes = collectionApi.getFilteredByGlob("");
+        const nodes = collectionApi.getFilteredByGlob(gardenStr);
         // next lets iterate over all the nodes
         nodes.forEach((node) =>
             // for each alias
@@ -171,13 +170,11 @@ export default function (eleventyConfig) {
                     slugify(node.data.page.url),
                     slugify(node.data.page.url).replace(
                         /\/[^\/]*?(\..+)?$/,
-                        `/${slugify(alias)}$1`,
+                        `/${node.data.dontSlug ? alias : slugify(alias)}$1`,
                     ),
                 ]),
             ),
         );
-
-        redirects = [...redirects, ...extraRedirects];
 
         return redirects;
     });
