@@ -7,13 +7,13 @@ permalink: /{{collectionsControl[value[0]].single or value[0] | slugshive}}/{{ v
 eleventyComputed:
   color: "{{tagList[value[0]][value[1]].color}}"
   description: "{{tagList[value[0]][value[1]].description}}"
-  title: "{{collectionsControl[value[0]].single or value[0] | capitalize}}: {{value[1]}}"
+  title: "{{collectionsControl[value[0]].single or value[0] | titleCase }}: {{value[1]}}"
 ---
 {% from "partials/card.njk" import card %}
 {% extends "base.njk" %}
 {% block title %}
 <h1 class="p-name">
-  <a href="/{{ collectionsControl[value[0]].plural or value[0] }}/">{{collectionsControl[value[0]].single or value[0] | capitalize}}</a>: {{value[1]}}
+  <a href="/{{ collectionsControl[value[0]].plural or value[0] }}/">{{collectionsControl[value[0]].single or value[0] | titleCase }}</a>: {{value[1]}}
   <a href="/{{collectionsControl[value[0]].single or value[0] | slugshive}}/{{ value[1] | slugshive }}.xml">
     <img src="/feed.svg"/>
   </a>
@@ -43,7 +43,7 @@ eleventyComputed:
 
 <div class="h-feed">
   {% for location,posts in collections.nestedTax[value[0]][value[1]] | reverse | groupby("data." + tax) %}
-    {% if loop.length != 1 or location != value[1] %}<h2><a href="/{{tax}}/{{location}}">{{location | capitalize}}</a><a href="/{{collectionsControl[value[0]].single or value[0] | slugshive}}/{{ value[1] | slugshive }}.{{location}}.xml"><img src="/feed.svg"/></a></h2>{% endif %}
+    {% if loop.length != 1 or location != value[1] %}<h2><a href="/{{tax}}/{{location}}">{{location | titleCase }}</a><a href="/{{collectionsControl[value[0]].single or value[0] | slugshive}}/{{ value[1] | slugshive }}.{{location}}.xml"><img src="/feed.svg"/></a></h2>{% endif %}
     <ol>
       {% for post in posts %}
         <li>

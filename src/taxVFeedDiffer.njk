@@ -34,7 +34,7 @@ eleventyComputed:
   {% for post in collections.nestedTax[value[0]][value[1]] | reverse %}
   {% if post.data[tax] == value[2] %}
   <entry{%if post.data.color%} style="--light: {{post.data.color}}"{% endif %}>
-    <title>{{ post.data.title }}</title>
+    <title>{{ post.data.title | titleCase }}</title>
     <link href="{{ config.baseurl }}{{ post.url | url }}"/>
     <updated>{{ post.date | dateToRfc3339 }}</updated>
     <id xmlns:xlink="{{ config.baseurl }}{{ post.url | url }}" xlink:type="simple">{{ post.url | url }}</id>
