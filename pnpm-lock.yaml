@@ -47,6 +47,9 @@ dependencies:
   markdown-it-footnote:
     specifier: ^4.0.0
     version: 4.0.0
+  markdown-it-for-inline:
+    specifier: ^2.0.1
+    version: 2.0.1
   markdown-it-image-figures:
     specifier: ^2.1.1
     version: 2.1.1(markdown-it@14.0.0)
@@ -1439,6 +1442,10 @@ packages:
 
   /markdown-it-footnote@4.0.0:
     resolution: {integrity: sha512-WYJ7urf+khJYl3DqofQpYfEYkZKbmXmwxQV8c8mO/hGIhgZ1wOe7R4HLFNwqx7TjILbnC98fuyeSsin19JdFcQ==}
+    dev: false
+
+  /markdown-it-for-inline@2.0.1:
+    resolution: {integrity: sha512-JGOi3/Ohhzehs+1qSA4CkDydmVBtiYi2q2BD//YtTbSK+75InrGJX2MtPq1AdMeC4BV7rwEhq1+3pLnwGbsgzA==}
     dev: false
 
   /markdown-it-image-figures@2.1.1(markdown-it@14.0.0):

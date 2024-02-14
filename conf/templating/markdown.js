@@ -11,6 +11,8 @@ import mdIt from "markdown-it";
 import sanitize from "sanitize-filename";
 import slugify from "../../utils/slugify.js";
 
+import iterator from "markdown-it-for-inline";
+
 export default function markdownIt() {
     let options = {
         html: true,
@@ -73,6 +75,19 @@ export default function markdownIt() {
         .use(mdItFootnote)
         .use(mdItFig, {
             figcaption: "alt",
+        })
+        .use(iterator, "external_url_img", "link_open", function (tokens, idx) {
+            let host = null;
+            try {
+                host = new URL(tokens[idx].attrGet("href"));
+            } catch {}
+            if (host?.hostname != "boehs.org")
+                tokens[idx].attrPush([
+                    "style",
+                    `--url: url("https://v1.indieweb-avatar.11ty.dev/${encodeURIComponent(
+                        `${host?.protocol}//${host?.hostname}`,
+                    )}")`,
+                ]);
         });
 
     markdownIt.renderer.rules.footnote_block_open = () =>
