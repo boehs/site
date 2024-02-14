@@ -35,9 +35,9 @@ eleventyComputed:
   {% if post.data[tax] == value[2] %}
   <entry{%if post.data.color%} style="--light: {{post.data.color}}"{% endif %}>
     <title>{{ post.data.title | titleCase }}</title>
-    <link href="{{ config.baseurl }}{{ post.url | url }}"/>
+    <link href="{{ config.baseurl }}{{ post.url | slugshive }}"/>
     <updated>{{ post.date | dateToRfc3339 }}</updated>
-    <id xmlns:xlink="{{ config.baseurl }}{{ post.url | url }}" xlink:type="simple">{{ post.url | url }}</id>
+    <id xmlns:xlink="{{ config.baseurl }}{{ post.url | slugshive }}" xlink:type="simple">{{ post.url | slugshive }}</id>
     <content type="html">{{ post.url | url }}</content>
     {% if post.data.description %}<summary>{{post.data.description}}</summary>{% endif %}
   </entry>

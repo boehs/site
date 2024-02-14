@@ -100,7 +100,7 @@ export default function (eleventyConfig) {
             );
 
         // Certain words such as initialisms or acronyms should be left uppercase
-        let uppers = ["Id", "Tv"];
+        let uppers = ["Id", "Tv", "Css"];
         for (const upper of uppers)
             str = str.replace(
                 new RegExp("\\b" + upper + "\\b", "g"),
