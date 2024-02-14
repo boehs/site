@@ -244,6 +244,8 @@ if (cantViewTransition) {
 
         if (location.origin !== toUrl.origin) return;
         if (location.pathname == toUrl.pathname) return;
+        // don't run on links to other files
+        if (toUrl.pathname.match(/\.([^\./\?]+)($|\?)/)) return;
         if (event.info === "ignore") return;
 
         const isBack = isBackNavigation(event);
