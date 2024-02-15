@@ -26,13 +26,15 @@ export async function onRequest(context): PagesFunction {
         })
         .on("#needslang", {
             element(element: HTMLSpanElement) {
-                element.setInnerContent(greeting.language);
                 element.removeAttribute("id");
 
                 if (greeting.about) {
-                    element.tagName = "a";
-                    element.setAttribute("title", "teach me something new!");
-                    element.setAttribute("href", greeting.about);
+                    element.setInnerContent(
+                        `<a href="${greeting.about}" title="teach me something new">${greeting.language}</a>`,
+                        { html: true },
+                    );
+                } else {
+                    element.setInnerContent(greeting.language);
                 }
             },
         });

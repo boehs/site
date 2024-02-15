@@ -13,10 +13,7 @@ eleventyComputed:
 {% extends "base.njk" %}
 {% block title %}
 <h1 class="p-name">
-  <a href="/{{ collectionsControl[value[0]].plural or value[0] }}/">{{collectionsControl[value[0]].single or value[0] | titleCase }}</a>: {{value[1]}}
-  <a href="/{{collectionsControl[value[0]].single or value[0] | slugshive}}/{{ value[1] | slugshive }}.xml">
-    <img src="/feed.svg"/>
-  </a>
+  <a href="/{{ collectionsControl[value[0]].plural or value[0] }}/">{{collectionsControl[value[0]].single or value[0] | titleCase }}</a>: {{value[1]}}<a href="/{{collectionsControl[value[0]].single or value[0] | slugshive}}/{{ value[1] | slugshive }}.xml"><img src="/feed.svg"/></a>
 </h1>
 {% endblock%}
 {% set content %}
