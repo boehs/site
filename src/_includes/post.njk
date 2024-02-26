@@ -81,5 +81,5 @@ layout: base.njk
 
 <div style="display: none">
     <a rel="author" class="p-author h-card" href="https://boehs.org">Evan Boehs</a>
-    <a href="{{page.url}}" class="u-url">{{page.url}}</a>
+    <a href="{{page.url | slugshive}}" class="u-url">{{page.url | slugshive}}</a>
 </div>
