@@ -57,8 +57,8 @@ export default function (eleventyConfig) {
     eleventyConfig.addFilter(
         "rails",
         (str, n) =>
-            `<a class="rails" href="${railsEncode(
-                "mailto:" + str,
+            `<a class="rails" href="mailto:${railsEncode(
+                str,
                 n,
             )}" n="${n}">${railsEncode(str, n)}</a>`,
     );

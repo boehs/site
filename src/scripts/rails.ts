@@ -13,6 +13,13 @@ function fence(length, rails) {
     );
 }
 document.querySelectorAll(".rails").forEach((row) => {
-    row.textContent = decode(row.textContent, row.getAttribute("n"));
-    row.href = decode(row.href, row.getAttribute("n"));
+    let n = Number(row.getAttribute("n"));
+    let t = row.textContent;
+    let i = 2;
+    let int = setInterval(() => {
+        row.textContent = decode(t, i);
+        if (n == i) clearInterval(int);
+        i++;
+    }, 100);
+    row.href = "mailto:" + decode(t, n);
 });
