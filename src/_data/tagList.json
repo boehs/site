@@ -33,9 +33,9 @@
             "icon": "🗞️",
             "description": "A fleshed out story, one you just might want to read."
         },
-        "journal": {
-            "icon": "✍️",
-            "description": "From the heart bleeds tales of longing, tales of suffering, and most importantly, tales of hope. From my little sanctuary to yours."
+        "links": {
+            "icon": "🔗",
+            "description": "Things I've found in my crusades around the web, and occasionally my thoughts on them."
         },
         "garden": {
             "icon": "🪴",
