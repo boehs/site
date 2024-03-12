@@ -1,0 +1,25 @@
+# These AI systems do not cite the content they ingest, and are hence exploitative at best
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+# Turnitin generates money by indexing stuff without permission and without benefit to me.
+# For a product against plagiarism, it sure likes profiting off IP.
+
+User-agent: TurnitinBot
+Disallow: /
+
+User-agent: Turnitin
+Disallow: /
