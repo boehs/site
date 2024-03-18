@@ -95,6 +95,7 @@ async function _run(e, url) {
 }
 
 async function run(e, url, isBack) {
+    if (url.match(/\.([^\./\?]+)($|\?)/)) return;
     e.preventDefault();
     if (cantViewTransition) {
         await _run(e, url);
@@ -151,8 +152,10 @@ function spa(links) {
                     ) {
                         window.history.pushState({ url }, "internalLink", url);
                     }
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                    run(e, url, false);
+                    if (!url.match(/\.([^\./\?]+)($|\?)/)) {
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                        run(e, url, false);
+                    }
                 });
             });
     }
@@ -244,8 +247,6 @@ if (cantViewTransition) {
 
         if (location.origin !== toUrl.origin) return;
         if (location.pathname == toUrl.pathname) return;
-        // don't run on links to other files
-        if (toUrl.pathname.match(/\.([^\./\?]+)($|\?)/)) return;
         if (event.info === "ignore") return;
 
         const isBack = isBackNavigation(event);
