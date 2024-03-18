@@ -79,8 +79,6 @@ if (is)
 
 // This SPA code is derived from flamethrower
 
-let cantViewTransition = !document.startViewTransition;
-
 async function _run(e, url) {
     let res = new DOMParser().parseFromString(
         await (await fetch(url + "?spa")).text(),
@@ -90,17 +88,11 @@ async function _run(e, url) {
     let main = document.querySelector("main");
     main.innerHTML = res.querySelector("main").innerHTML;
     document.querySelector("i").replaceWith(res.querySelector("i"));
-    spa(main.querySelectorAll("a"));
     mergeHead(res);
 }
 
 async function run(e, url, isBack) {
-    if (url.match(/\.([^\./\?]+)($|\?)/)) return;
     e.preventDefault();
-    if (cantViewTransition) {
-        await _run(e, url);
-        return;
-    }
     if (isBack) {
         document.documentElement.classList.add("back-transition");
     }
@@ -115,48 +107,6 @@ async function run(e, url, isBack) {
                     ...w,
                     url: window.location.pathname,
                 };
-            });
-    }
-}
-
-function spa(links) {
-    if (cantViewTransition) {
-        Array.from(links)
-            .filter(
-                (node) =>
-                    node.href.includes(document.location.origin) && // on origin url
-                    !node.href.includes("#") && // not an id anchor
-                    node.href !==
-                        (document.location.href ||
-                            document.location.href + "/"), // not current page
-            )
-            .forEach((node) => {
-                const url = node.getAttribute("href");
-                /*node.addEventListener(
-                "pointerdown",
-                () => {
-                    const linkEl = document.createElement("link");
-                    linkEl.rel = "prefetch";
-                    linkEl.href = url + "?spa";
-                    //linkEl.as = "document";
-                    document.head.appendChild(linkEl);
-                },
-                {
-                    once: true,
-                },
-            );*/
-                node.addEventListener("click", (e) => {
-                    if (
-                        !window.history.state ||
-                        window.history.state.url !== url
-                    ) {
-                        window.history.pushState({ url }, "internalLink", url);
-                    }
-                    if (!url.match(/\.([^\./\?]+)($|\?)/)) {
-                        window.scrollTo({ top: 0, behavior: "smooth" });
-                        run(e, url, false);
-                    }
-                });
             });
     }
 }
@@ -219,8 +169,6 @@ function partitionNodes(oldNodes, nextNodes) {
     return { staleNodes, freshNodes };
 }
 
-spa(document.links);
-
 function isBackNavigation(navigateEvent) {
     if (
         navigateEvent.navigationType === "push" ||
@@ -237,14 +185,11 @@ function isBackNavigation(navigateEvent) {
     return false;
 }
 
-if (cantViewTransition) {
-    window.addEventListener("popstate", (e) => {
-        run(e, window.location.href, false);
-    });
-} else {
+if (document.startViewTransition) {
     navigation.addEventListener("navigate", (event) => {
         const toUrl = new URL(event.destination.url);
 
+        if (toUrl.pathname.match(/\.([^\./\?]+)($|\?)/)) return;
         if (location.origin !== toUrl.origin) return;
         if (location.pathname == toUrl.pathname) return;
         if (event.info === "ignore") return;
@@ -252,6 +197,7 @@ if (cantViewTransition) {
         const isBack = isBackNavigation(event);
         event.intercept({
             async handler() {
+                console.log("ran");
                 await run(event, toUrl, isBack);
                 if (event.navigationType == "push") {
                     window.scrollTo({ top: 0, behavior: "smooth" });
