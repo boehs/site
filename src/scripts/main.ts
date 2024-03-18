@@ -197,7 +197,6 @@ if (document.startViewTransition) {
         const isBack = isBackNavigation(event);
         event.intercept({
             async handler() {
-                console.log("ran");
                 await run(event, toUrl, isBack);
                 if (event.navigationType == "push") {
                     window.scrollTo({ top: 0, behavior: "smooth" });
