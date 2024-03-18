@@ -189,10 +189,13 @@ if (document.startViewTransition) {
     navigation.addEventListener("navigate", (event) => {
         const toUrl = new URL(event.destination.url);
 
-        if (toUrl.pathname.match(/\.([^\./\?]+)($|\?)/)) return;
-        if (location.origin !== toUrl.origin) return;
-        if (location.pathname == toUrl.pathname) return;
-        if (event.info === "ignore") return;
+        if (
+            toUrl.pathname.match(/\.([^\./\?]+)($|\?)/) ||
+            location.origin !== toUrl.origin ||
+            location.pathname == toUrl.pathname ||
+            event.info === "ignore"
+        )
+            return;
 
         const isBack = isBackNavigation(event);
         event.intercept({
