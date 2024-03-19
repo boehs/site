@@ -65,7 +65,7 @@ body {
     overflow-wrap: break-word;
     box-sizing: border-box;
     flex-direction: column;
-    font-variation-settings: "opsz" 10;
+    font-variation-settings: "opsz" 9;
 
     & > * {
         width: min(600px, 100%);
@@ -276,7 +276,7 @@ footer {
 }
 
 #postlude strong {
-    font-weight: 800;
+    font-variation-settings: "wght" 800;
 }
 
 article,
