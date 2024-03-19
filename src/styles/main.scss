@@ -1,33 +1,21 @@
 // Fonts //
 
 @font-face {
-    font-family: "spectral";
     src:
-        url("/spectralbold.woff2") format("woff2"),
-        url("/spectralbold.woff") format("woff");
-    font-weight: bold;
+        url("FernVariable-Roman.woff2") format("woff2"),
+        url("FernVariable-Roman.woff") format("woff");
+    font-family: "Fern";
     font-style: normal;
-    font-display: fallback;
+    font-weight: 400 800;
 }
 
 @font-face {
-    font-family: "spectral";
     src:
-        url("/spectralitalic.woff2") format("woff2"),
-        url("/spectralitalic.woff") format("woff");
-    font-weight: normal;
+        url("FernVariable-Italic.woff2") format("woff2"),
+        url("fonts/FernVariable-Italic.woff") format("woff");
+    font-family: "Fern";
     font-style: italic;
-    font-display: fallback;
-}
-
-@font-face {
-    font-family: "spectral";
-    src:
-        url("/spectralregular.woff2") format("woff2"),
-        url("/spectralregular.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-    font-display: fallback;
+    font-weight: 400 800;
 }
 
 // Variables //
@@ -64,7 +52,7 @@ html {
 }
 
 body {
-    font-family: Spectral, serif;
+    font-family: Fern, serif;
     font-size: 1.1rem;
     min-height: 100%;
     margin: 0;
@@ -77,6 +65,7 @@ body {
     overflow-wrap: break-word;
     box-sizing: border-box;
     flex-direction: column;
+    font-variation-settings: "opsz" 10;
 
     & > * {
         width: min(600px, 100%);
@@ -101,6 +90,12 @@ h2 > a > img {
     padding-left: 5px;
     margin-bottom: -2px;
     width: initial;
+}
+
+h1,
+h2,
+h3 {
+    font-variation-settings: "opsz" 12;
 }
 
 // Code //
