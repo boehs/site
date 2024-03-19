@@ -211,7 +211,7 @@ hr {
     text-align: center;
 
     &::after {
-        content: "✲✲✲";
+        content: "✷✷✷";
     }
 }
 
@@ -273,6 +273,10 @@ footer {
     }
 
     view-transition-name: footer;
+}
+
+#postlude strong {
+    font-weight: 800;
 }
 
 article,
