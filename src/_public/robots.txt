@@ -23,3 +23,9 @@ Disallow: /
 
 User-agent: Turnitin
 Disallow: /
+
+# https://boehs.org/node/is-(my)-rss-dead
+# Who knows if it will respect it
+
+User-agent: FriendlyCrawler
+Disallow: /
