@@ -68,6 +68,9 @@ dependencies:
   postcss-csso:
     specifier: ^6.0.1
     version: 6.0.1(postcss@8.4.33)
+  rsslytics:
+    specifier: ^1.0.2
+    version: 1.0.2
   sanitize-filename:
     specifier: ^1.6.3
     version: 1.6.3
@@ -85,6 +88,9 @@ dependencies:
     version: 5.3.3
 
 devDependencies:
+  '@cloudflare/workers-types':
+    specifier: ^4.20240320.1
+    version: 4.20240320.1
   prettier:
     specifier: ^3.1.1
     version: 3.1.1
@@ -215,6 +221,10 @@ packages:
     resolution: {integrity: sha512-Mqt6im1xpb1Ykn3nbcCovWXK3ggywRJa+IXIdoz4wIIK+cvozADH63lexcuPpGS/gJ6/m2JxyyXDyupkMr5DHw==}
     engines: {node: '>=14'}
     dev: false
+
+  /@cloudflare/workers-types@4.20240320.1:
+    resolution: {integrity: sha512-CiYtVpQURPgQqtBKkmOAnfPElVZuD7Xyf1IxKtKp2B4aB9gnooapwJhzeY8c4Ls4u17SgMS0MprOkrgYwzZ6xg==}
+    dev: true
 
   /@esbuild/aix-ppc64@0.19.11:
     resolution: {integrity: sha512-FnzU0LyE3ySQk7UntJO4+qIiQgI7KoODnZg5xzXIrFJlKd2P2gwHsHY4927xj9y5PJmJSzULiUCWmv7iWnNa7g==}
@@ -1874,6 +1884,10 @@ packages:
     dependencies:
       glob: 10.3.10
     dev: true
+
+  /rsslytics@1.0.2:
+    resolution: {integrity: sha512-IruZ2rM3k2MnBc+7soZ/974HDFj8R4JlDrSTFcrq1LgjoPDHOH7L+Y3hd1sv7hLAWjSnmj/FEfHYMdVUb3Tvbg==}
+    dev: false
 
   /run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
