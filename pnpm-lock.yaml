@@ -69,8 +69,8 @@ dependencies:
     specifier: ^6.0.1
     version: 6.0.1(postcss@8.4.33)
   rsslytics:
-    specifier: ^1.0.3
-    version: 1.0.3
+    specifier: ^1.0.4
+    version: 1.0.4
   sanitize-filename:
     specifier: ^1.6.3
     version: 1.6.3
@@ -1885,8 +1885,8 @@ packages:
       glob: 10.3.10
     dev: true
 
-  /rsslytics@1.0.3:
-    resolution: {integrity: sha512-Qg9u7qoHy7HUiaKQvCzEZgHYsQ6xvY6KMQ0W2L8vz6YtZbrflynGy0gkHtNqMPasn7sjwfDT0D92ZrSlb6JkVw==}
+  /rsslytics@1.0.4:
+    resolution: {integrity: sha512-I2NSSSR8CM2S0V6s00XMUmZzaGFQqnQJ1FrEdk+YRb74PKjoN2RoUxsdJ+9IfbvEiyBsGzubtLmVMSPnOB6KTw==}
     dev: false
 
   /run-parallel@1.2.0:
