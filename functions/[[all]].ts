@@ -17,22 +17,24 @@ export async function onRequest(context: EventContext): PagesFunction {
             context.request.url,
             context.request.headers.get("cf-connecting-ip"),
         );
-        await context.env.RSSLYTICS.prepare(
-            `INSERT INTO log (date, readerId, ip, feedUrl, feedId, subscriberCount, readerName, readerVersion, userAgent)
+        if (data != undefined) {
+            await context.env.RSSLYTICS.prepare(
+                `INSERT INTO log (date, readerId, ip, feedUrl, feedId, subscriberCount, readerName, readerVersion, userAgent)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-        )
-            .bind(
-                data.date,
-                data.readerId,
-                data.ip || "",
-                data.feedUrl,
-                data.feedId,
-                data.subscriberCount,
-                data.readerName,
-                data.readerVersion,
-                data.userAgent,
             )
-            .run();
+                .bind(
+                    data.date,
+                    data.readerId,
+                    data.ip || "",
+                    data.feedUrl,
+                    data.feedId,
+                    data.subscriberCount,
+                    data.readerName,
+                    data.readerVersion,
+                    data.userAgent,
+                )
+                .run();
+        }
 
         return response;
     }
