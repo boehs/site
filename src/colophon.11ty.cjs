@@ -28,13 +28,12 @@ class Analytics {
                 .replace(/.\(.\+"domains"\)\|\|/, "")
                 .replace(/"false"!==.\(.\+"auto-track"\)/, "true")
                 .replace(
-                    /`\${.\?.\.replace\(\/\\\/\$\/.*?}(.*)`/,
+                    /`\${.\?.\.replace\(\/\\\/\$\/.*?}(.*?)`/,
                     `"${config.analytics.base}$1"`,
                 )
                 // now h isn't needed
                 .replace(/.=.\.getAttribute\.bind\(.\),/, "");
             // also d = u.currentScript; is not needed but it's too annoying to remove
-
             return (await terser.minify(script)).code;
         } catch (e) {
             return {
