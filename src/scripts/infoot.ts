@@ -45,6 +45,6 @@ function ordinal(n: number) {
         )
         .then((json) => {
             document.querySelector("#postlude > p")!.innerHTML +=
-                ` I'm <a href="{{{this.config.donate}}}" data-umami-event="donate">receiving</a> <strong>$${json.receiving.amount}</strong> per week from <strong>${json.npatrons}</strong> patrons, and my goal is <strong>$${json.goal.amount}</strong>. Feel free to <a href="/contact">contact</a> me with any questions or comments :)`;
+                ` I'm <a href="{{{this.config.donate}}}" data-umami-event="donate" data-umami-event-place="plea">receiving</a> <strong>$${json.receiving.amount}</strong> per week from <strong>${json.npatrons}</strong> patrons, and my goal is <strong>$${json.goal.amount}</strong>. Feel free to <a href="/contact">contact</a> me with any questions or comments :)`;
         });
 })();
