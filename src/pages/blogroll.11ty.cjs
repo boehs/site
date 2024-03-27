@@ -65,7 +65,10 @@ class Blogroll {
                 )
                 .join("");
             res =
-                "<p>Hi!! Welcome to my blogroll! These are the blogs I read, presented in a completely random order (that will change, randomly, from time to time)</p>" +
+                `<p>Hi!! Welcome to my blogroll! These are the blogs I read, presented in a completely random order (that will change, randomly, from time to time).</p>` +
+                (config.blogroll.pins
+                    ? `<p>You should also check out my <a data-umami-event="pins" href="${config.blogroll.pins}">"pins"</a> and <a data-umami-event="links" href="/in/links">monthly links</a>, where I collect interesting content from around the web!</p>`
+                    : "") +
                 res +
                 "<p>Thank you for stopping by! If you know of more great blogs, please do tell &lt;3</p>";
             return res;

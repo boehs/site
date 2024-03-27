@@ -16,7 +16,8 @@
         "pub": "JGBYO4bVg3kZVQUb"
     },
     "blogroll": {
-        "base": "https://flx.boehs.org"
+        "base": "https://flx.boehs.org",
+        "pins": "https://pinboard.in/u:boehs"
     },
     "isServer": false,
     "donate": "https://liberapay.com/e",
