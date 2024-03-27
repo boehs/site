@@ -4,38 +4,43 @@
         <dt><strong>Main</strong></dt>
         <dd>
             <ul>
-                <li><a href="/" data-umami-event="home" data-umami-event-place="footer" style="--light: {{ 0 | rainbow(9) }}">Home</a></li>
-                <li><a href="/contact" data-umami-event="contact" style="--light: {{ 1 | rainbow(9) }}">Contact</a></li>
+                <li><a href="/" data-umami-event="home" data-umami-event-place="footer" style="--light: {{ 0 | rainbow(10) }}">Home</a></li>
+                <li><a href="/contact" data-umami-event="contact" style="--light: {{ 1 | rainbow(10) }}">Contact</a></li>
                 {% if config.isJobHunting %}
                     <li><a href="/resume"><s>Resume</s></a></li>
                 {% endif %}
-                <li><a href="/in/blog" data-umami-event="blog" style="--light: {{ 2 | rainbow(9) }}">Blog</a></li>
+                <li><a href="/in/blog" data-umami-event="blog" style="--light: {{ 2 | rainbow(10) }}">Blog</a></li>
             </ul>
         </dd>
         <dt><strong>Links</strong></dt>
         <dd>
             <ul>
                 <li>
-                    <a href="https://github.com/boehs" data-umami-event="github" rel="me" style="--light: {{ 3 | rainbow(9) }}">GitHub</a>
+                    <a href="https://github.com/boehs" data-umami-event="github" rel="me" style="--light: {{ 3 | rainbow(10) }}">GitHub</a>
                 </li>
                 <li>
-                    <a href="https://social.coop/@eb" style="--light: {{ 4 | rainbow(9) }}" data-umami-event="mastodon" rel="me">Mastodon</a>
+                    <a href="https://social.coop/@eb" style="--light: {{ 4 | rainbow(10) }}" data-umami-event="mastodon" rel="me">Mastodon</a>
                 </li>
+                {% if config.donate %}
+                <li>
+                    <a style="--light: {{ 5 | rainbow(10) }}" href="{{config.donate}}" data-umami-event="donate" data-umami-event-place="footer">Donate</a>
+                </li>
+                {% endif %}
             </ul>
         </dd>
         <dt><strong>Meta</strong></dt>
         <dd>
             <ul>
                 <li>
-                    <a style="--light: {{ 5 | rainbow(9) }}" data-umami-event="webring" data-umami-event-button="prev" href="https://xn--sr8hvo.ws/%F0%9F%86%8E%F0%9F%88%B6%E2%8F%B0/previous">⤺</a> 🕸💍 <a style="--light: {{ 6 | rainbow(9) }}" data-umami-event="webring" data-umami-event-button="next" href="https://xn--sr8hvo.ws/%F0%9F%86%8E%F0%9F%88%B6%E2%8F%B0/next">⤻</a>
+                    <a style="--light: {{ 6 | rainbow(10) }}" data-umami-event="webring" data-umami-event-button="prev" href="https://xn--sr8hvo.ws/%F0%9F%86%8E%F0%9F%88%B6%E2%8F%B0/previous">⤺</a> 🕸💍 <a style="--light: {{ 6 | rainbow(9) }}" data-umami-event="webring" data-umami-event-button="next" href="https://xn--sr8hvo.ws/%F0%9F%86%8E%F0%9F%88%B6%E2%8F%B0/next">⤻</a>
                 </li>
-                {% if config.donate %}
-                    <li>
-                        <a style="--light: {{ 7 | rainbow(9) }}" href="{{config.donate}}" data-umami-event="donate" data-umami-event-place="footer">Donate</a>
-                    </li>
+                {% if config.blogroll %}
+                <li>
+                    <a style="--light: {{ 7 | rainbow(10) }}" href="/blogroll" data-umami-event="blogroll">Blogroll</a>
+                </li>
                 {% endif %}
                 {% if config.analytics.pub %}
-                    <li><a style="--light: {{ 8 | rainbow(9) }}" href="{{config.analytics.base}}/share/{{config.analytics.pub}}" data-umami-event="analytics">Analytics</a></li>
+                    <li><a style="--light: {{ 8 | rainbow(10) }}" href="{{config.analytics.base}}/share/{{config.analytics.pub}}" data-umami-event="analytics">Analytics</a></li>
                 {% endif %}
             </ul>
         </dd>

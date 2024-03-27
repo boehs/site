@@ -197,7 +197,8 @@ export default function (eleventyConfig) {
             .filter(function (item) {
                 return (
                     item.outputPath.endsWith("html") &&
-                    item.page.inputPath.endsWith(".md") &&
+                    (item.page.inputPath.endsWith(".md") ||
+                        item.page.inputPath.endsWith("11ty.cjs")) &&
                     item.data.title != "missing"
                 );
             });

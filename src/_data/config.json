@@ -15,6 +15,9 @@
         "analytics": "<script defer src=\"/colophon.js\"></script>",
         "pub": "JGBYO4bVg3kZVQUb"
     },
+    "blogroll": {
+        "base": "https://flx.boehs.org"
+    },
     "isServer": false,
     "donate": "https://liberapay.com/e",
     "color": "#0a74a0",
