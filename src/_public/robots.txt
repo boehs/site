@@ -1,9 +1,18 @@
 # These AI systems do not cite the content they ingest, and are hence exploitative at best
+# Boehs.org does not permit usage incl. but not limited to: for large language
+# models (LLMs), machine learning and/or artificial intelligence-related
+# purposes; and/or with any of the aforementioned technologies
 
 User-agent: GPTBot
 Disallow: /
 
+User-agent: ChatGPT-User
+Disallow: /
+
 User-agent: cohere-ai
+Disallow: /
+
+User-agent: Google-Extended
 Disallow: /
 
 User-agent: ClaudeBot
@@ -13,6 +22,12 @@ User-agent: Claude-Web
 Disallow: /
 
 User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: CCBot
 Disallow: /
 
 # Turnitin generates money by indexing stuff without permission and without benefit to me.
