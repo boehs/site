@@ -87,19 +87,13 @@ body {
 
 img,
 lite-youtube,
-svg,
-iframe {
+svg {
     border-radius: $radius;
 }
 
 nav,
-img,
-iframe {
+img {
     width: 100%;
-}
-
-iframe {
-    border: none;
 }
 
 h1 > a > img,
@@ -118,7 +112,12 @@ code,
     white-space: pre-wrap;
 }
 
-:not(footer) > pre {
+.mastodon-embed {
+    border-radius: $radius;
+}
+
+:not(footer) > pre,
+.mastodon-embed {
     padding: 10px;
     border: 2px solid var(--border);
 }

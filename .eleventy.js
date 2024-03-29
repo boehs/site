@@ -22,6 +22,8 @@ import scss from "./conf/templating/scss.js";
 import markdownIt from "./conf/templating/markdown.js";
 import csv from "./conf/templating/csv.js";
 
+import { embedMastodon } from "./conf/components/mastodon.js";
+
 const railsEncode = (msg, rails) =>
     fence(msg.length, rails)
         .map((i) => msg[i])
@@ -118,6 +120,8 @@ export default function (eleventyConfig) {
         const data = readFileSync(`./src/pages/garden/node/Assets/${name}.svg`);
         return data.toString("utf-8");
     });
+
+    eleventyConfig.addAsyncShortcode("embedMastodon", embedMastodon);
 
     // sorry
     eleventyConfig.addFilter("footerBase", () => {
