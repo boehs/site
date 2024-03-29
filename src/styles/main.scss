@@ -87,13 +87,19 @@ body {
 
 img,
 lite-youtube,
-svg {
+svg,
+iframe {
     border-radius: $radius;
 }
 
 nav,
-img {
+img,
+iframe {
     width: 100%;
+}
+
+iframe {
+    border: none;
 }
 
 h1 > a > img,
