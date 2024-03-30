@@ -1,18 +1,23 @@
-async function embedMastodon(idOrLink, overwriteMode) {
+/**!
+ * Copyright 2024 Evan Boehs
+ *
+ * Use of this source code is governed by an
+ * MIT-style license that can be found at
+ * https://opensource.org/licenses/MIT.
+ */
+
+async function embedMastodon(idOrLink) {
     let mastodonLinkOrId =
         /(?:https:\/\/)?([\w\d\-]*?.?[\w\d\-]*.[a-z]*\/@[\w\d_]*(?:@[\w\d]*?.?[\w\d]*.[a-z]*)?\/)?(\d*)/gim;
 
     const [fullMatch, remoteLink, id] = mastodonLinkOrId.exec(idOrLink);
 
     if (!fullMatch) {
-        console.log(
-            `Plugin Embed Mastodon: ${idOrLink} seems to be no valid Mastodon link/ID.`,
-        );
-
+        console.log(`${idOrLink} seems to be no valid Mastodon link/ID.`);
         return "";
     }
 
-    return await createPostHTML(id, idOrLink, {});
+    return await createPostHTML(id, idOrLink);
 }
 
 export { embedMastodon };
@@ -28,7 +33,7 @@ function parseTimestamp(dateString) {
     }).format(new Date(dateString));
 }
 
-async function createPostHTML(id, remoteLink, options) {
+async function createPostHTML(id, remoteLink) {
     let url = new URL(remoteLink);
     let url2 = `https://${url.host}/api/v1/statuses/${id}`;
     let res = await fetch(url2);
