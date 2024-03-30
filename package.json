@@ -28,7 +28,7 @@
         "p-limit": "^5.0.0",
         "postcss": "^8.4.33",
         "postcss-csso": "^6.0.1",
-        "rsslytics": "^1.1.0",
+        "rsslytics": "^1.1.1",
         "sanitize-filename": "^1.6.3",
         "sass": "1.69.7",
         "satori": "^0.10.13",
