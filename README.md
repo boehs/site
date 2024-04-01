@@ -15,7 +15,7 @@ No taxonomies, be that tags, dates, or "in" properties, are hardcoded. That does
 
 ## Contributing
 
-Feel free to do whatever the fuck you want, provided you abide by the
+Feel free to do whatever the heck you want, provided you abide by the
 included LICENSE.md file. This includes adding pages, squashing bugs, and
 tiny improvements. Anything really.
 
