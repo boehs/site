@@ -48,6 +48,15 @@ export async function onRequest(context: EventContext): PagesFunction {
                 element.setInnerContent(isT);
             },
         })
+        .on("header .p-name > strong", {
+            element(element) {
+                let lang: string | undefined =
+                    context.request.headers.get("Accept-Language");
+                if (lang && lang.startsWith("ja")) {
+                    element.setInnerContent("エバン ボエス");
+                }
+            },
+        })
         .on(".needstitle", {
             element(element: HTMLSpanElement) {
                 element.setInnerContent(greeting.hello + " 👋");
