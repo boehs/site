@@ -42,7 +42,7 @@ No taxonomies, be that tags, dates, or "in" properties, are hardcoded. That does
               └─────────────────────────────────┘                └─────────────────────┘
 ```
 
-# Building
+### Building
 
 When you clone this repository, you should run `git clone --recurse-submodules https://github.com/boehs/site`, as my content [lives](https://git.sr.ht/~boehs/oasis) on sourcehut. Please note this content is not licensed under AGPL. It is not licensed, unless otherwise noted. If you already cloned it, run the following commands:
 
