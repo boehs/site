@@ -3,8 +3,7 @@
         "evergreen": {
             "icon": "🌲",
             "description": "Always growing, always green, and always calm, evergreen nodes are slowly updated over time.",
-            "color": "#068177",
-            "showOnPost": true
+            "color": "#068177"
         },
         "archived": {
             "icon": "🗄️",
@@ -14,13 +13,13 @@
         },
         "unstable": {
             "icon": "😖",
-            "description": "Updating at the speed of light, blink once and a word could be gone! These nodes are eratic, unstable, dangerous, but that's why they are fun.",
+            "description": "Updating at the speed of light, blink once and a word could be gone! These nodes are erratic, unstable, and dangerous, but that's why they are fun.",
             "showOnPost": true,
             "color": "#d9bd56"
         },
         "sunset": {
             "icon": "🌄",
-            "description": "All good things must come to an end, but that's a good thing. The end of a day means the start of a new one. Sunset posts were once evergreens, now ready to give life to new pages",
+            "description": "All good things must come to an end, but that's a good thing. The end of a day means the start of a new one. Sunset posts were once evergreens, but now they are ready to give life to new pages",
             "color": "#FD5E53"
         },
         "seed": {
