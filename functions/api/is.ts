@@ -38,6 +38,13 @@ export const is = [
     "petting the dog",
     "lost in thought",
     "charting waters",
+    "locking in",
+    "kickflippin",
+    "flying too close to the sun",
+    "tempting fate",
+    "pushing luck",
+    "living dangerously",
+    "shooting at the stars",
 ];
 
 export function onRequestGet(context) {
