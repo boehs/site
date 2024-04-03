@@ -79,6 +79,19 @@ layout: base.njk
     </ul>
 {% endif %}
 
+<h2>💬 Discuss</h2>
+<div id="comments" style="
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+"><div style="
+    --base: 0;
+"><span>🦞</span>Lobste.rs</div><div style="
+    --base: 25;
+"><span>📰</span>HN</div><div style="
+    --base: 230;
+"><span>🐘</span>Mastodon</div></div>
+
 <div style="display: none">
     <a rel="author" class="p-author h-card" href="https://boehs.org">Evan Boehs</a>
     <a href="{{page.url | slugshive}}" class="u-url">{{page.url | slugshive}}</a>

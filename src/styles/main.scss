@@ -522,3 +522,26 @@ blockquote {
 .back-transition::view-transition-new(main) {
     animation-name: fade-in, slide-from-left;
 }
+
+div#comments > div {
+    flex: 1;
+    background: hsl(var(--base), 60%, 84%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 75px;
+    border-radius: 4px;
+    font-size: 25px;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+}
+
+div#comments > div > span {
+    position: absolute;
+    left: -10px;
+    top: -60px;
+    font-size: 120px;
+    transform: rotate(-45deg);
+    opacity: 0.3;
+}
