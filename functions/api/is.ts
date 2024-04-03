@@ -38,6 +38,7 @@ export const is = [
     "petting the dog",
     "lost in thought",
     "charting waters",
+    "blogging about xz",
 ];
 
 export function onRequestGet(context) {
