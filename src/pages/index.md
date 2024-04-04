@@ -2,6 +2,8 @@
 notitle: true
 title: Evan Boehs
 description: Hello. It's me.
+headInject: |
+    <link rel="alternate" type="application/atom+xml" title="Evan Boehs in the blog" href="/in/blog.xml" />
 ---
 
 {% assign hello = deets.greatings | random %}
