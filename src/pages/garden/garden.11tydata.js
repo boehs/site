@@ -79,6 +79,9 @@ export default {
     layout: "post.njk",
     in: "garden",
     hasCodeBlock: true,
+    structuredData: {
+        type: "BlogPosting",
+    },
     permalink:
         '{{ page.filePathStem | dropContentFolder: "pages/garden" | slugshive}}.html',
     eleventyComputed: {

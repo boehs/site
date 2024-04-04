@@ -32,7 +32,7 @@ layout: base.njk
                 </ul>
             {% elseif frontmatter | getType == 'date' %}
                 {# hack #}
-                <span {% if settings.class %}class="{{settings.class}}"{% endif %}>{{page.date | dateString }}</span>
+                <span itemprop="datePublished" content="{{page.date}}" {% if settings.class %}class="{{settings.class}}"{% endif %}>{{page.date | dateString }}</span>
             {% elseif collectionsControl[collection].excludeFromPagination %}
                 <span {% if settings.class %}class="{{settings.class}}"{% endif %}>{{frontmatter}}</span>
             {% else %}
@@ -80,6 +80,6 @@ layout: base.njk
 {% endif %}
 
 <div style="display: none">
-    <a rel="author" class="p-author h-card" href="https://boehs.org">Evan Boehs</a>
+    <a rel="author" itemprop="author" class="p-author h-card"  href="https://boehs.org">Evan Boehs</a>
     <a href="{{page.url | slugshive}}" class="u-url">{{page.url | slugshive}}</a>
 </div>

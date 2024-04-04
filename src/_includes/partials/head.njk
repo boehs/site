@@ -1,12 +1,30 @@
-<span class="p-author h-card">
-    <a href="/" class="lighter p-name" data-umami-event="home" data-umami-event-place="header">
-        <strong>{{config.author.name}}</strong>
+<span
+    class="p-author h-card"
+    itemprop="author"
+    itemscope
+    itemtype="https://schema.org/Person"
+>
+    <a
+        href="/"
+        class="lighter p-name"
+        data-umami-event="home"
+        data-umami-event-place="header"
+        itemprop="url"
+    >
+        <strong itemprop="name">{{ config.author.name }}</strong>
     </a>
     <a class="u-url" rel="me" href="{{ config.baseurl }}">website</a>
     <a rel="me" href="https://social.coop/@eb">Mastodon</a>
-    <a class="u-key" rel="pgpkey" type="application/pgp-keys" href="/key.pub">PGP Key</a>
+    <a class="u-key" rel="pgpkey" type="application/pgp-keys" href="/key.pub"
+        >PGP Key</a
+    >
     <a class="u-email" href="mailto:{{ config.author.email }}">email</a>
-    <img class="u-photo" src="{{config.author.image}}" alt="A drawing of an astronaut in space" loading="lazy"/>
-    <span class="p-country-name">{{config.author.location.country}}</span>
+    <img
+        class="u-photo"
+        src="{{ config.author.image }}"
+        alt="A drawing of an astronaut in space"
+        loading="lazy"
+    />
+    <span class="p-country-name">{{ config.author.location.country }}</span>
 </span>
-<i {% if not is %}id="is"{% endif %} data-umami-event="is">is {{ is }}</i>
+<i {% if not is %}id="is" {% endif %} data-umami-event="is">is {{ is }}</i>

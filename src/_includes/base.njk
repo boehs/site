@@ -8,11 +8,11 @@
       {% include "partials/head.njk" %}
     </header>
     <main>
-      <article class="h-entry">
+      <article class="h-entry" {% if date and structuredData.type %} itemscope itemtype="https://schema.org/{{structuredData.type}}" {% endif %}>
         {% block main %}
           {% if title and not notitle %}
             {% block title %}
-              <h1 class="p-name">{{ title | titleCase }}</h1>
+              <h1 class="p-name" itemprop="headline">{{ title | titleCase }}</h1>
             {% endblock %}
           {% endif %}
           <div class="e-content">
