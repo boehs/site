@@ -79,7 +79,7 @@ if (is)
 
 // This SPA code is derived from flamethrower
 
-async function _run(e, url) {
+/*async function _run(e, url) {
     let res = new DOMParser().parseFromString(
         await (await fetch(url + "?spa")).text(),
         "text/html",
@@ -207,4 +207,4 @@ if (document.startViewTransition) {
             },
         });
     });
-}
+}*/
