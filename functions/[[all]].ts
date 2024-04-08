@@ -11,6 +11,15 @@ export async function onRequest(context: EventContext): PagesFunction {
 
     const response = await next();
 
+    let tz = new Date()
+        .toLocaleString("en", {
+            day: "numeric",
+            month: "numeric",
+            timeZone: context.request.cf.timezone || "UTC",
+        })
+        .split("/");
+    let isApr9 = tz[0] == "4" && tz[1] == "9";
+
     if (context.request.url.endsWith(".xml")) {
         let data = countRss(
             context.request.headers.get("User-Agent"),
@@ -43,6 +52,35 @@ export async function onRequest(context: EventContext): PagesFunction {
     let isT = "is " + is[Math.floor(Math.random() * is.length)];
 
     let res = new HTMLRewriter()
+        .on('link[rel="stylesheet"]', {
+            element(element) {
+                if (isApr9) {
+                    element.remove();
+                }
+            },
+        })
+        .on("#apr9ph", {
+            element(element) {
+                if (isApr9) {
+                    element.setInnerContent(
+                        `<p>
+                    <strong>
+                        This page is deliberately unstyled on April 9th, as part of
+                        <a href="https://css-naked-day.github.io/2024.html">CSS Naked Day</a>!
+                    </strong>
+                    The objective is to draw attention to schematic HTML, which is critical to
+                    the quality and accessibility of the web we share. If you want CSS, click
+                    <button
+                        onclick="document.head.innerHTML+=\`<link rel='stylesheet' href='/main.css'/>\`"
+                    >
+                        here
+                    </button>
+                </p>`,
+                        { html: true },
+                    );
+                } else element.remove();
+            },
+        })
         .on("i#is", {
             element(element) {
                 element.setInnerContent(isT);

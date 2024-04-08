@@ -1,16 +1,4 @@
-<p>
-    <strong>
-        This page is deliberately unstyled on April 9th, as part of
-        <a href="https://css-naked-day.github.io/2024.html">CSS Naked Day</a>!
-    </strong>
-    The objective is to draw attention to schematic HTML, which is critical to
-    the quality and accessibility of the web we share. If you want CSS, click
-    <button
-        onclick="document.head.innerHTML+=`<link rel='stylesheet' href='/main.css'/>`"
-    >
-        here
-    </button>
-</p>
+<p id="apr9ph"></p>
 <span class="p-author h-card" data-nosnippet>
     <a
         href="/"
@@ -20,7 +8,6 @@
     >
         <strong>{{ config.author.name }}</strong>
     </a>
-    <i {% if not is %}id="is" {% endif %} data-umami-event="is">is {{ is }}</i>
     <a class="u-email" href="mailto:{{ config.author.email }}">email</a>
     <img
         class="u-photo"
@@ -33,3 +20,4 @@
     />
     <span class="p-country-name">{{ config.author.location.country }}</span>
 </span>
+<i {% if not is %}id="is" {% endif %} data-umami-event="is">is {{ is }}</i>
