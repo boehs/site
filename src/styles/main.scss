@@ -250,12 +250,8 @@ nav > dl,
     }
 }
 
-.h-card > :not(.p-name, #is) {
+.h-card > :not(.p-name) {
     display: none;
-}
-
-#is {
-    display: block;
 }
 
 header {
