@@ -12,7 +12,7 @@
         {% block main %}
           {% if title and not notitle %}
             {% block title %}
-              <h1 class="p-name" itemprop="headline">{{ title | titleCase }}</h1>
+              <h1 class="p-name" itemprop="headline">{{ title }}</h1>
             {% endblock %}
           {% endif %}
           <div class="e-content">

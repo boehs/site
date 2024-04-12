@@ -1,16 +1,16 @@
 {
     "state": {
         "class": "p-category",
-        "plural": "states"
+        "plural": "States"
     },
     "in": {
         "mode": "differentiator",
         "class": "p-category",
-        "plural": "locations"
+        "plural": "Locations"
     },
     "tags": {
         "class": "p-category",
-        "single": "tag"
+        "single": "Tag"
     },
     "date": {
         "excludeFromPagination": true,
