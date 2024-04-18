@@ -27,24 +27,6 @@ function ordinal(n: number) {
             document.getElementById("postlude")!.innerHTML +=
                 `<hr/><p>You are the <strong>${ordinal(
                     json.pageviews.value + 1,
-                )}</strong> visitor to this page!</p>`;
-        });
-
-    fetch("{{{this.config.donate}}}/public.json")
-        .then(
-            (res) =>
-                res.json() as Promise<{
-                    goal: {
-                        amount: string;
-                    };
-                    npatrons: number;
-                    receiving: {
-                        amount: string;
-                    };
-                }>,
-        )
-        .then((json) => {
-            document.querySelector("#postlude > p")!.innerHTML +=
-                `Your support is integral to my work. Consider donating via <a href="{{{this.config.donate}}}" data-umami-event="donate" data-umami-event-place="plea">Liberapay</a> or <a href="https://ko-fi.com/evan" data-umami-event="donate" data-umami-event-place="plea-kofi">Ko-fi</a>. Feel free to <a href="/contact">contact</a> me with any questions or comments :)`;
+                )}</strong> visitor to this page! Your support is integral to my work. Consider donating via <a href="{{{this.config.donate}}}" data-umami-event="donate" data-umami-event-place="plea">Liberapay</a> or <a href="https://ko-fi.com/evan" data-umami-event="donate" data-umami-event-place="plea-kofi">Ko-fi</a>. Feel free to <a href="/contact">contact</a> me with any questions or comments :)</p>`;
         });
 })();
