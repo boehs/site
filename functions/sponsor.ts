@@ -9,7 +9,9 @@ export async function onRequest(context: EventContext): PagesFunction {
     const response = await next();
 
     let api = await fetch(
-        `${cfg.analytics.base}/api/websites/${cfg.analytics.id}/stats`,
+        `${cfg.analytics.base}/api/websites/${cfg.analytics.id}/stats?startAt=${
+            Date.now() - 60 * 60 * 24 * 30 * 1000
+        }&endAt=${Date.now()}`,
         {
             headers: {
                 "X-Umami-Share-Token": cfg.analytics.pub,
