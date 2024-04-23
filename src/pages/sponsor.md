@@ -1,5 +1,6 @@
 ---
 title: Corporate Sponsorships
+is: ready to meet you
 ---
 
 Hello! If your company has derived significant value from my work, sponsorships might be a more appealing option than individual donations. A sponsorship will place a message from your company prominently near the top of all articles, for the duration of a week. In the past month, boehs.org has received <b id="viewcount"></b> views. Sponsorships are currently **$300** a week. Here is an example of what you will get:
