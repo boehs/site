@@ -27,6 +27,6 @@ function ordinal(n: number) {
             document.getElementById("postlude")!.innerHTML +=
                 `<hr/><p>You are the <strong>${ordinal(
                     json.pageviews.value + 1,
-                )}</strong> visitor to this page! Your support is integral to my work. Consider donating via <strong><a href="{{{this.config.donate}}}" data-umami-event="donate" data-umami-event-place="plea">Liberapay</a></strong> or <strong><a href="https://ko-fi.com/evan" data-umami-event="donate" data-umami-event-place="plea-kofi">Ko-fi</a></strong>. Feel free to <a href="/contact">contact</a> me with any questions or comments :)</p>`;
+                )}</strong> visitor to this page! Your support is integral to my work. Consider donating via <strong><a href="{{{this.config.donate}}}" data-umami-event="donate" data-umami-event-place="plea">Liberapay</a></strong> or <strong><a href="https://ko-fi.com/evan" data-umami-event="donate" data-umami-event-place="plea-kofi">Ko-fi</a></strong>, or <strong><a href="/sponsor" data-umami-event="donate" data-umami-event-place="plea-sponsor">sponsoring</a></strong> this site. Feel free to <a href="/contact">contact</a> me with any questions or comments :)</p>`;
         });
 })();
