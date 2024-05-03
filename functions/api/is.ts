@@ -45,6 +45,8 @@ export const is = [
     "pushing luck",
     "living dangerously",
     "shooting at the stars",
+    "finally free",
+    "only going up",
 ];
 
 export function onRequestGet(context) {
