@@ -51,9 +51,10 @@ export async function onRequest(context: EventContext): PagesFunction {
             },
         });
 
-        context.waitUntil(cache.put(cacheKey, response.clone()));
+        let re = res.transform(response);
+        context.waitUntil(cache.put(cacheKey, re.clone()));
 
-        return res.transform(response);
+        return re;
     }
 
     return response;
