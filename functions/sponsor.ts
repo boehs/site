@@ -55,4 +55,6 @@ export async function onRequest(context: EventContext): PagesFunction {
 
         return res.transform(response);
     }
+
+    return response;
 }
