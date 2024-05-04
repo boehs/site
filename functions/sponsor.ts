@@ -6,7 +6,11 @@ export async function onRequest(context: EventContext): PagesFunction {
         next, // used for middleware or to fetch assets
     } = context;
 
-    const response = await next();
+    const response: Response = await next();
+    response.headers.set(
+        "Cache-Control",
+        "public, max-age=86400, stale-while-revalidate=59",
+    );
     let day = new Date();
     let api = await fetch(
         `${cfg.analytics.base}/api/websites/${cfg.analytics.id}/stats?startAt=${
