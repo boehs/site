@@ -33,7 +33,7 @@ export async function onRequest(context: EventContext): PagesFunction {
                 cacheEverything: true,
             },
         });
-        context.waitUntil(cache.put(cacheKey, api));
+        context.waitUntil(cache.put(cacheKey, api.clone()));
     }
 
     const api2: {
