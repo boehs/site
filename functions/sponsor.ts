@@ -6,10 +6,10 @@ export async function onRequest(context: EventContext): PagesFunction {
         next, // used for middleware or to fetch assets
     } = context;
 
-    const cacheUrl = new URL(request.url);
+    const cacheUrl = new URL(context.request.url);
 
     // Construct the cache key from the cache URL
-    const cacheKey = new Request(cacheUrl.toString(), request);
+    const cacheKey = new Request(cacheUrl.toString(), context.request);
     const cache = caches.default;
 
     let response = await cache.match(cacheKey);
