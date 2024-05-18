@@ -87,12 +87,14 @@ body {
 
 img,
 lite-youtube,
-svg {
+svg,
+video {
     border-radius: $radius;
 }
 
 nav,
-img {
+img,
+video {
     width: 100%;
 }
 
