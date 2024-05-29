@@ -11,7 +11,7 @@ This website is my `indieweb`-enabled `digital garden` with `dynamic taxonomies`
 I like to think this website is pretty cool, I've taken great care to design
 it in such a way that it is _very_ flexible (although mind that the stylesheets are heavily customized)
 
-No taxonomies, be that tags, dates, or "in" properties, are hardcoded. That does not mean nothing is hardcoded though. 11ty does hot handle taxonomies in a very good way, so this introduces dependence on `collectionsControl.json` and `tagList.json`
+No taxonomies, be that tags, dates, or "in" properties, are hardcoded. Tbh I think I got lazy and started hard coding my social media in places but thats easy to change.
 
 ### Architecture
 
