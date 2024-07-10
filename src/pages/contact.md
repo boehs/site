@@ -10,6 +10,8 @@ headInject: |
 -   Hack into the **matrix**: `⟨@ewwn:matrix.org⟩`
 -   Go old school with **irc**: `⟨eb@Libera.Chat⟩`
 
+Please note: I will only be able to respond intermittently over the summer. Particularly, until July 16th.
+
 <noscript>
 
 Hello! Your JavaScript did not load, and now my email is looking pretty funky. Assuming you are not a robot, and that you want to email me, please take the email displayed, and then apply the rail fence cipher with `6` rails.
