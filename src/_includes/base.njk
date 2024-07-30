@@ -4,6 +4,7 @@
     {% include "partials/meta.njk" %}
   </head>
   <body {% if color and color != config.color %}style="--light: {{color}}"{% endif %}>
+    <span id="vote">Democracy is on the ballot. <a href="https://iwillvote.com" data-umami-event="vote">For my future, vote.</a></span>
     <header>
       {% include "partials/head.njk" %}
     </header>

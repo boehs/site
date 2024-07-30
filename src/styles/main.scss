@@ -524,3 +524,32 @@ blockquote {
 .back-transition::view-transition-new(main) {
     animation-name: fade-in, slide-from-left;
 }
+
+#vote {
+    background: linear-gradient(
+        90deg,
+        #c73e39,
+        #ce3658,
+        #cb3879,
+        #bf4498,
+        #a855b4,
+        #8565ca,
+        #5074d9
+    );
+    position: absolute;
+    top: 0;
+    padding: 7px;
+    left: 0;
+    font-size: 16px;
+    width: 100%;
+    color: white;
+    text-align: center;
+    border-bottom: rgba(0, 0, 0, 0.1) 1.5px solid;
+    opacity: 0.8;
+
+    a {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        text-decoration-style: dotted;
+    }
+}

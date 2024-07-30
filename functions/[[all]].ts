@@ -2,6 +2,8 @@ import { is } from "./api/is";
 import greetings from "../src/_data/deets/greatings.json";
 import { countRss } from "rsslytics";
 
+const pronouns = ["my", "your", "her", "our", "their"];
+
 // @ts-expect-error
 export async function onRequest(context: EventContext): PagesFunction {
     // Contents of context object
@@ -19,6 +21,8 @@ export async function onRequest(context: EventContext): PagesFunction {
         })
         .split("/");
     let isApr9 = tz[0] == "4" && tz[1] == "9";
+
+    const isUS = context.request.cf.country == "US";
 
     if (context.request.url.endsWith(".xml")) {
         let data = countRss(
@@ -113,6 +117,18 @@ export async function onRequest(context: EventContext): PagesFunction {
                 } else {
                     element.setInnerContent(greeting.language);
                 }
+            },
+        })
+        .on("#vote", {
+            element(element: HTMLSpanElement) {
+                if (!isUS) {
+                    element.remove();
+                }
+                element.setInnerContent(
+                    `Democracy is on the ballot. <a href="https://iwillvote.com" data-umami-event="vote">For ${
+                        pronouns[Math.floor(Math.random() * pronouns.length)]
+                    } future, vote.</a>`,
+                );
             },
         });
 
