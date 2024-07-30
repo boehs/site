@@ -128,6 +128,7 @@ export async function onRequest(context: EventContext): PagesFunction {
                     `Democracy is on the ballot. <a href="https://iwillvote.com" data-umami-event="vote">For ${
                         pronouns[Math.floor(Math.random() * pronouns.length)]
                     } future, vote.</a>`,
+                    { html: true },
                 );
             },
         });
