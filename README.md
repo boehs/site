@@ -70,4 +70,6 @@ Be creative, everything is welcome (probably).
 
 Some sites have made use of this code, as is permitted (and welcome) by the AGPL. A list is included here, please note that it is not extensive.
 
-- [ariscript.org](https://ariscript.org) [git](https://github.com/ariscript/www)
+| site | git |
+| - | - |
+| [ariscript.org](https://ariscript.org) | [ariscript/www](https://github.com/ariscript/www) |
