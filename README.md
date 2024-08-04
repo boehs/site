@@ -53,7 +53,7 @@ git pull --recurse-submodules
 
 Next, you can run `pnpm install` and `pnpm run start` to get a dev server up and running.
 
-## Contributing
+### Contributing
 
 Feel free to do whatever the heck you want, provided you abide by the
 included LICENSE.md file. This includes adding pages, squashing bugs, and
@@ -65,3 +65,9 @@ If you want, submit a PR adding a line to
 -   `/functions/api/is.ts` (Evan Boehs is (verb|adjective))
 
 Be creative, everything is welcome (probably).
+
+### Derivatives
+
+Some sites have made use of this code, as is permitted (and welcome) by the AGPL. A list is included here, please note that it is not extensive.
+
+- [ariscript.org](https://ariscript.org) [git](https://github.com/ariscript/www)
