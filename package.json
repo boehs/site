@@ -1,5 +1,5 @@
 {
-    "version": "2.6.0",
+    "version": "2.6.1",
     "scripts": {
         "start": "eleventy --serve",
         "build": "eleventy",
@@ -7,7 +7,7 @@
         "format": "prettier --write ."
     },
     "dependencies": {
-        "@11ty/eleventy": "3.0.0-alpha.4",
+        "@11ty/eleventy": "3.0.0-alpha.20",
         "@11ty/eleventy-fetch": "^4.0.0",
         "@11ty/eleventy-plugin-rss": "^1.2.0",
         "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
