@@ -46,10 +46,11 @@ function evalInContext(js, context) {
     }.call(context);
 }
 
+Error.stackTraceLimit = Infinity;
+
 export default function (eleventyConfig) {
     const markdown = markdownIt();
 
-    eleventyConfig.addPlugin(VentoPlugin);
     eleventyConfig.addPlugin(synHl);
     eleventyConfig.addPlugin(pluginRss);
 
@@ -431,6 +432,7 @@ export default function (eleventyConfig) {
     csv(eleventyConfig, markdown);
 
     eleventyConfig.setQuietMode(true);
+    eleventyConfig.addPlugin(VentoPlugin);
 
     return {
         dir: {

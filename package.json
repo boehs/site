@@ -7,7 +7,7 @@
         "format": "prettier --write ."
     },
     "dependencies": {
-        "@11ty/eleventy": "3.0.0-alpha.4",
+        "@11ty/eleventy": "3.0.0",
         "@11ty/eleventy-fetch": "^4.0.0",
         "@11ty/eleventy-plugin-rss": "^1.2.0",
         "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
@@ -26,7 +26,6 @@
         "markdown-it-image-figures": "^2.1.1",
         "markdown-it-table-of-contents": "^0.6.0",
         "nunjucks": "^3.2.4",
-        "p-limit": "^5.0.0",
         "postcss": "^8.4.33",
         "postcss-csso": "^6.0.1",
         "rsslytics": "^1.1.2",

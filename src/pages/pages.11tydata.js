@@ -1,5 +1,5 @@
 export default {
-    layout: "base.njk",
+    layout: "base.vto",
     permalink:
         '{{ page.filePathStem | dropContentFolder: "pages" | slugshive}}.html',
     eleventyComputed: {

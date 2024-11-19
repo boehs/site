@@ -1,5 +1,5 @@
 ---
-layout: base.njk
+layout: base.vto
 pagination:
   data: collections.nestedTax
   size: 1
@@ -9,11 +9,11 @@ eleventyComputed:
   title: "{{collectionsControl[value].plural or value}}"
 ---
 
-{% from "partials/cardgroup.njk" import cardList %}
+{{ import { CardList } from "partials/cardgroup.njk" }}
 
-{% set renderedList = [] %}
-{% for tag,_ in collections.nestedTax[value] %}
-  {% set renderedList = (renderedList.push([
+{{ set renderedList = [] }}
+{{ for tag,_ of collections.nestedTax[value] }}
+  {{ set renderedList = (renderedList.push([
   {
     color: tagList[value][tag].color
   },
@@ -23,7 +23,7 @@ eleventyComputed:
   },
   {
     content: tagList[value][tag].description
-  }]), renderedList) %}
-{% endfor %}
-      
-{{cardList(renderedList)}}
+  }]), renderedList) }}
+{{ /for }}
+
+{{CardList(renderedList)}}

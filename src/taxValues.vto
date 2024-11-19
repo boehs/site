@@ -9,16 +9,16 @@ eleventyComputed:
   description: "{{tagList[value[0]][value[1]].description}}"
   title: "{{collectionsControl[value[0]].single or value[0] | titleCase }}: {{value[1]}}"
 ---
-{% from "partials/card.njk" import card %}
-{% extends "base.njk" %}
-{% block title %}
+{{ import { Card } from "partials/card.njk" }}
+
+{{ extends "base.njk" }}
+{{ block title }}
 <h1 class="p-name">
   <a href="/{{ collectionsControl[value[0]].plural or value[0] }}/">{{collectionsControl[value[0]].single or value[0] | titleCase }}</a>: {{value[1]}}<a href="/{{collectionsControl[value[0]].single or value[0] | slugshive}}/{{ value[1] | slugshive }}.xml"><img src="/feed.svg"/></a>
 </h1>
-{% endblock%}
-{% set content %}
-{% if tagList[value[0]][value[1]] %}
-  {{ card({
+{{ endblock}}
+{{ if tagList[value[0]][value[1]] }}
+  {{ Card({
       color: tagList[value[0]][value[1]].color
   },{
       url: "/" + value[0] + "/" + value[1],
@@ -28,23 +28,24 @@ eleventyComputed:
       content: tagList[value[0]][value[1]].description
   }) }}
   <hr/>
-{% endif %}
+{{ /if }}
 
 
-{% set tax -%}{% for k,v in collectionsControl -%}
-    {% if v.mode == 'differentiator' -%}
-      {{- k -}}
-    {%- endif %}
-  {%- endfor %}
-{%- endset %}
+{{ set tax }}
+  {{ for k,v in collectionsControl }}
+      {{ if v.mode == 'differentiator'}}
+        {{ k }}
+      {{ /if }}
+  {{ /for }}
+{{/set }}
 
 <div class="h-feed">
-  {% for location,posts in collections.nestedTax[value[0]][value[1]] | reverse | groupby("data." + tax) %}
-    {% if loop.length != 1 or location != value[1] %}<h2><a href="/{{tax}}/{{location}}">{{location | titleCase }}</a><a href="/{{collectionsControl[value[0]].single or value[0] | slugshive}}/{{ value[1] | slugshive }}.{{location}}.xml"><img src="/feed.svg"/></a></h2>{% endif %}
+  {{ for location,posts of collections.nestedTax[value[0]][value[1]].reverse() | groupby("data." + tax) }}
+    {{ if loop.length != 1 && location != value[1] }}<h2><a href="/{{tax}}/{{location}}">{{location |> titleCase }}</a><a href="/{{collectionsControl[value[0]].single || value[0] |> slugshive}}/{{ value[1] |> slugshive }}.{{location}}.xml"><img src="/feed.svg"/></a></h2>{{ /if }}
     <ol>
-      {% for post in posts %}
+      {{ for post of posts }}
         <li>
-        {{ card({
+        {{ Card({
           class: 'h-entry',
           color: post.data.color
         },
@@ -58,8 +59,8 @@ eleventyComputed:
           content: post.data.description | renderMd if post.data.description
         })}}
         </li>
-      {% endfor %}
+      {{ /for }}
     </ol>
-  {% endfor %}
+  {{ /for }}
 </div>
-{% endset %}
+{{ /set }}

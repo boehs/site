@@ -76,7 +76,7 @@ function backlinksApi(data) {
 }
 
 export default {
-    layout: "post.njk",
+    layout: "post.vto",
     in: "garden",
     hasCodeBlock: true,
     structuredData: {
