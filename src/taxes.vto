@@ -1,15 +1,15 @@
 ---
-layout: base.vto
-pagination:
-  data: collections.nestedTax
-  size: 1
-  alias: value
-permalink: /{{collectionsControl[value].plural or value | slugshive }}/index.html
-eleventyComputed:
-  title: "{{collectionsControl[value].plural or value}}"
+#layout: base.vto
+#pagination:
+#  data: collections.nestedTax
+#  size: 1
+#  alias: value
+#permalink: /{{collectionsControl[value].plural or value | slugshive }}/index.html
+#eleventyComputed:
+#  title: "{{collectionsControl[value].plural or value}}"
 ---
 
-{{ import { CardList } from "partials/cardgroup.njk" }}
+{{#{{ import { CardList } from "partials/cardgroup.njk" }}
 
 {{ set renderedList = [] }}
 {{ for tag,_ of collections.nestedTax[value] }}
@@ -26,4 +26,4 @@ eleventyComputed:
   }]), renderedList) }}
 {{ /for }}
 
-{{CardList(renderedList)}}
+{{CardList(renderedList)}} #}}

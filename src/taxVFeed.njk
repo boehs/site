@@ -1,0 +1,40 @@
+---
+pagination:
+  data: collections.taxes
+  size: 1
+  alias: value
+permalink: "/{{collectionsControl[value[0]].single or value[0] | slugshive}}/{{ value[1] | slugshive }}.xml"
+eleventyComputed:
+  title: "{{collectionsControl[value[0]].single or value[0]}} the {{value[1]}}"
+  color: "{{tagList[value[0]][value[1]].color}}"
+  description: "{{tagList[value[0]][value[1]].description}}"
+---
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="/notallfeedsaregross.css"?>
+<?xml-stylesheet href="/main.css"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <warn>
+    DO NOT BE DECEIVED! YOU ARE READING AN ATOM FEED!!!! IF THIS IS INTENTIONAL, PLEASE PASTE THIS URL INTO YOUR FEED READER, OTHERWISE REMOVE .XML FROM THE END OF THE URL.
+  </warn>
+  <author>
+    <name>{{ config.author.name }}</name>
+    <email>{{ config.author.email }}</email>
+  </author>
+  <title>{{ config.author.name }} {{ title }}</title>
+  <subtitle>{{ description }}</subtitle>
+  <link href="{{ config.baseurl }}{{ permalink }}" rel="self"/>
+  <link href="{{ config.baseurl }}"/>
+  <icon>/favicon.ico</icon>
+  <updated>{{ collections.nestedTax[value[0]][value[1]] | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
+  <id>{{config.author.name}}/{{collectionsControl[value[0]].single or value[0] | slugshive}}/{{ value[1] | slugshive }}</id>
+  {% for post in collections.nestedTax[value[0]][value[1]] | reverse %}
+  <entry{%if post.data.color%} style="--light: {{post.data.color}}"{% endif %}>
+    <title>{{ post.data.title | titleCase }}</title>
+    <link href="{{ config.baseurl }}{{ post.url | slugshive }}"/>
+    <updated>{{ post.date | dateToRfc3339 }}</updated>
+    <id xmlns:xlink="{{ config.baseurl }}{{ post.url | slugshive }}" xlink:type="simple">{{ post.url | slugshive }}</id>
+    <content type="html">{{ post.url | url }}</content>
+    {% if post.data.description %}<summary>{{post.data.description}}</summary>{% endif %}
+  </entry>
+  {%- endfor %}
+</feed>
