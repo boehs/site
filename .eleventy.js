@@ -9,6 +9,8 @@ import { minify as minifyTs } from "terser";
 import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
 
+import { VentoPlugin } from "eleventy-plugin-vento";
+
 const collectionControl = require("./src/_data/collectionsControl.json");
 
 import { readFileSync } from "fs";
@@ -47,8 +49,10 @@ function evalInContext(js, context) {
 export default function (eleventyConfig) {
     const markdown = markdownIt();
 
+    eleventyConfig.addPlugin(VentoPlugin);
     eleventyConfig.addPlugin(synHl);
     eleventyConfig.addPlugin(pluginRss);
+
     eleventyConfig.addNunjucksFilter("interpolate", function (str) {
         return nunjucks.renderString(str, this.ctx);
     });

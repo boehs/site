@@ -13,6 +13,7 @@
         "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
         "@gardeners/markdown-it-wikilinks": "^1.5.1",
         "@resvg/resvg-js": "^2.6.0",
+        "eleventy-plugin-vento": "^4.0.1",
         "esbuild": "^0.19.11",
         "html-minifier": "^4.0.0",
         "markdown-it": "^14.0.0",
