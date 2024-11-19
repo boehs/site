@@ -1,0 +1,8 @@
+{{ import { Card } from "./card.vto" }}
+{{ export function CardList(list) }}
+<ul class="contain">
+    {{ for item of list }}
+        <li>{{ Card(item[0], item[1], item[2]) }}</li>
+    {{ /for }}
+</ul>
+{{ /export }}

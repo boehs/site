@@ -1,0 +1,84 @@
+---
+layout: base.njk
+---
+
+{{ import { Card } from "./partials/card.vto" }}
+
+{{ set hasdiv = false }}
+{{ for collection,settings of collectionsControl }}
+    {{ set frontmatter = getContext()[collection] }}
+    {{ if frontmatter }}
+        {{ if !hasdiv }}
+            <dl class="kv">
+            {{ set hasdiv = true }}
+        {{ /if }}
+            <dt>
+                <strong>
+                    {{ if !collectionsControl[collection].excludeFromPagination }}
+                        <a href="/{{(collectionsControl[collection].plural or collection) |> slugshive}}/">{{collection}}</a>
+                    {{ else }}
+                        {{collection}}
+                    {{ endif }}
+                </strong>
+            </dt>
+            <dd>
+            {{ if frontmatter |> getType == 'array'}}
+                <ul {{ if settings.class }}class="{{settings.class}}"{{ /if }}>
+                    {{ for item of frontmatter }}
+                        <li>
+                            <a href="/{{(collectionsControl[collection].single or collection) | slugshive}}/{{item | slugshive}}">{{item}}</a>
+                        </li>
+                    {{ /for }}
+                </ul>
+            {{ elseif frontmatter |> getType == 'date' }}
+                <span itemprop="datePublished" content="{{page.date}}" {{ if settings.class }}class="{{settings.class}}"{{ /if }}>{{page.date |> dateString }}</span>
+            {{ elseif collectionsControl[collection].excludeFromPagination }}
+                <span {{ if settings.class }}class="{{settings.class}}"{{ endif }}>{{frontmatter}}</span>
+            {{ else }}
+                <a {{ if settings.class }}class="{{settings.class}}"{{ endif }} href="/{{(collectionsControl[collection].single || collection) |> slugshive}}/{{frontmatter |> slugshive}}">{{frontmatter}}</a>
+            {{ /if }}
+            </dd>
+    {{ /if }}
+{{ /for }}
+{{ if hasdiv }}
+    </dl>
+{{ /if }}
+
+<hr/>
+
+{{ for collection,settings of collectionsControl }}
+    {{ set frontmatter = getContext()[collection] }}
+    {{ if frontmatter }}
+        {{ set item = tagList[collection][frontmatter] }}
+        {{ if item.showOnPost }}
+            {{ Card({
+                color: item.color
+            },{
+                url: "/" + collection + "/" + frontmatter,
+                title: frontmatter,
+                icon: item.icon
+            },{
+                content: item.description
+            }) }}
+        {{ /if }}
+    {{ /if }}
+{{ /for }}
+
+{{content}}
+
+{{ if !backlinks.length == 0 }}
+    <hr/>
+    <h2>🌱 What links here?</h2>
+    <ul>
+        {{ for backlink of backlinks }}
+            <li>
+                <a href="{{backlink.url.replace(".html", "")}}">{{backlink.title}}</a>
+            </li>
+        {{ /for }}
+    </ul>
+{{ /if }}
+
+<div style="display: none">
+    <a rel="author" itemprop="author" class="p-author h-card"  href="https://boehs.org">Evan Boehs</a>
+    <a href="{{page.url |> slugshive}}" class="u-url">{{page.url |> slugshive}}</a>
+</div>

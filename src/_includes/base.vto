@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        {{ include "partials/meta.njk" }}
+    </head>
+    <body {{ if color && color != config.color }} style="--light: {{ color }}" {{ /if }}>
+        <header>
+            {{ include "partials/head.njk" }}
+        </header>
+        <main>
+            <article class="h-entry" {{ if date && structuredData.type }} itemscope itemtype="https://schema.org/{{ structuredData.type }}" {{ /if }}>
+                {{ block main }}
+                {{if title &&  !notitle }}
+                    {{ block title }}
+                    <h1 class="p-name" itemprop="headline">{{ title }}</head>
+                </html>
+            </h1>
+            {{ endblock }}
+            {{ /if }}
+            <div class="e-content">
+                {{content |> safe }}</div>
+            {{ endblock }}
+            {{ if hasCodeBlock }}
+                <span id="postlude"/> {{ /if }}
+            </article>
+        </main>
+        <footer>
+            {{ include "partials/foot.njk" }}
+        </footer>
+    </body>
+</html>

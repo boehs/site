@@ -1,25 +1,25 @@
 <meta charset="utf-8">
-{%for name,content in metaTags %}
-    <meta name="{{name}}" content="{{content | interpolate}}">
-{%endfor%}
-{% if description %}
+{{for name,content of metaTags }}
+    <meta name="{{name}}" content="{{content |> interpolate}}">
+{{ /for }}
+{{ if description }}
     <meta name="description" content="{{description}}">
-{% endif %}
-{% if noindex %}
+{{ /if }}
+{{ if noindex }}
     <meta name="robots" content="noindex">
-{% endif %}
+{{ /if }}
 <title>{{title}}</title>
 <link rel="preload" as="font" type="font/woff2" href="/spectralregular.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/spectralbold.woff2" crossorigin>
 <link rel="stylesheet" href="/main.css">
-{% if hasCodeBlock %}
+{{ if hasCodeBlock }}
     <link rel="stylesheet" href="/code.css">
-    {% if config.analytics %}
+    {{ if config.analytics }}
         <script defer src="/infoot.js" defer></script>
-    {% endif %}
-{% endif %}
+    {{ /if }}
+{{ /if }}
 <script src="/main.js" defer></script>
-{% if config.analytics and getEnv("ELEVENTY_ENV","production") %}
-    {{ config.analytics.analytics | safe }}
-{% endif %}
-{% if headInject %}{{ headInject | safe }}{% endif %}
+{{ if config.analytics && getEnv("ELEVENTY_ENV","production") }}
+    {{config.analytics.analytics }}
+{{ /if }}
+{{ if headInject }}{{ headInject }}{{ /if }}
