@@ -118,19 +118,6 @@ export async function onRequest(context: EventContext): PagesFunction {
                     element.setInnerContent(greeting.language);
                 }
             },
-        })
-        .on("#vote", {
-            element(element: HTMLSpanElement) {
-                if (!isUS) {
-                    element.remove();
-                }
-                element.setInnerContent(
-                    `Democracy is on the ballot. <a href="https://iwillvote.com" data-umami-event="vote">For ${
-                        pronouns[Math.floor(Math.random() * pronouns.length)]
-                    } future, vote.</a>`,
-                    { html: true },
-                );
-            },
         });
 
     if (context.request.url.endsWith("?spa")) {

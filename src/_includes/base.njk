@@ -3,13 +3,12 @@
   <head>
     {% include "partials/meta.njk" %}
   </head>
-  <body {% if color and color != config.color %}style="--light: {{color}}"{% endif %}>
-    <span id="vote">Democracy is on the ballot. <a href="https://iwillvote.com" data-umami-event="vote">For my future, vote.</a></span>
+  <body {% if color and color != config.color %} style="--light: {{ color }}" {% endif %}>
     <header>
       {% include "partials/head.njk" %}
     </header>
     <main>
-      <article class="h-entry" {% if date and structuredData.type %} itemscope itemtype="https://schema.org/{{structuredData.type}}" {% endif %}>
+      <article class="h-entry" {% if date and structuredData.type %} itemscope itemtype="https://schema.org/{{ structuredData.type }}" {% endif %}>
         {% block main %}
           {% if title and not notitle %}
             {% block title %}
@@ -28,4 +27,5 @@
     <footer>
       {% include "partials/foot.njk" %}
     </footer>
-</body></html>
+  </body>
+</html>
