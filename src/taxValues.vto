@@ -3,18 +3,18 @@ pagination:
   data: collections.taxes
   size: 1
   alias: value
-permalink: /{{collectionsControl[value[0]].single or value[0] | slugshive}}/{{ value[1] | slugshive }}.html
+permalink: /{{collectionsControl[value[0]].single || value[0] |> slugshive}}/{{ value[1] |> slugshive }}.html
 eleventyComputed:
   color: "{{tagList[value[0]][value[1]].color}}"
   description: "{{tagList[value[0]][value[1]].description}}"
-  title: "{{collectionsControl[value[0]].single or value[0] | titleCase }}: {{value[1]}}"
+  title: "{{collectionsControl[value[0]].single || value[0] |> titleCase }}: {{value[1]}}"
 ---
 {{ import { Card } from "partials/card.njk" }}
 
 {{ extends "base.njk" }}
 {{ block title }}
 <h1 class="p-name">
-  <a href="/{{ collectionsControl[value[0]].plural or value[0] }}/">{{collectionsControl[value[0]].single or value[0] | titleCase }}</a>: {{value[1]}}<a href="/{{collectionsControl[value[0]].single or value[0] | slugshive}}/{{ value[1] | slugshive }}.xml"><img src="/feed.svg"/></a>
+  <a href="/{{ collectionsControl[value[0]].plural || value[0] }}/">{{collectionsControl[value[0]].single || value[0] |> titleCase }}</a>: {{value[1]}}<a href="/{{collectionsControl[value[0]].single || value[0] |> slugshive}}/{{ value[1] |> slugshive }}.xml"><img src="/feed.svg"/></a>
 </h1>
 {{ endblock}}
 {{ if tagList[value[0]][value[1]] }}

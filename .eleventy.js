@@ -46,7 +46,7 @@ function evalInContext(js, context) {
     }.call(context);
 }
 
-Error.stackTraceLimit = Infinity;
+Error.stackTraceLimit = 10;
 
 export default function (eleventyConfig) {
     const markdown = markdownIt();
