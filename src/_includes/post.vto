@@ -12,17 +12,17 @@ layout: base.vto
             <dl class="kv">
             {{ set hasdiv = true }}
         {{ /if }}
-            <dt>
-                <strong>
-                    {{ if !collectionsControl[collection].excludeFromPagination }}
-                        <a href="/{{(collectionsControl[collection].plural or collection) |> slugshive}}/">{{collection}}</a>
-                    {{ else }}
-                        {{collection}}
-                    {{ endif }}
-                </strong>
-            </dt>
-            <dd>
-            {{ if frontmatter |> getType == 'array'}}
+        <dt>
+            <strong>
+                {{ if !collectionsControl[collection].excludeFromPagination }}
+                    <a href="/{{(collectionsControl[collection].plural or collection) |> slugshive}}/">{{collection}}</a>
+                {{ else }}
+                    {{collection}}
+                {{ /if }}
+            </strong>
+        </dt>
+        <dd>
+            {{ if true}}
                 <ul {{ if settings.class }}class="{{settings.class}}"{{ /if }}>
                     {{ for item of frontmatter }}
                         <li>
@@ -30,19 +30,20 @@ layout: base.vto
                         </li>
                     {{ /for }}
                 </ul>
-            {{ elseif frontmatter |> getType == 'date' }}
+            {{ elseif true }}
                 <span itemprop="datePublished" content="{{page.date}}" {{ if settings.class }}class="{{settings.class}}"{{ /if }}>{{page.date |> dateString }}</span>
             {{ elseif collectionsControl[collection].excludeFromPagination }}
-                <span {{ if settings.class }}class="{{settings.class}}"{{ endif }}>{{frontmatter}}</span>
+                <span {{ if settings.class }}class="{{settings.class}}"{{ /if }}>{{frontmatter}}</span>
             {{ else }}
-                <a {{ if settings.class }}class="{{settings.class}}"{{ endif }} href="/{{(collectionsControl[collection].single || collection) |> slugshive}}/{{frontmatter |> slugshive}}">{{frontmatter}}</a>
+                <a {{ if settings.class }}class="{{settings.class}}"{{ /if }} href="/{{(collectionsControl[collection].single || collection) |> slugshive}}/{{frontmatter |> slugshive}}">{{frontmatter}}</a>
             {{ /if }}
-            </dd>
+        </dd>
     {{ /if }}
 {{ /for }}
 {{ if hasdiv }}
     </dl>
 {{ /if }}
+
 
 <hr/>
 
