@@ -14,13 +14,11 @@ eleventyComputed:
 {{ set collectionController = collectionsControl[value[0]]}}
 {{ set tagDetails = tagList[value[0]]?.[value[1]] }}
 
-
 {{ set title_override }}
 <h1 class="p-name">
   <a href="/{{ collectionController.plural || value[0] }}/">{{collectionController.single || value[0] |> titleCase }}</a>: {{value[1]}}<a href="/{{collectionController.single || value[0] |> slugshive}}/{{ value[1] |> slugshive }}.xml"><img src="/feed.svg"/></a>
 </h1>
 {{ /set}}
-
 
 {{ layout "base.vto" }}
 {{ if tagDetails }}
@@ -49,7 +47,7 @@ eleventyComputed:
   {{ for location,posts of loop  }}
     {{ if Object.keys(loop)?.length != 1 || location != value[1] }}
       <h2>
-        <a href="/{{tax}}/{{location}}">{{location |> titleCase }}</a><a href="/{{(collectionController?.single || value[0]) |> slugshive}}/{{ value[1] |> slugshive }}.{{location}}.xml"><img src="/feed.svg"/></a>
+        <a href="/{{tax}}/{{location}}">{{location |> titleCase |> escape }}</a><a href="/{{(collectionController?.single || value[0]) |> slugshive}}/{{ value[1] |> slugshive }}.{{location}}.xml"><img src="/feed.svg"/></a>
       </h2>
     {{ /if }}
     <ol>

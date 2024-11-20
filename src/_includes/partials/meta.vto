@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 {{for name,content of metaTags }}
-    <meta name="{{name}}" content="{{interpolate content}}">
+    <meta name="{{name}}" content="{{content |> exec}}">
 {{ /for }}
 {{ if description }}
     <meta name="description" content="{{description |> escape}}">
