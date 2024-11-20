@@ -1,0 +1,9 @@
+{{ export function Card(card,head,body) }}
+<a href="{{head.url |> slugshive}}" class="card{{card.class ? " " + card.class : ""}}" {{ if card.color }} style="--light: {{card.color}}" {{ /if }}>
+    <p>{{ head.icon ? head.icon + " " : ''}}<strong {{ if head.class }} class="{{head.class}}" {{/if}}>{{ head.title }}</strong>
+    </p>
+    {{ if body.content }}
+        <p {{ if body.class }} class="{{body.class}}" {{ /if }}>{{ body.content }}</p>
+    {{ /if }}
+</a>
+{{ /export }}

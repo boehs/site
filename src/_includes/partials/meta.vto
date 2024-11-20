@@ -1,0 +1,25 @@
+<meta charset="utf-8">
+{{for name,content of metaTags }}
+    <meta name="{{name}}" content="{{content |> exec}}">
+{{ /for }}
+{{ if description }}
+    <meta name="description" content="{{description |> escape}}">
+{{ /if }}
+{{ if noindex }}
+    <meta name="robots" content="noindex">
+{{ /if }}
+<title>{{title}}</title>
+<link rel="preload" as="font" type="font/woff2" href="/spectralregular.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/spectralbold.woff2" crossorigin>
+<link rel="stylesheet" href="/main.css">
+{{ if hasCodeBlock }}
+    <link rel="stylesheet" href="/code.css">
+    {{ if config.analytics }}
+        <script defer src="/infoot.js" defer></script>
+    {{ /if }}
+{{ /if }}
+<script src="/main.js" defer></script>
+{{ if config.analytics && process.env["ELEVENTY_ENV"] == "production" }}
+    {{config.analytics.analytics }}
+{{ /if }}
+{{ if headInject }}{{ headInject }}{{ /if }}

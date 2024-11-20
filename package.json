@@ -8,12 +8,13 @@
     },
     "dependencies": {
         "@11ty/eleventy": "3.0.0-alpha.20",
-        "@11ty/eleventy-fetch": "^4.0.0",
-        "@11ty/eleventy-plugin-rss": "^1.2.0",
+        "@11ty/eleventy-fetch": "^5.0.1",
+        "@11ty/eleventy-plugin-rss": "^2.0.2",
         "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
         "@gardeners/markdown-it-wikilinks": "^1.5.1",
-        "@resvg/resvg-js": "^2.6.0",
-        "esbuild": "^0.19.11",
+        "@resvg/resvg-js": "^2.6.2",
+        "eleventy-plugin-vento": "^4.0.1",
+        "esbuild": "^0.24.0",
         "html-minifier": "^4.0.0",
         "markdown-it": "^14.0.0",
         "markdown-it-anchor": "^8.6.7",
@@ -23,16 +24,14 @@
         "markdown-it-footnote": "^4.0.0",
         "markdown-it-for-inline": "^2.0.1",
         "markdown-it-image-figures": "^2.1.1",
-        "markdown-it-table-of-contents": "^0.6.0",
-        "nunjucks": "^3.2.4",
-        "p-limit": "^5.0.0",
-        "postcss": "^8.4.33",
+        "markdown-it-table-of-contents": "^0.8.0",
+        "postcss": "^8.4.40",
         "postcss-csso": "^6.0.1",
         "rsslytics": "^1.1.2",
         "sanitize-filename": "^1.6.3",
         "sass": "1.69.7",
-        "satori": "^0.10.13",
-        "terser": "^5.26.0",
+        "satori": "^0.12.0",
+        "terser": "^5.36.0",
         "typescript": "^5.3.3"
     },
     "devDependencies": {
@@ -40,5 +39,8 @@
         "prettier": "^3.1.1",
         "rimraf": "^5.0.5"
     },
-    "type": "module"
+    "type": "module",
+    "pnpm": {
+        "patchedDependencies": {}
+    }
 }

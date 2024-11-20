@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        {{ include "partials/meta.vto" }}
+    </head>
+    <body {{ if color && color != config.color }} style="--light: {{ color }}" {{ /if }}>
+        <header>
+            {{ include "partials/head.vto" }}
+        </header>
+        <main>
+            <article class="h-entry" {{ if date && structuredData.type }} itemscope itemtype="https://schema.org/{{ structuredData.type }}" {{ /if }}>
+                    {{if title && !notitle }}
+                        {{if !title_override }}
+                            <h1 class="p-name" itemprop="headline">{{ title }}</h1>
+                        {{else}}
+                            {{title_override}}
+                        {{/if}}
+                    {{ /if }}
+                    <div class="e-content">
+                        {{content}}
+                    </div>
+                {{ if hasCodeBlock }}
+                    <span id="postlude"></span>
+                {{ /if }}
+            </article>
+        </main>
+        <footer>
+            {{ include "partials/foot.vto" }}
+        </footer>
+    </body>
+</html>

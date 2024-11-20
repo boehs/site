@@ -1,4 +1,3 @@
-import nunjucks from "nunjucks";
 import slugify from "./utils/slugify.js";
 import pluginRss from "@11ty/eleventy-plugin-rss";
 import { build as esbuild } from "esbuild";
@@ -21,6 +20,7 @@ import textInject from "./utils/text-inject.js";
 import scss from "./conf/templating/scss.js";
 import markdownIt from "./conf/templating/markdown.js";
 import csv from "./conf/templating/csv.js";
+import vento from "./conf/templating/vento.js";
 
 import { embedMastodon } from "./conf/components/mastodon.js";
 
@@ -44,14 +44,14 @@ function evalInContext(js, context) {
     }.call(context);
 }
 
+Error.stackTraceLimit = 100;
+
 export default function (eleventyConfig) {
     const markdown = markdownIt();
 
     eleventyConfig.addPlugin(synHl);
     eleventyConfig.addPlugin(pluginRss);
-    eleventyConfig.addNunjucksFilter("interpolate", function (str) {
-        return nunjucks.renderString(str, this.ctx);
-    });
+
     eleventyConfig.addFilter("dropContentFolder", (path, folder) =>
         path.replace(new RegExp(folder + "/"), ""),
     );
@@ -112,10 +112,6 @@ export default function (eleventyConfig) {
         return str;
     });
 
-    eleventyConfig.addFilter("dateString", (date) =>
-        date?.toLocaleDateString(),
-    );
-
     eleventyConfig.addShortcode("getSvg", function (name) {
         const data = readFileSync(`./src/pages/garden/node/Assets/${name}.svg`);
         return data.toString("utf-8");
@@ -136,7 +132,9 @@ export default function (eleventyConfig) {
         );
     });
 
-    eleventyConfig.addFilter("renderMd", (content) => markdown.render(content));
+    eleventyConfig.addFilter("renderMd", (content) =>
+        content ? markdown.render(content) : "",
+    );
 
     eleventyConfig.setLibrary("md", markdown);
     eleventyConfig.setFrontMatterParsingOptions({
@@ -170,21 +168,6 @@ export default function (eleventyConfig) {
         const links = firstPost.eleventyComputed.brokenLinks(firstPost, true);
         // return as array for pagination
         return Array.from(links);
-    });
-
-    eleventyConfig.addNunjucksGlobal("getContext", function () {
-        return this.ctx;
-    });
-
-    eleventyConfig.addNunjucksGlobal("getEnv", function (k, v) {
-        return process.env[k] == v;
-    });
-
-    eleventyConfig.addFilter("getType", function (thing) {
-        return {}.toString
-            .call(thing)
-            .match(/\s([a-zA-Z]+)/)[1]
-            .toLowerCase();
     });
 
     eleventyConfig.addFilter("random", function (array) {
@@ -427,6 +410,8 @@ export default function (eleventyConfig) {
     csv(eleventyConfig, markdown);
 
     eleventyConfig.setQuietMode(true);
+
+    eleventyConfig.addPlugin(vento);
 
     return {
         dir: {
