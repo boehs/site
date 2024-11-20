@@ -49,14 +49,11 @@ eleventyComputed:
   {{ for location,posts of loop  }}
     {{ if Object.keys(loop)?.length != 1 || location != value[1] }}
       <h2>
-        <a href="/{{tax}}/{{location}}">{{location |> titleCase }}</a>
-        <a href="/{{(collectionController?.single || value[0]) |> slugshive}}/{{ value[1] |> slugshive }}.{{location}}.xml">
-          <img src="/feed.svg"/>
-        </a>
+        <a href="/{{tax}}/{{location}}">{{location |> titleCase }}</a><a href="/{{(collectionController?.single || value[0]) |> slugshive}}/{{ value[1] |> slugshive }}.{{location}}.xml"><img src="/feed.svg"/></a>
       </h2>
     {{ /if }}
     <ol>
-      {{ for post of posts.reverse() }}
+      {{ for post of posts.sort((a,b) => b.data.date - a.data.date) }}
         {{ set c = post.data?.description |> renderMd }}
         <li>
         {{ Card({

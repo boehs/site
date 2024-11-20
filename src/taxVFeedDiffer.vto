@@ -32,7 +32,7 @@ eleventyComputed:
   <icon>/favicon.ico</icon>
   <updated>{{ collections.nestedTax[value[0]]?.[value[1]] |> getNewestCollectionItemDate |> dateToRfc3339 }}</updated>
   <id>{{config.author.name}}/{{collectionsControl[value[0]]?.single || value[0] |> slugshive}}/{{ value[1] |> slugshive }}</id>
-  {{ for post of collections.nestedTax[value[0]]?.[value[1]] |> reverse }}
+  {{ for post of collections.nestedTax[value[0]]?.[value[1]] }}
   {{ if post.data[tax] == value[2] }}
   <entry{{if post.data.color}} style="--light: {{post.data.color}}"{{ /if }}>
     <title>{{ post.data.title |> titleCase }}</title>
