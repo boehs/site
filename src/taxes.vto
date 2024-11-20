@@ -1,29 +1,29 @@
 ---
-#layout: base.vto
-#pagination:
-#  data: collections.nestedTax
-#  size: 1
-#  alias: value
-#permalink: /{{collectionsControl[value].plural or value | slugshive }}/index.html
-#eleventyComputed:
-#  title: "{{collectionsControl[value].plural or value}}"
+layout: base.vto
+pagination:
+  data: collections.nestedTax
+  size: 1
+  alias: value
+permalink: /{{collectionsControl[value].plural || value |> slugshive }}/index.html
+eleventyComputed:
+  title: "{{collectionsControl[value].plural || value}}"
 ---
 
-{{#{{ import { CardList } from "partials/cardgroup.njk" }}
+{{ import { CardList } from "partials/cardgroup.vto" }}
 
 {{ set renderedList = [] }}
 {{ for tag,_ of collections.nestedTax[value] }}
-  {{ set renderedList = (renderedList.push([
+  {{> renderedList.push([
   {
-    color: tagList[value][tag].color
+    color: tagList[value]?.[tag]?.color
   },
   {
-    url: "/" + [collectionsControl[value].single or value] + "/" + tag,
+    url: "/" + [collectionsControl[value]?.single || value] + "/" + tag,
     title: tag
   },
   {
-    content: tagList[value][tag].description
-  }]), renderedList) }}
+    content: tagList[value]?.[tag]?.description
+  }]) }}
 {{ /for }}
 
-{{CardList(renderedList)}} #}}
+{{CardList(renderedList)}}
