@@ -1,4 +1,5 @@
 export default function (text, separator = "-") {
+    if (!text) return "";
     text = text.toString().toLowerCase().trim();
 
     const sets = [

@@ -132,7 +132,9 @@ export default function (eleventyConfig) {
         );
     });
 
-    eleventyConfig.addFilter("renderMd", (content) => markdown.render(content));
+    eleventyConfig.addFilter("renderMd", (content) =>
+        content ? markdown.render(content) : "",
+    );
 
     eleventyConfig.setLibrary("md", markdown);
     eleventyConfig.setFrontMatterParsingOptions({

@@ -9,16 +9,16 @@
         </header>
         <main>
             <article class="h-entry" {{ if date && structuredData.type }} itemscope itemtype="https://schema.org/{{ structuredData.type }}" {{ /if }}>
-                {{# {{ block main }} #}}
                     {{if title && !notitle }}
-                        {{# {{ block title }} #}}
+                        {{if !title_override }}
                             <h1 class="p-name" itemprop="headline">{{ title }}</h1>
-                        {{# {{ endblock }} #}}
+                        {{else}}
+                            {{title_override}}
+                        {{/if}}
                     {{ /if }}
                     <div class="e-content">
                         {{content}}
                     </div>
-                {{# {{ endblock }} #}}
                 {{ if hasCodeBlock }}
                     <span id="postlude"></span>
                 {{ /if }}

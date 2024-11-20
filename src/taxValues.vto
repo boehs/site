@@ -11,23 +11,27 @@ eleventyComputed:
 ---
 
 {{ import { Card } from "partials/card.vto"}}
+{{ set collectionController = collectionsControl[value[0]]}}
+{{ set tagDetails = tagList[value[0]]?.[value[1]] }}
 
-{{#{{ extends "base.njk" }}
-{{ block title }}
+
+{{ set title_override }}
 <h1 class="p-name">
-  <a href="/{{ collectionsControl[value[0]].plural or value[0] }}/">{{collectionsControl[value[0]].single or value[0] | titleCase }}</a>: {{value[1]}}<a href="/{{collectionsControl[value[0]].single or value[0] | slugshive}}/{{ value[1] | slugshive }}.xml"><img src="/feed.svg"/></a>
+  <a href="/{{ collectionController.plural || value[0] }}/">{{collectionController.single || value[0] |> titleCase }}</a>: {{value[1]}}<a href="/{{collectionController.single || value[0] |> slugshive}}/{{ value[1] |> slugshive }}.xml"><img src="/feed.svg"/></a>
 </h1>
-{{ endblock}}
-{{ set content }} #}}
-{{ if tagList[value[0]][value[1]] }}
+{{ /set}}
+
+
+{{ layout "base.vto" }}
+{{ if tagDetails }}
   {{ Card({
-      color: tagList[value[0]][value[1]].color
+      color: tagDetails.color
   },{
       url: "/" + value[0] + "/" + value[1],
       title: value[1],
-      icon: tagList[value[0]][value[1]].icon
+      icon: tagDetails.icon
   },{
-      content: tagList[value[0]][value[1]].description
+      content: tagDetails.description
   }) }}
   <hr/>
 {{ /if }}
@@ -41,35 +45,36 @@ eleventyComputed:
 {{- /set }}
 
 <div class="h-feed">
-{{# |> groupby("data." + tax) #}}
-  {{ for location,posts of collections.nestedTax[value[0]]?.[value[1]]?.reverse()  }}
-    {{ if loop.length != 1 || location != value[1] }}
+  {{set loop = Object.groupBy(collections.nestedTax[value[0]]?.[value[1]],(post)=> post.data?.[tax])}}
+  {{ for location,posts of loop  }}
+    {{ if Object.keys(loop)?.length != 1 || location != value[1] }}
       <h2>
         <a href="/{{tax}}/{{location}}">{{location |> titleCase }}</a>
-        <a href="/{{(collectionsControl[value[0]]?.single || value[0]) |> slugshive}}/{{ value[1] |> slugshive }}.{{location}}.xml">
+        <a href="/{{(collectionController?.single || value[0]) |> slugshive}}/{{ value[1] |> slugshive }}.{{location}}.xml">
           <img src="/feed.svg"/>
         </a>
       </h2>
     {{ /if }}
     <ol>
-      {{ for post of posts }}
+      {{ for post of posts.reverse() }}
+        {{ set c = post.data?.description |> renderMd }}
         <li>
         {{ Card({
           class: 'h-entry',
-          color: post.data.color
+          color: post.data?.color
         },
         {
           url: post.url,
           class: "p-name u-url",
-          title: post.data.title
+          title: post.data?.title
         },
         {
           class: "p-summary",
-          content: (post.data.description ? post.data.description : undefined) |> renderMd
+          content: c
         })}}
         </li>
       {{ /for }}
     </ol>
   {{ /for }}
 </div>
-{{# {{ endset }}#} #}}
+{{ /layout }}
