@@ -1,0 +1,75 @@
+---
+pagination:
+  data: collections.taxes
+  size: 1
+  alias: value
+permalink: /{{collectionsControl[value[0]]?.single || value[0] |> slugshive}}/{{ value[1] |> slugshive }}.html
+eleventyComputed:
+  color: "{{tagList[value[0]]?.[value[1]]?.color}}"
+  description: "{{tagList[value[0]]?.[value[1]]?.description}}"
+  title: "{{collectionsControl[value[0]].single || value[0] |> titleCase }}: {{value[1]}}"
+---
+
+{{ import { Card } from "partials/card.vto"}}
+
+{{#{{ extends "base.njk" }}
+{{ block title }}
+<h1 class="p-name">
+  <a href="/{{ collectionsControl[value[0]].plural or value[0] }}/">{{collectionsControl[value[0]].single or value[0] | titleCase }}</a>: {{value[1]}}<a href="/{{collectionsControl[value[0]].single or value[0] | slugshive}}/{{ value[1] | slugshive }}.xml"><img src="/feed.svg"/></a>
+</h1>
+{{ endblock}}
+{{ set content }} #}}
+{{ if tagList[value[0]][value[1]] }}
+  {{ Card({
+      color: tagList[value[0]][value[1]].color
+  },{
+      url: "/" + value[0] + "/" + value[1],
+      title: value[1],
+      icon: tagList[value[0]][value[1]].icon
+  },{
+      content: tagList[value[0]][value[1]].description
+  }) }}
+  <hr/>
+{{ /if }}
+
+
+{{ set tax -}}{{ for k,v of collectionsControl -}}
+    {{ if v.mode == 'differentiator' -}}
+      {{- k -}}
+    {{- /if }}
+  {{- /for }}
+{{- /set }}
+
+<div class="h-feed">
+{{# |> groupby("data." + tax) #}}
+  {{ for location,posts of collections.nestedTax[value[0]]?.[value[1]]?.reverse()  }}
+    {{ if loop.length != 1 || location != value[1] }}
+      <h2>
+        <a href="/{{tax}}/{{location}}">{{location |> titleCase }}</a>
+        <a href="/{{(collectionsControl[value[0]]?.single || value[0]) |> slugshive}}/{{ value[1] |> slugshive }}.{{location}}.xml">
+          <img src="/feed.svg"/>
+        </a>
+      </h2>
+    {{ /if }}
+    <ol>
+      {{ for post of posts }}
+        <li>
+        {{ Card({
+          class: 'h-entry',
+          color: post.data.color
+        },
+        {
+          url: post.url,
+          class: "p-name u-url",
+          title: post.data.title
+        },
+        {
+          class: "p-summary",
+          content: (post.data.description ? post.data.description : undefined) |> renderMd
+        })}}
+        </li>
+      {{ /for }}
+    </ol>
+  {{ /for }}
+</div>
+{{# {{ endset }}#} #}}
