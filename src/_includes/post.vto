@@ -30,7 +30,7 @@ layout: base.vto
                     {{ /for }}
                 </ul>
             {{ else if frontmatter instanceof Date }}
-                <span itemprop="datePublished" content="{{page.date}}" {{ if settings.class }}class="{{settings.class}}"{{ /if }}>{{page.date |> dateString }}</span>
+                <span itemprop="datePublished" content="{{page.date}}" {{ if settings.class }}class="{{settings.class}}"{{ /if }}>{{page.date?.toLocaleDateString() }}</span>
             {{ else if collectionsControl[collection].excludeFromPagination }}
                 <span {{ if settings.class }}class="{{settings.class}}"{{ /if }}>{{frontmatter}}</span>
             {{ else }}

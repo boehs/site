@@ -1,9 +1,9 @@
 <meta charset="utf-8">
 {{for name,content of metaTags }}
-    <meta name="{{name}}" content="{{content |> interpolate}}">
+    <meta name="{{name}}" content="{{interpolate content}}">
 {{ /for }}
 {{ if description }}
-    <meta name="description" content="{{description}}">
+    <meta name="description" content="{{description |> escape}}">
 {{ /if }}
 {{ if noindex }}
     <meta name="robots" content="noindex">

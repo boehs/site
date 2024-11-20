@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  eleventy-plugin-vento@4.0.1:
+    hash: mhtnkb2uxs7ryg5muhwbkhkvam
+    path: patches/eleventy-plugin-vento@4.0.1.patch
+
 dependencies:
   '@11ty/eleventy':
     specifier: 3.0.0-alpha.20
@@ -25,7 +30,7 @@ dependencies:
     version: 2.6.0
   eleventy-plugin-vento:
     specifier: ^4.0.1
-    version: 4.0.1
+    version: 4.0.1(patch_hash=mhtnkb2uxs7ryg5muhwbkhkvam)
   esbuild:
     specifier: ^0.24.0
     version: 0.24.0
@@ -1138,7 +1143,7 @@ packages:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
     dev: false
 
-  /eleventy-plugin-vento@4.0.1:
+  /eleventy-plugin-vento@4.0.1(patch_hash=mhtnkb2uxs7ryg5muhwbkhkvam):
     resolution: {integrity: sha512-gD7Udj/0uE2tiSQUech5mwVTfeD9T2AmVAIuhxtd7hOgN2/MRsptdJHcdanYZLAEd8VmJff3q949sPKPVYZnJQ==}
     engines: {node: '>=18'}
     dependencies:
@@ -1147,6 +1152,7 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: false
+    patched: true
 
   /emoji-regex@10.3.0:
     resolution: {integrity: sha512-QpLs9D9v9kArv4lfDEgg1X/gN5XLnf/A6l9cs8SPZLRZR3ZkY9+kwIQTxm+fsSej5UMYGE8fdoaZVIBlqG0XTw==}

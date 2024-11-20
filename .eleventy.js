@@ -1,4 +1,3 @@
-import vento from "ventojs";
 import slugify from "./utils/slugify.js";
 import pluginRss from "@11ty/eleventy-plugin-rss";
 import { build as esbuild } from "esbuild";
@@ -8,8 +7,6 @@ import { minify as minifyTs } from "terser";
 
 import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
-
-import { VentoPlugin } from "eleventy-plugin-vento";
 
 const collectionControl = require("./src/_data/collectionsControl.json");
 
@@ -23,6 +20,7 @@ import textInject from "./utils/text-inject.js";
 import scss from "./conf/templating/scss.js";
 import markdownIt from "./conf/templating/markdown.js";
 import csv from "./conf/templating/csv.js";
+import vento from "./conf/templating/vento.js";
 
 import { embedMastodon } from "./conf/components/mastodon.js";
 
@@ -54,14 +52,6 @@ export default function (eleventyConfig) {
     eleventyConfig.addPlugin(synHl);
     eleventyConfig.addPlugin(pluginRss);
 
-    const env = vento({
-        autoDataVarname: true,
-        autoescape: true,
-    });
-
-    eleventyConfig.addFilter("interpolate", function (str) {
-        return env.runStringSync(str, this.ctx);
-    });
     eleventyConfig.addFilter("dropContentFolder", (path, folder) =>
         path.replace(new RegExp(folder + "/"), ""),
     );
@@ -122,10 +112,6 @@ export default function (eleventyConfig) {
         return str;
     });
 
-    eleventyConfig.addFilter("dateString", (date) =>
-        date?.toLocaleDateString(),
-    );
-
     eleventyConfig.addShortcode("getSvg", function (name) {
         const data = readFileSync(`./src/pages/garden/node/Assets/${name}.svg`);
         return data.toString("utf-8");
@@ -180,13 +166,6 @@ export default function (eleventyConfig) {
         const links = firstPost.eleventyComputed.brokenLinks(firstPost, true);
         // return as array for pagination
         return Array.from(links);
-    });
-
-    eleventyConfig.addFilter("getType", function (thing) {
-        return {}.toString
-            .call(thing)
-            .match(/\s([a-zA-Z]+)/)[1]
-            .toLowerCase();
     });
 
     eleventyConfig.addFilter("random", function (array) {
@@ -429,7 +408,8 @@ export default function (eleventyConfig) {
     csv(eleventyConfig, markdown);
 
     eleventyConfig.setQuietMode(true);
-    eleventyConfig.addPlugin(VentoPlugin);
+
+    eleventyConfig.addPlugin(vento);
 
     return {
         dir: {
