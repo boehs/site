@@ -2,11 +2,10 @@
 layout: base.vto
 ---
 
-{{ import { Card } from "./partials/card.vto" }}
 
 {{ set hasdiv = false }}
 {{ for collection,settings of collectionsControl }}
-    {{ set frontmatter = getContext()[collection] }}
+    {{ set frontmatter = it[collection] }}
     {{ if frontmatter }}
         {{ if !hasdiv }}
             <dl class="kv">
@@ -22,8 +21,7 @@ layout: base.vto
             </strong>
         </dt>
         <dd>
-            {{#{{ if frontmatter |> getType == 'array'}}#}}
-            {{ if true}}
+            {{ if Array.isArray(frontmatter) }}
                 <ul {{ if settings.class }}class="{{settings.class}}"{{ /if }}>
                     {{ for item of frontmatter }}
                         <li>
@@ -31,8 +29,7 @@ layout: base.vto
                         </li>
                     {{ /for }}
                 </ul>
-            {{#{{ elseif frontmatter |> getType == 'date' }}#}}
-            {{ else if true }}
+            {{ else if frontmatter instanceof Date }}
                 <span itemprop="datePublished" content="{{page.date}}" {{ if settings.class }}class="{{settings.class}}"{{ /if }}>{{page.date |> dateString }}</span>
             {{ else if collectionsControl[collection].excludeFromPagination }}
                 <span {{ if settings.class }}class="{{settings.class}}"{{ /if }}>{{frontmatter}}</span>
@@ -49,23 +46,6 @@ layout: base.vto
 
 <hr/>
 
-{{ for collection,settings of collectionsControl }}
-    {{ set frontmatter = getContext()[collection] }}
-    {{ if frontmatter }}
-        {{ set item = tagList[collection][frontmatter] }}
-        {{ if item.showOnPost }}
-            {{ Card({
-                color: item.color
-            },{
-                url: "/" + collection + "/" + frontmatter,
-                title: frontmatter,
-                icon: item.icon
-            },{
-                content: item.description
-            }) }}
-        {{ /if }}
-    {{ /if }}
-{{ /for }}
 
 {{content}}
 

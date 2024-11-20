@@ -1,4 +1,4 @@
-import nunjucks from "nunjucks";
+import vento from "ventojs";
 import slugify from "./utils/slugify.js";
 import pluginRss from "@11ty/eleventy-plugin-rss";
 import { build as esbuild } from "esbuild";
@@ -46,7 +46,7 @@ function evalInContext(js, context) {
     }.call(context);
 }
 
-Error.stackTraceLimit = 10;
+Error.stackTraceLimit = 100;
 
 export default function (eleventyConfig) {
     const markdown = markdownIt();
@@ -54,8 +54,13 @@ export default function (eleventyConfig) {
     eleventyConfig.addPlugin(synHl);
     eleventyConfig.addPlugin(pluginRss);
 
-    eleventyConfig.addNunjucksFilter("interpolate", function (str) {
-        return nunjucks.renderString(str, this.ctx);
+    const env = vento({
+        autoDataVarname: true,
+        autoescape: true,
+    });
+
+    eleventyConfig.addFilter("interpolate", function (str) {
+        return env.runStringSync(str, this.ctx);
     });
     eleventyConfig.addFilter("dropContentFolder", (path, folder) =>
         path.replace(new RegExp(folder + "/"), ""),
@@ -175,14 +180,6 @@ export default function (eleventyConfig) {
         const links = firstPost.eleventyComputed.brokenLinks(firstPost, true);
         // return as array for pagination
         return Array.from(links);
-    });
-
-    eleventyConfig.addNunjucksGlobal("getContext", function () {
-        return this.ctx;
-    });
-
-    eleventyConfig.addNunjucksGlobal("getEnv", function (k, v) {
-        return process.env[k] == v;
     });
 
     eleventyConfig.addFilter("getType", function (thing) {

@@ -19,7 +19,7 @@
     {{ /if }}
 {{ /if }}
 <script src="/main.js" defer></script>
-{{ if config.analytics && getEnv("ELEVENTY_ENV","production") }}
+{{ if config.analytics && process.env["ELEVENTY_ENV"] == "production" }}
     {{config.analytics.analytics }}
 {{ /if }}
 {{ if headInject }}{{ headInject }}{{ /if }}
