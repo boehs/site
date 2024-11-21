@@ -3,63 +3,61 @@ layout: base.vto
 ---
 
 
-{{ set hasdiv = false }}
-{{ for collection,settings of collectionsControl }}
-    {{ set frontmatter = it[collection] }}
-    {{ if frontmatter }}
-        {{ if !hasdiv }}
+{{- set hasdiv = false }}
+{{- for collection,settings of collectionsControl }}
+    {{- set frontmatter = it[collection] }}
+    {{- if frontmatter }}
+        {{- if !hasdiv }}
             <dl class="kv">
-            {{ set hasdiv = true }}
-        {{ /if }}
+            {{- set hasdiv = true }}
+        {{- /if }}
         <dt>
             <strong>
-                {{ if !collectionsControl[collection].excludeFromPagination }}
+                {{- if !collectionsControl[collection].excludeFromPagination }}
                     <a href="/{{(collectionsControl[collection].plural || collection) |> slugshive}}/">{{collection}}</a>
-                {{ else }}
+                {{- else }}
                     {{collection}}
-                {{ /if }}
+                {{- /if }}
             </strong>
         </dt>
         <dd>
-            {{ if Array.isArray(frontmatter) }}
+            {{- if Array.isArray(frontmatter) }}
                 <ul {{ if settings.class }}class="{{settings.class}}"{{ /if }}>
-                    {{ for item of frontmatter }}
+                    {{- for item of frontmatter }}
                         <li>
                             <a href="/{{(collectionsControl[collection].single || collection) |> slugshive}}/{{item |> slugshive}}">{{item}}</a>
                         </li>
-                    {{ /for }}
+                    {{- /for }}
                 </ul>
-            {{ else if frontmatter instanceof Date }}
+            {{- else if frontmatter instanceof Date }}
                 <span itemprop="datePublished" content="{{page.date}}" {{ if settings.class }}class="{{settings.class}}"{{ /if }}>{{page.date?.toLocaleDateString() }}</span>
-            {{ else if collectionsControl[collection].excludeFromPagination }}
+            {{- else if collectionsControl[collection].excludeFromPagination }}
                 <span {{ if settings.class }}class="{{settings.class}}"{{ /if }}>{{frontmatter}}</span>
-            {{ else }}
+            {{- else }}
                 <a {{ if settings.class }}class="{{settings.class}}"{{ /if }} href="/{{(collectionsControl[collection].single || collection) |> slugshive}}/{{frontmatter |> slugshive}}">{{frontmatter}}</a>
-            {{ /if }}
+            {{- /if }}
         </dd>
-    {{ /if }}
-{{ /for }}
-{{ if hasdiv }}
+    {{- /if }}
+{{- /for }}
+{{- if hasdiv }}
     </dl>
-{{ /if }}
-
+{{- /if }}
 
 <hr/>
 
-
 {{content}}
 
-{{ if !backlinks.length == 0 }}
+{{- if !backlinks.length == 0 }}
     <hr/>
     <h2>🌱 What links here?</h2>
     <ul>
-        {{ for backlink of backlinks }}
+        {{- for backlink of backlinks }}
             <li>
                 <a href="{{backlink.url.replace(".html", "")}}">{{backlink.title}}</a>
             </li>
-        {{ /for }}
+        {{- /for }}
     </ul>
-{{ /if }}
+{{- /if }}
 
 <div style="display: none">
     <a rel="author" itemprop="author" class="p-author h-card"  href="https://boehs.org">Evan Boehs</a>

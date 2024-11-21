@@ -31,15 +31,19 @@ export default class Og {
             date: page.entry.data.date?.toLocaleDateString(),
             color: page.entry.data.color,
         });
-        /**
-         * @type {import("@resvg/resvg-js").ResvgRenderOptions}
-         */
-        const options = {
-            font: {
-                loadSystemFonts: false,
-            },
-        };
-        const png = new Resvg(svgd, options).render().asPng();
-        return png;
+        return renderSvg(svgd);
     }
+}
+
+function renderSvg(svgd) {
+    /**
+     * @type {import("@resvg/resvg-js").ResvgRenderOptions}
+     */
+    const options = {
+        font: {
+            loadSystemFonts: false,
+        },
+    };
+    const png = new Resvg(svgd, options).render().asPng();
+    return png;
 }

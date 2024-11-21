@@ -149,7 +149,11 @@ export default function (eleventyConfig) {
     });
 
     eleventyConfig.addTransform("html", function (content) {
-        if (this.page.outputPath && this.page.outputPath.endsWith(".html")) {
+        if (
+            this.page.outputPath &&
+            this.page.outputPath.endsWith(".html") &&
+            process.env.ELEVENTY_ENV == "production"
+        ) {
             return minify(content, {
                 useShortDoctype: true,
                 removeComments: true,
