@@ -1,136 +1,43 @@
-import slugify from "./utils/slugify.js";
 import pluginRss from "@11ty/eleventy-plugin-rss";
-import { build as esbuild } from "esbuild";
-
 import { minify } from "html-minifier";
-import { minify as minifyTs } from "terser";
 
 import { createRequire } from "node:module";
-const require = createRequire(import.meta.url);
-
-const collectionControl = require("./src/_data/collectionsControl.json");
-
 import { readFileSync } from "fs";
-const flowerFile = readFileSync("src/_data/anim/starynight.txt", "utf8");
+
+const require = createRequire(import.meta.url);
+const collectionControl = require("./src/_data/collectionsControl.json");
 
 let gardenStr = "./src/pages/garden/node/**/*.{md,csv}";
 
+import slugify from "./utils/slugify.js";
+
 import synHl from "@11ty/eleventy-plugin-syntaxhighlight";
-import textInject from "./utils/text-inject.js";
 import scss from "./conf/templating/scss.js";
 import markdownIt from "./conf/templating/markdown.js";
 import csv from "./conf/templating/csv.js";
 import vento from "./conf/templating/vento.js";
 
 import { embedMastodon } from "./conf/components/mastodon.js";
-
-const railsEncode = (msg, rails) =>
-    fence(msg.length, rails)
-        .map((i) => msg[i])
-        .join("");
-
-function fence(length, rails) {
-    const cycle_len = 2 * rails - 2;
-    return Array.from({ length: rails }).flatMap((_, r) =>
-        Array.from({ length }, (_, i) => i).filter(
-            (i) => i % cycle_len === r || i % cycle_len === cycle_len - r,
-        ),
-    );
-}
-
-function evalInContext(js, context) {
-    return function () {
-        return eval(js);
-    }.call(context);
-}
+import javascript from "./conf/templating/javascript.js";
+import filters from "./conf/filters.js";
 
 Error.stackTraceLimit = 100;
 
+/** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 export default function (eleventyConfig) {
     const markdown = markdownIt();
 
     eleventyConfig.addPlugin(synHl);
     eleventyConfig.addPlugin(pluginRss);
 
-    eleventyConfig.addFilter("dropContentFolder", (path, folder) =>
-        path.replace(new RegExp(folder + "/"), ""),
-    );
-    eleventyConfig.addFilter("slugshive", (path) => slugify(path));
-    eleventyConfig.addFilter(
-        "rails",
-        (str, n) =>
-            `<a class="rails" href="mailto:${railsEncode(
-                str,
-                n,
-            )}" n="${n}">${railsEncode(str, n)}</a>`,
-    );
-
-    eleventyConfig.addFilter("titleCase", (str) => {
-        str = str.replace(
-            /([^\W_]+[^\s-]*) */g,
-            (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(),
-        );
-
-        // Certain minor words should be left lowercase unless
-        // they are the first or last words in the string
-        let lowers = [
-            "A",
-            "An",
-            "The",
-            "And",
-            "But",
-            "Or",
-            "For",
-            "Nor",
-            "As",
-            "At",
-            "By",
-            "For",
-            "From",
-            "In",
-            "Into",
-            "Near",
-            "Of",
-            "On",
-            "Onto",
-            "To",
-            "With",
-        ];
-        for (const lower of lowers)
-            str = str.replace(new RegExp("\\s" + lower + "\\s", "g"), (txt) =>
-                txt.toLowerCase(),
-            );
-
-        // Certain words such as initialisms or acronyms should be left uppercase
-        let uppers = ["Id", "Tv", "Css", "Rss", "Xz", "Js", "Html", "Llm"];
-        for (const upper of uppers)
-            str = str.replace(
-                new RegExp("\\b" + upper + "\\b", "g"),
-                upper.toUpperCase(),
-            );
-
-        return str;
-    });
-
     eleventyConfig.addShortcode("getSvg", function (name) {
         const data = readFileSync(`./src/pages/garden/node/Assets/${name}.svg`);
         return data.toString("utf-8");
     });
 
-    eleventyConfig.addAsyncShortcode("embedMastodon", embedMastodon);
+    filters(eleventyConfig);
 
-    // sorry
-    eleventyConfig.addFilter("footerBase", () => {
-        return (
-            "\n".repeat(flowerFile.split("?")[0].split("\n").length - 1) +
-            // @ts-ignore
-            flowerFile
-                .match(/([^\n]*)\n\?/)[1]
-                .replace(/[0-9]/g, (match) =>
-                    " ".repeat(Number(match) + 2).substring(1),
-                )
-        );
-    });
+    eleventyConfig.addAsyncShortcode("embedMastodon", embedMastodon);
 
     eleventyConfig.addFilter("renderMd", (content) =>
         content ? markdown.render(content) : "",
@@ -174,22 +81,13 @@ export default function (eleventyConfig) {
         return Array.from(links);
     });
 
-    eleventyConfig.addFilter("random", function (array) {
-        return array[Math.floor(Math.random() * array.length)];
-    });
-
-    eleventyConfig.addFilter("rainbow", function (i, n) {
-        return `hsl(${(360 / n) * i},50%,60%)`;
-    });
-
     eleventyConfig.addCollection("ogReady", function (collectionApi) {
         return collectionApi
             .getFilteredByGlob("./src/pages/**/*.*")
             .filter(function (item) {
                 return (
                     item.outputPath.endsWith("html") &&
-                    (item.page.inputPath.endsWith(".md") ||
-                        item.page.inputPath.endsWith("11ty.cjs")) &&
+                    item.page.inputPath.endsWith(".md") &&
                     item.data.title != "missing"
                 );
             });
@@ -370,52 +268,7 @@ export default function (eleventyConfig) {
         return nestedTax;
     });
 
-    eleventyConfig.addTemplateFormats("ts");
-    eleventyConfig.addExtension("ts", {
-        outputFileExtension: "js",
-        // @ts-ignore
-        compile: async function (inputContent, inputPath) {
-            return async (data) => {
-                let result = (
-                    await esbuild({
-                        entryPoints: [inputPath],
-                        define: {},
-                        //format: "esm",
-                        platform: "browser",
-                        minify: false, // process.env.NODE_ENV === "production",
-                        bundle: true,
-                        write: false,
-                    })
-                ).outputFiles[0].text;
-                if (process.env.ELEVENTY_ENV === "production") {
-                    // @ts-ignore
-                    result = (
-                        await minifyTs(result, {
-                            module: true,
-                            ecma: 2017,
-                            compress: {
-                                booleans_as_integers: true,
-                                unsafe: true,
-                                unsafe_math: true,
-                            },
-                        })
-                    ).code;
-                }
-                return textInject(result).replaceAll(
-                    /{{{(.*?)}}}/g,
-                    (...match) => evalInContext(match[1], data),
-                );
-            };
-        },
-        compileOptions: {
-            permalink: function (contents, inputPath) {
-                return inputPath
-                    .replace("src/scripts/", "")
-                    .replace("ts", "js");
-            },
-        },
-    });
-
+    javascript(eleventyConfig);
     scss(eleventyConfig);
     csv(eleventyConfig, markdown);
 

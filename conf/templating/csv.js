@@ -31,6 +31,7 @@ function* c(t) {
 }
 let parse = (t) => [...c(t)];
 
+/** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 export default function csv(eleventyConfig, markdown) {
     eleventyConfig.addTemplateFormats("csv");
     eleventyConfig.addExtension("csv", {

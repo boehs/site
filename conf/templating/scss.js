@@ -3,6 +3,7 @@ import postcss from "postcss";
 import path from "path";
 import postcsso from "postcss-csso";
 
+/** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 export default function scss(eleventyConfig) {
     eleventyConfig.addTemplateFormats("scss");
     eleventyConfig.addExtension("scss", {

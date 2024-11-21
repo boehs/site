@@ -11,6 +11,7 @@ async function hash(message, algo = "SHA-1") {
     ).join("");
 }
 
+/** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 export default function ventoCfg(eleventyConfig) {
     eleventyConfig.addPlugin(VentoPlugin, {
         plugins: [
