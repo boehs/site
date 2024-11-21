@@ -376,26 +376,32 @@ export default function (eleventyConfig) {
         // @ts-ignore
         compile: async function (inputContent, inputPath) {
             return async (data) => {
-                const result = await esbuild({
-                    entryPoints: [inputPath],
-                    define: {},
-                    //format: "esm",
-                    platform: "browser",
-                    minify: false, // process.env.NODE_ENV === "production",
-                    bundle: true,
-                    write: false,
-                });
-
-                let r2 = await minifyTs(result.outputFiles[0].text, {
-                    module: true,
-                    ecma: 2017,
-                    compress: {
-                        booleans_as_integers: true,
-                        unsafe: true,
-                        unsafe_math: true,
-                    },
-                });
-                return textInject(r2.code).replaceAll(
+                let result = (
+                    await esbuild({
+                        entryPoints: [inputPath],
+                        define: {},
+                        //format: "esm",
+                        platform: "browser",
+                        minify: false, // process.env.NODE_ENV === "production",
+                        bundle: true,
+                        write: false,
+                    })
+                ).outputFiles[0].text;
+                if (process.env.ELEVENTY_ENV === "production") {
+                    // @ts-ignore
+                    result = (
+                        await minifyTs(result, {
+                            module: true,
+                            ecma: 2017,
+                            compress: {
+                                booleans_as_integers: true,
+                                unsafe: true,
+                                unsafe_math: true,
+                            },
+                        })
+                    ).code;
+                }
+                return textInject(result).replaceAll(
                     /{{{(.*?)}}}/g,
                     (...match) => evalInContext(match[1], data),
                 );

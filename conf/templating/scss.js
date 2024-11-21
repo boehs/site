@@ -18,15 +18,19 @@ export default function scss(eleventyConfig) {
             this.addDependencies(inputPath, loadedUrls);
 
             return async () => {
-                const { content } = await postcss([
-                    postcsso({
-                        restructure: true,
-                    }),
-                ]).process(css, {
-                    from: undefined,
-                });
+                if (process.env.ELEVENTY_ENV === "production") {
+                    const { content } = await postcss([
+                        postcsso({
+                            restructure: true,
+                        }),
+                    ]).process(css, {
+                        from: undefined,
+                    });
 
-                return content;
+                    return content;
+                } else {
+                    return css;
+                }
             };
         },
         compileOptions: {
