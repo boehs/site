@@ -1,4 +1,4 @@
-const EleventyFetch = require("@11ty/eleventy-fetch");
+import EleventyFetch from "@11ty/eleventy-fetch";
 
 function shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {
@@ -9,7 +9,7 @@ function shuffleArray(array) {
     }
 }
 
-class Blogroll {
+export default class Blogroll {
     data() {
         return {
             permalink: "blogroll.html",
@@ -79,5 +79,3 @@ class Blogroll {
         }
     }
 }
-
-module.exports = Blogroll;

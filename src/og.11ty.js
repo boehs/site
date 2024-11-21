@@ -18,7 +18,7 @@ export default class Og {
                         "og" +
                         ctx.entry.outputPath
                             .replace(".html", ".png")
-                            .replace("out", "")
+                            .replace("./out", "")
                     );
                 },
             },
@@ -31,13 +31,15 @@ export default class Og {
             date: page.entry.data.date?.toLocaleDateString(),
             color: page.entry.data.color,
         });
-        const png = new Resvg(svgd, {
+        /**
+         * @type {import("@resvg/resvg-js").ResvgRenderOptions}
+         */
+        const options = {
             font: {
                 loadSystemFonts: false,
             },
-        })
-            .render()
-            .asPng();
+        };
+        const png = new Resvg(svgd, options).render().asPng();
         return png;
     }
 }

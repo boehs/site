@@ -2,21 +2,27 @@
 // It's a dirty secret!
 // No modularity :(
 
-const EleventyFetch = require("@11ty/eleventy-fetch");
-const terser = require("terser");
+import EleventyFetch from "@11ty/eleventy-fetch";
+import { minify } from "terser";
 
-class Analytics {
+export default class Analytics {
     data() {
         return {
             // Writes to "/my-permalink/index.html"
-            permalink: "colophon.js",
+            permalink:
+                process.env.ELEVENTY_ENV === "production"
+                    ? "colophon.js"
+                    : false,
         };
     }
 
     async render({ config }) {
-        try {
-            let url = config.analytics.script;
+        let url = config.analytics.script;
 
+        if (process.env.ELEVENTY_ENV !== "production" || !url) {
+            return "";
+        }
+        try {
             const content = await EleventyFetch(url, {
                 duration: "1d",
                 type: "text",
@@ -34,7 +40,7 @@ class Analytics {
                 // now h isn't needed
                 .replace(/.=.\.getAttribute\.bind\(.\),/, "");
             // also d = u.currentScript; is not needed but it's too annoying to remove
-            return (await terser.minify(script)).code;
+            return (await minify(script)).code;
         } catch (e) {
             return {
                 // my failure fallback data
@@ -42,5 +48,3 @@ class Analytics {
         }
     }
 }
-
-module.exports = Analytics;

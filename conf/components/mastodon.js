@@ -6,6 +6,8 @@
  * https://opensource.org/licenses/MIT.
  */
 
+import eleventyFetch from "@11ty/eleventy-fetch";
+
 async function embedMastodon(idOrLink) {
     let mastodonLinkOrId =
         /(?:https:\/\/)?([\w\d\-]*?.?[\w\d\-]*.[a-z]*\/@[\w\d_]*(?:@[\w\d]*?.?[\w\d]*.[a-z]*)?\/)?(\d*)/gim;
@@ -36,7 +38,10 @@ function parseTimestamp(dateString) {
 async function createPostHTML(id, remoteLink) {
     let url = new URL(remoteLink);
     let url2 = `https://${url.host}/api/v1/statuses/${id}`;
-    let res = await fetch(url2);
+    let res = await eleventyFetch(url2, {
+        type: "json",
+        duration: "1w",
+    });
 
     if (res.status !== 200) {
         return "";

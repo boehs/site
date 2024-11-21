@@ -1,9 +1,7 @@
 import satori from "satori";
 import { readFile } from "node:fs/promises";
 
-const fonts = [];
-
-{
+export async function loadFonts() {
     const [base, italic, bold, office] = await Promise.all([
         readFile(`./src/_public/spectralregular.woff`),
         readFile(`./src/_public/spectralitalic.woff`),
@@ -11,7 +9,7 @@ const fonts = [];
         readFile(`./src/_public/office.ttf`),
     ]);
 
-    fonts.push(
+    return [
         {
             name: "Spectral",
             data: base,
@@ -36,8 +34,10 @@ const fonts = [];
             weight: 700,
             style: "normal",
         },
-    );
+    ];
 }
+
+const fonts = await loadFonts();
 
 export const svg = async ({ title, date, desc, color = "#3C898B" }) => {
     return await satori(
