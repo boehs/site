@@ -52,22 +52,24 @@ eleventyComputed:
     {{ /if }}
     <ol>
       {{ for post of posts.sort((a,b) => b.data.date - a.data.date) }}
-        {{ set c = post.data?.description |> renderMd }}
-        <li>
-        {{ Card({
-          class: 'h-entry',
-          color: post.data?.color
-        },
-        {
-          url: post.url,
-          class: "p-name u-url",
-          title: post.data?.title
-        },
-        {
-          class: "p-summary",
-          content: c
-        })}}
-        </li>
+        {{ if post.data?.sec != "unlisted" }}
+          {{ set c = post.data?.description |> renderMd }}
+          <li>
+          {{ Card({
+            class: 'h-entry',
+            color: post.data?.color
+          },
+          {
+            url: post.url,
+            class: "p-name u-url",
+            title: post.data?.title
+          },
+          {
+            class: "p-summary",
+            content: c
+          })}}
+          </li>
+        {{ /if }}
       {{ /for }}
     </ol>
   {{ /for }}
