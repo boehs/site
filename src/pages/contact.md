@@ -7,6 +7,7 @@ headInject: |
 
 -   Shoot me an **email**: <code>⟨{{ 'evan@boehs.org' | rails: 6 | raw }}⟩</code>
 -   Toot from **mastodon**: <code>⟨[`@eb@social.coop`](https://social.coop/@eb)⟩</code>
+-   Gaze at **blue skies**: <code>⟨[`@boehs.org`](https://bsky.app/profile/did:plc:7u5tor5fp3ai4jwvea6t6mjd)⟩</code>
 -   Hack into the **matrix**: `⟨@ewwn:matrix.org⟩`
 -   Go old school with **irc**: `⟨eb@Libera.Chat⟩`
 
