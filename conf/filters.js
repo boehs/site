@@ -98,4 +98,11 @@ export default function filters(eleventyConfig) {
     eleventyConfig.addFilter("rainbow", function (i, n) {
         return `hsl(${(360 / n) * i},50%,60%)`;
     });
+
+    eleventyConfig.addFilter("dateToRfc3339", (date) => {
+        if (!date) return;
+        let s = date.toISOString().split(".");
+        s.pop();
+        return s.join("") + "Z";
+    });
 }

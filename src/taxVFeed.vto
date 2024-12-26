@@ -31,7 +31,9 @@ eleventyComputed:
     <entry{{if post.data.color}} style="--light: {{post.data.color}}"{{ /if }}>
       <title>{{ post.data.title |> titleCase |> escape }}</title>
       <link href="{{ config.baseurl }}{{ post.url |> slugshive }}"/>
+      {{ if post.data.date -}}
       <updated>{{ post.date |> dateToRfc3339 }}</updated>
+      {{- /if }}
       <id xmlns:xlink="{{ config.baseurl }}{{ post.url |> slugshive }}" xlink:type="simple">{{ post.url |> slugshive }}</id>
       <content type="html">{{ post.url |> url }}</content>
       {{ if post.data.description }}<summary>{{post.data.description |> escape }}</summary>{{ /if }}
