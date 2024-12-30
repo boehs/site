@@ -30,7 +30,10 @@ eleventyComputed:
   <link href="{{ config.baseurl }}{{ permalink }}" rel="self"/>
   <link href="{{ config.baseurl }}"/>
   <icon>/favicon.ico</icon>
-  <updated>{{ collections.nestedTax[value[0]]?.[value[1]] |> getNewestCollectionItemDate |> dateToRfc3339 }}</updated>
+  {{ set mostRecent = collections.nestedTax[value[0]]?.[value[1]] |> getNewestCollectionItemDate |> dateToRfc3339 }}
+  {{- if mostRecent -}}
+  <updated>{{ mostRecent }}</updated>
+  {{- /if -}}
   <id>{{config.author.name}}/{{collectionsControl[value[0]]?.single || value[0] |> slugshive}}/{{ value[1] |> slugshive }}</id>
   {{- for post of collections.nestedTax[value[0]]?.[value[1]]?.sort((a,b) => b.data.date - a.data.date) -}}
   {{- if post.data[tax] == value[2] -}}
