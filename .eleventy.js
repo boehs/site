@@ -1,3 +1,4 @@
+import pluginRss from "@11ty/eleventy-plugin-rss";
 import { minify } from "html-minifier";
 
 import { createRequire } from "node:module";
@@ -6,7 +7,6 @@ import { readFileSync } from "fs";
 const require = createRequire(import.meta.url);
 const collectionControl = require("./src/_data/collectionsControl.json");
 
-// the files we want to use for our collections
 let gardenStr = "./src/pages/garden/node/**/*.{md,csv}";
 
 import slugify from "./utils/slugify.js";
@@ -28,6 +28,7 @@ export default function (eleventyConfig) {
     const markdown = markdownIt();
 
     eleventyConfig.addPlugin(synHl);
+    eleventyConfig.addPlugin(pluginRss);
 
     eleventyConfig.addShortcode("getSvg", function (name) {
         const data = readFileSync(`./src/pages/garden/node/Assets/${name}.svg`);

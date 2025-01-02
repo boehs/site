@@ -2,7 +2,6 @@ import { readFileSync } from "fs";
 import slugify from "../utils/slugify.js";
 const flowerFile = readFileSync("src/_data/anim/starynight.txt", "utf8");
 
-// These two functions implement the email obfuscation technique
 const railsEncode = (msg, rails) =>
     fence(msg.length, rails)
         .map((i) => msg[i])
@@ -69,11 +68,7 @@ export default function filters(eleventyConfig) {
     eleventyConfig.addFilter("dropContentFolder", (path, folder) =>
         path.replace(new RegExp(folder + "/"), ""),
     );
-
-    // I frankly don't recall why I don't use the built-in slug filter
-    // but I'm sure I had a good reason
     eleventyConfig.addFilter("slugshive", (path) => slugify(path));
-
     eleventyConfig.addFilter(
         "rails",
         (str, n) =>
@@ -109,13 +104,5 @@ export default function filters(eleventyConfig) {
         let s = date.toISOString().split(".");
         s.pop();
         return s.join("") + "Z";
-    });
-
-    eleventyConfig.addFilter("getNewestCollectionItemDate", (collection) => {
-        return new Date(
-            Math.max(
-                ...collection.map((item) => new Date(item.date).getTime()),
-            ),
-        );
     });
 }
