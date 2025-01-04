@@ -48,6 +48,7 @@ export default function markdownIt() {
                 uriSuffix: "",
             }),
         )
+        // ::: details <Summary goes here>
         .use(mdItC, "details", {
             validate: function (params) {
                 return params.trim().match(/^details\s+(.*)$/);
@@ -65,6 +66,27 @@ export default function markdownIt() {
                 } else {
                     // closing tag
                     return "</details>\n";
+                }
+            },
+        })
+        .use(mdItC, "figure", {
+            validate: function (params) {
+                return params.trim().match(/^figure\s+(.*)$/);
+            },
+
+            render: function (tokens, idx) {
+                if (tokens[idx].nesting === 1) {
+                    // opening tag
+                    return `<figure>\n`;
+                } else {
+                    let i = idx - 1;
+                    while (tokens[i].type !== "container_figure_open") {
+                        i--;
+                    }
+                    let m = tokens[i].info.trim().match(/^figure\s+(.*)$/);
+                    return `<figcaption>${markdownIt.utils.escapeHtml(
+                        m[1],
+                    )}</figcaption></figure>\n`;
                 }
             },
         })
