@@ -42,5 +42,6 @@
     "type": "module",
     "pnpm": {
         "patchedDependencies": {}
-    }
+    },
+    "packageManager": "pnpm@9.14.4"
 }

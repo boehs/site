@@ -164,6 +164,11 @@ a {
     background-image: var(--url);
 }
 
+.e-content a[href*="//"]:not(:hover):not([href*="boehs.org"]):after
+{
+    filter: grayscale(100%);
+}
+
 // Cards //
 
 .card {
@@ -263,6 +268,25 @@ header {
         display: block;
         text-align: center;
         font-size: 14pt;
+    }
+
+    a > strong {
+        font-size: 0px;
+        counter-reset: idx;
+        --count: 10;
+    }
+
+    a > strong > span {
+        font-size: 14pt;
+        white-space: break-spaces;
+        counter-increment: idx;
+
+        display: inline-block;
+    }
+
+    &:hover a > strong > span {
+        animation: 2s ease-in-out bounce;
+        animation-delay: calc(sin(var(--i) / var(--count) * 10deg) * 1s);
     }
 
     > span a {
@@ -523,4 +547,34 @@ blockquote {
 
 .back-transition::view-transition-new(main) {
     animation-name: fade-in, slide-from-left;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    12.5% {
+        transform: translateY(-5px);
+    }
+    25% {
+        transform: translateY(0);
+    }
+    37.5% {
+        transform: translateY(-4px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    62.5% {
+        transform: translateY(-3px);
+    }
+    75% {
+        transform: translateY(0);
+    }
+    87.5% {
+        transform: translateY(-2px);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }

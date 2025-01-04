@@ -1,6 +1,10 @@
 <span class="p-author h-card" data-nosnippet>
     <a href="/" class="lighter p-name" data-umami-event="home" data-umami-event-place="header">
-        <strong>{{ config.author.name }}</strong>
+        <strong style="--count: {{ Array.from(config.author.name).length - 1 }}">
+            {{ for char of Array.from(config.author.name).map((c, i) => [c, i]) }}
+                <span style="--i: {{ char[1] }}">{{ char[0] }}</span>
+            {{ /for }}
+        </strong>
     </a>
     <a class="u-email" href="mailto:{{ config.author.email }}">email</a>
     <img class="u-photo" src="{{ config.author.image }}" alt="A drawing of an astronaut in space" loading="lazy" style="display: none" width="100px" height="100px"/>
