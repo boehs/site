@@ -81,7 +81,7 @@ function backlinksApi(data) {
 export default {
     layout: "post.vto",
     in: "garden",
-    hasCodeBlock: true,
+    isContentPage: true,
     structuredData: {
         type: "BlogPosting",
     },

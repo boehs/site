@@ -9,9 +9,10 @@
     "dependencies": {
         "@11ty/eleventy": "3.0.0",
         "@11ty/eleventy-fetch": "^5.0.1",
-        "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
         "@gardeners/markdown-it-wikilinks": "^1.5.1",
         "@resvg/resvg-js": "^2.6.2",
+        "@shikijs/markdown-it": "^1.26.1",
+        "@shikijs/transformers": "^1.26.1",
         "eleventy-plugin-vento": "^4.0.1",
         "esbuild": "^0.24.0",
         "html-minifier": "^4.0.0",

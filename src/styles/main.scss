@@ -35,6 +35,7 @@
 $radius: 3px;
 $warner: #ccbcb1;
 $activer: #b1c1cc;
+$darkBorder: #363636;
 :root {
     --base: 198deg;
     --light: var(--arc-palette-foregroundTertiary, hsl(var(--base), 88%, 33%));
@@ -114,11 +115,27 @@ code,
     white-space: pre-wrap;
 }
 
+:not(footer) > pre {
+    border: 2px solid $darkBorder;
+    line-height: 1;
+    padding: 10px 0;
+    .line {
+        padding: 3px 10px;
+        display: inline-block;
+        width: 100%;
+    }
+    .diff.add {
+        background: #363f2c;
+    }
+    .diff.remove {
+        background: #4d221f;
+    }
+}
+
 .mastodon-embed {
     border-radius: $radius;
 }
 
-:not(footer) > pre,
 .mastodon-embed {
     padding: 10px;
     border: 2px solid var(--border);
@@ -461,14 +478,17 @@ blockquote {
         background: #483341;
     }
 
-    :not(footer) > pre {
-        filter: brightness(1.5);
-    }
-
     tr {
         &:nth-of-type(odd) td {
             background-color: #302e2e;
         }
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :not(footer) > pre {
+        filter: brightness(1.1) contrast(1.2);
+        background: #313131 !important;
     }
 }
 

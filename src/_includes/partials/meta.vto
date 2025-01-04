@@ -12,8 +12,7 @@
 <link rel="preload" as="font" type="font/woff2" href="/spectralregular.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/spectralbold.woff2" crossorigin>
 <link rel="stylesheet" href="/main.css">
-{{ if hasCodeBlock }}
-    <link rel="stylesheet" href="/code.css">
+{{ if isContentPage }}
     {{ if config.analytics }}
         <script defer src="/infoot.js" defer></script>
     {{ /if }}

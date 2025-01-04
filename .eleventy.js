@@ -11,7 +11,6 @@ let gardenStr = "./src/pages/garden/node/**/*.{md,csv}";
 
 import slugify from "./utils/slugify.js";
 
-import synHl from "@11ty/eleventy-plugin-syntaxhighlight";
 import scss from "./conf/templating/scss.js";
 import markdownIt from "./conf/templating/markdown.js";
 import csv from "./conf/templating/csv.js";
@@ -26,8 +25,6 @@ Error.stackTraceLimit = 100;
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 export default function (eleventyConfig) {
     const markdown = markdownIt();
-
-    eleventyConfig.addPlugin(synHl);
 
     eleventyConfig.addShortcode("getSvg", function (name) {
         const data = readFileSync(`./src/pages/garden/node/Assets/${name}.svg`);
