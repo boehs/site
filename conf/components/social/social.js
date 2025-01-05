@@ -6,23 +6,10 @@
  * https://opensource.org/licenses/MIT.
  */
 
-import eleventyFetch from "@11ty/eleventy-fetch";
+import { embedMastodon } from "./mastodon.js";
+import { embedBluesky } from "./bsky.js";
 
-async function embedMastodon(idOrLink) {
-    let mastodonLinkOrId =
-        /(?:https:\/\/)?([\w\d\-]*?.?[\w\d\-]*.[a-z]*\/@[\w\d_]*(?:@[\w\d]*?.?[\w\d]*.[a-z]*)?\/)?(\d*)/gim;
-
-    const [fullMatch, remoteLink, id] = mastodonLinkOrId.exec(idOrLink);
-
-    if (!fullMatch) {
-        console.log(`${idOrLink} seems to be no valid Mastodon link/ID.`);
-        return "";
-    }
-
-    return await createPostHTML(id, idOrLink);
-}
-
-export { embedMastodon };
+export { embedMastodon, embedBluesky };
 
 function parseTimestamp(dateString) {
     return new Intl.DateTimeFormat("en", {
@@ -35,20 +22,12 @@ function parseTimestamp(dateString) {
     }).format(new Date(dateString));
 }
 
-async function createPostHTML(id, remoteLink) {
-    let url = new URL(remoteLink);
-    let url2 = `https://${url.host}/api/v1/statuses/${id}`;
-    let res = await eleventyFetch(url2, {
-        type: "json",
-        duration: "1w",
-    });
+const REBLOG_VERB = {
+    mastodon: "retoots",
+    bluesky: "reposts",
+};
 
-    if (res.status !== 200) {
-        return "";
-    }
-
-    let data = await res.json();
-
+export function createPostHTML(data, mode) {
     return `<article class="mastodon-embed">
         <div style="display: flex; align-items: center; gap: 20px">
             <img src="${
@@ -58,13 +37,13 @@ async function createPostHTML(id, remoteLink) {
                 <strong><a href="${data.url}">${
                     data.account.display_name
                 }</a></strong>
-                <sup>@${data.account.username}@${url.host}</sup>
+                <sup>@${data.account.username}</sup>
             </div>
         </div>
         <p>${data.content}</p>
         <div style="display: flex; justify-content: space-between">
             <sup>${parseTimestamp(data.created_at)}</sup>
-            <sup>${data.reblogs_count} retoots</sup>
+            <sup>${data.reblogs_count} ${REBLOG_VERB[mode]}</sup>
         </div>
     </article>`;
 }

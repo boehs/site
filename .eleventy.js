@@ -16,7 +16,10 @@ import markdownIt from "./conf/templating/markdown.js";
 import csv from "./conf/templating/csv.js";
 import vento from "./conf/templating/vento.js";
 
-import { embedMastodon } from "./conf/components/mastodon.js";
+import {
+    embedMastodon,
+    embedBluesky,
+} from "./conf/components/social/social.js";
 import javascript from "./conf/templating/javascript.js";
 import filters from "./conf/filters.js";
 
@@ -34,6 +37,7 @@ export default function (eleventyConfig) {
     filters(eleventyConfig);
 
     eleventyConfig.addAsyncShortcode("embedMastodon", embedMastodon);
+    eleventyConfig.addAsyncShortcode("embedBluesky", embedBluesky);
 
     eleventyConfig.addFilter("renderMd", (content) =>
         content ? markdown.render(content) : "",
