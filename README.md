@@ -70,7 +70,7 @@ Be creative, everything is welcome (probably).
 
 Some sites have made use of this code in various capacities, as is permitted by the AGPL. A list is included here, please note that it is not extensive.
 
-| site | git |
-| - | - |
+| site                                   | git                                               |
+| -------------------------------------- | ------------------------------------------------- |
 | [ariscript.org](https://ariscript.org) | [ariscript/www](https://github.com/ariscript/www) |
-| [amey.dev](https://amey.dev/)| [whyamey/www](https://github.com/whyamey/www) | 
+| [amey.dev](https://amey.dev/)          | [whyamey/www](https://github.com/whyamey/www)     |

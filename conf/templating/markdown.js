@@ -1,3 +1,42 @@
+/**
+ * ### Produce Details
+ *
+ * ::: details Summary
+ * Content
+ * :::
+ *
+ * #### Produce figure
+ *
+ * ::: figure Figcaption
+ * Figure
+ * :::
+ *
+ * ### Wikilinks
+ *
+ * [[easy]]
+ *
+ * ### Table of contents
+ *
+ * [[toc]]
+ *
+ * ### Add attributes to block
+ *
+ * xyz {style="margin-block-end: 0" class="xyz"}
+ *
+ * ### Footnotes
+ *
+ * xyz[^1]
+ *
+ * [^1]: abc
+ *
+ * ### Attribution
+ *
+ * > Quote
+ * > -- Evan Boehs
+ *
+ *
+ */
+
 import mdItToC from "markdown-it-table-of-contents";
 import mdItAc from "markdown-it-anchor";
 import mdItAttr from "markdown-it-attrs";
