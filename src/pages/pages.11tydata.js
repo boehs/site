@@ -1,7 +1,12 @@
+import slugify from "../../utils/slugify.js";
+
 export default {
     layout: "base.vto",
-    permalink:
-        '{{ page.filePathStem | dropContentFolder: "pages" | slugshive}}.html',
+    permalink: (data) => {
+        return (
+            slugify(data.page.filePathStem.replace("/pages/", "/")) + ".html"
+        );
+    },
     eleventyComputed: {
         metaTags: (data) => {
             return {

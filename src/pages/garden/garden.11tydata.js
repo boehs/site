@@ -1,6 +1,7 @@
 // Heavily modified from Binyamin Aron Green's https://github.com/binyamin/eleventy-garden
 // The license of this file has been derived.
 
+import slugify from "../../../utils/slugify.js";
 import slugshive from "../../../utils/slugify.js";
 
 // This regex finds all wikilinks in a string
@@ -85,8 +86,12 @@ export default {
     structuredData: {
         type: "BlogPosting",
     },
-    permalink:
-        '{{ page.filePathStem | dropContentFolder: "pages/garden" | slugshive}}.html',
+    permalink: (data) => {
+        return (
+            slugify(data.page.filePathStem.replace("/pages/garden/", "/")) +
+            ".html"
+        );
+    },
     eleventyComputed: {
         backlinks: (data) => {
             return backlinksApi(data)[0];
