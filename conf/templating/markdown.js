@@ -239,7 +239,7 @@ export function markdownTemplate(eleventyConfig) {
                         await ventoCompileFunction(str, path)
                     )(data);
                 }
-                result = markdownIt.render(str, data);
+                result = markdownIt.render(result, data);
                 result = await injectPintora(result);
                 return result;
             };
