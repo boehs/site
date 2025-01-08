@@ -12,7 +12,7 @@ let gardenStr = "./src/pages/garden/node/**/*.{md,csv}";
 import slugify from "./utils/slugify.js";
 
 import scss from "./conf/templating/scss.js";
-import markdownIt from "./conf/templating/markdown.js";
+import { markdownTemplate } from "./conf/templating/markdown.js";
 import csv from "./conf/templating/csv.js";
 import vento from "./conf/templating/vento.js";
 
@@ -27,7 +27,9 @@ Error.stackTraceLimit = 100;
 
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 export default function (eleventyConfig) {
-    const markdown = markdownIt();
+    eleventyConfig.addPlugin(vento);
+
+    const markdown = markdownTemplate(eleventyConfig);
 
     eleventyConfig.addShortcode("getSvg", function (name) {
         const data = readFileSync(`./src/pages/garden/node/Assets/${name}.svg`);
@@ -43,7 +45,6 @@ export default function (eleventyConfig) {
         content ? markdown.render(content) : "",
     );
 
-    eleventyConfig.setLibrary("md", markdown);
     eleventyConfig.setFrontMatterParsingOptions({
         // @ts-ignore
         excerpt: (file, options) =>
@@ -273,8 +274,6 @@ export default function (eleventyConfig) {
     csv(eleventyConfig, markdown);
 
     eleventyConfig.setQuietMode(true);
-
-    eleventyConfig.addPlugin(vento);
 
     return {
         dir: {

@@ -55,6 +55,10 @@ import iterator from "markdown-it-for-inline";
 import Shiki from "@shikijs/markdown-it";
 import { transformerNotationDiff } from "@shikijs/transformers";
 import { gruvBoxDarkHard } from "./highlight.js";
+import { injectPintora } from "./pintora/index.js";
+
+const proxy = (tokens, idx, options, env, self) =>
+    self.renderToken(tokens, idx, options);
 
 const shiki = await Shiki({
     langs: [
@@ -132,6 +136,7 @@ markdownIt
             }
         },
     })
+    // ::: figure <Figcaption goes here>
     .use(mdItC, "figure", {
         validate: function (params) {
             return params.trim().match(/^figure\s+(.*)$/);
@@ -182,12 +187,63 @@ markdownIt.renderer.rules.footnote_block_open = () =>
     '<section class="footnotes">\n' +
     '<ol class="footnotes-list">\n';
 
+// why did i write this
 markdownIt.renderer.rules.footnote_caption = function (tokens, idx) {
     let n = Number(tokens[idx].meta.id + 1).toString();
     if (tokens[idx].meta.subId > 0) n += `:${tokens[idx].meta.subId}`;
     return `${n}`;
 };
 
-export default function markdown() {
+/**
+ * Pintora codeblocks are replaced with a placeholder that is found and replaced
+ * by 11ty, as markdown-it does not support async rendering.
+ *
+ * If it is a codeblock that's *not* a Pintora codeblock, it should fall through
+ * to shiki for syntax highlighting.
+ */
+const defaultFence = markdownIt.renderer.rules.fence || proxy;
+markdownIt.renderer.rules.fence = (tokens, idx, options, env, self) => {
+    const token = tokens[idx];
+
+    if (token.info.trim() === "pintora") {
+        let id = Math.random().toString(36).substring(7);
+        return `___PINTORA_${id}_${token.content.trim()}_`;
+    }
+
+    return defaultFence(tokens, idx, options, env, self);
+};
+
+let ventoCompileFunction;
+
+export function markdownTemplate(eleventyConfig) {
+    eleventyConfig.addExtension("md", {
+        outputFileExtension: "html",
+        compile: async (str, path) => {
+            // it would be most optimal to use the `key` property to pipe to vento
+            // but we can't have nice things: https://github.com/11ty/eleventy/issues/2827
+            // ... or the this.getEngine method, but we don't have `this`.
+            // augmentFunctionContext might be helpful: https://github.com/noelforte/eleventy-plugin-vento/issues/9
+            // ... maybe look into how the `render` plugin works?
+            // ... or if https://github.com/11ty/eleventy/blob/4e97e017714f97025409af437fe0d17694dc6bb6/src/Engines/Markdown.js#L75 was `await`
+            // we could use the `setLibrary` method and we wouldn't need to worry about this
+            // ... but this code works fine.
+            if (!ventoCompileFunction) {
+                ventoCompileFunction = [
+                    ...eleventyConfig.extensionMap.values(),
+                ].find((r) => r.key === "vto").compile;
+            }
+            return async (data) => {
+                let result = str;
+                if (str.includes("{{")) {
+                    result = await (
+                        await ventoCompileFunction(str, path)
+                    )(data);
+                }
+                result = markdownIt.render(result, data);
+                result = await injectPintora(result);
+                return result;
+            };
+        },
+    });
     return markdownIt;
 }

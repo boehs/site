@@ -2,7 +2,7 @@
 
 ![](https://wakapi.dev/api/badge/evan/interval:any/project:site) ![](https://img.shields.io/w3c-validation/html?targetUrl=https%3A%2F%2Fboehs.org) ![](https://img.shields.io/website?url=https%3A%2F%2Fboehs.org)
 
-This is the site wherein I push 11ty to it's absolute limits and then some. It works on some 11ty versions but not all of them.
+This is the site wherein I push 11ty to it's absolute limits and then some. It works on some 11ty versions but not all of them. I'm pretty sure it is the most complex 11ty site in existence, at least in terms of the amount of crimes against humanity committed in the name of web development.
 
 This website is my `indieweb`-enabled `digital garden` with `dynamic taxonomies`, `aliases`, ~~`gemini`~~, `scss`, `ts`, and lots of love.
 

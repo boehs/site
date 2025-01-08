@@ -6,7 +6,7 @@ headInject: |
     <link rel="alternate" type="application/atom+xml" title="Evan Boehs in the blog" href="/in/blog.xml" />
 ---
 
-{% assign hello = deets.greatings | random %}
+{{ set hello = deets.greatings |> random }}
 
 # {{hello.hello}}! 👋 {style="margin-block-end: 0" class="needstitle"}
 
