@@ -66,10 +66,6 @@ export default function filters(eleventyConfig) {
         return str;
     });
 
-    eleventyConfig.addFilter("dropContentFolder", (path, folder) =>
-        path.replace(new RegExp(folder + "/"), ""),
-    );
-
     // I frankly don't recall why I don't use the built-in slug filter
     // but I'm sure I had a good reason
     eleventyConfig.addFilter("slugshive", (path) => slugify(path));
