@@ -16,6 +16,7 @@
         "@shikijs/transformers": "^1.26.1",
         "eleventy-plugin-vento": "^4.0.1",
         "esbuild": "^0.24.0",
+        "fontkit": "^2.0.4",
         "html-minifier": "^4.0.0",
         "jsdom": "^25.0.1",
         "markdown-it": "^14.1.0",

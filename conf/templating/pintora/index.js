@@ -1,6 +1,10 @@
 import pintora from "@pintora/standalone";
 import { JSDOM } from "jsdom";
 
+if (process.env.ELEVENTY_ENV == "production") {
+    await import("./wintercg.js");
+}
+
 class GlobalPatcher {
     records = {};
     set(k, v) {
@@ -53,7 +57,7 @@ export default function renderPintora(code) {
             },
             config: {
                 core: {
-                    defaultFontFamily: "monospace",
+                    defaultFontFamily: "'Input Mono Compressed', monospace",
                 },
                 themeConfig: {
                     themeVariables: {

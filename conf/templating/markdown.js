@@ -55,7 +55,7 @@ import iterator from "markdown-it-for-inline";
 import Shiki from "@shikijs/markdown-it";
 import { transformerNotationDiff } from "@shikijs/transformers";
 import { gruvBoxDarkHard } from "./highlight.js";
-import { injectPintora } from "./pintora.js";
+import { injectPintora } from "./pintora/index.js";
 
 const proxy = (tokens, idx, options, env, self) =>
     self.renderToken(tokens, idx, options);
