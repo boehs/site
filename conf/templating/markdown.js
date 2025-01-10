@@ -163,9 +163,7 @@ markdownIt
         removeMarker: false,
     })
     .use(mdItFootnote)
-    .use(mdItFig, {
-        figcaption: "alt",
-    })
+    .use(mdItFig, {})
     .use(iterator, "external_url_img", "link_open", function (tokens, idx) {
         let host = null;
         try {
