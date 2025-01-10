@@ -465,6 +465,11 @@ details {
         margin: initial;
     }
 
+    .pintora {
+        max-width: 100%;
+        overflow-x: scroll;
+    }
+
     details {
         margin: -0.5em 0;
         padding: calc(0.5em - 2px) 0;
