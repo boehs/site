@@ -43,6 +43,7 @@ $darkBorder: #363636;
     --warn: #df803f;
     --border: lightgrey;
     --fg2: #3b4044;
+    interpolate-size: allow-keywords;
 }
 
 .lighter {
@@ -426,6 +427,7 @@ video {
     width: calc(100% + 40px);
 }
 
+// details has extra overflow so that it can neatly contain other overflows
 details {
     margin-block: 1em;
     margin: -0.5em -40px;
@@ -465,6 +467,7 @@ details {
         margin: initial;
     }
 
+    // on mobile, only show start and end of details, not the left and right borders
     details {
         margin: -0.5em 0;
         padding: calc(0.5em - 2px) 0;
@@ -480,9 +483,37 @@ details {
     }
 }
 
+@media screen and (prefers-reduced-motion: no-preference) {
+    details {
+        &::details-content {
+            block-size: 0;
+            opacity: 0;
+            transition:
+                block-size ease-out 0.5s,
+                content-visiblity 0.5s ease-out allow-discrete,
+                opacity 0.5s ease-out,
+                transform 0.5s ease-out;
+            // fixes bug? causing inner overflow codeblock to be hidden as well
+            // if this doesn't exist there seems to be a bug causing duplicate content
+            // https://nerdy.dev/open-and-close-transitions-for-the-details-element
+            overflow-y: clip;
+            transform: scale(0.8);
+        }
+
+        &[open]::details-content {
+            opacity: 1;
+            block-size: auto;
+            transform: scale(1);
+        }
+    }
+}
 @media screen and (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
+    }
+
+    :root {
+        interpolate-size: none;
     }
 }
 
