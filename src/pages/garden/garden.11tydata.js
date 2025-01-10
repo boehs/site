@@ -21,10 +21,13 @@ function backlinksApi(data) {
 
     // Search the other notes for backlinks
     for (const otherNote of notes) {
-        const noteContent = otherNote.rawInput;
+        let noteContent = otherNote.rawInput;
         if (!noteContent || typeof noteContent !== "string") {
             continue;
         }
+        // Remove content within noteContent ``` code blocks
+        noteContent = noteContent.replace(/```[\s\S]*?```/g, "");
+
         const noteAsLink = slugshive(
             otherNote.data.page.url
                 ? data.page.url.replace("/node/", "").replace(".html", "")
