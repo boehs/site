@@ -426,6 +426,18 @@ video {
     width: calc(100% + 40px);
 }
 
+details {
+    margin-block: 1em;
+    margin: -0.5em -40px;
+    padding: calc(0.5em - 2px) 38px;
+    border-radius: $radius;
+    border: 2px solid var(--border);
+
+    summary {
+        cursor: pointer;
+    }
+}
+
 // (Media Queries)
 
 @media screen and (max-width: 800px) {
@@ -451,6 +463,15 @@ video {
     table,
     :not(footer) > pre {
         margin: initial;
+    }
+
+    details {
+        margin: -0.5em 0;
+        padding: calc(0.5em - 2px) 0;
+        border-radius: 0;
+        border: none;
+        border-top: 2px solid var(--border);
+        border-bottom: 2px solid var(--border);
     }
 
     table,
