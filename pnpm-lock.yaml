@@ -30,8 +30,8 @@ importers:
         specifier: ^1.26.1
         version: 1.26.1
       eleventy-plugin-vento:
-        specifier: ^4.0.1
-        version: 4.0.1
+        specifier: ^4.1.1
+        version: 4.1.1
       esbuild:
         specifier: ^0.24.0
         version: 0.24.0
@@ -90,8 +90,8 @@ importers:
         specifier: ^0.12.0
         version: 0.12.0
       terser:
-        specifier: ^5.36.0
-        version: 5.36.0
+        specifier: ^5.37.0
+        version: 5.37.0
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -1018,8 +1018,8 @@ packages:
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  eleventy-plugin-vento@4.0.1:
-    resolution: {integrity: sha512-gD7Udj/0uE2tiSQUech5mwVTfeD9T2AmVAIuhxtd7hOgN2/MRsptdJHcdanYZLAEd8VmJff3q949sPKPVYZnJQ==}
+  eleventy-plugin-vento@4.1.1:
+    resolution: {integrity: sha512-qPgaF6HqcxPvUGE2IjPCSOkXZ9jSr35e6igtcRxLn4aBJTT6JW4DAwQAuCfYomeg9lDMCIFHe8K5fukv/oTuGQ==}
     engines: {node: '>=18'}
 
   emoji-regex-xs@1.0.0:
@@ -1868,8 +1868,8 @@ packages:
   symbol-tree@3.2.4:
     resolution: {integrity: sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==}
 
-  terser@5.36.0:
-    resolution: {integrity: sha512-IYV9eNMuFAV4THUspIRXkLakHnV6XO7FEdtKjf/mDyrnqUg9LnlOn6/RwRvM9SZjR4GUq8Nk8zj67FzVARr74w==}
+  terser@5.37.0:
+    resolution: {integrity: sha512-B8wRRkmre4ERucLM/uXx4MOV5cbnOlVAqUst+1+iLKPI0dOgFO28f84ptoQt9HEI537PMzfYa/d+GEPKTRXmYA==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -1958,8 +1958,8 @@ packages:
   utf8-byte-length@1.0.4:
     resolution: {integrity: sha1-9F8VDExm7uloGGUFq5P8u4rWv2E=}
 
-  ventojs@1.12.11:
-    resolution: {integrity: sha512-76lCfS0/7dFV40fCTz5tTcruCoSCl+preV2upitB2pvh6ntGS5VikCQ4YPgqR+/BfVDxZRF4IQGJ2hmDWF6KhA==}
+  ventojs@1.12.14:
+    resolution: {integrity: sha512-Frlrkgc9X92q6H/kEY+VfASf10i4xiZ7EFkKSh7Da3n1dWxVH+1gEq1NKzflhpIKx8d+uGfopRrgNdnDoBBLew==}
 
   vfile-message@4.0.2:
     resolution: {integrity: sha512-jRDZ1IMLttGj41KcZvlrYAaI3CfqpLpfpf+Mfig13viT6NKvRzWZ+lXz0Y5D60w6uJIBAOGq9mSHf0gktF0duw==}
@@ -2618,7 +2618,7 @@ snapshots:
 
   acorn-walk@8.3.4:
     dependencies:
-      acorn: 8.11.3
+      acorn: 8.14.0
 
   acorn@8.11.3: {}
 
@@ -2943,10 +2943,10 @@ snapshots:
 
   ee-first@1.1.1: {}
 
-  eleventy-plugin-vento@4.0.1:
+  eleventy-plugin-vento@4.1.1:
     dependencies:
-      debug: 4.3.7
-      ventojs: 1.12.11
+      debug: 4.4.0
+      ventojs: 1.12.14
     transitivePeerDependencies:
       - supports-color
 
@@ -3015,7 +3015,7 @@ snapshots:
 
   esm-import-transformer@3.0.2:
     dependencies:
-      acorn: 8.11.3
+      acorn: 8.14.0
 
   esprima@4.0.1: {}
 
@@ -3214,14 +3214,14 @@ snapshots:
   http-proxy-agent@7.0.2:
     dependencies:
       agent-base: 7.1.3
-      debug: 4.3.7
+      debug: 4.4.0
     transitivePeerDependencies:
       - supports-color
 
   https-proxy-agent@7.0.6:
     dependencies:
       agent-base: 7.1.3
-      debug: 4.3.7
+      debug: 4.4.0
     transitivePeerDependencies:
       - supports-color
 
@@ -3808,10 +3808,10 @@ snapshots:
 
   symbol-tree@3.2.4: {}
 
-  terser@5.36.0:
+  terser@5.37.0:
     dependencies:
       '@jridgewell/source-map': 0.3.5
-      acorn: 8.11.3
+      acorn: 8.14.0
       commander: 2.20.3
       source-map-support: 0.5.21
 
@@ -3894,7 +3894,7 @@ snapshots:
 
   utf8-byte-length@1.0.4: {}
 
-  ventojs@1.12.11:
+  ventojs@1.12.14:
     dependencies:
       '@deno/shim-deno': 0.18.2
       estree-walker: 3.0.3

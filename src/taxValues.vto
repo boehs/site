@@ -51,9 +51,10 @@ eleventyComputed:
       </h2>
     {{ /if }}
     <ol>
-      {{ for post of posts.sort((a,b) => b.data.date - a.data.date) }}
-        {{ if post.data?.sec != "unlisted" }}
-          {{ set c = post.data?.description |> renderMd }}
+      {{ for post of posts.sort((a,b) => b.data.date - a.data.date) -}}
+        {{- if post.data?.sec != "unlisted" -}}
+          {{- set content = post.data?.description |> renderMd -}}
+          {{- set title = post.data?.title |> titleCase -}}
           <li>
           {{ Card({
             class: 'h-entry',
@@ -62,14 +63,14 @@ eleventyComputed:
           {
             url: post.url,
             class: "p-name u-url",
-            title: post.data?.title
+            title
           },
           {
             class: "p-summary",
-            content: c
+            content
           })}}
           </li>
-        {{ /if }}
+        {{- /if -}}
       {{ /for }}
     </ol>
   {{ /for }}

@@ -20,11 +20,15 @@ function fence(length, rails) {
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 export default function filters(eleventyConfig) {
     eleventyConfig.addFilter("titleCase", (str) => {
-        str = str.replace(
-            /([^\W_]+[^\s-]*) */g,
-            (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(),
-        );
-
+        str = str
+            .split(" ")
+            .map((word) => {
+                if (/[A-Z]/.test(word)) {
+                    return word;
+                }
+                return word.charAt(0).toUpperCase() + word.slice(1);
+            })
+            .join(" ");
         // Certain minor words should be left lowercase unless
         // they are the first or last words in the string
         let lowers = [
@@ -53,14 +57,6 @@ export default function filters(eleventyConfig) {
         for (const lower of lowers)
             str = str.replace(new RegExp("\\s" + lower + "\\s", "g"), (txt) =>
                 txt.toLowerCase(),
-            );
-
-        // Certain words such as initialisms or acronyms should be left uppercase
-        let uppers = ["Id", "Tv", "Css", "Rss", "Xz", "Js", "Html", "Llm"];
-        for (const upper of uppers)
-            str = str.replace(
-                new RegExp("\\b" + upper + "\\b", "g"),
-                upper.toUpperCase(),
             );
 
         return str;
