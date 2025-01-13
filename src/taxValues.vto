@@ -54,7 +54,8 @@ eleventyComputed:
       {{ for post of posts.sort((a,b) => b.data.date - a.data.date) -}}
         {{- if post.data?.sec != "unlisted" -}}
           {{- set content = post.data?.description |> renderMd -}}
-          {{- set title = post.data?.title |> titleCase -}}
+          {{# this was overwriting the title, so I had to change it to _title #}}
+          {{- set _title = post.data?.title |> titleCase -}}
           <li>
           {{ Card({
             class: 'h-entry',
@@ -63,7 +64,7 @@ eleventyComputed:
           {
             url: post.url,
             class: "p-name u-url",
-            title
+            title: _title
           },
           {
             class: "p-summary",
