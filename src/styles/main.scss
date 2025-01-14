@@ -249,7 +249,6 @@ nav > dl,
     gap: 10px;
 
     & > dd {
-        border-left: none;
         margin-left: auto;
     }
 
@@ -323,12 +322,6 @@ label {
     font-weight: bold;
 }
 
-dd {
-    border-left: 6px double var(--light);
-    margin: 0;
-    padding-left: 10px;
-}
-
 sup,
 sub {
     font-family: monospace;
@@ -396,7 +389,7 @@ blockquote {
 
 .mastodon-embed {
     border-radius: $radius;
-    padding: 10px;
+    padding: 18px;
     border: 2px solid var(--border);
 }
 
@@ -450,10 +443,6 @@ details {
     footer > nav > dl,
     .kv {
         display: block;
-
-        dd {
-            padding-left: 0;
-        }
     }
 
     .e-content > p:has(img),
@@ -468,6 +457,10 @@ details {
     .pintora {
         max-width: 100%;
         overflow-x: scroll;
+    }
+
+    .mastodon-embed {
+        padding: 10px;
     }
 
     details {
