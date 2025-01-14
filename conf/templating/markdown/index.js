@@ -47,14 +47,14 @@ import mdItFootnote from "markdown-it-footnote";
 
 import mdIt from "markdown-it";
 import sanitize from "sanitize-filename";
-import slugify from "../../utils/slugify.js";
+import slugify from "../../../utils/slugify.js";
 
 import iterator from "markdown-it-for-inline";
 
 import Shiki from "@shikijs/markdown-it";
 import { transformerNotationDiff } from "@shikijs/transformers";
-import { gruvBoxDarkHard } from "./highlight.js";
-import { injectPintora } from "./pintora/index.js";
+import { gruvBoxDarkHard } from "../highlight.js";
+import { inject } from "./widgets/widgets.js";
 
 const proxy = (tokens, idx, options, env, self) =>
     self.renderToken(tokens, idx, options);
@@ -201,10 +201,15 @@ markdownIt.renderer.rules.footnote_caption = function (tokens, idx) {
 const defaultFence = markdownIt.renderer.rules.fence || proxy;
 markdownIt.renderer.rules.fence = (tokens, idx, options, env, self) => {
     const token = tokens[idx];
-
-    if (token.info.trim() === "pintora") {
+    let info = token.info.trim();
+    if (info === "pintora") {
         let id = Math.random().toString(36).substring(7);
         return `___PINTORA_${id}_${token.content.trim()}_`;
+    }
+
+    if (info === "js exec" || info === "javascript exec") {
+        let id = Math.random().toString(36).substring(7);
+        return `___EVAL_${id}_${token.content.trim()}_`;
     }
 
     return defaultFence(tokens, idx, options, env, self);
@@ -237,7 +242,9 @@ export function markdownTemplate(eleventyConfig) {
                     )(data);
                 }
                 result = markdownIt.render(result, data);
-                result = await injectPintora(result);
+                if (result.includes("___")) {
+                    result = await inject(result);
+                }
                 return result;
             };
         },

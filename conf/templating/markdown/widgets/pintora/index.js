@@ -72,25 +72,3 @@ export default function renderPintora(code) {
         });
     });
 }
-
-/**
- * Replaces Pintora placeholders with rendered SVGs.
- */
-export async function injectPintora(result) {
-    if (result.includes("___PINTORA_")) {
-        const pintoraBlocks = [];
-        const regex = /___PINTORA_(\w+)_(.*?)_/gs;
-        let match;
-        while ((match = regex.exec(result)) !== null) {
-            pintoraBlocks.push({ id: match[1], content: match[2] });
-        }
-        for (const block of pintoraBlocks) {
-            const rendered = await renderPintora(block.content);
-            result = result.replace(
-                `___PINTORA_${block.id}_${block.content}_`,
-                rendered,
-            );
-        }
-    }
-    return result;
-}

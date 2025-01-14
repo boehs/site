@@ -8,7 +8,7 @@ import { readFileSync } from "fs";
 import { join } from "path";
 
 const b = readFileSync(
-    join(import.meta.dirname, "../../../src/_public/office.ttf"),
+    join(import.meta.dirname, "../../../../../src/_public/office.ttf"),
 );
 const defaultFont = create(b);
 const fonts = {

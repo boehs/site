@@ -12,7 +12,7 @@ let gardenStr = "./src/pages/garden/node/**/*.{md,csv}";
 import slugify from "./utils/slugify.js";
 
 import scss from "./conf/templating/scss.js";
-import { markdownTemplate } from "./conf/templating/markdown.js";
+import { markdownTemplate } from "./conf/templating/markdown/index.js";
 import csv from "./conf/templating/csv.js";
 import vento from "./conf/templating/vento.js";
 
