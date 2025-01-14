@@ -44,7 +44,6 @@ import mmdItWl from "@gardeners/markdown-it-wikilinks";
 import mdItC from "markdown-it-container";
 import mdItOtherAttrLol from "markdown-it-attribution";
 import mdItFootnote from "markdown-it-footnote";
-import mdItFig from "markdown-it-image-figures";
 
 import mdIt from "markdown-it";
 import sanitize from "sanitize-filename";

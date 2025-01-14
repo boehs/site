@@ -1,9 +1,6 @@
 import pintora from "@pintora/standalone";
 import { JSDOM } from "jsdom";
-
-if (process.env.ELEVENTY_ENV == "production") {
-    await import("./wintercg.js");
-}
+import "./wintercg.js";
 
 class GlobalPatcher {
     records = {};

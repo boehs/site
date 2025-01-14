@@ -35,12 +35,7 @@ eleventyComputed:
 {{ /if }}
 
 
-{{ set tax -}}{{ for k,v of collectionsControl -}}
-    {{ if v.mode == 'differentiator' -}}
-      {{- k -}}
-    {{- /if }}
-  {{- /for }}
-{{- /set }}
+{{ set tax = Object.keys(collectionsControl).find(key => collectionsControl[key].mode === "differentiator") }}
 
 <div class="h-feed">
   {{set loop = Object.groupBy(collections.nestedTax[value[0]]?.[value[1]],(post)=> post.data?.[tax])}}

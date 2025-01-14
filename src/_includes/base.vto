@@ -10,7 +10,7 @@
         <main>
             <article class="h-entry" {{ if date && structuredData.type }} itemscope itemtype="https://schema.org/{{ structuredData.type }}" {{ /if }}>
                     {{- if title && !notitle }}
-                        {{- if !title_override }}
+                        {{- if !title_override && title_override != "" }}
                             <h1 class="p-name" itemprop="headline">{{ title |> titleCase }}</h1>
                         {{- else}}
                             {{title_override}}
