@@ -100,6 +100,7 @@ video {
     width: 100%;
 }
 
+// used for rss icons
 h1 > a > img,
 h2 > a > img {
     padding-left: 5px;
@@ -405,13 +406,18 @@ blockquote {
 // (Overflows)
 
 .e-content > p:has(img),
-figure,
+figure:not(figure figure),
 .mastodon-embed,
 blockquote,
 table,
 video,
 :not(footer) > pre {
     margin: 0 -20px;
+}
+
+// for observable plot
+figure figure {
+    margin: 0;
 }
 
 table,

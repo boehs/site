@@ -31,11 +31,6 @@ export default function (eleventyConfig) {
 
     const markdown = markdownTemplate(eleventyConfig);
 
-    eleventyConfig.addShortcode("getSvg", function (name) {
-        const data = readFileSync(`./src/pages/garden/node/Assets/${name}.svg`);
-        return data.toString("utf-8");
-    });
-
     filters(eleventyConfig);
 
     eleventyConfig.addAsyncShortcode("embedMastodon", embedMastodon);
