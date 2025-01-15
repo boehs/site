@@ -27,7 +27,33 @@ const h = {
         file: (path) => readFile(path),
         string: (path) => readFile(path).toString(),
     },
+    cfg: {
+        maxWidth: 640,
+    },
 };
+
+class GlobalPatcher {
+    records = {};
+    set(k, v) {
+        const prevValue = globalThis[k];
+        this.records[k] = {
+            prevValue,
+            value: v,
+        };
+
+        globalThis[k] = v;
+    }
+
+    restore() {
+        for (const k in this.records) {
+            if (globalThis[k] === this.records[k].value) {
+                globalThis[k] = this.records[k].prevValue;
+            }
+        }
+    }
+}
+
+export const patcher = new GlobalPatcher();
 
 const window = new JSDOM("<!DOCTYPE html><body>").window;
 
@@ -35,6 +61,9 @@ const window = new JSDOM("<!DOCTYPE html><body>").window;
  * The eval widget.
  */
 export default function (value) {
-    const fn = new Function("window", "d3", "Plot", "h", value);
-    return fn(window, d3, Plot, h);
+    patcher.set("window", window);
+    const fn = new Function("d3", "Plot", "h", value);
+    let res = fn(d3, Plot, h);
+    patcher.restore();
+    return res;
 }

@@ -101,11 +101,13 @@ video {
 }
 
 // used for rss icons
-h1 > a > img,
-h2 > a > img {
-    padding-left: 5px;
-    margin-bottom: -2px;
-    width: initial;
+h1,
+h2 {
+    > a > img {
+        padding-left: 5px;
+        margin-bottom: -2px;
+        width: initial;
+    }
 }
 
 // Code //
@@ -160,23 +162,24 @@ a {
     }
 }
 
-.e-content a[href*="//"]:not([href*="boehs.org"]):after
+.e-content a[href*="//"]:not([href*="boehs.org"])
 {
-    content: "";
-    display: inline-block;
-    vertical-align: middle;
-    width: 1.1rem;
-    height: 1.1rem;
-    margin: 0 0.2em;
-    margin-bottom: 3px;
-    border-radius: 3px;
-    background-size: contain;
-    background-image: var(--url);
-}
+    &:after {
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+        width: 1.1rem;
+        height: 1.1rem;
+        margin: 0 0.2em;
+        margin-bottom: 3px;
+        border-radius: 3px;
+        background-size: contain;
+        background-image: var(--url);
+    }
 
-.e-content a[href*="//"]:not(:hover):not([href*="boehs.org"]):after
-{
-    filter: grayscale(60%);
+    &:not(:hover):after {
+        filter: grayscale(60%);
+    }
 }
 
 // Cards //
@@ -228,9 +231,11 @@ ul {
     list-style: georgian;
 }
 
-li > p,
-figcaption > p {
-    margin-block: 0;
+li,
+figcaption {
+    > p {
+        margin-block: 0;
+    }
 }
 
 hr {
@@ -305,10 +310,6 @@ article,
 nav,
 header {
     line-height: 1.7;
-}
-
-article > p {
-    margin-block: 10px;
 }
 
 main {
