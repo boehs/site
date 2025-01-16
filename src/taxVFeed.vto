@@ -33,12 +33,10 @@ eleventyComputed:
   {{ for post of collections.nestedTax[value[0]]?.[value[1]]?.sort((a,b) => b.data.date - a.data.date) }}
     <entry{{if post.data.color}} style="--light: {{post.data.color}}"{{ /if }}>
       <title>{{ post.data.title |> titleCase |> escape }}</title>
-      <link href="{{ config.baseurl }}{{ post.url |> slugshive }}"/>
-      {{ if post.data.date -}}
-      <updated>{{ post.date |> dateToRfc3339 }}</updated>
-      {{- /if }}
+      <link href="{{ config.baseurl }}{{ post.url |> slugshive }}" rel="alternate"/>
+      {{ if post.data.date -}}<updated>{{ post.date |> dateToRfc3339 }}</updated>{{- /if }}
       <id xmlns:xlink="{{ config.baseurl }}{{ post.url |> slugshive }}" xlink:type="simple">{{ post.url |> slugshive }}</id>
-      <content type="html">{{ post.url |> url }}</content>
+      <content src="{{ config.baseurl }}{{ post.url |> slugshive }}" type="text/html"/>
       {{ if post.data.description }}<summary>{{post.data.description |> escape }}</summary>{{ /if }}
     </entry>
   {{ /for }}

@@ -39,12 +39,12 @@ eleventyComputed:
   {{- if post.data[tax] == value[2] -}}
   <entry{{if post.data.color}} style="--light: {{post.data.color}}"{{ /if }}>
     <title>{{ post.data.title |> titleCase }}</title>
-    <link href="{{ config.baseurl }}{{ post.url |> slugshive }}"/>
+    <link href="{{ config.baseurl }}{{ post.url |> slugshive }}" rel="alternate"/>
     {{- if post.data.date -}}
     <updated>{{ post.date |> dateToRfc3339 }}</updated>
     {{- /if -}}
     <id xmlns:xlink="{{ config.baseurl }}{{ post.url |> slugshive }}" xlink:type="simple">{{ post.url |> slugshive }}</id>
-    <content type="html">{{ post.url |> url }}</content>
+    <content src="{{ config.baseurl }}{{ post.url |> slugshive }}" type="text/html"/>
     {{- if post.data.description -}}<summary>{{post.data.description}}</summary>{{- /if -}}
   </entry>
   {{- /if -}}
