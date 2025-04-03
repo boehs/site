@@ -30,9 +30,8 @@
 // Variables //
 
 $radius: 3px;
-$warner: #ccbcb1;
-$activer: #b1c1cc;
 $darkBorder: #363636;
+$mobileWidth: 800px;
 :root {
     --base: 198deg;
     --light: var(--arc-background-simple-color, hsl(var(--base), 88%, 33%));
@@ -40,6 +39,14 @@ $darkBorder: #363636;
     --warn: #df803f;
     --border: lightgrey;
     --fg2: #3b4044;
+    color-scheme: light dark;
+
+    @media (prefers-color-scheme: dark) {
+        --light: var(--arc-background-simple-color, hsl(var(--base), 81%, 40%));
+        --border: #363636;
+        --fg2: #f0f0f0;
+        --bg2: darkslategray;
+    }
 }
 
 .lighter {
@@ -141,6 +148,10 @@ code,
     padding: 0 3px;
 }
 
+pre, code {
+    font-family: 'Fira Code', Menlo, monospace;
+}
+
 // Links //
 
 a {
@@ -173,7 +184,7 @@ a {
         height: 1.2rem;
         margin: 0 0.2em;
         margin-bottom: 3px;
-        border-radius: 3px;
+        border-radius: $radius;
         background-size: contain;
         background-image: var(--url);
     }
@@ -332,6 +343,20 @@ sub {
 
     &.footnote-ref > a {
         text-decoration: none;
+        color: var(--light);
+    }
+}
+
+.footnotes-list {
+    font-size: 14pt;
+    padding-inline-start: 0;
+    li::marker {
+        color: var(--light);
+    }
+
+    :target {
+        background: linear-gradient(to right, transparent, light-dark(#f1eddd, var(--bg2)));
+        border-radius: $radius;
     }
 }
 
@@ -415,6 +440,9 @@ table,
 video,
 :not(footer) > pre {
     margin: 0 -20px;
+    @media screen and (max-width: $mobileWidth) {
+        margin: 0;
+    }
 }
 
 // for observable plot
@@ -441,7 +469,7 @@ details {
 
 // (Media Queries)
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: $mobileWidth) {
     footer {
         pre {
             display: none;
@@ -451,15 +479,6 @@ details {
     footer > nav > dl,
     .kv {
         display: block;
-    }
-
-    .e-content > p:has(img),
-    figure,
-    .mastodon-embed,
-    blockquote,
-    table,
-    :not(footer) > pre {
-        margin: initial;
     }
 
     .pintora {
@@ -493,12 +512,6 @@ details {
 }
 
 @media (prefers-color-scheme: dark) {
-    :root {
-        --light: var(--arc-background-simple-color, hsl(var(--base), 81%, 40%));
-        --border: #363636;
-        --fg2: #f0f0f0;
-    }
-
     body {
         background: #282828;
         color: whitesmoke;
@@ -506,11 +519,7 @@ details {
 
     :not(pre) > code,
     blockquote {
-        background: darkslategray;
-    }
-
-    .penpen {
-        background: #483341;
+        background: var(--bg2);
     }
 
     tr {

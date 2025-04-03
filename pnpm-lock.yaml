@@ -83,6 +83,9 @@ importers:
       postcss-csso:
         specifier: ^6.0.1
         version: 6.0.1(postcss@8.4.49)
+      postcss-sort-media-queries:
+        specifier: ^5.2.0
+        version: 5.2.0(postcss@8.4.49)
       rsslytics:
         specifier: ^1.1.2
         version: 1.1.2
@@ -1751,6 +1754,12 @@ packages:
     peerDependencies:
       postcss: ^8.0.0
 
+  postcss-sort-media-queries@5.2.0:
+    resolution: {integrity: sha512-AZ5fDMLD8SldlAYlvi8NIqo0+Z8xnXU2ia0jxmuhxAU+Lqt9K+AlmLNJ/zWEnE9x+Zx3qL3+1K20ATgNOr3fAA==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      postcss: ^8.4.23
+
   postcss-value-parser@4.2.0:
     resolution: {integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==}
 
@@ -1936,6 +1945,10 @@ packages:
   slugify@1.6.6:
     resolution: {integrity: sha512-h+z7HKHYXj6wJU+AnS/+IH8Uh9fdcX1Lrhg1/VMdf9PwoBQXFcXiAdsy2tSK0P6gKwJLXp02r90ahUCqHk9rrw==}
     engines: {node: '>=8.0.0'}
+
+  sort-css-media-queries@2.2.0:
+    resolution: {integrity: sha512-0xtkGhWCC9MGt/EzgnvbbbKhqWjl1+/rncmhTh5qCpbYguXh6S/qwePfv/JQ8jePXXmqingylxoC49pCkSPIbA==}
+    engines: {node: '>= 6.3.0'}
 
   source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
@@ -3831,6 +3844,11 @@ snapshots:
       csso: 5.0.5
       postcss: 8.4.49
 
+  postcss-sort-media-queries@5.2.0(postcss@8.4.49):
+    dependencies:
+      postcss: 8.4.49
+      sort-css-media-queries: 2.2.0
+
   postcss-value-parser@4.2.0: {}
 
   postcss@8.4.49:
@@ -4022,6 +4040,8 @@ snapshots:
   slash@1.0.0: {}
 
   slugify@1.6.6: {}
+
+  sort-css-media-queries@2.2.0: {}
 
   source-map-js@1.2.1: {}
 

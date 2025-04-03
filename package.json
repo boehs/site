@@ -32,6 +32,7 @@
         "markdown-it-table-of-contents": "^0.8.0",
         "postcss": "^8.4.49",
         "postcss-csso": "^6.0.1",
+        "postcss-sort-media-queries": "^5.2.0",
         "rsslytics": "^1.1.2",
         "sanitize-filename": "^1.6.3",
         "sass": "1.81.0",
