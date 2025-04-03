@@ -1,30 +1,27 @@
 // Fonts //
 
 @font-face {
-    font-family: "spectral";
+    font-family: "crimson";
     src:
-        url("/spectralbold.woff2") format("woff2"),
-        url("/spectralbold.woff") format("woff");
+        url("/crimson.bold.woff2") format("woff2");
     font-weight: bold;
     font-style: normal;
     font-display: fallback;
 }
 
 @font-face {
-    font-family: "spectral";
+    font-family: "crimson";
     src:
-        url("/spectralitalic.woff2") format("woff2"),
-        url("/spectralitalic.woff") format("woff");
+        url("/crimson.italic.woff2") format("woff2");
     font-weight: normal;
     font-style: italic;
     font-display: fallback;
 }
 
 @font-face {
-    font-family: "spectral";
+    font-family: "crimson";
     src:
-        url("/spectralregular.woff2") format("woff2"),
-        url("/spectralregular.woff") format("woff");
+        url("/crimson.regular.woff2") format("woff2");
     font-weight: normal;
     font-style: normal;
     font-display: fallback;
@@ -66,7 +63,7 @@ html {
 }
 
 body {
-    font-family: Spectral, serif;
+    font-family: crimson, serif;
     font-size: 1.1rem;
     min-height: 100%;
     margin: 0;
