@@ -64,7 +64,7 @@ html {
 
 body {
     font-family: crimson, serif;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     min-height: 100%;
     margin: 0;
     padding: 75px 20px;
@@ -169,8 +169,8 @@ a {
         content: "";
         display: inline-block;
         vertical-align: middle;
-        width: 1.1rem;
-        height: 1.1rem;
+        width: 1.2rem;
+        height: 1.2rem;
         margin: 0 0.2em;
         margin-bottom: 3px;
         border-radius: 3px;
@@ -282,7 +282,7 @@ header {
     > * {
         display: block;
         text-align: center;
-        font-size: 14pt;
+        font-size: 15pt;
     }
 
     > span a {
@@ -310,7 +310,7 @@ footer {
 article,
 nav,
 header {
-    line-height: 1.7;
+    line-height: 1.6;
 }
 
 main {
