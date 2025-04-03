@@ -9,9 +9,9 @@
         "/main.css",
         "/code.css",
         "/favicon.ico",
-        "/spectralregular.woff2",
-        "/spectralbold.woff2",
-        "/spectralitalic.woff2",
+        "/alegreya.regular.woff2",
+        "/alegreya.bold.woff2",
+        "/alegra.italic.woff2",
         "/robots.txt"
     ]
 }
