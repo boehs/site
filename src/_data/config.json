@@ -22,5 +22,10 @@
     "isServer": false,
     "donate": "https://liberapay.com/e",
     "color": "#0a74a0",
-    "baseurl": "https://boehs.org"
+    "baseurl": "https://boehs.org",
+    "font": {
+        "regular": "crimson.regular",
+        "bold": "crimson.bold",
+        "italic": "crimson.italic"
+    }
 }

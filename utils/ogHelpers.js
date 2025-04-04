@@ -1,29 +1,30 @@
 import satori from "satori";
 import { readFile } from "node:fs/promises";
+import config from "../src/_data/config.json" with { type: "json" };
 
 export async function loadFonts() {
 	const [base, italic, bold, office] = await Promise.all([
-		readFile(`./src/_public/crimson.regular.woff`),
-		readFile(`./src/_public/crimson.italic.woff`),
-		readFile(`./src/_public/crimson.bold.woff`),
-		readFile(`./src/_public/office.ttf`),
+		readFile(`./src/_public/${config.font.regular}.woff`),
+		readFile(`./src/_public/${config.font.italic}.woff`),
+		readFile(`./src/_public/${config.font.bold}.woff`),
+		readFile("./src/_public/office.ttf"),
 	]);
 
 	return [
 		{
-			name: "crimson",
+			name: config.font.regular.split(".")[0],
 			data: base,
 			weight: 400,
 			style: "normal",
 		},
 		{
-			name: "crimson",
+			name: config.font.italic.split(".")[0],
 			data: italic,
 			weight: 400,
 			style: "italic",
 		},
 		{
-			name: "crimson",
+			name: config.font.bold.split(".")[0],
 			data: bold,
 			weight: 700,
 			style: "normal",
@@ -56,7 +57,7 @@ export const svg = async ({ title, date, desc, color = "#3C898B" }) => {
 					backgroundColor: "hsl(20, 100%, 98%)",
 					padding: "48px",
 					fontSize: "40px",
-					fontFamily: "crimson",
+					fontFamily: config.font.bold.split(".")[0],
 				},
 				children: [
 					{

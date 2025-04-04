@@ -1,37 +1,8 @@
-// Fonts //
-
-@font-face {
-    font-family: "crimson";
-    src:
-        url("/crimson.bold.woff2") format("woff2");
-    font-weight: bold;
-    font-style: normal;
-    font-display: fallback;
-}
-
-@font-face {
-    font-family: "crimson";
-    src:
-        url("/crimson.italic.woff2") format("woff2");
-    font-weight: normal;
-    font-style: italic;
-    font-display: fallback;
-}
-
-@font-face {
-    font-family: "crimson";
-    src:
-        url("/crimson.regular.woff2") format("woff2");
-    font-weight: normal;
-    font-style: normal;
-    font-display: fallback;
-}
+@use '_root.scss' as *;
 
 // Variables //
 
-$radius: 3px;
 $darkBorder: #363636;
-$mobileWidth: 800px;
 :root {
     --base: 198deg;
     --light: var(--arc-background-simple-color, hsl(var(--base), 88%, 33%));
@@ -53,17 +24,9 @@ $mobileWidth: 800px;
     color: var(--light) !important;
 }
 
-// Setup //
-
-*,
-*:before,
-*:after {
-    box-sizing: inherit;
-}
-
 // setting this and the same in body is similar to 100vh
 // but it works on mobile browsers as well
-// could also do 100vh but low support
+// could also do 100dvh but low support
 html {
     height: 100%;
     scroll-behavior: smooth;
@@ -75,7 +38,7 @@ body {
     min-height: 100%;
     margin: 0;
     padding: 75px 20px;
-    background: hsl(20, 100%, 98%);
+    background: #fff8f5;
     color: #101010;
     display: flex;
     justify-content: center;
@@ -122,7 +85,7 @@ h2 {
 
 code,
 :not(footer) > pre {
-    font-size: 1rem;
+    font-size: 0.95rem;
     border-radius: $radius;
     white-space: pre-wrap;
 }
@@ -180,8 +143,8 @@ a {
         content: "";
         display: inline-block;
         vertical-align: middle;
-        width: 1.2rem;
-        height: 1.2rem;
+        width: 1.1rem;
+        height: 1.1rem;
         margin: 0 0.2em;
         margin-bottom: 3px;
         border-radius: $radius;
@@ -204,12 +167,12 @@ a {
     display: block;
 
     > p {
-        margin-block: 0.5em;
+        margin-block: 0.25em;
     }
-}
 
-.card:not(.contain .card) {
-    margin-block: 1em;
+    &:not(.contain .card) {
+        margin-block: 1em;
+    }
 }
 
 .contain {
@@ -231,6 +194,7 @@ a {
     }
 }
 
+// in post lists, the list shouldn't have numbers
 .h-feed > ol {
     list-style-type: none;
     padding-inline: 0;
@@ -461,6 +425,14 @@ details {
     padding: calc(0.5em - 2px) 38px;
     border-radius: $radius;
     border: 2px solid var(--border);
+    @media screen and (max-width: $mobileWidth) {
+        margin: -0.5em 0;
+        padding: calc(0.5em - 2px) 0;
+        border-radius: 0;
+        border: none;
+        border-top: 2px solid var(--border);
+        border-bottom: 2px solid var(--border);
+    }
 
     summary {
         cursor: pointer;
@@ -488,15 +460,6 @@ details {
 
     .mastodon-embed {
         padding: 10px;
-    }
-
-    details {
-        margin: -0.5em 0;
-        padding: calc(0.5em - 2px) 0;
-        border-radius: 0;
-        border: none;
-        border-top: 2px solid var(--border);
-        border-bottom: 2px solid var(--border);
     }
 
     table,
@@ -530,6 +493,7 @@ details {
 }
 
 @media (prefers-color-scheme: light) {
+    // Optimizes codeblocks for light mode
     :not(footer) > pre {
         filter: brightness(1.1) contrast(1.2);
         background: #313131 !important;
@@ -548,48 +512,40 @@ details {
     }
 }
 
-@keyframes slide-from-right {
+@keyframes slide-from {
     from {
-        transform: translateX(30px);
+        transform: translateX(var(--from));
     }
 }
 
-@keyframes slide-from-left {
-    from {
-        transform: translateX(-30px);
-    }
-}
-
-@keyframes slide-to-left {
+@keyframes slide-to {
     to {
-        transform: translateX(-30px);
-    }
-}
-
-@keyframes slide-to-right {
-    to {
-        transform: translateX(30px);
+        transform: translateX(var(--to));
     }
 }
 
 /* 'Forward' transitions */
 ::view-transition-old(main) {
+    --to: -30px;
     animation:
         90ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
-        300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
+        300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to;
 }
 
 ::view-transition-new(main) {
+    --from: 30px;
     animation:
         210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
-        300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
+        300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from;
 }
 
 /* Overrides for 'back' transitions */
 .back-transition::view-transition-old(main) {
-    animation-name: fade-out, slide-to-right;
+    --to: 30px;
+    animation-name: fade-out, slide-to;
 }
 
 .back-transition::view-transition-new(main) {
-    animation-name: fade-in, slide-from-left;
+    --from: -30px;
+    animation-name: fade-in, slide-from;
 }
