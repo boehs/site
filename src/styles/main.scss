@@ -226,6 +226,7 @@ hr {
 // kv == key-value
 nav > dl,
 .kv {
+    font-feature-settings: "onum";
     display: grid;
     grid-template-columns: auto max-content;
     gap: 10px;
@@ -316,6 +317,7 @@ sub {
     padding-inline-start: 0;
     li::marker {
         color: var(--light);
+        font-feature-settings: "sinf";
     }
 
     :target {
@@ -489,6 +491,10 @@ details {
         &:nth-of-type(odd) td {
             background-color: #302e2e;
         }
+    }
+
+    .penpen {
+        background: #483341;
     }
 }
 
