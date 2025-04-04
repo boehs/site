@@ -1,5 +1,6 @@
 import { svg } from "../utils/ogHelpers.js";
 import { Resvg } from "@resvg/resvg-js";
+import { titleCase } from "../utils/titleCase.js";
 
 export default class Og {
 	data() {
@@ -22,8 +23,8 @@ export default class Og {
 		};
 	}
 	async render(page) {
-		let svgd = await svg({
-			title: page.entry.data.title,
+		const svgd = await svg({
+			title: titleCase(page.entry.data.title),
 			desc: page.entry.data.description,
 			date: page.entry.data.date?.toLocaleDateString(),
 			color: page.entry.data.color,
