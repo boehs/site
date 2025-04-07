@@ -4,7 +4,7 @@ import path from "path";
 import postcsso from "postcss-csso";
 import postcsssortmediaqueries from "postcss-sort-media-queries";
 
-/** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
+/** @param {import("@11ty/eleventy/UserConfig").default} eleventyConfig */
 export default function scss(eleventyConfig) {
 	eleventyConfig.addTemplateFormats("scss");
 	eleventyConfig.addExtension("scss", {
