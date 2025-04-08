@@ -255,10 +255,16 @@ label {
   font-weight: bold;
 }
 
-.padded {
+.pagination {
   border-radius: $radius;
   border: 2px solid var(--border);
   padding: $p1 $p2;
+  view-transition-name: pagination;
+  @media screen and (max-width: $mobileWidth) {
+    ul {
+      justify-content: space-between;
+    }
+  }
 }
 
 // (Media Queries)

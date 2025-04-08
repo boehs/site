@@ -73,18 +73,18 @@ eleventyComputed:
   {{ /for }}
 </div>
 {{ if cur.hasNext || cur.hasPrev }}
-<dl class="kv padded">
-  <dt>Page {{cur.n+1}}</dt>
+<dl class="kv pagination">
+  <dt>Page {{cur.n+1}} <i>of</i> {{cur.maxPage+1}}</dt>
   <dd>
     <ul>
       {{ if cur.hasPrev }}
         <li>
-          <a href="/{{collectionsControl[cur.t]?.single || cur.t |> slugshive}}/{{ cur.v |> slugshive }}{{cur.n > 1 ? `/${cur.n-1}` : ""}}.html">&#9753; Prev</a>
+          <a href="/{{collectionsControl[cur.t]?.single || cur.t |> slugshive}}/{{ cur.v |> slugshive }}{{cur.n > 1 ? `/${cur.n}` : ""}}">&#9753; Prev</a>
         </li>
       {{ /if }}
       {{ if cur.hasNext }}
         <li>
-          <a href="/{{collectionsControl[cur.t]?.single || cur.t |> slugshive}}/{{ cur.v |> slugshive }}/{{cur.n+2}}.html">Next &#10087;</a>
+          <a href="/{{collectionsControl[cur.t]?.single || cur.t |> slugshive}}/{{ cur.v |> slugshive }}/{{cur.n+2}}">Next &#10087;</a>
         </li>
       {{ /if }}
     </ul>
