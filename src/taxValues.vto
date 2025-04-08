@@ -1,22 +1,22 @@
 ---
 pagination:
-  data: collections.taxes
+  data: collections.taxesPaged
   size: 1
-  alias: value
-permalink: /{{collectionsControl[value[0]]?.single || value[0] |> slugshive}}/{{ value[1] |> slugshive }}.html
+  alias: cur
+permalink: '/{{collectionsControl[cur.t]?.single || cur.t |> slugshive}}/{{ cur.v |> slugshive }}{{cur.n>0 ? `/${cur.n+1}` : ""}}.html'
 eleventyComputed:
-  color: "{{tagList[value[0]]?.[value[1]]?.color}}"
-  description: "{{tagList[value[0]]?.[value[1]]?.description}}"
-  title: "{{collectionsControl[value[0]].single || value[0] |> titleCase }}: {{value[1]}}"
+  color: "{{tagList[cur.t]?.[cur.v]?.color}}"
+  description: "{{tagList[cur.t]?.[cur.v]?.description}}"
+  title: "{{collectionsControl[cur.t].single || cur.t |> titleCase }}: {{cur.v}}"
 ---
 
 {{ import { Card } from "partials/card.vto"}}
-{{ set collectionController = collectionsControl[value[0]]}}
-{{ set tagDetails = tagList[value[0]]?.[value[1]] }}
+{{ set collectionController = collectionsControl[cur.t]}}
+{{ set tagDetails = tagList[cur.t]?.[cur.v] }}
 
 {{ set title_override }}
 <h1 class="p-name">
-  <a href="/{{ collectionController.plural || value[0] }}/">{{collectionController.single || value[0] |> titleCase }}</a>: {{value[1]}}<a href="/{{collectionController.single || value[0] |> slugshive}}/{{ value[1] |> slugshive }}.xml"><img src="/feed.svg"/></a>
+  <a href="/{{ collectionController.plural || cur.t }}/">{{collectionController.single || cur.t |> titleCase }}</a>: {{cur.v}}<a href="/{{collectionController.single || cur.t |> slugshive}}/{{ cur.v |> slugshive }}.xml"><img src="/feed.svg"/></a>
 </h1>
 {{ /set}}
 
@@ -25,8 +25,8 @@ eleventyComputed:
   {{ Card({
       color: tagDetails.color
   },{
-      url: "/" + value[0] + "/" + value[1],
-      title: value[1],
+      url: "/" + cur.t + "/" + cur.v,
+      title: cur.v,
       icon: tagDetails.icon
   },{
       content: tagDetails.description
@@ -38,15 +38,16 @@ eleventyComputed:
 {{ set tax = Object.keys(collectionsControl).find(key => collectionsControl[key].mode === "differentiator") }}
 
 <div class="h-feed">
-  {{set loop = Object.groupBy(collections.nestedTax[value[0]]?.[value[1]],(post)=> post.data?.[tax])}}
-  {{ for location,posts of loop  }}
-    {{ if Object.keys(loop)?.length != 1 || location != value[1] }}
+  {{set loop = Object.groupBy(collections.nestedTax[cur.t]?.[cur.v],(post)=> post.data?.[tax])}}
+  {{ for location,posts of loop }}
+    {{ if Object.keys(loop)?.length != 1 || location != cur.v }}
       <h2>
-        <a href="/{{tax}}/{{location}}">{{location |> titleCase |> escape }}</a><a href="/{{(collectionController?.single || value[0]) |> slugshive}}/{{ value[1] |> slugshive }}.{{location}}.xml"><img src="/feed.svg"/></a>
+        <a href="/{{tax}}/{{location}}">{{location |> titleCase |> escape }}</a><a href="/{{(collectionController?.single || cur.t) |> slugshive}}/{{ cur.v |> slugshive }}.{{location}}.xml"><img src="/feed.svg"/></a>
       </h2>
     {{ /if }}
     <ol>
-      {{ for post of posts.sort((a,b) => b.data.date - a.data.date) -}}
+      {{ set _posts = posts.sort((a,b) => b.data.date - a.data.date).slice(30*cur.n,(30*cur.n)+cur.itemsInPage) }}
+      {{ for post of _posts -}}
         {{- if post.data?.sec != "unlisted" -}}
           {{- set content = post.data?.description |> renderMd -}}
           {{# this was overwriting the title, so I had to change it to _title #}}
@@ -71,4 +72,23 @@ eleventyComputed:
     </ol>
   {{ /for }}
 </div>
+{{ if cur.hasNext || cur.hasPrev }}
+<dl class="kv padded">
+  <dt>Page {{cur.n+1}}</dt>
+  <dd>
+    <ul>
+      {{ if cur.hasPrev }}
+        <li>
+          <a href="/{{collectionsControl[cur.t]?.single || cur.t |> slugshive}}/{{ cur.v |> slugshive }}{{cur.n > 1 ? `/${cur.n-1}` : ""}}.html">&#9753; Prev</a>
+        </li>
+      {{ /if }}
+      {{ if cur.hasNext }}
+        <li>
+          <a href="/{{collectionsControl[cur.t]?.single || cur.t |> slugshive}}/{{ cur.v |> slugshive }}/{{cur.n+2}}.html">Next &#10087;</a>
+        </li>
+      {{ /if }}
+    </ul>
+  </dd>
+</dl>
+{{ /if }}
 {{ /layout }}
