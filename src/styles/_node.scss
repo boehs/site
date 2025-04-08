@@ -1,0 +1,207 @@
+// Styles for articles
+@use '_vars.scss' as *;
+
+// Images
+
+img,
+lite-youtube,
+svg,
+video {
+  border-radius: $radius;
+}
+
+video {
+  max-height: 600px;
+}
+
+nav,
+img,
+video {
+  width: 100%;
+}
+
+// Code //
+
+code,
+:not(footer) > pre {
+  font-size: 0.95rem;
+  border-radius: $radius;
+  white-space: pre-wrap;
+}
+
+:not(footer) > pre {
+  border: 2px solid $codeBlockDarkBorder;
+  line-height: 1.5;
+  padding: 10px 0;
+  .line {
+    padding: 0px $p1;
+    display: inline-block;
+    width: 100%;
+  }
+  .diff.add {
+    background: $codeBlockAdded;
+  }
+  .diff.remove {
+    background: $codeBlockRemoved;
+  }
+}
+
+:not(pre) > code {
+  padding: 0 3px;
+}
+
+pre, code {
+  font-family: 'Fira Code', Menlo, monospace;
+}
+
+// Labeling and such //
+
+sup,
+sub {
+  font-family: monospace;
+  font-size: 12px;
+
+  &.footnote-ref > a {
+    text-decoration: none;
+    color: var(--light);
+  }
+}
+
+.footnotes-list {
+  font-size: 1.15rem;
+  padding-inline-start: 0;
+  li::marker {
+    color: var(--light);
+    font-feature-settings: "sinf";
+  }
+
+  :target {
+    background: linear-gradient(to right, transparent, light-dark(#f1eddd, var(--bg2)));
+    border-radius: $radius;
+  }
+}
+
+// Tables //
+
+table {
+  border-collapse: collapse;
+  text-align: left;
+}
+
+tr {
+  border-bottom: 1px solid var(--border);
+
+  &:nth-of-type(odd) td {
+    background-color: light-dark(#fff1ec,#302e2e);
+  }
+}
+
+th,
+td {
+  padding: 6px;
+}
+
+// Blockquote //
+
+figure {
+  blockquote,
+  p {
+    margin-block-end: 0;
+  }
+  margin-inline: 0;
+  figcaption {
+    font-size: 12px;
+    font-family: monospace;
+  }
+}
+
+blockquote {
+  border-left: 6px double var(--light);
+  margin: $mb1 0;
+  border-radius: $radius;
+
+  > p {
+    padding: $p1 $p1 $p1 15px;
+  }
+}
+
+// Special Features //
+
+.penpen {
+  --light: lightpink;
+  background: light-dark(#fae6f3,#483341);
+
+  p::before {
+    content: "🐾 ";
+  }
+}
+
+.mastodon-embed {
+  border-radius: $radius;
+  padding: 18px;
+  border: 2px solid var(--border);
+  @media screen and (max-width: $mobileWidth) {
+    padding: $p1;
+  }
+}
+
+.pintora {
+  margin-left: auto;
+  margin-right: auto;
+  overflow: visible;
+  display: block;
+  @media screen and (max-width: $mobileWidth) {
+    max-width: 100%;
+    overflow-x: scroll;
+  }
+}
+
+// Media //
+
+// (Overflows)
+
+.e-content > p:has(img),
+figure:not(figure figure),
+.mastodon-embed,
+blockquote,
+table,
+video,
+:not(footer) > pre {
+  margin: 0 -20px;
+  @media screen and (max-width: $mobileWidth) {
+    margin: 0;
+  }
+}
+
+// for observable plot
+figure figure {
+  margin: 0;
+}
+
+table,
+video {
+  width: calc(100% + 40px);
+  @media screen and (max-width: $mobileWidth) {
+    width: 100%;
+  }
+}
+
+details {
+  margin-block: $mb1;
+  margin: -0.5em -40px;
+  padding: calc(0.5em - 2px) 38px;
+  border-radius: $radius;
+  border: 2px solid var(--border);
+  @media screen and (max-width: $mobileWidth) {
+    margin: -0.5em 0;
+    padding: calc(0.5em - 2px) 0;
+    border-radius: 0;
+    border: none;
+    border-top: 2px solid var(--border);
+    border-bottom: 2px solid var(--border);
+  }
+
+  summary {
+    cursor: pointer;
+  }
+}

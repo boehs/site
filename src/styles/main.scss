@@ -1,297 +1,250 @@
-@use '_root.scss' as *;
+@use '_root.scss';
+@use '_vars.scss' as *;
+
+@use '_node.scss';
 
 // Variables //
 
-$darkBorder: #363636;
 :root {
-    --base: 198deg;
-    --light: var(--arc-background-simple-color, hsl(var(--base), 88%, 33%));
-    --lighter: hsl(var(--base), 22%, 84%);
-    --warn: #df803f;
-    --border: lightgrey;
-    --fg2: #3b4044;
-    color-scheme: light dark;
+  --base: 198deg;
+  --light: var(--arc-background-simple-color, hsl(var(--base), 88%, 33%));
+  --lighter: hsl(var(--base), 22%, 84%);
+  --warn: #b45c5c;
+  --border: lightgrey;
+  --fg2: #3b4044;
+  color-scheme: light dark;
 
-    @media (prefers-color-scheme: dark) {
-        --light: var(--arc-background-simple-color, hsl(var(--base), 81%, 40%));
-        --border: #363636;
-        --fg2: #f0f0f0;
-        --bg2: darkslategray;
-    }
+  @media (prefers-color-scheme: dark) {
+    --light: var(--arc-background-simple-color, hsl(var(--base), 81%, 40%));
+    --border: #363636;
+    --fg2: #f0f0f0;
+    --bg2: darkslategray;
+  }
 }
 
 .lighter {
-    color: var(--light) !important;
+  color: var(--light) !important;
 }
 
 // setting this and the same in body is similar to 100vh
 // but it works on mobile browsers as well
 // could also do 100dvh but low support
 html {
-    height: 100%;
-    scroll-behavior: smooth;
+  height: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
-    font-family: crimson, serif;
-    font-size: 1.2rem;
-    min-height: 100%;
-    margin: 0;
-    padding: 75px 20px;
-    background: #fff8f5;
-    color: #101010;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow-wrap: break-word;
-    box-sizing: border-box;
-    flex-direction: column;
+  font-family: $fontFamily, serif;
+  font-size: 1.2rem;
+  min-height: 100%;
+  margin: 0;
+  padding: 75px 20px;
+  background: #fff8f5;
+  color: #101010;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+  flex-direction: column;
 
-    & > * {
-        width: min(600px, 100%);
-    }
+  & > * {
+    width: min(600px, 100%);
+  }
 }
 
-// Images
-
-img,
-lite-youtube,
-svg,
-video {
-    border-radius: $radius;
-}
-
-video {
-    max-height: 600px;
-}
-
-nav,
-img,
-video {
-    width: 100%;
+p {
+  margin-block: $mb1;
 }
 
 // used for rss icons
 h1,
 h2 {
-    > a > img {
-        padding-left: 5px;
-        margin-bottom: -2px;
-        width: initial;
-    }
-}
-
-// Code //
-
-code,
-:not(footer) > pre {
-    font-size: 0.95rem;
-    border-radius: $radius;
-    white-space: pre-wrap;
-}
-
-:not(footer) > pre {
-    border: 2px solid $darkBorder;
-    line-height: 1.5;
-    padding: 10px 0;
-    .line {
-        padding: 0px 10px;
-        display: inline-block;
-        width: 100%;
-    }
-    .diff.add {
-        background: #363f2c;
-    }
-    .diff.remove {
-        background: #4d221f;
-    }
-}
-
-:not(pre) > code {
-    padding: 0 3px;
-}
-
-pre, code {
-    font-family: 'Fira Code', Menlo, monospace;
+  > a > img {
+    padding-left: 5px;
+    margin-bottom: -2px;
+    width: initial;
+  }
 }
 
 // Links //
 
 a {
-    color: inherit;
-    text-decoration-color: var(--light);
-    text-decoration-thickness: 2px;
-    transition: color 0.3s;
+  color: inherit;
+  text-decoration-color: var(--light);
+  text-decoration-thickness: 2px;
+  transition: color 0.3s;
 
-    &[href*="//"]:not([href*="boehs.org"])
-    {
-        --light: var(--warn);
-    }
+  &[href*="//"]:not([href*="boehs.org"])
+  {
+    --light: var(--warn);
+  }
 
-    &:hover {
-        color: var(--light);
-    }
+  &:hover {
+    color: var(--light);
+  }
 
-    &:active {
-        color: #ff9e9e;
-    }
+  &:active {
+    color: #ff9e9e;
+  }
 }
 
 .e-content a[href*="//"]:not([href*="boehs.org"])
 {
-    &:after {
-        content: "";
-        display: inline-block;
-        vertical-align: middle;
-        width: 1.1rem;
-        height: 1.1rem;
-        margin: 0 0.2em;
-        margin-bottom: 3px;
-        border-radius: $radius;
-        background-size: contain;
-        background-image: var(--url);
-    }
+  &:after {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: .9em;
+    height: .9em;
+    margin: 0 0.2em;
+    margin-bottom: 3px;
+    border-radius: $radius;
+    background-size: contain;
+    background-image: var(--url);
+  }
 
-    &:not(:hover):after {
-        filter: grayscale(60%);
-    }
+  &:not(:hover):after {
+    filter: grayscale(60%);
+  }
 }
 
 // Cards //
 
 .card {
-    color: inherit;
-    text-decoration: inherit;
-    border-left: 2px solid var(--light);
-    padding-left: 1em;
-    display: block;
+  color: inherit;
+  text-decoration: inherit;
+  border-left: 2px solid var(--light);
+  padding-left: $p2;
+  display: block;
 
-    > p {
-        margin-block: 0.25em;
-    }
+  > p {
+    margin-block: .25em;
+  }
 
-    &:not(.contain .card) {
-        margin-block: 1em;
-    }
+  &:not(.contain .card) {
+    margin-block: $mb1;
+  }
 }
 
 .contain {
-    display: grid;
-    grid-template-rows: masonry;
-    gap: 1em;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    list-style-type: none;
-    padding-inline: 0;
+  display: grid;
+  grid-template-rows: masonry;
+  gap: $p2;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  list-style-type: none;
+  padding-inline: 0;
 
-    .card {
-        :first-child {
-            margin-top: 0;
-        }
-
-        :last-child {
-            margin-bottom: 0;
-        }
+  .card {
+    :first-child {
+      margin-top: 0;
     }
+
+    :last-child {
+      margin-bottom: 0;
+    }
+  }
 }
 
 // in post lists, the list shouldn't have numbers
 .h-feed > ol {
-    list-style-type: none;
-    padding-inline: 0;
+  list-style-type: none;
+  padding-inline: 0;
 }
 
 // Structure //
 
 // (lists)
 ul {
-    list-style: georgian;
+  list-style: georgian;
 }
 
 li,
 figcaption {
-    > p {
-        margin-block: 0;
-    }
+  > p {
+    margin-block: 0;
+  }
 }
 
 hr {
-    border: none;
-    text-align: center;
+  border: none;
+  text-align: center;
 
-    &::after {
-        content: "✲✲✲";
-    }
+  &::after {
+    content: "✲✲✲";
+  }
 }
 
 // kv == key-value
 nav > dl,
 .kv {
-    font-feature-settings: "onum";
-    display: grid;
-    grid-template-columns: auto max-content;
-    gap: 5px;
+  font-feature-settings: "onum";
+  display: grid;
+  grid-template-columns: auto max-content;
+  gap: 5px;
 
-    & > dd {
-        margin-left: auto;
-    }
+  & > dd {
+    margin-left: auto;
+  }
 
-    * {
-        margin-block: 0;
-    }
+  * {
+    margin-block: 0;
+  }
 
-    ul {
-        list-style: none;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 15px;
-        padding-inline: 0;
-    }
+  ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px 15px;
+    padding-inline: 0;
+  }
 }
 
 .h-card > :not(.p-name) {
-    display: none;
+  display: none;
 }
 
 header {
-    view-transition-name: head;
+  view-transition-name: head;
 
-    > * {
-        display: block;
-        text-align: center;
-        font-size: 15pt;
-    }
+  > * {
+    display: block;
+    text-align: center;
+    font-size: 1.25rem;
+  }
 
-    > span a {
-        text-decoration: inherit;
-    }
+  > span a {
+    text-decoration: inherit;
+  }
 }
 
 #is {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 footer {
-    flex-wrap: wrap;
-    display: flex;
-    justify-content: center;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
 
-    pre {
-        font-weight: bold;
-        margin: 0;
-        font-size: 1.1rem;
-    }
+  pre {
+    font-weight: bold;
+    margin: 0;
+    font-size: 1.1rem;
+  }
 
-    view-transition-name: footer;
+  view-transition-name: footer;
 }
 
 article,
 nav,
 header {
-    line-height: 1.6;
+  line-height: 1.6;
 }
 
 main {
-    view-transition-name: main;
+  view-transition-name: main;
 }
 
 // Labeling and such //
@@ -299,260 +252,103 @@ main {
 legend,
 dt,
 label {
-    font-weight: bold;
+  font-weight: bold;
 }
 
-sup,
-sub {
-    font-family: monospace;
-    font-size: 12px;
-
-    &.footnote-ref > a {
-        text-decoration: none;
-        color: var(--light);
-    }
-}
-
-.footnotes-list {
-    font-size: 14pt;
-    padding-inline-start: 0;
-    li::marker {
-        color: var(--light);
-        font-feature-settings: "sinf";
-    }
-
-    :target {
-        background: linear-gradient(to right, transparent, light-dark(#f1eddd, var(--bg2)));
-        border-radius: $radius;
-    }
-}
-
-// Tables //
-
-table {
-    border-collapse: collapse;
-    text-align: left;
-}
-
-tr {
-    border-bottom: 1px solid var(--border);
-
-    &:nth-of-type(odd) td {
-        background-color: #fff1ec;
-    }
-}
-
-th,
-td {
-    padding: 6px;
-}
-
-// Blockquote //
-
-figure {
-    blockquote,
-    p {
-        margin-block-end: 0;
-    }
-    margin-inline: 0;
-    figcaption {
-        font-size: 12px;
-        font-family: monospace;
-    }
-}
-
-blockquote {
-    border-left: 6px double var(--light);
-    margin: 1em 0;
-    border-radius: $radius;
-
-    > p {
-        padding: 10px 10px 10px 15px;
-    }
-}
-
-// Special Features //
-
-.penpen {
-    --light: lightpink;
-    background: #fae6f3;
-
-    p::before {
-        content: "🐾 ";
-    }
-}
-
-.mastodon-embed {
-    border-radius: $radius;
-    padding: 18px;
-    border: 2px solid var(--border);
-}
-
-.pintora {
-    margin-left: auto;
-    margin-right: auto;
-    overflow: visible;
-    display: block;
-}
-
-// Media //
-
-// (Overflows)
-
-.e-content > p:has(img),
-figure:not(figure figure),
-.mastodon-embed,
-blockquote,
-table,
-video,
-:not(footer) > pre {
-    margin: 0 -20px;
-    @media screen and (max-width: $mobileWidth) {
-        margin: 0;
-    }
-}
-
-// for observable plot
-figure figure {
-    margin: 0;
-}
-
-table,
-video {
-    width: calc(100% + 40px);
-}
-
-details {
-    margin-block: 1em;
-    margin: -0.5em -40px;
-    padding: calc(0.5em - 2px) 38px;
-    border-radius: $radius;
-    border: 2px solid var(--border);
-    @media screen and (max-width: $mobileWidth) {
-        margin: -0.5em 0;
-        padding: calc(0.5em - 2px) 0;
-        border-radius: 0;
-        border: none;
-        border-top: 2px solid var(--border);
-        border-bottom: 2px solid var(--border);
-    }
-
-    summary {
-        cursor: pointer;
-    }
+.padded {
+  border-radius: $radius;
+  border: 2px solid var(--border);
+  padding: $p1 $p2;
 }
 
 // (Media Queries)
 
 @media screen and (max-width: $mobileWidth) {
-    footer {
-        pre {
-            display: none;
-        }
+  footer {
+    pre {
+      display: none;
     }
+  }
 
-    footer > nav > dl,
-    .kv {
-        display: block;
-    }
-
-    .pintora {
-        max-width: 100%;
-        overflow-x: scroll;
-    }
-
-    .mastodon-embed {
-        padding: 10px;
-    }
-
-    table,
-    video {
-        width: 100%;
-    }
+  footer > nav > dl,
+  .kv {
+    display: block;
+  }
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
-    body {
-        background: #282828;
-        color: whitesmoke;
-    }
+  // will switch to light-dark when it reaches 90%
+  body {
+    background: #282828;
+    color: whitesmoke;
+  }
 
-    :not(pre) > code,
-    blockquote {
-        background: var(--bg2);
-    }
-
-    tr {
-        &:nth-of-type(odd) td {
-            background-color: #302e2e;
-        }
-    }
-
-    .penpen {
-        background: #483341;
-    }
+  :not(pre) > code,
+  blockquote {
+    background: var(--bg2);
+  }
 }
 
 @media (prefers-color-scheme: light) {
-    // Optimizes codeblocks for light mode
-    :not(footer) > pre {
-        filter: brightness(1.1) contrast(1.2);
-        background: #313131 !important;
-    }
+  // Optimizes codeblocks for light mode
+  :not(footer) > pre {
+    filter: brightness(1.1) contrast(1.2);
+    background: #313131 !important;
+  }
 }
 
 @keyframes fade-in {
-    from {
-        opacity: 0;
-    }
+  from {
+    opacity: 0;
+  }
 }
 
 @keyframes fade-out {
-    to {
-        opacity: 0;
-    }
+  to {
+    opacity: 0;
+  }
 }
 
 @keyframes slide-from {
-    from {
-        transform: translateX(var(--from));
-    }
+  from {
+    transform: translateX(var(--from));
+  }
 }
 
 @keyframes slide-to {
-    to {
-        transform: translateX(var(--to));
-    }
+  to {
+    transform: translateX(var(--to));
+  }
 }
 
 /* 'Forward' transitions */
 ::view-transition-old(main) {
-    --to: -30px;
-    animation:
-        90ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
-        300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to;
+  --to: -30px;
+  animation:
+    90ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
+    300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to;
 }
 
 ::view-transition-new(main) {
-    --from: 30px;
-    animation:
-        210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
-        300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from;
+  --from: 30px;
+  animation:
+    210ms cubic-bezier(0, 0, 0.2, 1) 90ms both fade-in,
+    300ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from;
 }
 
 /* Overrides for 'back' transitions */
 .back-transition::view-transition-old(main) {
-    --to: 30px;
-    animation-name: fade-out, slide-to;
+  --to: 30px;
+  animation-name: fade-out, slide-to;
 }
 
 .back-transition::view-transition-new(main) {
-    --from: -30px;
-    animation-name: fade-in, slide-from;
+  --from: -30px;
+  animation-name: fade-in, slide-from;
 }

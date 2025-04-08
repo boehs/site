@@ -1,4 +1,5 @@
 @use '_root.scss';
+@use '_vars.scss' as *;
 
 :root {
     --light: #0aa06e;
@@ -42,7 +43,7 @@ email {
 name {
     display: block;
     text-align: center;
-    font-size: 15pt;
+    font-size: 1.25rem;
     font-weight: bold;
     color: var(--light);
     padding: 50px 0;
@@ -54,15 +55,13 @@ entry {
     }
 }
 
-updated,
-link,
-content {
-    font-style: italic;
+entry > :not(title) {
+    margin-block: 0.25em;
 }
 
-content,
-link {
-    color: blue;
+updated,
+content {
+    font-style: italic;
 }
 
 entry,
@@ -73,7 +72,7 @@ warn {
     border-left: 2px solid var(--light);
     padding: 0 1em;
     display: block;
-    margin: 1em 0;
+    margin-block: 0.5em;
 }
 
 warn {
