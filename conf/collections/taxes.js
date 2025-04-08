@@ -1,3 +1,18 @@
+/**
+ * a tax is defined as a collection of values, which hold a collection of pages
+ * a tax may be 'tags', a value may be 'cats', and a page may be 'cats.md'
+ *
+ * a single tax can be nominated as a differentiator, which means pages of a different
+ * tax will be grouped by the differentiator
+ *
+ * taxes: [tax,value]
+ * taxesPaged: variation on taxes, see below
+ * taxesDiffer: [tax,value, differentiator]
+ * nestedTax: {tax: {value: [page]}}
+ *
+ * if eleventy supported double-layered pagination, all of this wouldn't be needed
+ */
+
 import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
 const collectionControl = require("../../src/_data/collectionsControl.json");
@@ -61,6 +76,13 @@ export function taxes(eleventyConfig) {
 		return unique;
 	});
 
+	/**
+	 * The goal of this is to paginate taxes with the following rules:
+	 * - if it isn't a differentiator, it should not be paginated
+	 *   practically, this means only in: blog, garden, ... is paginated
+	 * - 30 items per page
+	 * - if the last page has less than 5 items, it should be merged with the previous page
+	 */
 	// biome-ignore lint/complexity/useArrowFunction: <explanation>
 	eleventyConfig.addCollection("taxesPaged", function (collectionApi) {
 		const taxAndValues = standard(collectionApi);
@@ -73,7 +95,10 @@ export function taxes(eleventyConfig) {
 			const [taxonomy, value] = key.split("/./");
 			let totalItems = taxAndValues[key];
 			let pageNumber = 0;
-
+			let maxPage = Math.ceil(totalItems / maxItemsPerPage) - 1;
+			if (totalItems % maxItemsPerPage < minItemsForLastPage) {
+				maxPage--;
+			}
 			if (collectionControl[taxonomy].mode !== "differentiator") {
 				paginatedResults.push({
 					t: taxonomy,
@@ -82,6 +107,7 @@ export function taxes(eleventyConfig) {
 					itemsInPage: totalItems,
 					hasNext: false,
 					hasPrev: false,
+					maxPage,
 				});
 				continue;
 			}
@@ -103,6 +129,7 @@ export function taxes(eleventyConfig) {
 					itemsInPage: itemsInPage,
 					hasNext: totalItems > itemsInPage,
 					hasPrev: pageNumber > 0,
+					maxPage,
 				});
 
 				totalItems -= itemsInPage;
