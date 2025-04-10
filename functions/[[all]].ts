@@ -82,7 +82,7 @@ export async function onRequest(context: EventContext): PagesFunction {
                 </p>`,
 						{ html: true },
 					);
-				} else element.remove();
+				}
 			},
 		})
 		.on("i#is", {
