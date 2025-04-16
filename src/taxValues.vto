@@ -11,12 +11,12 @@ eleventyComputed:
 ---
 
 {{ import { Card } from "partials/card.vto"}}
-{{ set collectionController = collectionsControl[cur.t]}}
+{{ set taxSettings = collectionsControl[cur.t]}}
 {{ set tagDetails = tagList[cur.t]?.[cur.v] }}
 
 {{ set title_override }}
 <h1 class="p-name">
-  <a href="/{{ collectionController.plural || cur.t }}/">{{collectionController.single || cur.t |> titleCase }}</a>: {{cur.v}}<a href="/{{collectionController.single || cur.t |> slugshive}}/{{ cur.v |> slugshive }}.xml"><img src="/feed.svg"/></a>
+  <a href="/{{ taxSettings.plural || cur.t }}/">{{taxSettings.single || cur.t |> titleCase }}</a>: {{cur.v}}<a href="/{{taxSettings.single || cur.t |> slugshive}}/{{ cur.v |> slugshive }}.xml"><img src="/feed.svg"/></a>
 </h1>
 {{ /set}}
 
@@ -42,7 +42,7 @@ eleventyComputed:
   {{ for location,posts of loop }}
     {{ if Object.keys(loop)?.length != 1 || location != cur.v }}
       <h2>
-        <a href="/{{tax}}/{{location}}">{{location |> titleCase |> escape }}</a><a href="/{{(collectionController?.single || cur.t) |> slugshive}}/{{ cur.v |> slugshive }}.{{location}}.xml"><img src="/feed.svg"/></a>
+        <a href="/{{tax}}/{{location}}">{{location |> titleCase |> escape }}</a><a href="/{{(taxSettings?.single || cur.t) |> slugshive}}/{{ cur.v |> slugshive }}.{{location}}.xml"><img src="/feed.svg"/></a>
       </h2>
     {{ /if }}
     <ol>
@@ -79,12 +79,12 @@ eleventyComputed:
     <ul>
       {{ if cur.hasPrev }}
         <li>
-          <a href="/{{collectionsControl[cur.t]?.single || cur.t |> slugshive}}/{{ cur.v |> slugshive }}{{cur.n > 1 ? `/${cur.n}` : ""}}">&#9753; Prev</a>
+          <a href="/{{taxSettings?.single || cur.t |> slugshive}}/{{ cur.v |> slugshive }}{{cur.n > 1 ? `/${cur.n}` : ""}}">&#9753; Prev</a>
         </li>
       {{ /if }}
       {{ if cur.hasNext }}
         <li>
-          <a href="/{{collectionsControl[cur.t]?.single || cur.t |> slugshive}}/{{ cur.v |> slugshive }}/{{cur.n+2}}">Next &#10087;</a>
+          <a href="/{{taxSettings?.single || cur.t |> slugshive}}/{{ cur.v |> slugshive }}/{{cur.n+2}}">Next &#10087;</a>
         </li>
       {{ /if }}
     </ul>

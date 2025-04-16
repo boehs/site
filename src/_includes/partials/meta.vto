@@ -8,7 +8,7 @@
 {{ if noindex }}
     <meta name="robots" content="noindex">
 {{ /if }}
-<title>{{title}}</title>
+<title>{{title |> titleCase}}</title>
 <link rel="preload" as="font" type="font/woff2" href="/{{config.font.regular}}.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/{{config.font.bold}}.woff2" crossorigin>
 <link rel="stylesheet" href="/main.css">

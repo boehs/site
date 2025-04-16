@@ -140,7 +140,7 @@ blockquote {
   border-radius: $radius;
   padding: 18px;
   border: 2px solid var(--border);
-  @media screen and (max-width: $mobileWidth) {
+  @media screen and (max-width: $mobile) {
     padding: $p1;
   }
 }
@@ -150,7 +150,7 @@ blockquote {
   margin-right: auto;
   overflow: visible;
   display: block;
-  @media screen and (max-width: $mobileWidth) {
+  @media screen and (max-width: $mobile) {
     max-width: 100%;
     overflow-x: scroll;
   }
@@ -168,7 +168,7 @@ table,
 video,
 :not(footer) > pre {
   margin: 0 -20px;
-  @media screen and (max-width: $mobileWidth) {
+  @media screen and (max-width: $mobile) {
     margin: 0;
   }
 }
@@ -181,7 +181,7 @@ figure figure {
 table,
 video {
   width: calc(100% + 40px);
-  @media screen and (max-width: $mobileWidth) {
+  @media screen and (max-width: $mobile) {
     width: 100%;
   }
 }
@@ -192,7 +192,7 @@ details {
   padding: calc(0.5em - 2px) 38px;
   border-radius: $radius;
   border: 2px solid var(--border);
-  @media screen and (max-width: $mobileWidth) {
+  @media screen and (max-width: $mobile) {
     margin: -0.5em 0;
     padding: calc(0.5em - 2px) 0;
     border-radius: 0;

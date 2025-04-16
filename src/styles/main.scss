@@ -260,7 +260,7 @@ label {
   border: 2px solid var(--border);
   padding: $p1 $p2;
   view-transition-name: pagination;
-  @media screen and (max-width: $mobileWidth) {
+  @media screen and (max-width: $mobile) {
     ul {
       justify-content: space-between;
     }
@@ -269,7 +269,7 @@ label {
 
 // (Media Queries)
 
-@media screen and (max-width: $mobileWidth) {
+@media screen and (max-width: $mobile) {
   footer {
     pre {
       display: none;
