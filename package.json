@@ -2,6 +2,7 @@
     "version": "2.6.1",
     "scripts": {
         "start": "eleventy --serve",
+        "dev": "eleventy --watch --serve",
         "build": "eleventy",
         "clean": "rimraf dist/",
         "format": "prettier --write ."

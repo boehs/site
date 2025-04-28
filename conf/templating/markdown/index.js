@@ -165,12 +165,12 @@ markdownIt.renderer.rules.fence = (tokens, idx, options, env, self) => {
 	let info = token.info.trim();
 	if (info === "pintora") {
 		let id = Math.random().toString(36).substring(7);
-		return `___PINTORA_${id}_${token.content.trim()}_`;
+		return `___PINTORA_${id}_${token.content.trim()}___`;
 	}
 
 	if (info === "js exec" || info === "javascript exec") {
 		let id = Math.random().toString(36).substring(7);
-		return `___EVAL_${id}_${token.content.trim()}_`;
+		return `___EVAL_${id}_${token.content.trim()}___`;
 	}
 
 	return defaultFence(tokens, idx, options, env, self);

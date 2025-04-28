@@ -159,7 +159,7 @@ export function taxes(eleventyConfig) {
 					switch (getType(node.data[taxonomy])) {
 						case "array": {
 							for (const item of node.data[taxonomy]) {
-								if (!(taxonomy == differ && item == node.data[differ]))
+								if (!(taxonomy === differ && item === node.data[differ]))
 									taxAndValues.push([taxonomy, item, node.data[differ]]);
 							}
 							break;
