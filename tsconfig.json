@@ -3,7 +3,10 @@
         "noEmit": true,
         "module": "esnext",
         "target": "esnext",
-        "lib": ["esnext"],
+        "lib": [
+            "esnext",
+            "DOM"
+        ],
         "strict": true,
         "alwaysStrict": true,
         "preserveConstEnums": true,
@@ -14,6 +17,12 @@
             "@cloudflare/workers-types",
         ]
     },
-    "include": ["src"],
-    "exclude": ["node_modules", "dist", "test"]
+    "include": [
+        "src"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist",
+        "test"
+    ]
 }

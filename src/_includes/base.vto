@@ -4,6 +4,7 @@
         {{- include "partials/meta.vto" }}
     </head>
     <body {{ if color && color != config.color }} style="--light: {{ color }}" {{ /if }}>
+        <canvas id="can"></canvas>
         <header>
             {{- include "partials/head.vto" }}
         </header>
@@ -28,4 +29,5 @@
             {{- include "partials/foot.vto" }}
         </footer>
     </body>
+    <script src="/japan.js"></script>
 </html>
