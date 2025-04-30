@@ -1,3 +1,5 @@
+import { handleResize } from "./japan";
+
 console.log("is anyone out there? 🔦");
 
 let prev = [],
@@ -89,6 +91,7 @@ async function _run(e, url) {
     main.innerHTML = res.querySelector("main").innerHTML;
     document.querySelector("i").replaceWith(res.querySelector("i"));
     mergeHead(res);
+    handleResize();
 }
 
 async function run(e, url, isBack) {
