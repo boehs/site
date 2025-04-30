@@ -1,4 +1,3 @@
-import { handleResize } from "./japan";
 
 console.log("is anyone out there? 🔦");
 
@@ -81,7 +80,7 @@ if (is)
 
 // This SPA code is derived from flamethrower
 
-async function _run(e, url) {
+async function viewTransition(e, url: URL, from: URL) {
     let res = new DOMParser().parseFromString(
         await (await fetch(url + "?spa")).text(),
         "text/html",
@@ -91,26 +90,30 @@ async function _run(e, url) {
     main.innerHTML = res.querySelector("main").innerHTML;
     document.querySelector("i").replaceWith(res.querySelector("i"));
     mergeHead(res);
-    handleResize();
+    document.querySelectorAll('.tree').forEach(item=>item.remove())
+    if (
+        window.enhanceArticle &&
+        url.pathname.startsWith('/node/') &&
+        from.pathname.startsWith('/node')
+    )
+        window.enhanceArticle();
 }
 
-async function run(e, url, isBack) {
+async function run(e, url, isBack, from: URL) {
     e.preventDefault();
-    if (isBack) {
+    if (isBack)
         document.documentElement.classList.add("back-transition");
-    }
-    const transition = document.startViewTransition(() => _run(e, url));
+    const transition = document.startViewTransition(() => viewTransition(e, url, from));
     try {
         await transition.finished;
     } finally {
         document.documentElement.classList.remove("back-transition");
-        window.umami &&
-            window.umami.track((w) => {
-                return {
-                    ...w,
-                    url: window.location.pathname,
-                };
-            });
+        window.umami?.track((w) => {
+            return {
+                ...w,
+                url: window.location.pathname,
+            };
+        });
     }
 }
 
@@ -191,7 +194,7 @@ function isBackNavigation(navigateEvent) {
 if (document.startViewTransition) {
     navigation.addEventListener("navigate", (event) => {
         const toUrl = new URL(event.destination.url);
-
+        const fromUrl = new URL(window.location.href);
         if (
             toUrl.pathname.match(/\.([^\./\?]+)($|\?)/) ||
             location.origin !== toUrl.origin ||
@@ -203,7 +206,7 @@ if (document.startViewTransition) {
         const isBack = isBackNavigation(event);
         event.intercept({
             async handler() {
-                await run(event, toUrl, isBack);
+                await run(event, toUrl, isBack, fromUrl);
                 if (event.navigationType == "push") {
                     window.scrollTo({ top: 0, behavior: "smooth" });
                 }

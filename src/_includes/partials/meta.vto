@@ -14,7 +14,9 @@
 <link rel="stylesheet" href="/main.css">
 {{ if isContentPage }}
     {{ if config.analytics }}
-        <script defer src="/infoot.js" defer></script>
+        <script defer src="/infoot.js"></script>
+    {{ else }}
+        <script defer src="/japan.js"></script>
     {{ /if }}
 {{ /if }}
 <script src="/main.js" defer></script>
