@@ -64,15 +64,6 @@ class Leaf {
     c.ellipse(x2, y2, this.radius, radiusY, 0, 0, Math.PI * 2);
     c.fillStyle = this.color;
     c.fill();
-    c.globalAlpha = 0.5; // Add transparency for smudging effect
-    const gradient = c.createRadialGradient(x2, y2, 0, x2, y2, this.radius * 1.5);
-    gradient.addColorStop(0, this.color);
-    gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
-    c.fillStyle = gradient;
-    c.beginPath();
-    c.ellipse(x2, y2, this.radius * 1.5, radiusY * 1.5, 0, 0, Math.PI * 2);
-    c.fill();
-    c.globalAlpha = 1; // Reset transparency
     c.restore();
   }
 }
@@ -97,7 +88,7 @@ function amendBindingBox(
   y: number,
   sizes: Sizes
 ) {
-  if (x < sizes.min.x) sizes.min.x = x;
+  if (x < sizes.min.x && x > 0) sizes.min.x = x;
   if (y < sizes.min.y) sizes.min.y = y;
   if (x > sizes.max.x) sizes.max.x = x;
   if (y > sizes.max.y) sizes.max.y = y;
@@ -189,6 +180,7 @@ class Branch {
       canvas.height = diff(this.sizes.max.y, this.sizes.min.y) + (MAX_LEAF_RADIUS * 2) + (MAX_LEAF_DISTANCE * 2);
       canvas.style.width = `${(canvas.width / SCALE_FACTOR)}px`;
       canvas.style.height = `${(canvas.height / SCALE_FACTOR)}px`;
+
       trees.appendChild(canvas);
     }
     let c = canvas.getContext("2d")!;
@@ -202,7 +194,7 @@ class Branch {
         -this.sizes.min.x,
         -(this.sizes.min.y - MAX_LEAF_DISTANCE - MAX_LEAF_RADIUS)
       );
-    }
+    };
     this.grow(c);
     return {
       canvas,
@@ -210,63 +202,12 @@ class Branch {
   };
 }
 
-let branches: Branch[] = [];
 
-const addBranch = (s = randSign(), max = 900) => {
-  if (s == 1) return new Branch(max, 0, 200, max);
-  return new Branch(0, 0, 20, max);
-};
+const MAX = ((window.innerWidth) / 2) * SCALE_FACTOR;
 
-let lastSign = randSign();
-branches=[...branches,addBranch(lastSign, 1300),addBranch(-lastSign, 1300)];
-
-export function handleResize() {
-  document.querySelectorAll('.tree').forEach((el) => {
-    el.remove();
-  });
-
-  // First: insert existing branches
-  let iteration = 0;
-  let lastSign = 1;
-  let totalHeight = 0;
-
-  function insertBranch(branch, sign, iteration, totalHeight) {
-    const branchHeight = diff(branch.sizes.max.y, branch.sizes.min.y) / SCALE_FACTOR;
-    const { canvas } = branch.update();
-
-    canvas.style.top = `${totalHeight}px`;
-    canvas.style[branch.startingPoint.x > 0 ? 'right' : 'left'] = '0px';
-
-    totalHeight += (lastSign !== sign ? branchHeight / 2 : branchHeight / 1.2) + (Math.random() * 100 - 50)
-    return { totalHeight };
-  }
-
-  for (let i = 0; i < branches.length; i++) {
-    const branch = branches[i];
-    const lastBranchHeight = diff(branches[i-1]?.sizes.max.y || 0, branches[i-1]?.sizes.min.y || 0) / SCALE_FACTOR;
-    if (totalHeight + lastBranchHeight > document.body.scrollHeight) break;
-    const result = insertBranch(branch, branch.startingPoint.x > 0 ? 1 : -1, iteration, totalHeight);
-    totalHeight = result.totalHeight;
-    iteration++;
-  }
-
-  // Then: add and insert new branches
-  while (totalHeight < document.body.scrollHeight) {
-    const lastBranch = branches[branches.length - 1];
-    const lastBranchHeight = diff(lastBranch.sizes.max.y, lastBranch.sizes.min.y) / SCALE_FACTOR;
-
-    if (totalHeight + lastBranchHeight > document.body.scrollHeight) break;
-
-    const sign = Math.random() < 0.9 ? -lastSign : lastSign;
-    const newBranch = addBranch(sign);
-    branches.push(newBranch);
-
-    const result = insertBranch(newBranch, sign, iteration, totalHeight);
-    totalHeight = result.totalHeight;
-    lastSign = sign;
-    iteration++;
+export function renderTrees() {
+  for (const branch of [new Branch(MAX, 0, 200, MAX),new Branch(0, 0, 20, MAX)]) {
+      const { canvas } = branch.update();
+      canvas.style[branch.startingPoint.x > 0 ? 'right' : 'left'] = '0px';
   }
 }
-window.addEventListener('resize', handleResize);
-// also navigation
-handleResize();
