@@ -4,7 +4,7 @@
         {{- include "partials/meta.vto" }}
     </head>
     <body {{ if color && color != config.color }} style="--light: {{ color }}" {{ /if }}>
-        <canvas id="can"></canvas>
+        <div class="trees"></div>
         <header>
             {{- include "partials/head.vto" }}
         </header>
