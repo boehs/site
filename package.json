@@ -42,6 +42,7 @@
         "typescript": "^5.3.3"
     },
     "devDependencies": {
+        "@biomejs/biome": "2.0.0-beta.2",
         "@cloudflare/workers-types": "^4.20240320.1",
         "prettier": "^3.1.1",
         "rimraf": "^5.0.5"
