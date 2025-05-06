@@ -3,12 +3,9 @@ import { minify } from "html-minifier";
 // the files we want to use for our collections
 const gardenStr = "./src/pages/garden/node/**/*.{md,csv}";
 
-import slugify from "./utils/slugify.js";
-
 import scss from "./conf/templating/scss.js";
 import { markdownTemplate } from "./conf/templating/markdown/index.js";
 import csv from "./conf/templating/csv.js";
-import vento from "./conf/templating/vento.js";
 
 import {
 	embedMastodon,
@@ -16,14 +13,10 @@ import {
 } from "./conf/components/social/social.js";
 import javascript from "./conf/templating/javascript.js";
 import filters from "./conf/filters.js";
-import { taxes } from "./conf/collections/taxes.js";
 
 Error.stackTraceLimit = 100;
 
-/** @param {import("@11ty/eleventy/UserConfig").default} eleventyConfig */
-export default function (eleventyConfig) {
-	eleventyConfig.addPlugin(vento);
-
+export default function (site) {
 	const markdown = markdownTemplate(eleventyConfig);
 
 	filters(eleventyConfig);
@@ -46,19 +39,20 @@ export default function (eleventyConfig) {
 		"./src/pages/garden/node/Assets/*": "assets",
 	});
 
-	eleventyConfig.addTransform("html", function (content) {
-		if (
-			this.page.outputPath &&
-			this.page.outputPath.endsWith(".html") &&
-			process.env.ELEVENTY_ENV == "production"
-		) {
-			return minify(content, {
-				useShortDoctype: true,
-				removeComments: true,
-				collapseWhitespace: true,
-			});
+	site.process([".html"], function (pages) {
+		for (const page of pages) {
+			if (
+				this.page.outputPath &&
+				this.page.outputPath.endsWith(".html") &&
+				process.env.ELEVENTY_ENV == "production"
+			) {
+				page.content = minify(page.content, {
+					useShortDoctype: true,
+					removeComments: true,
+					collapseWhitespace: true,
+				});
+			}
 		}
-		return content;
 	});
 
 	// I won't even attempt to explain this
@@ -84,36 +78,9 @@ export default function (eleventyConfig) {
 			});
 	});
 
-	eleventyConfig.addCollection("redirects", function (collectionApi) {
-		// lets make a variable to hold our redirects
-		let redirects = [];
-		// We need to get each post in our posts folder. In my case this is /node
-		const nodes = collectionApi.getFilteredByGlob(gardenStr);
-		// next lets iterate over all the nodes
-		nodes.forEach((node) =>
-			// for each alias
-			(node.data.aliases || []).forEach((alias) =>
-				// push the target url and the old url
-				redirects.push([
-					slugify(node.data.page.url),
-					slugify(node.data.page.url).replace(
-						/\/[^\/]*?(\..+)?$/,
-						`/${node.data.dontSlug ? alias : slugify(alias)}$1`,
-					),
-				]),
-			),
-		);
-
-		return redirects;
-	});
-
-	taxes(eleventyConfig);
-
 	javascript(eleventyConfig);
 	scss(eleventyConfig);
 	csv(eleventyConfig, markdown);
-
-	eleventyConfig.setQuietMode(true);
 
 	return {
 		dir: {

@@ -1,0 +1,25 @@
+---
+layout: base.vto
+permalink: /{{collectionsControl[val].plural || value |> slugshive }}/index.html
+eleventyComputed:
+  title: "{{collectionsControl[val].plural || value}}"
+---
+
+{{ import { CardList } from "partials/cardgroup.vto" }}
+
+{{ set renderedList = [] }}
+{{ for tag,_ of collections.nestedTax[val] }}
+  {{> renderedList.push([
+  {
+    color: tagList[val]?.[tag]?.color
+  },
+  {
+    url: "/" + [collectionsControl[val]?.single || val] + "/" + tag,
+    title: tag
+  },
+  {
+    content: tagList[val]?.[tag]?.description
+  }]) }}
+{{ /for }}
+
+{{CardList(renderedList)}}

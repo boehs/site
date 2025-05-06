@@ -1,0 +1,94 @@
+---
+pagination:
+  data: collections.taxesPaged
+  size: 1
+  alias: cur
+permalink: '/{{collectionsControl[tax]?.single || tax |> slugshive}}/{{ val |> slugshive }}{{page>0 ? `/${page+1}` : ""}}.html'
+eleventyComputed:
+  color: "{{tagList[tax]?.[val]?.color}}"
+  description: "{{tagList[tax]?.[val]?.description}}"
+  title: "{{collectionsControl[tax].single || tax |> titleCase }}: {{val}}"
+---
+
+{{ import { Card } from "partials/card.vto"}}
+{{ set taxSettings = collectionsControl[tax]}}
+{{ set tagDetails = tagList[tax]?.[val] }}
+
+{{ set title_override }}
+<h1 class="p-name">
+  <a href="/{{ taxSettings.plural || tax }}/">{{taxSettings.single || tax |> titleCase }}</a>: {{val}}<a href="/{{taxSettings.single || tax |> slugshive}}/{{ val |> slugshive }}.xml"><img src="/feed.svg"/></a>
+</h1>
+{{ /set}}
+
+{{ layout "base.vto" }}
+{{ if tagDetails }}
+  {{ Card({
+      color: tagDetails.color
+  },{
+      url: "/" + tax + "/" + val,
+      title: val,
+      icon: tagDetails.icon
+  },{
+      content: tagDetails.description
+  }) }}
+  <hr/>
+{{ /if }}
+
+
+{{ set tax = Object.keys(collectionsControl).find(key => collectionsControl[key].mode === "differentiator") }}
+
+<div class="h-feed">
+  {{ set loop = Object.groupBy(search.pages(`${tax}=${val}`),(post)=> post.data?.[tax]) }}
+  {{ for location,posts of loop }}
+    {{ if Object.keys(loop)?.length != 1 || location != val }}
+      <h2>
+        <a href="/{{tax}}/{{location}}">{{location |> titleCase |> escape }}</a><a href="/{{(taxSettings?.single || tax) |> slugshive}}/{{ val |> slugshive }}.{{location}}.xml"><img src="/feed.svg"/></a>
+      </h2>
+    {{ /if }}
+    <ol>
+      {{ set _posts = posts.sort((a,b) => b.data.date - a.data.date).slice(30*page,(30*page)+itemsInPage) }}
+      {{ for post of _posts -}}
+        {{- if post.data?.sec != "unlisted" -}}
+          {{- set content = post.data?.description |> renderMd -}}
+          {{# this was overwriting the title, so I had to change it to _title #}}
+          {{- set _title = post.data?.title |> titleCase -}}
+          <li>
+          {{ Card({
+            class: 'h-entry',
+            color: post.data?.color
+          },
+          {
+            url: post.url,
+            class: "p-name u-url",
+            title: _title
+          },
+          {
+            class: "p-summary",
+            content
+          })}}
+          </li>
+        {{- /if -}}
+      {{ /for }}
+    </ol>
+  {{ /for }}
+</div>
+{{ if hasNext || hasPrev }}
+<dl class="kv pagination">
+  <dt>Page {{page+1}} <i>of</i> {{maxPage+1}}</dt>
+  <dd>
+    <ul>
+      {{ if hasPrev }}
+        <li>
+          <a href="/{{taxSettings?.single || tax |> slugshive}}/{{ val |> slugshive }}{{page > 1 ? `/${page}` : ""}}">&#9753; Prev</a>
+        </li>
+      {{ /if }}
+      {{ if hasNext }}
+        <li>
+          <a href="/{{taxSettings?.single || tax |> slugshive}}/{{ val |> slugshive }}/{{page+2}}">Next &#10087;</a>
+        </li>
+      {{ /if }}
+    </ul>
+  </dd>
+</dl>
+{{ /if }}
+{{ /layout }}

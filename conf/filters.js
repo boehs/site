@@ -19,14 +19,14 @@ function fence(length, rails) {
 }
 
 /** @param {import("@11ty/eleventy/UserConfig").default} eleventyConfig */
-export default function filters(eleventyConfig) {
-	eleventyConfig.addFilter("titleCase", titleCase);
+export default function filters(site) {
+	site.filter("titleCase", titleCase);
 
 	// I frankly don't recall why I don't use the built-in slug filter
 	// but I'm sure I had a good reason
-	eleventyConfig.addFilter("slugshive", (path) => slugify(path));
+	site.filter("slugshive", (path) => slugify(path));
 
-	eleventyConfig.addFilter(
+	site.filter(
 		"rails",
 		(str, n) =>
 			`<a class="rails" href="mailto:${railsEncode(
@@ -36,7 +36,7 @@ export default function filters(eleventyConfig) {
 	);
 
 	// sorry
-	eleventyConfig.addFilter("footerBase", () => {
+	site.filter("footerBase", () => {
 		return (
 			"\n".repeat(flowerFile.split("?")[0].split("\n").length - 1) +
 			// @ts-ignore
@@ -48,22 +48,22 @@ export default function filters(eleventyConfig) {
 		);
 	});
 
-	eleventyConfig.addFilter("random", function (array) {
+	site.filter("random", function (array) {
 		return array[Math.floor(Math.random() * array.length)];
 	});
 
-	eleventyConfig.addFilter("rainbow", function (i, n) {
+	site.filter("rainbow", function (i, n) {
 		return `hsl(${(360 / n) * i},50%,60%)`;
 	});
 
-	eleventyConfig.addFilter("dateToRfc3339", (date) => {
+	site.filter("dateToRfc3339", (date) => {
 		if (!date) return;
 		let s = date.toISOString().split(".");
 		s.pop();
 		return s.join("") + "Z";
 	});
 
-	eleventyConfig.addFilter("getNewestCollectionItemDate", (collection) => {
+	site.filter("getNewestCollectionItemDate", (collection) => {
 		return new Date(
 			Math.max(...collection.map((item) => new Date(item.date).getTime())),
 		);

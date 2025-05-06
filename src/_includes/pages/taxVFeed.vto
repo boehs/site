@@ -2,12 +2,11 @@
 pagination:
   data: collections.taxes
   size: 1
-  alias: value
-permalink: "/{{collectionsControl[value[0]]?.single || value[0] |> slugshive}}/{{ value[1] |> slugshive }}.xml"
+permalink: "/{{collectionsControl[tax]?.single || tax |> slugshive}}/{{ val |> slugshive }}.xml"
 eleventyComputed:
-  title: "{{collectionsControl[value[0]]?.single || value[0]}} the {{value[1]}}"
-  color: "{{tagList[value[0]]?.[value[1]]?.color}}"
-  description: "{{tagList[value[0]]?.[value[1]]?.description}}"
+  title: "{{collectionsControl[tax]?.single || tax}} the {{val}}"
+  color: "{{tagList[tax]?.[val]?.color}}"
+  description: "{{tagList[tax]?.[val]?.description}}"
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet href="/notallfeedsaregross.css"?>
@@ -25,12 +24,13 @@ eleventyComputed:
   <link href="{{ config.baseurl }}{{ permalink |> exec }}" rel="self"/>
   <link href="{{ config.baseurl }}"/>
   <icon>{{ config.baseurl }}/favicon.ico</icon>
-  {{ set mostRecent = collections.nestedTax[value[0]]?.[value[1]] |> getNewestCollectionItemDate |> dateToRfc3339 }}
+  {{ set nodes = search.pages(`${tax}=${val}`) }}
+  {{ set mostRecent = nodes |> getNewestCollectionItemDate |> dateToRfc3339 }}
   {{- if mostRecent -}}
   <updated>{{ mostRecent }}</updated>
   {{- /if -}}
-  <id>{{config.author.name}}/{{collectionsControl[value[0]]?.single || value[0] |> slugshive}}/{{ value[1] |> slugshive }}</id>
-  {{ for post of collections.nestedTax[value[0]]?.[value[1]]?.sort((a,b) => b.data.date - a.data.date) }}
+  <id>{{config.author.name}}/{{collectionsControl[tax]?.single || tax |> slugshive}}/{{ val |> slugshive }}</id>
+  {{ for post of nodes?.sort((a,b) => b.data.date - a.data.date) }}
     {{ set postUrl }}{{ config.baseurl }}{{ post.url |> slugshive }}{{ /set }}
     <entry{{if post.data.color}} style="--light: {{post.data.color}}"{{ /if }}>
       <title>{{ post.data.title |> titleCase |> escape }}</title>

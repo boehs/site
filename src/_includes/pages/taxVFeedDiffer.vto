@@ -3,10 +3,10 @@ pagination:
   data: collections.taxesDiffer
   size: 1
   alias: value
-permalink: "/{{collectionsControl[value[0]]?.single || value[0] |> slugshive}}/{{ value[1] |> slugshive }}.{{ value[2] }}.xml"
+permalink: "/{{collectionsControl[tax]?.single || tax |> slugshive}}/{{ val |> slugshive }}.{{ differentiator }}.xml"
 eleventyComputed:
-  color: "{{tagList[value[0]]?.[value[1]]?.color}}"
-  description: "{{tagList[value[0]]?.[value[1]]?.description}}"
+  color: "{{tagList[tax]?.[val]?.color}}"
+  description: "{{tagList[tax]?.[val]?.description}}"
 ---
 {{- set tax -}}{{- for k,v of collectionsControl -}}
     {{- if v.mode == 'differentiator' -}}
@@ -25,18 +25,18 @@ eleventyComputed:
     <name>{{ config.author.name }}</name>
     <email>{{ config.author.email }}</email>
   </author>
-  <title>{{ config.author.name }} where {{collectionsControl[value[0]]?.single || value[0]}} is {{value[1]}} and {{tax}} the {{value[2]}}</title>
+  <title>{{ config.author.name }} where {{collectionsControl[tax]?.single || tax}} is {{val}} and {{tax}} the {{differentiator}}</title>
   <subtitle>{{ description |> safe }}</subtitle>
   <link href="{{ config.baseurl }}{{ permalink |> exec }}" rel="self"/>
   <link href="{{ config.baseurl }}"/>
   <icon>/favicon.ico</icon>
-  {{ set mostRecent = collections.nestedTax[value[0]]?.[value[1]] |> getNewestCollectionItemDate |> dateToRfc3339 }}
+  {{ set mostRecent = collections.nestedTax[tax]?.[val] |> getNewestCollectionItemDate |> dateToRfc3339 }}
   {{- if mostRecent -}}
   <updated>{{ mostRecent }}</updated>
   {{- /if -}}
-  <id>{{config.author.name}}/{{collectionsControl[value[0]]?.single || value[0] |> slugshive}}/{{ value[1] |> slugshive }}</id>
-  {{- for post of collections.nestedTax[value[0]]?.[value[1]]?.sort((a,b) => b.data.date - a.data.date) -}}
-  {{- if post.data[tax] == value[2] -}}
+  <id>{{config.author.name}}/{{collectionsControl[tax]?.single || tax |> slugshive}}/{{ val |> slugshive }}</id>
+  {{- for post of collections.nestedTax[tax]?.[val]?.sort((a,b) => b.data.date - a.data.date) -}}
+  {{- if post.data[tax] == differentiator -}}
   {{ set postUrl }}{{ config.baseurl }}{{ post.url |> slugshive }}{{ /set }}
   <entry{{if post.data.color}} style="--light: {{post.data.color}}"{{ /if }}>
     <title>{{ post.data.title |> titleCase }}</title>
