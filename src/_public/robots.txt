@@ -1,7 +1,8 @@
 # These AI systems do not cite the content they ingest, and are hence exploitative at best
-# Boehs.org does not permit usage incl. but not limited to: for large language
-# models (LLMs), machine learning and/or artificial intelligence-related
-# purposes; and/or with any of the aforementioned technologies
+# Boehs.org does not permit usage related to the training of large language models (LLMs),
+# machine learning and/or artificial intelligence-related systems.
+# Usage for the purpose of enhancing search results is permitted, so long as the content is cited.
+# Content may be cited as "Boehs.org" or "Evan Boehs", and must be linked to.
 
 User-agent: GPTBot
 Disallow: /
