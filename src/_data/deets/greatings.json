@@ -368,6 +368,10 @@
         "hello": "สวัสดี"
     },
     {
+        "language": "Toki Pona",
+        "hello": "toki"
+    },
+    {
         "language": "Turkish",
         "hello": "Merhaba"
     },
