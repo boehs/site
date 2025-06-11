@@ -120,10 +120,6 @@
         "hello": "Hallo"
     },
     {
-        "language": "Esperanto",
-        "hello": "Saluton"
-    },
-    {
         "language": "Estonian",
         "hello": "Tere"
     },
@@ -133,7 +129,7 @@
     },
     {
         "language": "French",
-        "hello": "Bonjour"
+        "hello": "Salut"
     },
     {
         "language": "Galician",
@@ -215,7 +211,7 @@
     },
     {
         "language": "Japanese",
-        "hello": "こんにちは"
+        "hello": "やあ"
     },
     {
         "language": "Kannada",
@@ -355,7 +351,7 @@
     },
     {
         "language": "Swahili",
-        "hello": "Sawa"
+        "hello": "Jambo"
     },
     {
         "language": "Swedish",
@@ -387,7 +383,7 @@
     },
     {
         "language": "Ukranian",
-        "hello": "Здрастуйте"
+        "hello": "Привіт"
     },
     {
         "language": "Urdu",
@@ -407,11 +403,11 @@
     },
     {
         "language": "Xhosa",
-        "hello": "Sawubona"
+        "hello": "Molo"
     },
     {
         "language": "Yiddish",
-        "hello": "העלא"
+        "hello": "שלום עליכם"
     },
     {
         "language": "Yoruba",
