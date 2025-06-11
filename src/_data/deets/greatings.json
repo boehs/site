@@ -167,8 +167,13 @@
     },
     {
         "language": "Hawaiian",
-        "about": "https://en.wikipedia.org/wiki/Hana_Highway",
+        "about": "https://en.wikipedia.org/wiki/Native_Hawaiians",
         "hello": "Alohaʻoe"
+    },
+    {
+        "language": "Hawaiian Pidgin",
+        "about": "https://en.wikipedia.org/wiki/Hawaiian_Pidgin",
+        "hello": "Howzit?"
     },
     {
         "language": "Hebrew",
@@ -271,6 +276,11 @@
     {
         "language": "Myanmar (Burmese)",
         "hello": "မင်္ဂလာပါ"
+    },
+    {
+        "language": "Navajo",
+        "about": "https://en.wikipedia.org/wiki/Navajo",
+        "hello": "Yá'át'ééh"
     },
     {
         "language": "Nepali",
