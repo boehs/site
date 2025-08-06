@@ -8,6 +8,8 @@ Statements should not be construed as advice or otherwise be treated as fact. In
 
 Certain facts about my life may be "fuzzed" for various reasons, including but not limited to privacy and comedic effect.
 
-Sponsors may help fund my work. Article sponsors are a type of donation to the blog. They never have any control over the content of nodes or what I write about. If an article is sponsored, the only change is that there is a clearly marked advert at the top of the article. Adverts are implemented with 1st party HTML & CSS and do not contain tracking mechanisms. Links to external products may be affiliate links, however are only linked when the product would be otherwise referenced in absence of such a program. See the [sponsorship page](/sponsor) for more information.
+I strive to be as forthcoming as possible about the source of information, including open sourcing data, the procedure to obtain said data, and referencing used sources. Sometimes information must be censored for legal reasons and/or for the protection of living peoples.
+
+Sponsors may help fund my work. Article sponsors are a type of donation to the site. They never have any control over the content of pages or what I write about. If an article is sponsored, the only change is that there is a clearly marked advert at the top of the article. Adverts are implemented with 1st party HTML & CSS and do not contain tracking mechanisms. Links to external products may be affiliate links, however are only linked when the product would be otherwise referenced in absence of such a program. See the [sponsorship page](/sponsor) for more information.
 
 [The Writing shall be used for Good, not Evil.](https://www.json.org/license.html)
