@@ -7,8 +7,8 @@ import slugshive from "../../../utils/slugify.js";
 // This regex finds all wikilinks in a string
 const wikilinkRegExp = /(?<!!)\[\[([^|]+?)(\|([\s\S]+?))?\]\]/g;
 
-function backlinksApi(data) {
-	const notes = data.collections.all;
+function backlinksApi(data, _notes = null) {
+	const notes = _notes || data.collections.all;
 	const currentFileSlug = slugshive(
 		data.page.url
 			? data.page.url.replace("/node/", "").replace(".html", "")
@@ -95,9 +95,9 @@ export default {
 		backlinks: (data) => {
 			return backlinksApi(data)[0];
 		},
-		brokenLinks: (data, canRun = false) => {
+		brokenLinks: (data, notes, canRun = false) => {
 			if (!canRun) return "not called from 11ty config";
-			return backlinksApi(data)[1];
+			return backlinksApi(data, notes)[1];
 		},
 	},
 };

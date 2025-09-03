@@ -62,12 +62,12 @@ export default function (eleventyConfig) {
 	});
 
 	// I won't even attempt to explain this
-	eleventyConfig.addCollection("wtf", function (collectionApi) {
+	eleventyConfig.addCollection("wtf", (collectionApi) => {
 		// ok I lied
 		// acess the first post that can get the information we need
 		const firstPost = collectionApi.getFilteredByGlob(gardenStr)[0].data;
 		// and then pass it to itself to emulate computed
-		const links = firstPost.eleventyComputed.brokenLinks(firstPost, true);
+		const links = firstPost.eleventyComputed.brokenLinks(firstPost, collectionApi.getAll(), true);
 		// return as array for pagination
 		return Array.from(links);
 	});
