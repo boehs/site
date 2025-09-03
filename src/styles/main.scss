@@ -59,6 +59,12 @@ p {
   margin-block: $mb1;
 }
 
+// https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/Heading_Elements#specifying_a_uniform_font_size_for_h1
+h1 {
+  font-size: 1.5em;
+  margin-block: 0.83em;
+}
+
 // used for rss icons
 h1,
 h2 {
@@ -77,8 +83,7 @@ a {
   text-decoration-thickness: 2px;
   transition: color 0.3s;
 
-  &[href*="//"]:not([href*="boehs.org"])
-  {
+  &[href*="//"]:not([href*="boehs.org"]) {
     --light: var(--warn);
   }
 
@@ -91,8 +96,7 @@ a {
   }
 }
 
-.e-content a[href*="//"]:not([href*="boehs.org"])
-{
+.e-content a[href*="//"]:not([href*="boehs.org"]) {
   &:after {
     content: "";
     display: inline-block;
@@ -261,6 +265,7 @@ label {
   border: 2px solid var(--border);
   padding: $p1 $p2;
   view-transition-name: pagination;
+
   @media screen and (max-width: $mobile) {
     ul {
       justify-content: space-between;
@@ -290,6 +295,7 @@ label {
 }
 
 @media (prefers-color-scheme: dark) {
+
   // will switch to light-dark when it reaches 90%
   body {
     background: #282828;
@@ -303,6 +309,7 @@ label {
 }
 
 @media (prefers-color-scheme: light) {
+
   // Optimizes codeblocks for light mode
   :not(footer) > pre {
     filter: brightness(1.1) contrast(1.2);
