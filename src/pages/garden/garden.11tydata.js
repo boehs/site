@@ -37,7 +37,7 @@ function backlinksApi(data) {
 		data.internal.exists?.add(noteAsLink);
 
 		// Get all links from otherNote
-		const outboundLinks = (function () {
+		const outboundLinks = (() => {
 			switch (otherNote.data.links) {
 				case undefined: {
 					const links = (noteContent.match(wikilinkRegExp) || []).map((link) =>
@@ -64,7 +64,7 @@ function backlinksApi(data) {
 			});
 		}
 
-		(otherNote.data.aliases || []).forEach(function (alias) {
+		(otherNote.data.aliases || []).forEach((alias) => {
 			data.internal.exists?.add(slugshive(alias));
 		});
 
