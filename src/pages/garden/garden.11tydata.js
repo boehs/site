@@ -95,6 +95,7 @@ export default {
 		backlinks: (data) => {
 			return backlinksApi(data)[0];
 		},
+		// I don't know why, but if "wtf" collection calls backlinks api directly, data.internal.four isn't populated
 		brokenLinks: (data, notes, canRun = false) => {
 			if (!canRun) return "not called from 11ty config";
 			return backlinksApi(data, notes)[1];
