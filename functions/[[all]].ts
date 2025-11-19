@@ -4,7 +4,7 @@ import { countRss } from "rsslytics";
 
 const pronouns = ["my", "your", "her", "our", "their"];
 
-function blocked(rationale: string, message: string?) {
+function blocked(rationale: string, message?: string) {
 	return `<!DOCTYPE html><html><head><link rel="stylesheet" href="/main.css"><link rel="alternate" type="application/atom+xml" title="Blog" href="/in/blog.xml"></head><body><article><h1>Sorry,</h1><p>You cannot access boehs.org as you're ${rationale}.</p>${message ? `<p>You should know ${message}.</p>` : ''}<p>If you believe this block was made in error, please contact me at boehs.org/contact when you're not ${rationale}.</p></article></body></html>`
 }
 
