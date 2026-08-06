@@ -49,6 +49,7 @@ export const is = [
 	"locking in",
 	"locking out",
 	"kickflippin",
+	"startipping",
 	"flying too close to the sun",
 	"tempting fate",
 	"pushing luck",
