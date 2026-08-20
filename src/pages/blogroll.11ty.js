@@ -66,6 +66,7 @@ export default class Blogroll {
                 .join("");
             res =
                 `<p>Hi!! Welcome to my blogroll! These are the blogs I read, presented in a completely random order (that will change, randomly, from time to time).</p>` +
+                `<p>If you're looking for <i>my</i> blog, click <a href="/in/blog">here</a></p>`
                 (config.blogroll.pins
                     ? `<p>You should also check out my <a data-umami-event="pins" href="${config.blogroll.pins}">&#8220;pins&#8221;</a> and <a data-umami-event="links" href="/in/links">monthly links</a>, where I collect interesting content from around the web!</p>`
                     : "") +
@@ -74,7 +75,7 @@ export default class Blogroll {
             return res;
         } catch (e) {
             return {
-                // my failure fallback data
+                `<p>An error occured when generating this page >:(</p>`
             };
         }
     }
