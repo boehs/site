@@ -74,9 +74,8 @@ export default class Blogroll {
                 "<p>Thank you for stopping by! If you know of more great blogs, please do tell &lt;3</p>";
             return res;
         } catch (e) {
-            return {
-                `<p>An error occured when generating this page >:(</p>`
-            };
+            return
+                `<p>An error occured when generating this page >:(</p>`;
         }
     }
 }
